@@ -159,6 +159,24 @@ let notif = document.querySelector(".notif"),
         console.log(positionTop);
     });
 
+// Popup
+function popup(title="", text="", choice="", state="") {
+
+    let smokePage = document.querySelector(".smoke"),
+        popup = document.querySelector(".popup"),
+        popupTilte = document.querySelector(".popup h3"),
+        popupText = document.querySelector(".popup p"),
+        popupSecondChoice = document.querySelector(".popup .choice-2");
+    
+    popupTilte.innerText = title;
+    popupText.innerText = text;
+    popupSecondChoice.innerText = choice == "delete" ? "Supprimer" : "Changer";
+    popupSecondChoice.style.backgroundColor = choice == "delete" ? "#f85149" : "#238636";
+
+    smokePage.style.display = state;
+    popup.style.display = state;
+}
+
 
 // Animation du bouton setting 
 /*let setting = document.querySelectorAll(".setting");
@@ -315,49 +333,45 @@ for (let i = 0; i < state.length; i++) {
 }
 
 // Bouton delete
-let delBtn = document.querySelectorAll(".delete-btn");
-let smokePage = document.querySelector(".smoke");
-let popupDelete = document.querySelector(".popup-delete");
-let cancel = document.querySelector(".cancel");
-let delConfirm = document.querySelector(".choice .delete");
-let mydebug = document.querySelectorAll(".mydebug");
-let favPage = document.querySelector(".favoris");
-let nopost = document.querySelector(".nopost");
+let delBtn = document.querySelectorAll(".delete-btn"),
+    cancel = document.querySelector(".cancel"),
+    delConfirm = document.querySelector(".choice .choice-2"),
+    mydebug = document.querySelectorAll(".mydebug"),
+    favPage = document.querySelector(".favoris"),
+    nopost = document.querySelector(".nopost");
 
 for (let i = 0; i < delBtn.length; i++) {
+    
     delBtn[i].addEventListener("click", () => {
-        smokePage.style.display = "block";
-        popupDelete.style.display = "block";
         fixeBody();
-
+        popup("Supprimer ce debug?", "Cette action est irréversible!", "delete", "block");
+        
         cancel.addEventListener("click", () => {
-            smokePage.style.display = "none";
-            popupDelete.style.display = "none";
+            popup(state = "none");
             noFixeBody();
         })
-
+        
         delConfirm.addEventListener("click", () => {
-            smokePage.style.display = "none";
-            popupDelete.style.display = "none";
+            popup(state = "none");
             noFixeBody();
-
+            
+            // Suppression du debug
             mydebug[i].remove();
-
             let debugFav = document.querySelectorAll(".favoris .mydebug");
             if (debugFav.length == 0) {
                 nopost.style.display = "block";
             }
-
+            
+            // Notification
             showNotif("image/fait.png", "Votre debug a été supprimé");
             setTimeout(() => {
-                hideNotif()
+                hideNotif();
             }, 2000);
         })
-
+        
     })
     
 }
-
 
 
 // Bouton add

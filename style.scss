@@ -355,7 +355,7 @@ body {
     }
 }
 
-    .popup-delete {
+    .popup {
         color: white;
         background-color: #252b36;
         border-radius: 6px;
@@ -380,7 +380,7 @@ body {
             gap: 15px;
             float: right;
 
-            .cancel, .delete {
+            .cancel, .choice-2 {
                 border-radius: 6px;
                 padding: 8px;
                 cursor: pointer;
@@ -394,7 +394,7 @@ body {
                 }
             }
 
-            .delete {
+            .choice-2 {
                 background-color: #f85149;
 
                 &:hover {

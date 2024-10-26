@@ -101,6 +101,65 @@ window.addEventListener("scroll", () => {
     }
 })
 
+// Fixation du body
+function fixeBody() {  
+    let scrollY = window.scrollY; // positionnement du body
+
+    body.style.overflow = "hidden"
+    body.style.height = "100vh"
+    body.style.width = "100vw"
+    body.style.position = "fixed"
+    body.style.top = -scrollY + "px"
+}
+
+function noFixeBody() {
+    body.style.overflow = "visible"
+    body.style.height = ""
+    body.style.width = ""
+    body.style.position = ""
+    body.style.top = ""
+}
+
+
+// Notification
+let notif = document.querySelector(".notif"),
+    notifImg = document.querySelector(".notif img"),
+    notifText = document.querySelector(".notif p"),
+    positionTop,
+    positionBottom;
+
+    function showNotif(img, text) {
+        notifImg.setAttribute("src", img);
+        notifText.innerText = text;
+        notif.style.transition = "0.3s";        
+        notif.style.transform = "translatey(0)";
+    }
+
+    function hideNotif() {
+        notif.style.transition = "0.3s";        
+        notif.style.transform = "translatey(-100px)";
+    }
+
+    // Verifie si les deux positions sont définies et enleve la notif
+    function notifTouch() {
+        if (positionTop != undefined && positionBottom != undefined && positionBottom < 220 && (positionBottom - positionTop) > 10) {
+            hideNotif()
+        }
+    }
+
+    // Notification pour mobile
+    window.addEventListener("touchstart", (e) => {
+        positionBottom = e.targetTouches[0].screenY;
+        console.log(positionBottom);
+    });
+
+    window.addEventListener("touchend", (e) => {
+        positionTop = e.changedTouches[0].screenY;
+        notifTouch();
+        console.log(positionTop);
+    });
+
+
 // Animation du bouton setting 
 /*let setting = document.querySelectorAll(".setting");
 let options = document.querySelectorAll(".delete-state");
@@ -226,23 +285,6 @@ for (let i = 0; i < option.length; i++) {
 }
 
 // Menu contextuel des debugs
-function fixeBody() {  // fixation du body
-    let scrollY = window.scrollY; // positionnement du body
-
-    body.style.overflow = "hidden"
-    body.style.height = "100vh"
-    body.style.width = "100vw"
-    body.style.position = "fixed"
-    body.style.top = -scrollY + "px"
-}
-
-function noFixeBody() {
-    body.style.overflow = "visible"
-    body.style.height = ""
-    body.style.width = ""
-    body.style.position = ""
-    body.style.top = ""
-}
 
 // Animation du bouton state
 let state = document.querySelectorAll(".state-btn");
@@ -291,13 +333,13 @@ for (let i = 0; i < delBtn.length; i++) {
         cancel.addEventListener("click", () => {
             smokePage.style.display = "none";
             popupDelete.style.display = "none";
-            noFixeBody()
+            noFixeBody();
         })
 
         delConfirm.addEventListener("click", () => {
             smokePage.style.display = "none";
             popupDelete.style.display = "none";
-            noFixeBody()
+            noFixeBody();
 
             mydebug[i].remove();
 
@@ -305,42 +347,18 @@ for (let i = 0; i < delBtn.length; i++) {
             if (debugFav.length == 0) {
                 nopost.style.display = "block";
             }
+
+            showNotif("image/fait.png", "Votre debug a été supprimé");
+            setTimeout(() => {
+                hideNotif()
+            }, 2000);
         })
 
     })
     
 }
 
-// Notification
-let notif = document.querySelector(".notif"),
-    positionTop,
-    positionBottom;
 
-    function hideNotif() {
-        notif.style.transition = "0.3s";        
-        notif.style.transform = "translatey(-100px)";
-    }
-
-    function notifTouch() {
-        if (positionTop != undefined && positionBottom != undefined && positionBottom < 220 && (positionBottom - positionTop) > 10) {
-            hideNotif()
-        }
-    }
-
-window.addEventListener("touchstart", (e) => {
-    positionBottom = e.targetTouches[0].screenY;
-    console.log(positionBottom);
-})
-
-window.addEventListener("touchend", (e) => {
-    positionTop = e.changedTouches[0].screenY;
-    notifTouch()
-    console.log(positionTop);
-})
-
-window.addEventListener("scroll", ()=> {
-    console.log(window.scrollY);
-})
 
 // Bouton add
 let add = document.querySelector('.add');

@@ -222,7 +222,7 @@ body {
 
             }
 
-            .op:nth-child(3) {
+            .op:nth-child(4) {
                 border: none;
             }
 
@@ -443,6 +443,7 @@ body {
         left: 0;
         right: 0;
         margin: 0 auto;
+        transform: translatey(-100px);
 
         img {
             height: 25px;

@@ -1,0 +1,698 @@
+button,
+label,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
+button:focus,
+label:focus,
+input:focus,
+optgroup:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+}
+
+input[type=submit] {
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+}
+
+/* Pour masquer le bouton dans Internet Explorer et Edge */
+input[type=password]::-ms-reveal {
+  display: none;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+  font-family: "Inconsolata", monospace;
+  overflow-x: hidden;
+}
+body p {
+  margin: 0;
+  padding: 0;
+}
+body h2, body h3 {
+  padding: 0;
+  margin: 0;
+}
+
+.form_verif_two_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 87vh;
+  gap: 3vh;
+}
+.form_verif_two_container .good_code {
+  background-color: #caf8b8;
+  padding: 2vh 2vw;
+  color: #19bc1c;
+  display: flex;
+  position: absolute;
+  top: 17vh;
+  border-radius: 1vw;
+  gap: 1vw;
+  display: none;
+}
+.form_verif_two_container .good_code p {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.form_verif_two_container .good_code img {
+  animation: shake 0.7s ease-in-out;
+  height: 6vh;
+}
+.form_verif_two_container .bad_code {
+  background-color: #f8b8b8;
+  padding: 2vh 2vw;
+  color: #bc1919;
+  display: flex;
+  position: absolute;
+  top: 17vh;
+  border-radius: 1vw;
+  gap: 1vw;
+  display: none;
+}
+.form_verif_two_container .bad_code p {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.form_verif_two_container .bad_code img {
+  height: 6vh;
+}
+.form_verif_two_container .resend_email_code {
+  background-color: #caf8b8;
+  padding: 2vh 2vw;
+  color: #19bc1c;
+  display: flex;
+  position: absolute;
+  top: 17vh;
+  border-radius: 1vw;
+  gap: 1vw;
+  display: none;
+}
+.form_verif_two_container .resend_email_code p {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.form_verif_two_container .resend_email_code img {
+  animation: shake 0.7s ease-in-out;
+  height: 6vh;
+}
+.form_verif_two_container .form_verif_two {
+  box-shadow: 0 0 0.75vw rgba(0, 0, 0, 0.5);
+  color: white;
+  background: linear-gradient(45deg, #000000, #333333, #000000, #565656, #000000);
+  background-size: 300% 300%;
+  animation: color 12s ease-in-out infinite;
+  border: none;
+  justify-content: center;
+  padding: 7vh 1vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4vh;
+  width: 40vw;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 1vw;
+}
+.form_verif_two_container .form_verif_two p {
+  font-size: 2.5vw;
+  font-weight: 700;
+}
+.form_verif_two_container .form_verif_two .code-input {
+  display: flex;
+  gap: 1vw;
+}
+.form_verif_two_container .form_verif_two .code-input [name="code[]"] {
+  border: none;
+  width: 5vw;
+  padding: 3vh 0;
+  text-align: center;
+  border: 1px solid #000;
+  font-size: 1.5vw;
+  font-weight: 700;
+}
+.form_verif_two_container .form_verif_two .verif_choice {
+  display: flex;
+  gap: 1vw;
+}
+.form_verif_two_container .form_verif_two .verif_choice #send-code-six {
+  box-shadow: 0 0 0.75vw rgba(0, 0, 0, 0.5);
+  color: white;
+  background: linear-gradient(45deg, #000000, #333333, #000000, #565656, #000000);
+  background-size: 300% 300%;
+  animation: color 12s ease-in-out infinite;
+  border: none;
+  width: 6.5vw;
+  height: 7vh;
+}
+.form_verif_two_container .form_verif_two .verif_choice #resend-code {
+  box-shadow: 0 0 0.75vw rgba(0, 0, 0, 0.5);
+  color: white;
+  background: linear-gradient(45deg, #000000, #333333, #000000, #565656, #000000);
+  background-size: 300% 300%;
+  animation: color 12s ease-in-out infinite;
+  border: none;
+  width: 13vw;
+  height: 7vh;
+}
+
+.form_reset_password_container1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 3vh;
+  height: 83vh;
+}
+@keyframes shake {
+  0% {
+    transform: rotate(-10deg) scale(1);
+  }
+  25% {
+    transform: rotate(10deg) scale(1.25);
+  }
+  50% {
+    transform: rotate(-10deg) scale(1.5);
+  }
+  75% {
+    transform: rotate(10deg) scale(1.25);
+  }
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+}
+.form_reset_password_container1 .send {
+  background-color: #caf8b8;
+  padding: 2vh 2vw;
+  color: #19bc1c;
+  display: flex;
+  position: absolute;
+  top: 18vh;
+  border-radius: 1vw;
+  gap: 1vw;
+  display: none;
+}
+.form_reset_password_container1 .send p {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.form_reset_password_container1 .send img {
+  animation: shake 0.7s ease-in-out;
+  height: 6vh;
+}
+.form_reset_password_container1 .nosend {
+  background-color: #f8b8b8;
+  padding: 2vh 2vw;
+  color: #bc1919;
+  display: flex;
+  position: absolute;
+  top: 18vh;
+  border-radius: 1vw;
+  gap: 1vw;
+  display: none;
+}
+.form_reset_password_container1 .nosend p {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.form_reset_password_container1 .nosend img {
+  height: 6vh;
+}
+.form_reset_password_container1 .form_reset1 {
+  box-shadow: 0 0 0.75vw rgba(0, 0, 0, 0.5);
+  color: white;
+  background: linear-gradient(45deg, #000000, #333333, #000000, #565656, #000000);
+  background-size: 300% 300%;
+  animation: color 12s ease-in-out infinite;
+  border: none;
+  justify-content: center;
+  padding: 5vh 0vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4vh;
+  width: 30vw;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 1vw;
+}
+.form_reset_password_container1 .form_reset1 #email_password {
+  width: 22vw;
+  padding: 2vh;
+  border: 1px solid #000;
+}
+.form_reset_password_container1 .form_reset1 #sub_email_password {
+  box-shadow: 0 0 0.75vw rgba(0, 0, 0, 0.5);
+  color: white;
+  background: linear-gradient(45deg, #000000, #333333, #000000, #565656, #000000);
+  background-size: 300% 300%;
+  animation: color 12s ease-in-out infinite;
+  border: none;
+  width: 6.5vw;
+  height: 7vh;
+}
+
+.form_reset_password_container2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 86vh;
+  gap: 3vh;
+}
+.form_reset_password_container2 .change_password {
+  background-color: #caf8b8;
+  padding: 2vh 2vw;
+  color: #19bc1c;
+  display: flex;
+  position: absolute;
+  top: 17vh;
+  border-radius: 1vw;
+  gap: 1vw;
+  display: none;
+}
+.form_reset_password_container2 .change_password p {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.form_reset_password_container2 .change_password img {
+  animation: shake 0.7s ease-in-out;
+  height: 6vh;
+}
+.form_reset_password_container2 .no_change_password {
+  background-color: #f8b8b8;
+  padding: 2vh 2vw;
+  color: #bc1919;
+  display: flex;
+  position: absolute;
+  top: 18vh;
+  border-radius: 1vw;
+  gap: 1vw;
+  display: none;
+}
+.form_reset_password_container2 .no_change_password p {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.form_reset_password_container2 .no_change_password img {
+  height: 6vh;
+}
+.form_reset_password_container2 .form_reset2 {
+  box-shadow: 0 0 0.75vw rgba(0, 0, 0, 0.5);
+  color: white;
+  background: linear-gradient(45deg, #000000, #333333, #000000, #565656, #000000);
+  background-size: 300% 300%;
+  animation: color 12s ease-in-out infinite;
+  border: none;
+  justify-content: center;
+  padding: 5vh 0vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4vh;
+  width: 30vw;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 1vw;
+}
+.form_reset_password_container2 .form_reset2 #reset_password {
+  box-shadow: 0 0 0.75vw rgba(0, 0, 0, 0.5);
+  color: white;
+  background: linear-gradient(45deg, #000000, #333333, #000000, #565656, #000000);
+  background-size: 300% 300%;
+  animation: color 12s ease-in-out infinite;
+  border: none;
+  width: 11vw;
+  height: 7vh;
+}
+
+.success-message-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0); /* Semi-transparent */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Assurez-vous qu'il est au-dessus de tout autre contenu */
+  display: none;
+}
+
+@keyframes bg-color {
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+nav {
+  background: linear-gradient(45deg, #000000, #333333, #000000, #565656, #000000);
+  background-size: 300% 300%;
+  animation: bg-color 12s ease-in-out infinite;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 15px;
+}
+nav .logo {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+}
+nav .logo img {
+  height: 55px;
+}
+nav .link {
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+nav .link a {
+  color: white;
+}
+
+@media screen and (max-width: 901px) {
+  nav .link {
+    flex-direction: column;
+    justify-content: center;
+    align-items: end;
+    gap: 5px;
+  }
+}
+@media screen and (max-width: 601px) {
+  nav .logo img {
+    height: 65px;
+  }
+  nav .logo h2 {
+    display: none;
+  }
+}
+@media screen and (max-width: 351px) {
+  nav {
+    flex-direction: column;
+    align-items: center;
+  }
+  nav .link {
+    align-items: center;
+  }
+  nav .logo img {
+    margin-top: -8px;
+    height: 55px;
+  }
+}
+.nav_lambda {
+  background: linear-gradient(45deg, #000000, #333333, #000000, #565656, #000000);
+  background-size: 300% 300%;
+  animation: color 12s ease-in-out infinite;
+  color: white;
+  padding: 0.5vh 0vw;
+}
+.nav_lambda .logo {
+  display: flex;
+  gap: 0vh;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+}
+.nav_lambda .logo .name_site {
+  font-weight: bold;
+  font-size: 1.7vw;
+}
+.nav_lambda .logo img {
+  height: 4vw;
+  width: 4vw;
+}
+
+.login {
+  width: 30%;
+  border: 1.5px solid black;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 20px auto;
+  position: relative;
+  gap: 30px;
+  border-radius: 10px;
+  padding: 20px 10px;
+  padding-bottom: 35px;
+}
+.login h2 {
+  margin-bottom: -10px;
+}
+.login .log_sign_up {
+  display: flex;
+  gap: 10px;
+}
+.login .log_sign_up a {
+  color: black;
+}
+.login .login_error {
+  color: red;
+  font-size: 13px;
+  display: none;
+  margin: -21px 0;
+  text-align: center;
+}
+.login .body_login {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+.login .body_login #email_login,
+.login .body_login .password_container {
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 15px;
+}
+.login .body_login #email_login {
+  width: 80%;
+  padding: 11.5px 10px;
+  outline: none;
+}
+.login .body_login .password_container {
+  display: flex;
+  align-items: center;
+  width: 82%;
+  padding: 0 5px;
+}
+.login .body_login .password_container #password_login {
+  width: 100%;
+  padding: 11.5px 5px;
+  outline: none;
+  border: none;
+  border-radius: 15px;
+}
+.login .body_login .password_container img {
+  height: 20px;
+  padding: 0 5px;
+}
+.login .body_login .login_error_google {
+  color: red;
+  font-size: 13px;
+  margin: -21px 0;
+  text-align: center;
+  display: none;
+}
+.login .body_login .g_id_signin {
+  display: none;
+}
+.login .body_login .btn-gg {
+  display: flex;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 15px;
+  padding: 5px 15px;
+  gap: 7px;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.619);
+  margin-top: -15px;
+}
+.login .body_login .btn-gg:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.0588235294);
+}
+.login .body_login .btn-gg img {
+  height: 25px;
+}
+.login .body_login .choice_login {
+  width: 100%;
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+}
+.login .body_login .choice_login .forgot {
+  background: none;
+  text-decoration: underline;
+  color: #000000;
+}
+.login .body_login .choice_login #sub_login {
+  background: linear-gradient(45deg, #000000, #333333, #000000, #565656, #000000);
+  background-size: 300% 300%;
+  animation: bg-color 12s ease-in-out infinite;
+  color: white;
+  padding: 10px;
+  border-radius: 15px;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.619);
+}
+.login hr {
+  width: 85%;
+  border: 1px solid black;
+}
+
+@media screen and (max-width: 1032px) {
+  .login {
+    width: 55%;
+  }
+}
+@media screen and (max-width: 945px) {
+  .login {
+    width: 60%;
+  }
+}
+@media screen and (max-width: 826px) {
+  .login {
+    width: 70%;
+  }
+  .login .log_sign_up {
+    align-items: center;
+    flex-direction: column;
+  }
+  .login .body_login .choice_login {
+    align-items: center;
+    flex-direction: column;
+    gap: 25px;
+  }
+  .login .body_login .choice_login #sub_login {
+    width: 45%;
+  }
+}
+@media screen and (max-width: 600px) {
+  .login {
+    width: 80%;
+  }
+}
+@media screen and (max-width: 400px) {
+  .login {
+    width: 90%;
+  }
+}
+/*Style du menu du catalog*/
+.user {
+  margin: auto 0;
+  height: 3vw;
+  border-radius: 50%;
+}
+.user:hover {
+  cursor: pointer;
+}
+
+.menu {
+  display: none;
+  background-color: rgb(25, 24, 24);
+  position: absolute;
+  width: 20vw;
+  top: 0;
+  right: -21vw;
+  border-radius: 2vw 0vw 0vw 2vw;
+  border-right: 1px solid rgb(25, 24, 24);
+  z-index: 1001;
+}
+
+.headermenu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 2vw 0vw 0vw 0vw;
+  border-bottom: 1px solid #ffffff;
+  border-top: 1px solid #ffffff;
+  border-left: 1px solid #ffffff;
+  padding: 2.45vh 0.5vw;
+}
+.headermenu img {
+  height: 1.5vw;
+}
+
+.usernamemenu {
+  display: flex;
+  gap: 0.3vw;
+  justify-content: space-between;
+}
+
+.usernamemenu img {
+  height: 3vw;
+}
+
+.usernamemenu p {
+  color: #ffffff;
+  margin: auto 0;
+}
+
+.close {
+  padding: 0.2vw;
+  border-radius: 0.3vw;
+}
+
+.close:hover {
+  background-color: rgba(255, 255, 255, 0.4705882353);
+}
+
+.menu ul {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  margin: 4vh 2vw;
+  gap: 3vh;
+  padding: 0;
+  list-style-type: none;
+}
+
+.menu ul li a {
+  text-decoration: none;
+  color: white;
+}
+
+.menu hr {
+  border: none;
+  border-top: 1px solid #ffffff;
+  width: 100%;
+  margin: 0;
+}
+.menu li {
+  display: flex;
+  gap: 0.5vw;
+  padding: 0.3vw;
+  border-radius: 0.3vw;
+}
+.menu li img {
+  height: 3.2vh;
+}
+.menu li:hover {
+  background-color: rgba(255, 255, 255, 0.1803921569);
+}
+
+/*Style du menu du catalog*/
+
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,363 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+* p {
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: #0d1117;
+}
+
+.nav-pagination {
+  background-color: #010409;
+  -webkit-backdrop-filter: blur(7px);
+  backdrop-filter: blur(7px);
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  transition: 0.3s;
+}
+.nav-pagination nav {
+  display: flex;
+  padding: 16px;
+  justify-content: space-between;
+}
+.nav-pagination nav .logo {
+  display: flex;
+  align-items: center;
+  color: white;
+  gap: 10px;
+}
+.nav-pagination nav .logo img {
+  height: 32px;
+}
+.nav-pagination nav .menu-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.nav-pagination nav .menu-search .search {
+  border: 1px solid #9198a1;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 5px;
+  border-radius: 6px;
+}
+.nav-pagination nav .menu-search .search input {
+  width: 170px;
+  outline: none;
+  border: none;
+  caret-color: white;
+  background: none;
+  color: white;
+  font-size: 16px;
+}
+.nav-pagination nav .menu-search .search img {
+  height: 24px;
+}
+.nav-pagination nav .menu-search img {
+  height: 33px;
+}
+.nav-pagination .page {
+  display: flex;
+  justify-content: space-around;
+}
+.nav-pagination .page button {
+  background: none;
+  color: white;
+  padding-bottom: 8px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+.nav-pagination .page button:nth-child(1) {
+  border-bottom: 2px solid transparent;
+}
+.nav-pagination .page button:nth-child(2) {
+  border-bottom: 2px solid rgb(248, 130, 51);
+}
+
+.foryou {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+  box-sizing: border-box;
+  gap: 30px;
+}
+
+.favoris {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+  box-sizing: border-box;
+  gap: 30px;
+}
+
+.mydebug {
+  width: 1000px;
+  border-radius: 6px;
+  border: 1px solid #9198a1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 10px 20px;
+  overflow-wrap: break-word;
+}
+.mydebug .top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.mydebug .pic-name-post-date {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.mydebug .pic-name-post-date img {
+  height: 37px;
+  width: 37px;
+  cursor: pointer;
+  object-fit: cover;
+  border-radius: 50px;
+}
+.mydebug .pic-name-post-date a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 550;
+}
+.mydebug .pic-name-post-date p {
+  color: #9198a1;
+}
+.mydebug .title {
+  font-size: 23px;
+  color: white;
+}
+.mydebug .option {
+  height: 20px;
+  padding: 7px;
+  cursor: pointer;
+  border-radius: 50px;
+}
+.mydebug .option:hover {
+  background-color: rgba(145, 152, 161, 0.2901960784);
+}
+.mydebug .ressource a {
+  color: #4493f8;
+}
+.mydebug .description {
+  color: white;
+  line-height: 25px;
+}
+.mydebug .option-menu {
+  color: #9198a1;
+  background-color: #252b36;
+  border-radius: 6px;
+  cursor: pointer;
+  overflow: hidden;
+  position: absolute;
+  margin-top: 6px;
+  right: 10.5%;
+  display: none;
+}
+.mydebug .option-menu .op {
+  display: flex;
+  gap: 5px;
+  padding: 13px;
+  border-bottom: 1.5px solid #313845;
+}
+.mydebug .option-menu .op p {
+  margin-top: 3px;
+}
+.mydebug .option-menu .op img {
+  height: 20px;
+}
+.mydebug .option-menu .op:hover {
+  background-color: #313845;
+}
+.mydebug .option-menu .op:nth-child(3) {
+  border: none;
+}
+.mydebug .bottom {
+  display: flex;
+  color: #9198a1;
+}
+.mydebug .bottom .state-simple {
+  height: 20px;
+  width: 20px;
+  margin-right: auto;
+}
+.mydebug .bottom .count-fav, .mydebug .bottom .count-like {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  margin: 0 7px;
+}
+.mydebug .bottom .count-fav img, .mydebug .bottom .count-like img {
+  height: 20px;
+}
+
+@media screen and (max-width: 1040px) {
+  .mydebug {
+    width: 80%;
+  }
+  .mydebug .pic-name-post-date {
+    gap: 15px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .nav-pagination nav {
+    padding: 20px 15px;
+  }
+  .nav-pagination nav .logo {
+    gap: 5px;
+  }
+  .nav-pagination nav .menu-search .search {
+    gap: 0px;
+    cursor: pointer;
+  }
+  .nav-pagination nav .menu-search .search input {
+    width: 0;
+  }
+  .mydebug .option-menu .op {
+    padding: 16px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .mydebug {
+    width: 84%;
+    padding: 10px 14px;
+  }
+  .mydebug .option-menu {
+    right: 8.5%;
+  }
+  .mydebug .bottom .count-fav, .mydebug .bottom .count-like {
+    margin: 0 5px;
+  }
+}
+@media screen and (max-width: 395px) {
+  .mydebug {
+    padding: 10px 13px;
+  }
+  .mydebug .pic-name-post-date {
+    gap: 7px;
+  }
+}
+.add {
+  height: 25px;
+  background-color: #4493f8;
+  padding: 20px;
+  border-radius: 50px;
+  cursor: pointer;
+  position: fixed;
+  bottom: 30px;
+  right: 24px;
+  z-index: 3;
+}
+
+@media screen and (max-width: 460px) {
+  .add {
+    bottom: 13px;
+    right: 13px;
+  }
+}
+.popup-delete {
+  color: white;
+  background-color: #252b36;
+  border-radius: 6px;
+  width: 270px;
+  padding: 20px 17px;
+  margin: auto;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5568627451);
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translatex(-50%);
+  z-index: 4;
+  display: none;
+}
+.popup-delete h3 {
+  margin-bottom: 10px;
+}
+.popup-delete .choice {
+  margin-top: 25px;
+  display: flex;
+  gap: 15px;
+  float: right;
+}
+.popup-delete .choice .cancel, .popup-delete .choice .delete {
+  border-radius: 6px;
+  padding: 8px;
+  cursor: pointer;
+}
+.popup-delete .choice .cancel {
+  background-color: gray;
+}
+.popup-delete .choice .cancel:hover {
+  background-color: rgb(152, 149, 149);
+}
+.popup-delete .choice .delete {
+  background-color: #f85149;
+}
+.popup-delete .choice .delete:hover {
+  background-color: #ff6058;
+}
+
+.smoke {
+  height: 1000%;
+  width: 1000%;
+  background-color: rgba(0, 0, 0, 0.3921568627);
+  position: fixed;
+  z-index: 4;
+  display: none;
+}
+
+.nopost {
+  color: #9198a1;
+  text-align: center;
+  width: 80%;
+  display: none;
+}
+.nopost img {
+  height: 200px;
+}
+
+.notif {
+  width: 250px;
+  height: 60px;
+  background-color: #111823;
+  border: 1px solid #4493f8;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  color: white;
+  gap: 10px;
+  padding: 0 20px;
+  position: fixed;
+  top: 7px;
+  z-index: 3;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+.notif img {
+  height: 25px;
+}
+
+@media screen and (max-width: 430px) {
+  .notif {
+    width: 80%;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

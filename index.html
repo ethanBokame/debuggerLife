@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <!--Zoom-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--Icon-->
+    <link rel="shortcut icon" href="image/feather-pen.png" type="image/x-icon">
+
+    <!--Css-->
+    <link rel="stylesheet" href="style.css">
+    
+    <!--Cdn de swiper JS-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!--Javascript-->
+    <script src="script.js" defer></script>
+
+    <!--jss.js-->
+    <script src="jss.js"></script>
+
+    <!--jquery.js-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!--Titre-->
+    <title>debuggerLife</title>
+</head>
+<body>
+    <div class="smoke"></div>
+    <div class="nav-pagination">
+        <!--NAVBAR-->
+        <nav>
+            <div class="logo">
+                <img src="image\stylo-a-plume.png">
+                <p>Debuggs</p>
+            </div>
+
+            <div class="menu-search">
+                <div class="search">
+                    <img src="image/loupe.png">
+                    <input type="search" name="search" id="search">
+                </div>
+                <img src="image\profil-de-lutilisateur.png">
+            </div>
+        </nav>
+
+        <!--BOUTON DE SLIDES-->
+        <div class="page">
+            <button>Pour toi</button>
+            <button class="active">Moi et favoris</button>
+        </div>
+
+
+
+    </div>
+
+            <!--NOTIFICATION-->
+
+            <div class="notif">
+                <img src="image/fait.png" alt="notification">
+                <p>Votre debug a été supprimé</p>
+            </div>
+
+    <!--POP-UP-->
+    <div class="popup-delete">
+        <h3>Supprimer ce debug?</h3>
+        <p>Cette action est irréversible!</p>
+        <div class="choice">
+            <p class="cancel">Annuler</p>
+            <p class="delete">Supprimer</p>
+        </div>
+    </div>
+
+
+
+
+
+    <!--PAGES-->
+    <div class="swiper">
+
+        <div class="swiper-wrapper">
+
+            <div class="foryou swiper-slide swiper-slide-prev">
+                <div class="mydebug">
+                    <div class="top">
+                        <div class="pic-name-post-date">
+                            <div class="img-container">
+                                <img src="https://roadtocinema.paris/wp-content/uploads/2021/01/7ef11bab08283e3f99a392b20f664b75.jpg">
+                            </div>
+                            
+                            <a href="">Onizuka㊙️</a>
+                            <p>•</p>
+                            <p>1h</p>
+                        </div>
+
+                        <div class="option-container">
+                            <img src="image/options.png" class="option" >
+                            <div class="option-menu">
+                                <div class="op link-btn">
+                                    <img src="image/liens.png" alt="link">
+                                    <p>Copier le lien</p>
+                                </div>
+                                <div class="op share-btn">
+                                    <img src="image/partager.png" alt="Statistiques">
+                                    <p>Partager</p>
+                                </div>
+                                <div class="op state-btn">
+                                    <img src="image/privé .png" alt="lock">
+                                    <p>Mettre en privé</p>
+                                </div>
+                                <div class="op delete-btn">
+                                    <img src="image/trash.png" alt="trash">
+                                    <p>Supprimer</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+    
+                    <p class="title">
+                        Ajax
+                    </p>
+    
+                    <div class="description">
+                        <p>
+                            Probleme au try catch des requetes ajax
+                        </p>
+                    </div>
+    
+                    <div class="ressource">
+                        <a href="https://stackoverflow.com/questions/13108093/ajax-call-to-php-script-not-working" target="_blank">https://stackoverflow.com/questions/13108093/ajax-call-to-php-script-not-working...</a>
+                    </div>
+
+                    <div class="bottom">
+                        <img src="image/public.png" alt="world" class="state-simple">
+                        <div class="count-like">
+
+                            <img src="image/heart-regular-240.png" alt="like">
+                            <p>
+                                101
+                            </p>
+                        </div>
+                        <div class="count-fav">
+
+                            <img src="image/bookmark-regular-240.png" alt="fav">
+                            <p>
+                                5
+                            </p>
+                        </div>
+                    </div>
+
+
+
+                </div>
+    
+                <div class="mydebug">
+                    <div class="top">
+                        <div class="pic-name-post-date">
+                            <div class="img-container">
+                                <img src="https://roadtocinema.paris/wp-content/uploads/2021/01/7ef11bab08283e3f99a392b20f664b75.jpg">
+                            </div>
+                            
+                            <a href="">Onizuka㊙️</a>
+                            <p>•</p>
+                            <p>1h</p>
+                        </div>
+
+                        <div class="option-container">
+                            <img src="image/options.png" class="option" >
+                            <div class="option-menu">
+                                <div class="op share-btn">
+                                    <img src="image/partager.png" alt="Statistiques">
+                                    <p>Partager</p>
+                                </div>
+                                <div class="op state-btn">
+                                    <img src="image/privé .png" alt="lock">
+                                    <p>Mettre en privé</p>
+                                </div>
+                                <div class="op delete-btn">
+                                    <img src="image/trash.png" alt="trash">
+                                    <p>Supprimer</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+    
+                    <p class="title">
+                        Ajax
+                    </p>
+    
+                    <div class="description">
+                        <p>
+                            Probleme au try catch des requetes ajax
+                        </p>
+                    </div>
+    
+                    <div class="ressource">
+                        <a href="https://stackoverflow.com/questions/13108093/ajax-call-to-php-script-not-working" target="_blank">https://stackoverflow.com/questions/13108093/ajax-call-to-php-script-not-working...</a>
+                    </div>
+
+                    <div class="bottom">
+                        <img src="image/public.png" alt="world" class="state-simple">
+                        <div class="count-like">
+
+                            <img src="image/heart-regular-240.png" alt="like">
+                            <p>
+                                101
+                            </p>
+                        </div>
+                        <div class="count-fav">
+
+                            <img src="image/bookmark-regular-240.png" alt="fav">
+                            <p>
+                                5
+                            </p>
+                        </div>
+                    </div>
+
+
+
+                </div>
+    
+                <div class="mydebug">
+                    <div class="top">
+                        <div class="pic-name-post-date">
+                            <div class="img-container">
+                                <img src="https://roadtocinema.paris/wp-content/uploads/2021/01/7ef11bab08283e3f99a392b20f664b75.jpg">
+                            </div>
+                            
+                            <a href="">Onizuka㊙️</a>
+                            <p>•</p>
+                            <p>1h</p>
+                        </div>
+
+                        <div class="option-container">
+                            <img src="image/options.png" class="option" >
+                            <div class="option-menu">
+                                <div class="op share-btn">
+                                    <img src="image/partager.png" alt="Statistiques">
+                                    <p>Partager</p>
+                                </div>
+                                <div class="op state-btn">
+                                    <img src="image/privé .png" alt="lock">
+                                    <p>Mettre en privé</p>
+                                </div>
+                                <div class="op delete-btn">
+                                    <img src="image/trash.png" alt="trash">
+                                    <p>Supprimer</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+    
+                    <p class="title">
+                        Ajax
+                    </p>
+    
+                    <div class="description">
+                        <p>
+                            Probleme au try catch des requetes ajax
+                        </p>
+                    </div>
+    
+                    <div class="ressource">
+                        <a href="https://stackoverflow.com/questions/13108093/ajax-call-to-php-script-not-working" target="_blank">https://stackoverflow.com/questions/13108093/ajax-call-to-php-script-not-working...</a>
+                    </div>
+
+                    <div class="bottom">
+                        <img src="image/public.png" alt="world" class="state-simple">
+                        <div class="count-like">
+
+                            <img src="image/heart-regular-240.png" alt="like">
+                            <p>
+                                101
+                            </p>
+                        </div>
+                        <div class="count-fav">
+
+                            <img src="image/bookmark-regular-240.png" alt="fav">
+                            <p>
+                                5
+                            </p>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+
+            <div class="favoris swiper-slide swiper-slide-active">
+                <div class="mydebug">
+                    <div class="top">
+                        <div class="pic-name-post-date">
+                            <div class="img-container">
+                                <img src="https://roadtocinema.paris/wp-content/uploads/2021/01/7ef11bab08283e3f99a392b20f664b75.jpg">
+                            </div>
+                            
+                            <a href="">Onizuka㊙️</a>
+                            <p>•</p>
+                            <p>1h</p>
+                        </div>
+
+                        <div class="option-container">
+                            <img src="image/options.png" class="option" >
+                            <div class="option-menu">
+                                <div class="op share-btn">
+                                    <img src="image/partager.png" alt="Statistiques">
+                                    <p>Partager</p>
+                                </div>
+                                <div class="op state-btn">
+                                    <img src="image/privé .png" alt="lock">
+                                    <p>Mettre en privé</p>
+                                </div>
+                                <div class="op delete-btn">
+                                    <img src="image/trash.png" alt="trash">
+                                    <p>Supprimer</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+    
+                    <p class="title">
+                        Ajax
+                    </p>
+    
+                    <div class="description">
+                        <p>
+                            Probleme au try catch des requetes ajax
+                        </p>
+                    </div>
+    
+                    <div class="ressource">
+                        <a href="https://stackoverflow.com/questions/13108093/ajax-call-to-php-script-not-working" target="_blank">https://stackoverflow.com/questions/13108093/ajax-call-to-php-script-not-working...</a>
+                    </div>
+
+                    <div class="bottom">
+                        <img src="image/public.png" alt="world" class="state-simple">
+                        <div class="count-like">
+
+                            <img src="image/heart-regular-240.png" alt="like">
+                            <p>
+                                101
+                            </p>
+                        </div>
+                        <div class="count-fav">
+
+                            <img src="image/bookmark-regular-240.png" alt="fav">
+                            <p>
+                                5
+                            </p>
+                        </div>
+                    </div>
+
+
+
+                </div>
+    
+    
+                <div class="mydebug">
+                    <div class="top">
+                        <div class="pic-name-post-date">
+                            <div class="img-container">
+                                <img src="https://roadtocinema.paris/wp-content/uploads/2021/01/7ef11bab08283e3f99a392b20f664b75.jpg">
+                            </div>
+                            
+                            <a href="">Onizuka㊙️</a>
+                            <p>•</p>
+                            <p>1h</p>
+                        </div>
+
+                        <div class="option-container">
+                            <img src="image/options.png" class="option" >
+                            <div class="option-menu">
+                                <div class="op share-btn">
+                                    <img src="image/partager.png" alt="Statistiques">
+                                    <p>Partager</p>
+                                </div>
+                                <div class="op state-btn">
+                                    <img src="image/privé .png" alt="lock">
+                                    <p>Mettre en privé</p>
+                                </div>
+                                <div class="op delete-btn">
+                                    <img src="image/trash.png" alt="trash">
+                                    <p>Supprimer</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+    
+                    <p class="title">
+                        Ajax
+                    </p>
+    
+                    <div class="description">
+                        <p>
+                            Probleme au try catch des requetes ajax
+                        </p>
+                    </div>
+    
+                    <div class="ressource">
+                        <a href="https://stackoverflow.com/questions/13108093/ajax-call-to-php-script-not-working" target="_blank">https://stackoverflow.com/questions/13108093/ajax-call-to-php-script-not-working...</a>
+                    </div>
+
+                    <div class="bottom">
+                        <img src="image/public.png" alt="world" class="state-simple">
+                        <div class="count-like">
+
+                            <img src="image/heart-regular-240.png" alt="like">
+                            <p>
+                                101
+                            </p>
+                        </div>
+                        <div class="count-fav">
+
+                            <img src="image/bookmark-regular-240.png" alt="fav">
+                            <p>
+                                5
+                            </p>
+                        </div>
+                    </div>
+
+
+
+                </div>
+    
+                <div class="mydebug">
+                    <div class="top">
+                        <div class="pic-name-post-date">
+                            <div class="img-container">
+                                <img src="https://roadtocinema.paris/wp-content/uploads/2021/01/7ef11bab08283e3f99a392b20f664b75.jpg">
+                            </div>
+                            
+                            <a href="">Onizuka㊙️</a>
+                            <p>•</p>
+                            <p>1h</p>
+                        </div>
+
+                        <div class="option-container">
+                            <img src="image/options.png" class="option" >
+                            <div class="option-menu">
+                                <div class="op share-btn">
+                                    <img src="image/partager.png" alt="Statistiques">
+                                    <p>Partager</p>
+                                </div>
+                                <div class="op state-btn">
+                                    <img src="image/privé .png" alt="lock">
+                                    <p>Mettre en privé</p>
+                                </div>
+                                <div class="op delete-btn">
+                                    <img src="image/trash.png" alt="trash">
+                                    <p>Supprimer</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+    
+                    <p class="title">
+                        Ajax
+                    </p>
+    
+                    <div class="description">
+                        <p>
+                            Probleme au try catch des requetes ajax
+                        </p>
+                    </div>
+    
+                    <div class="ressource">
+                        <a href="https://stackoverflow.com/questions/13108093/ajax-call-to-php-script-not-working" target="_blank">https://stackoverflow.com/questions/13108093/ajax-call-to-php-script-not-working...</a>
+                    </div>
+
+                    <div class="bottom">
+                        <img src="image/public.png" alt="world" class="state-simple">
+                        <div class="count-like">
+
+                            <img src="image/heart-regular-240.png" alt="like">
+                            <p>
+                                101
+                            </p>
+                        </div>
+                        <div class="count-fav">
+
+                            <img src="image/bookmark-regular-240.png" alt="fav">
+                            <p>
+                                5
+                            </p>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+                <!--DANS LE CAS OU IL N'Y A PAS OU PLUS DE POSTS-->
+                <div class="nopost">
+                    <img src="image/chercher.png" alt="search">
+                    <h2>Vous n'avez pas de posts ni de favoris pour l'instant. Publiez quelque chose ou enregistrez le contenu qui vous paraît pertinent!</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--BOUTONS POUR AJOUTER DES DEBUGS-->
+    <img src="image/plus.png" alt="add" class="add">
+
+</body>
+</html>

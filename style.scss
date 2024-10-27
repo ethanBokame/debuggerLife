@@ -393,14 +393,6 @@ body {
                     background-color: rgb(152, 149, 149);
                 }
             }
-
-            .choice-2 {
-                background-color: #f85149;
-
-                &:hover {
-                    background-color: #ff6058;
-                }
-            }
         }
     }
 
@@ -427,7 +419,7 @@ body {
 
 
     .notif {
-        width: 250px;
+        width: 300px;
         height: 60px;
         background-color: #111823;
         border: 1px solid #4493f8;

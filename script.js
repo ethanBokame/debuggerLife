@@ -161,7 +161,7 @@ let notif = document.querySelector(".notif"),
 
 // Popup
 function popup(title="", text="", choice="", state="") {
-
+    
     let smokePage = document.querySelector(".smoke"),
         popup = document.querySelector(".popup"),
         popupTilte = document.querySelector(".popup h3"),
@@ -170,9 +170,35 @@ function popup(title="", text="", choice="", state="") {
     
     popupTilte.innerText = title;
     popupText.innerText = text;
-    popupSecondChoice.innerText = choice == "delete" ? "Supprimer" : "Changer";
-    popupSecondChoice.style.backgroundColor = choice == "delete" ? "#f85149" : "#238636";
+    
+    if (choice == "delete") {
+        
+        popupSecondChoice.innerText = "Supprimer";
+        popupSecondChoice.style.backgroundColor = "#f85149";
+        
+        popupSecondChoice.addEventListener("mouseover", () => {
+            popupSecondChoice.style.backgroundColor = "#ff6058";
+        })
+        
+        popupSecondChoice.addEventListener("mouseout", () => {
+            popupSecondChoice.style.backgroundColor = "#f85149";
+        })
+        
+    }
+    else {
 
+        popupSecondChoice.innerText = "Changer";
+        popupSecondChoice.style.backgroundColor = "#238636";
+        
+        popupSecondChoice.addEventListener("mouseover", () => {
+            popupSecondChoice.style.backgroundColor = "#2ba944";
+        })
+        
+        popupSecondChoice.addEventListener("mouseout", () => {
+            popupSecondChoice.style.backgroundColor = "#238636";
+        })
+    }
+    
     smokePage.style.display = state;
     popup.style.display = state;
 }
@@ -305,36 +331,56 @@ for (let i = 0; i < option.length; i++) {
 // Menu contextuel des debugs
 
 // Animation du bouton state
-let state = document.querySelectorAll(".state-btn");
-let stateImg = document.querySelectorAll(".state-btn img");
-let stateText = document.querySelectorAll(".state-btn p");
-let stateImgSimple = document.querySelectorAll(".state-simple");
+let state = document.querySelectorAll(".state-btn"),
+    stateImg = document.querySelectorAll(".state-btn img"),
+    stateText = document.querySelectorAll(".state-btn p"),
+    stateImgSimple = document.querySelectorAll(".state-simple"),
+    cancel = document.querySelector(".cancel"),
+    saveConfirm = document.querySelector(".choice .choice-2");
 
 for (let i = 0; i < state.length; i++) {
 
     state[i].addEventListener("click", () => {
+
         let newStateTextPopup = stateText[i].innerText.slice(10,stateText[i].length);
 
-        Swal.fire({
-            text: "Votre Debug est maintenant " + newStateTextPopup,
-            confirmButtonText: "Ok",
-        });
+        fixeBody();
 
-        let newStateImg = stateImg[i].getAttribute("src");
-        let newStateImgSimple = stateImgSimple[i].getAttribute("src");
+        if (newStateTextPopup == "privé") {
+            popup("Rendre le debug privé?", "Êtes-vous sûr de vouloir restreindre l'accès à ce debug ? Il ne sera plus visible pour les autres utilisateurs.", "save", "block");
+        } else {
+            popup("Publier votre debug?", "Êtes-vous sûr de vouloir rendre ce debug visible pour tous ?", "save", "block");
+        }
 
-        stateImg[i].setAttribute("src", newStateImgSimple);
-        stateImgSimple[i].setAttribute("src", newStateImg);
+        cancel.addEventListener("click", () => {
+            popup(state = "none");
+            noFixeBody();
+        })
 
-        newStateTextMenu = newStateImgSimple.slice(6,12);
-        stateText[i].innerText = "Mettre en " + newStateTextMenu;
+        saveConfirm.addEventListener("click", () => {
+            popup(state = "none");
+            noFixeBody();
+            
+            let newStateImg = stateImg[i].getAttribute("src");
+            let newStateImgSimple = stateImgSimple[i].getAttribute("src");
+    
+            stateImg[i].setAttribute("src", newStateImgSimple);
+            stateImgSimple[i].setAttribute("src", newStateImg);
+    
+            newStateTextMenu = newStateImgSimple.slice(6,12);
+            stateText[i].innerText = "Mettre en " + newStateTextMenu;
+    
+            showNotif("image/fait.png", "Votre Debug est maintenant " + newStateTextPopup);
+            setTimeout(() => {
+                hideNotif();
+            }, 2000);
+        })
     })
     
 }
 
 // Bouton delete
 let delBtn = document.querySelectorAll(".delete-btn"),
-    cancel = document.querySelector(".cancel"),
     delConfirm = document.querySelector(".choice .choice-2"),
     mydebug = document.querySelectorAll(".mydebug"),
     favPage = document.querySelector(".favoris"),

@@ -359,41 +359,48 @@ body {
         color: white;
         background-color: #252b36;
         border-radius: 6px;
-        width: 270px;
+        width: 300px;
         padding: 20px 17px;
         margin: auto;
         box-shadow: 0 0 3px #0000008e;
         position: fixed;
-        top: 40%;
+        top: 35%;
         left: 50%;
         transform: translatex(-50%);
         z-index: 4;
         display: none;
-        
-        h3 {
-            margin-bottom: 10px;
+
+        .top {
+            display: flex;
+            justify-content: space-between;
+
+            img {
+                position: relative;
+                height: 20px;
+                padding: 7px;
+                top: -7px;
+                cursor: pointer;
+                border-radius: 50px;
+                background-color: #9198a12c;
+
+                &:hover {
+                    background-color: #9198a14a;
+                }
+            }
+            
+            h3 {
+                margin-bottom: 10px;
+            }
         }
 
         .choice {
-            margin-top: 25px;
-            display: flex;
-            gap: 15px;
+            border-radius: 6px;
+            padding: 8px;
+            cursor: pointer;
             float: right;
-
-            .cancel, .choice-2 {
-                border-radius: 6px;
-                padding: 8px;
-                cursor: pointer;
-            }
-
-            .cancel {
-                background-color: gray;
-
-                &:hover {
-                    background-color: rgb(152, 149, 149);
-                }
-            }
+            margin-top: 25px;
         }
+
     }
 
 
@@ -421,8 +428,8 @@ body {
     .notif {
         width: 300px;
         height: 60px;
-        background-color: #111823;
-        border: 1px solid #4493f8;
+        background-color: #0d1117;
+        border: 1px solid #44b0f8;
         border-radius: 15px;
         display: flex;
         align-items: center;

@@ -150,13 +150,13 @@ let notif = document.querySelector(".notif"),
     // Notification pour mobile
     window.addEventListener("touchstart", (e) => {
         positionBottom = e.targetTouches[0].screenY;
-        console.log(positionBottom);
+        // console.log(positionBottom);
     });
 
     window.addEventListener("touchend", (e) => {
         positionTop = e.changedTouches[0].screenY;
         notifTouch();
-        console.log(positionTop);
+        // console.log(positionTop);
     });
 
 // Popup
@@ -166,36 +166,49 @@ function popup(title="", text="", choice="", state="") {
         popup = document.querySelector(".popup"),
         popupTilte = document.querySelector(".popup h3"),
         popupText = document.querySelector(".popup p"),
-        popupSecondChoice = document.querySelector(".popup .choice-2");
+        popupChoice = document.querySelector(".popup .choice");
     
     popupTilte.innerText = title;
     popupText.innerText = text;
     
     if (choice == "delete") {
         
-        popupSecondChoice.innerText = "Supprimer";
-        popupSecondChoice.style.backgroundColor = "#f85149";
+        popupChoice.innerText = "Supprimer ce debug";
+        popupChoice.style.backgroundColor = "#f85149";
         
-        popupSecondChoice.addEventListener("mouseover", () => {
-            popupSecondChoice.style.backgroundColor = "#ff6058";
+        popupChoice.addEventListener("mouseover", () => {
+            popupChoice.style.backgroundColor = "#ff6058";
         })
         
-        popupSecondChoice.addEventListener("mouseout", () => {
-            popupSecondChoice.style.backgroundColor = "#f85149";
+        popupChoice.addEventListener("mouseout", () => {
+            popupChoice.style.backgroundColor = "#f85149";
         })
         
     }
-    else {
-
-        popupSecondChoice.innerText = "Changer";
-        popupSecondChoice.style.backgroundColor = "#238636";
+    else if (choice == "lock"){
         
-        popupSecondChoice.addEventListener("mouseover", () => {
-            popupSecondChoice.style.backgroundColor = "#2ba944";
+        popupChoice.innerText = "Mettre en privé";
+        popupChoice.style.backgroundColor = "#4493f8";
+        
+        popupChoice.addEventListener("mouseover", () => {
+            popupChoice.style.backgroundColor = "#44b0f8";
         })
         
-        popupSecondChoice.addEventListener("mouseout", () => {
-            popupSecondChoice.style.backgroundColor = "#238636";
+        popupChoice.addEventListener("mouseout", () => {
+            popupChoice.style.backgroundColor = "#4493f8";
+        })
+    }
+    else if (choice == "public"){
+
+        popupChoice.innerText = "Mettre en public";
+        popupChoice.style.backgroundColor = "#4493f8";
+        
+        popupChoice.addEventListener("mouseover", () => {
+            popupChoice.style.backgroundColor = "#44b0f8";
+        })
+        
+        popupChoice.addEventListener("mouseout", () => {
+            popupChoice.style.backgroundColor = "#4493f8";
         })
     }
     
@@ -335,53 +348,60 @@ let state = document.querySelectorAll(".state-btn"),
     stateImg = document.querySelectorAll(".state-btn img"),
     stateText = document.querySelectorAll(".state-btn p"),
     stateImgSimple = document.querySelectorAll(".state-simple"),
-    cancel = document.querySelector(".cancel"),
-    saveConfirm = document.querySelector(".choice .choice-2");
+    cancel = document.querySelector(".popup img"),
+    saveConfirm = document.querySelector(".choice");
+    console.log(saveConfirm);
 
 for (let i = 0; i < state.length; i++) {
-
+    
     state[i].addEventListener("click", () => {
 
-        let newStateTextPopup = stateText[i].innerText.slice(10,stateText[i].length);
-
+        currentIndex = i; // Indice actuel
+        
+        newStateTextPopup = stateText[i].innerText.slice(10,stateText[i].length);
+        
         fixeBody();
-
+        
         if (newStateTextPopup == "privé") {
-            popup("Rendre le debug privé?", "Êtes-vous sûr de vouloir restreindre l'accès à ce debug ? Il ne sera plus visible pour les autres utilisateurs.", "save", "block");
+            popup("Rendre le debug privé?", "Il ne sera plus visible pour les autres utilisateurs.", "lock", "block");
         } else {
-            popup("Publier votre debug?", "Êtes-vous sûr de vouloir rendre ce debug visible pour tous ?", "save", "block");
+            popup("Publier votre debug?", "Êtes-vous sûr de vouloir rendre ce debug visible pour tous?", "public", "block");
         }
+        
 
-        cancel.addEventListener("click", () => {
-            popup(state = "none");
-            noFixeBody();
-        })
-
-        saveConfirm.addEventListener("click", () => {
-            popup(state = "none");
-            noFixeBody();
-            
-            let newStateImg = stateImg[i].getAttribute("src");
-            let newStateImgSimple = stateImgSimple[i].getAttribute("src");
-    
-            stateImg[i].setAttribute("src", newStateImgSimple);
-            stateImgSimple[i].setAttribute("src", newStateImg);
-    
-            newStateTextMenu = newStateImgSimple.slice(6,12);
-            stateText[i].innerText = "Mettre en " + newStateTextMenu;
-    
-            showNotif("image/fait.png", "Votre Debug est maintenant " + newStateTextPopup);
-            setTimeout(() => {
-                hideNotif();
-            }, 2000);
-        })
     })
     
 }
 
+cancel.addEventListener("click", () => {
+    popup(state = "none");
+    noFixeBody();
+})
+
+saveConfirm.addEventListener("click", () => {
+    popup(state = "none");
+    noFixeBody();
+    
+    let newStateImg = stateImg[currentIndex].getAttribute("src");
+    let newStateImgSimple = stateImgSimple[currentIndex].getAttribute("src");
+    
+    stateImg[currentIndex].setAttribute("src", newStateImgSimple);
+    stateImgSimple[currentIndex].setAttribute("src", newStateImg);
+
+    console.log(newStateImg, newStateImgSimple);
+    
+    newStateTextMenu = newStateImgSimple.slice(6,12);
+    stateText[currentIndex].innerText = "Mettre en " + newStateTextMenu;
+    
+    showNotif("image/fait.png", "Votre Debug est maintenant " + newStateTextPopup);
+    setTimeout(() => {
+        hideNotif();
+    }, 2000);
+})
+
 // Bouton delete
 let delBtn = document.querySelectorAll(".delete-btn"),
-    delConfirm = document.querySelector(".choice .choice-2"),
+    delConfirm = document.querySelector(".choice"),
     mydebug = document.querySelectorAll(".mydebug"),
     favPage = document.querySelector(".favoris"),
     nopost = document.querySelector(".nopost");
@@ -390,7 +410,7 @@ for (let i = 0; i < delBtn.length; i++) {
     
     delBtn[i].addEventListener("click", () => {
         fixeBody();
-        popup("Supprimer ce debug?", "Cette action est irréversible!", "delete", "block");
+        popup("Êtes vous sûr?", "Cette action est irréversible!", "delete", "block");
         
         cancel.addEventListener("click", () => {
             popup(state = "none");

@@ -104,21 +104,23 @@ window.addEventListener("scroll", () => {
 // Fixation du body
 function fixeBody() {  
     let scrollY = window.scrollY; // positionnement du body
-
-    body.style.overflow = "hidden"
-    body.style.height = "100vh"
-    body.style.width = "100vw"
-    body.style.position = "fixed"
-    body.style.top = -scrollY + "px"
+    body.style.overflow = "hidden";
+    body.style.height = "100vh";
+    body.style.width = "100vw";
+    body.style.position = "fixed";
+    body.style.top = -scrollY + "px";
+    scrollEnd = scrollY;
 }
 
 function noFixeBody() {
-    body.style.overflow = "visible"
-    body.style.height = ""
-    body.style.width = ""
-    body.style.position = ""
-    body.style.top = ""
+    body.style.overflow = "visible";
+    body.style.height = "";
+    body.style.width = "";
+    body.style.position = "";
+    body.style.top = "";
+    window.scroll(0, scrollEnd);
 }
+
 
 
 // Notification
@@ -259,10 +261,10 @@ for (let i = 0; i < option.length; i++) {
 // Menu contextuel des debugs
 
 // Animation du bouton state
-let state = document.querySelectorAll(".state-btn"),
-    stateImg = document.querySelectorAll(".state-btn img"),
-    stateText = document.querySelectorAll(".state-btn p"),
-    stateImgSimple = document.querySelectorAll(".state-simple");
+let state = document.querySelectorAll(".favoris .state-btn"),
+    stateImg = document.querySelectorAll(".favoris .state-btn img"),
+    stateText = document.querySelectorAll(".favoris .state-btn p"),
+    stateImgSimple = document.querySelectorAll(".favoris .state-simple");
 
 for (let i = 0; i < state.length; i++) {
     
@@ -286,7 +288,7 @@ for (let i = 0; i < state.length; i++) {
 
 
 // Bouton delete
-let delBtn = document.querySelectorAll(".delete-btn"),
+let delBtn = document.querySelectorAll(".favoris .delete-btn"),
     mydebug = document.querySelectorAll(".mydebug"),
     favPage = document.querySelector(".favoris"),
     nopost = document.querySelector(".nopost");
@@ -296,7 +298,6 @@ for (let i = 0; i < delBtn.length; i++) {
     delBtn[i].addEventListener("click", () => {
         
         currentIndex = i;
-        console.log(currentIndex);
         
         fixeBody();
         

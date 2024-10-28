@@ -127,7 +127,7 @@ let notif = document.querySelector(".notif"),
     notifText = document.querySelector(".notif p"),
     positionTop,
     positionBottom;
-
+    
     function showNotif(img, text) {
         notifImg.setAttribute("src", img);
         notifText.innerText = text;
@@ -159,7 +159,11 @@ let notif = document.querySelector(".notif"),
         // console.log(positionTop);
     });
 
+
 // Popup
+cancelPopup = document.querySelector(".popup img");
+choicePopup = document.querySelector(".choice");
+
 function popup(title="", text="", choice="", state="") {
     
     let smokePage = document.querySelector(".smoke"),
@@ -217,98 +221,6 @@ function popup(title="", text="", choice="", state="") {
 }
 
 
-// Animation du bouton setting 
-/*let setting = document.querySelectorAll(".setting");
-let options = document.querySelectorAll(".delete-state");
-
-for (let i = 0; i < setting.length; i++) {
-
-    setting[i].addEventListener("click", () => {
-
-        options[i].classList.toggle("toggle");
-    
-        if (setting[i].style.transform == "") {
-            setting[i].style.transition = "0.2s";
-            setting[i].style.transform = "scale(1.3)";
-        }
-        else {
-            setting[i].style.transition = "0.2s";
-            setting[i].style.transform = ""
-        }
-        
-    })
-    
-}
-
-
-
-// Animation des boutons du setting
-let state = document.querySelectorAll(".state");
-let del = document.querySelectorAll(".delete");
-
-// Etat
-for (let i = 0; i < state.length; i++) {
-
-    state[i].addEventListener("click", () => {
-
-        let stateContent = document.querySelectorAll(".state p")[i].innerText;
-        stateContent = stateContent.toLowerCase();
-    
-        Swal.fire({
-            title: "Votre Debug est maintenant " + stateContent,
-            icon: "success",
-            confirmButtonText: "Ok",
-        });
-        
-        let stateText = document.querySelectorAll(".state p")[i].innerText;
-        let stateImg = document.querySelectorAll(".state img")[i];
-        let stateImgBottom = document.querySelectorAll(".state-min")[i];
-    
-        if (stateText == "Privé") {
-            document.querySelectorAll(".state p")[i].innerText = "Public"
-            stateImg.setAttribute("src", "image/world-regular.png")
-            stateImgBottom.setAttribute("src", "image/lock-alt-regular.png")
-        }
-        else {
-            document.querySelectorAll(".state p")[i].innerText = "Privé"
-            stateImg.setAttribute("src", "image/lock-alt-regular-240.png")
-            stateImgBottom.setAttribute("src", "image/world-regular-240.png")
-        }
-        
-    })
-    
-}*/
-
-// Delete
-/*let post = document.querySelectorAll(".min-debug")
-
-for (let i = 0; i < del.length; i++) {
-    del[i].addEventListener("click", () => {
-        Swal.fire({
-            title: "Êtes-vous sûr de vouloir supprimer ce debug?",
-            text: "Cette action est irréversible !",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#d33",
-            cancelButtonColor: "#9198a1",
-            confirmButtonText: "Oui, supprimer",
-            cancelButtonText: "Annuler",
-            allowOutsideClick: false,
-            reverseButtons: true,
-        }).then((result) => {
-            if (result.isConfirmed) {
-                post[i].style.display = "none";
-                Swal.fire({
-                    title: "Supprimé!",
-                    text: "Votre debug a été supprimé.",
-                    icon: "success",
-                });
-            }
-        });
-    });
-    
-}*/
-
 // Animation du menu pour les debugs personnels
 let option = document.querySelectorAll('.option');
 let optionMenu = document.querySelectorAll('.option-menu');
@@ -341,21 +253,21 @@ for (let i = 0; i < option.length; i++) {
     
 }
 
+
+
+
 // Menu contextuel des debugs
 
 // Animation du bouton state
 let state = document.querySelectorAll(".state-btn"),
     stateImg = document.querySelectorAll(".state-btn img"),
     stateText = document.querySelectorAll(".state-btn p"),
-    stateImgSimple = document.querySelectorAll(".state-simple"),
-    cancel = document.querySelector(".popup img"),
-    saveConfirm = document.querySelector(".choice");
-    console.log(saveConfirm);
+    stateImgSimple = document.querySelectorAll(".state-simple");
 
 for (let i = 0; i < state.length; i++) {
     
     state[i].addEventListener("click", () => {
-
+        
         currentIndex = i; // Indice actuel
         
         newStateTextPopup = stateText[i].innerText.slice(10,stateText[i].length);
@@ -368,40 +280,13 @@ for (let i = 0; i < state.length; i++) {
             popup("Publier votre debug?", "Êtes-vous sûr de vouloir rendre ce debug visible pour tous?", "public", "block");
         }
         
-
     })
     
 }
 
-cancel.addEventListener("click", () => {
-    popup(state = "none");
-    noFixeBody();
-})
-
-saveConfirm.addEventListener("click", () => {
-    popup(state = "none");
-    noFixeBody();
-    
-    let newStateImg = stateImg[currentIndex].getAttribute("src");
-    let newStateImgSimple = stateImgSimple[currentIndex].getAttribute("src");
-    
-    stateImg[currentIndex].setAttribute("src", newStateImgSimple);
-    stateImgSimple[currentIndex].setAttribute("src", newStateImg);
-
-    console.log(newStateImg, newStateImgSimple);
-    
-    newStateTextMenu = newStateImgSimple.slice(6,12);
-    stateText[currentIndex].innerText = "Mettre en " + newStateTextMenu;
-    
-    showNotif("image/fait.png", "Votre Debug est maintenant " + newStateTextPopup);
-    setTimeout(() => {
-        hideNotif();
-    }, 2000);
-})
 
 // Bouton delete
 let delBtn = document.querySelectorAll(".delete-btn"),
-    delConfirm = document.querySelector(".choice"),
     mydebug = document.querySelectorAll(".mydebug"),
     favPage = document.querySelector(".favoris"),
     nopost = document.querySelector(".nopost");
@@ -409,35 +294,70 @@ let delBtn = document.querySelectorAll(".delete-btn"),
 for (let i = 0; i < delBtn.length; i++) {
     
     delBtn[i].addEventListener("click", () => {
+        
+        currentIndex = i;
+        console.log(currentIndex);
+        
         fixeBody();
+        
         popup("Êtes vous sûr?", "Cette action est irréversible!", "delete", "block");
-        
-        cancel.addEventListener("click", () => {
-            popup(state = "none");
-            noFixeBody();
-        })
-        
-        delConfirm.addEventListener("click", () => {
-            popup(state = "none");
-            noFixeBody();
-            
-            // Suppression du debug
-            mydebug[i].remove();
-            let debugFav = document.querySelectorAll(".favoris .mydebug");
-            if (debugFav.length == 0) {
-                nopost.style.display = "block";
-            }
-            
-            // Notification
-            showNotif("image/fait.png", "Votre debug a été supprimé");
-            setTimeout(() => {
-                hideNotif();
-            }, 2000);
-        })
         
     })
     
 }
+
+
+// Traitement de la popup en fonction de l'option
+choicePopup.addEventListener("click", () => {
+    popup(state = "none");
+    noFixeBody();
+
+    if (choicePopup.innerText == "Supprimer ce debug") {
+        
+        // Suppression du debug
+        mydebug[currentIndex].remove();
+        let debugFav = document.querySelectorAll(".favoris .mydebug");
+        if (debugFav.length == 0) {
+            nopost.style.display = "block";
+        }
+        
+        // Notification
+        showNotif("image/fait.png", "Votre debug a été supprimé");
+        setTimeout(() => {
+            hideNotif();
+        }, 2000);
+    }
+    else {
+        popup(state = "none");
+        noFixeBody();
+        
+        // Changement de l'état du debug
+        let newStateImg = stateImg[currentIndex].getAttribute("src");
+        let newStateImgSimple = stateImgSimple[currentIndex].getAttribute("src");
+        
+        stateImg[currentIndex].setAttribute("src", newStateImgSimple);
+        stateImgSimple[currentIndex].setAttribute("src", newStateImg);
+    
+        //console.log(newStateImg, newStateImgSimple);
+        
+        newStateTextMenu = newStateImgSimple.slice(6,12);
+        stateText[currentIndex].innerText = "Mettre en " + newStateTextMenu;
+        
+        showNotif("image/fait.png", "Votre Debug est maintenant " + newStateTextPopup);
+        setTimeout(() => {
+            hideNotif();
+        }, 2000);
+    }
+
+})
+
+
+cancelPopup.addEventListener("click", () => {
+    
+    popup(state = "none");
+    noFixeBody();
+
+})
 
 
 // Bouton add
@@ -452,6 +372,51 @@ window.addEventListener("touchend", (e) => {
     add.style.transition = "0.2s"
     add.style.opacity = ""
 })
+
+// Bouton like et favoris d'un debug autre que celui de l'utilisateur
+let likePost = document.querySelectorAll(".notmydebug .count-like"),
+    likePostImg = document.querySelectorAll(".notmydebug .count-like img"),
+    likePostNumber = document.querySelectorAll(".notmydebug .count-like p"),
+    favPost = document.querySelectorAll(".notmydebug .count-fav"),
+    favPostImg = document.querySelectorAll(".notmydebug .count-fav img"),
+    favPostNumber = document.querySelectorAll(".notmydebug .count-fav p");
+
+function postBtn(btn, btnImg, btnImgOldColor, btnImgNewColor, color, count) {
+    btn.style.transition = "0.3s";
+    btn.style.transform = "scale(1.2)";
+
+    if (!btn.style.color) {
+        btn.style.color = color;
+        btnImg.setAttribute("src", btnImgNewColor);
+        let number = parseInt(count.innerText);
+        count.innerText = number + 1;
+    } else {
+        btn.style.color = "";
+        btnImg.setAttribute("src", btnImgOldColor);
+        let number = parseInt(count.innerText);
+        count.innerText = number - 1;
+    }
+
+    setTimeout(() => {
+        btn.style.transition = "0.3s";
+        btn.style.transform = "scale(1)";
+    }, 1000);
+}
+
+for (let i = 0; i < likePost.length; i++) {
+    
+    likePost[i].addEventListener("click", () => {
+        postBtn(likePost[i], likePostImg[i], "image/heart-regular-240.png", "image/heart-solid-240-pink.png", "#f91880", likePostNumber[i]);
+    })
+}
+
+for (let i = 0; i < favPost.length; i++) {
+    
+    favPost[i].addEventListener("click", () => {
+        postBtn(favPost[i], favPostImg[i], "image/bookmark-regular-240.png", "image/bookmark-solid-240-or.png", "#FFC107", favPostNumber[i]);
+    })
+}
+
 
 
 

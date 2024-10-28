@@ -122,7 +122,7 @@ body {
     }
 
 
-    .mydebug {
+    .mydebug, .notmydebug {
         width: 1000px;
         border-radius: 6px;
         border: 1px solid #9198a1;
@@ -222,7 +222,7 @@ body {
 
             }
 
-            .op:nth-child(4) {
+            .op:nth-child(3) {
                 border: none;
             }
 
@@ -250,6 +250,17 @@ body {
             }
         }
 
+    }
+
+    .notmydebug {
+
+        .bottom { 
+            justify-content: space-between;
+            .count-fav, .count-like {
+                cursor: pointer;
+                margin: 0;
+            }
+        }
     }
 
 
@@ -364,7 +375,7 @@ body {
         margin: auto;
         box-shadow: 0 0 3px #0000008e;
         position: fixed;
-        top: 35%;
+        top: 38%;
         left: 50%;
         transform: translatex(-50%);
         z-index: 4;

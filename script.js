@@ -383,7 +383,7 @@ let likePost = document.querySelectorAll(".notmydebug .count-like"),
     favPostNumber = document.querySelectorAll(".notmydebug .count-fav p");
 
 function postBtn(btn, btnImg, btnImgOldColor, btnImgNewColor, color, count) {
-    btn.style.transition = "0.3s";
+    btn.style.transition = "0.2s";
     btn.style.transform = "scale(1.2)";
 
     if (!btn.style.color) {
@@ -399,9 +399,9 @@ function postBtn(btn, btnImg, btnImgOldColor, btnImgNewColor, color, count) {
     }
 
     setTimeout(() => {
-        btn.style.transition = "0.3s";
+        btn.style.transition = "0.4s";
         btn.style.transform = "scale(1)";
-    }, 1000);
+    }, 400);
 }
 
 for (let i = 0; i < likePost.length; i++) {

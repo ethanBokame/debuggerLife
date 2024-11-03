@@ -21,8 +21,9 @@
     <!--jss.js-->
     <script src="jss.js"></script>
 
-    <!--jquery.js-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!--tippy.js-->
+    <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+    <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
 
     <!--Titre-->
     <title>debuggerLife</title>
@@ -71,6 +72,34 @@
         </div>
         <p></p>
         <p class="choice"></p>
+    </div>
+
+    <!--FENETRE MODALE POUR LE PARTAGE-->
+    <div class="modal">
+        <div class="top">
+            <h2>Partager le contenu</h2>
+            <img src="image/x.png" alt="cancel" class="cancel-share">
+        </div>
+
+        <div class="link-type-container">
+            <h4 class="title">Lien du debug:</h4>
+            <div class="link-container">
+                <p class="debug-link">
+                    https://debuggerLife.com/ethanBokame/changement-de-compte-github
+                </p>
+                <img src="image/copy-solid-240.png" alt="copy">
+            </div>
+        </div>
+
+        <div class="link-type-container">
+            <h4 class="title">Lien de la ressource:</h4>
+            <div class="link-container">
+                <p class="ressource-link">
+                    https://stackoverflow.com/questions/13108093/ajax-call-to-php-script-not-working
+                </p>
+                <img src="image/copy-solid-240.png" alt="copy" id="myButton">
+            </div>
+        </div>
     </div>
 
     <!--PAGES-->
@@ -387,6 +416,74 @@
 
             <div class="favoris swiper-slide swiper-slide-active">
     
+                <div class="mydebug">
+                    <div class="top">
+                        <div class="pic-name-post-date">
+                            <div class="img-container">
+                                <img src="profil_pic_user/image-5.jpeg">
+                            </div>
+                            
+                            <a href="">ethanBokame☆</a>
+                            <p>•</p>
+                            <p>1h</p>
+                        </div>
+
+                        <div class="option-container">
+                            <img src="image/options.png" class="option" >
+                            <div class="option-menu">
+
+                                <div class="op share-btn">
+                                    <img src="image/partager.png" alt="Statistiques">
+                                    <p>Partager</p>
+                                </div>
+                                <div class="op state-btn">
+                                    <img src="image/privé .png" alt="lock">
+                                    <p>Mettre en privé</p>
+                                </div>
+                                <div class="op delete-btn">
+                                    <img src="image/trash.png" alt="trash">
+                                    <p>Supprimer</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+    
+                    <p class="title">
+                        Outils pour le developpement web
+                    </p>
+    
+                    <div class="description">
+                        <p>
+                            Liste de logiciels et de plugins pour le developpement web
+                        </p>
+                    </div>
+    
+                    <div class="ressource">
+                        <a href="https://www.reddit.com/r/learnprogramming/comments/h10ooq/tools_i_wish_i_had_known_about_when_i_started/" target="_blank">https://www.reddit.com/r/learnprogramming/comments/h10ooq/tools_i_wish_i_had_known_about_when_i_started/...</a>
+                    </div>
+
+                    <div class="bottom">
+                        <img src="image/public.png" alt="world" class="state-simple">
+                        <div class="count-like">
+
+                            <img src="image/heart-regular-240.png" alt="like">
+                            <p>
+                                101
+                            </p>
+                        </div>
+                        <div class="count-fav">
+
+                            <img src="image/bookmark-regular-240.png" alt="fav">
+                            <p>
+                                5
+                            </p>
+                        </div>
+                    </div>
+
+
+
+                </div>
     
                 <div class="mydebug">
                     <div class="top">
@@ -590,6 +687,72 @@
 
 
 
+                </div>
+
+                <div class="mydebug">
+                    <div class="top">
+                        <div class="pic-name-post-date">
+                            <div class="img-container">
+                                <img src="profil_pic_user/image-5.jpeg">
+                            </div>
+                            
+                            <a href="">ethanBokame☆</a>
+                            <p>•</p>
+                            <p>1h</p>
+                        </div>
+
+                        <div class="option-container">
+                            <img src="image/options.png" class="option" >
+                            <div class="option-menu">
+
+                                <div class="op share-btn">
+                                    <img src="image/partager.png" alt="Statistiques">
+                                    <p>Partager</p>
+                                </div>
+                                <div class="op state-btn">
+                                    <img src="image/privé .png" alt="lock">
+                                    <p>Mettre en privé</p>
+                                </div>
+                                <div class="op delete-btn">
+                                    <img src="image/trash.png" alt="trash">
+                                    <p>Supprimer</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+    
+                    <p class="title">
+                        Infobulle javascript
+                    </p>
+    
+                    <div class="description">
+                        <p>
+                            librairie javascript pour créer des infobulles et bien d'autres choses
+                        </p>
+                    </div>
+    
+                    <div class="ressource">
+                        <a href="https://atomiks.github.io/tippyjs/" target="_blank">https://atomiks.github.io/tippyjs/...</a>
+                    </div>
+
+                    <div class="bottom">
+                        <img src="image/public.png" alt="world" class="state-simple">
+                        <div class="count-like">
+
+                            <img src="image/heart-regular-240.png" alt="like">
+                            <p>
+                                10
+                            </p>
+                        </div>
+                        <div class="count-fav">
+
+                            <img src="image/bookmark-regular-240.png" alt="fav">
+                            <p>
+                                1
+                            </p>
+                        </div>
+                    </div>
                 </div>
     
                 

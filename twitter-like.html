@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #0d1117;
+        }
+        .liked {
+  animation: like-anim 0.7s steps(28) forwards;
+}
+@keyframes like-anim {
+  to {
+    background-position: right;
+  }
+}
+        .img {
+            width: 70px;
+            height: 70px;
+            background-image: url("image/heart.png");
+            outline: none;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="img"></div>
+
+    <script>
+        let heart = document.querySelector(".img");
+
+        heart.addEventListener("click", () => {
+            heart.classList.toggle("liked")
+        })
+    </script>
+</body>
+</html>

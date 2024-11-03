@@ -37,70 +37,7 @@ search.addEventListener("click", () => {
     }
 })
 
-// Systeme de tap and slide
-
-// Fonction pour equilibrer les pages
-// function regularPost(tabToRegular) {
-//     let notmydebugPageHeight = document.querySelectorAll(".foryou")[0].clientHeight,
-//         mydebugPageHeight = document.querySelectorAll(".favoris")[0].clientHeight,
-//         notmydebugTab = document.querySelectorAll(".foryou .notmydebug"),
-//         mydebugTab = document.querySelectorAll(".favoris .mydebug");
-        
-//         //differenceByPage = Math.abs(notmydebugTab.length - mydebugTab.length);
-    
-//         // console.log("Hauteur de la page pour toi:" + notmydebugPageHeight);
-//         // console.log("Hauteur de la page favoris:" + mydebugPageHeight);
-//         // console.log(i);
-
-//         if (tabToRegular == "foryou") {
-//             let i = notmydebugTab.length-1;
-
-//             while (notmydebugPageHeight > mydebugPageHeight) {
-//                 notmydebugTab[i].style.display = "none";
-//                 i--;
-//                 notmydebugPageHeight = document.querySelectorAll(".foryou")[0].clientHeight;
-//                 mydebugPageHeight = document.querySelectorAll(".favoris")[0].clientHeight;
-//                 console.log("Hauteur de la page pour toi: " + notmydebugPageHeight);
-//                 console.log("Hauteur de la page favoris: " + mydebugPageHeight);
-//             }
-
-//             // for (let element of mydebugTab) {
-//             //     if (element.style.display == "none") {
-//             //         element.style.display == "block"
-//             //     }
-//             // }
-//         } else {
-//             let i = mydebugTab.length-1;
-
-//             while (mydebugPageHeight > notmydebugPageHeight) {
-//                 mydebugTab[i].style.display = "none";
-//                 i--;
-//                 notmydebugPageHeight = document.querySelectorAll(".foryou")[0].clientHeight;
-//                 mydebugPageHeight = document.querySelectorAll(".favoris")[0].clientHeight;
-//                 console.log("Hauteur de la page pour toi: " + notmydebugPageHeight);
-//                 console.log("Hauteur de la page favoris: " + mydebugPageHeight);
-//             }
-
-//             // for (let element of notmydebugTab) {
-//             //     if (element.style.display == "none") {
-//             //         element.style.display == "block"
-//             //     }
-//             // }
-//         }
-
-//         console.log("Les deux pages sont équilibrées👌");
-
-//     // if (notmydebugTab.length > mydebugTab.length) {
-//     //     for (let i = notmydebugTab.length-1; i > differenceByPage; i--) {
-//     //         notmydebugTab[i].remove();
-//     //     }
-//     // } else if (notmydebugTab.length < mydebugTab.length) {
-//     //     for (let i = mydebugTab.length-1; i > differenceByPage; i--) {
-//     //         mydebugTab[i].remove();
-//     //     }
-//     // }
-
-// }
+// Systeme de tab and slide
 
 
 
@@ -130,12 +67,10 @@ swiper.on("slideChange", () => {
         forYou.style.borderBottom = "2px solid rgb(248, 130, 51)";
         favoris.style.borderBottom = "2px solid transparent";
         document.querySelector('.add').style.display = "none";
-        //regularPost("favoris");
     } else {
         favoris.style.borderBottom = "2px solid rgb(248, 130, 51)";
         forYou.style.borderBottom = "2px solid transparent";
         document.querySelector('.add').style.display = "block";
-        //regularPost("foryou");
     }
 });
 
@@ -376,6 +311,90 @@ for (let i = 0; i < delBtn.length; i++) {
     
 }
 
+// Bouton share
+let shareBtn = document.querySelectorAll(".share-btn"),
+    modalShare = document.querySelector(".modal"),
+    linkDebug = document.querySelector(".debug-link"),
+    linkRessource = document.querySelector(".ressource-link"),
+    debugName = document.querySelectorAll(".mydebug .title, .notmydebug .title"),
+    ressource = document.querySelectorAll(".mydebug .ressource a, .notmydebug .ressource a")
+    smokePage = document.querySelector(".smoke"),
+    cancelShare = document.querySelector(".cancel-share");
+    console.log(ressource);
+
+for (let i = 0; i < shareBtn.length; i++) {
+    
+    shareBtn[i].addEventListener("click", () => {
+        
+        fixeBody();
+        linkDebug.innerText = "https://debuggerLife.com/ethanBokame/" + debugName[i].innerText.replaceAll(" ", "-");
+        linkRessource.innerText = ressource[i].innerText;
+
+        modalShare.style.display = "block";
+        smokePage.style.display = "block";
+        modalShare.style.display = "flex";
+        
+    })
+    
+}
+
+window.addEventListener("click", (e) => {
+    
+    // Fermetture de la fenetre modale
+    if (cancelShare.contains(e.target) || smokePage.contains(e.target)) {
+        
+        modalShare.style.display = "none";
+        smokePage.style.display = "none";
+        noFixeBody();
+        
+    }
+    
+});
+
+
+// Boutons copier
+
+let copyBtn = document.querySelectorAll(".link-container img");
+
+function copyDebugLink() {
+    
+    navigator.clipboard.writeText(linkDebug.innerText);
+    
+    // Notification
+    showNotif("image/fait.png", "Le lien du debug a été copié");
+    setTimeout(() => {
+        hideNotif();
+    }, 2000);
+    
+}
+
+function copyRessourceLink() {
+    
+    navigator.clipboard.writeText(linkRessource.innerText).then(
+        () => {
+          /* clipboard successfully set */
+        },
+        () => {
+          /* clipboard write failed */
+        },
+      );
+    
+    // Notification
+    showNotif("image/fait.png", "Le lien de la ressource a été copié");
+    setTimeout(() => {
+        hideNotif();
+    }, 2000);
+    
+}
+
+let copyFunctionTab = [copyDebugLink, copyRessourceLink];
+
+for (let i = 0; i < copyBtn.length; i++) {
+    
+    copyBtn[i].addEventListener("click", copyFunctionTab[i])
+    
+}
+
 
 // Traitement de la popup en fonction de l'option
 choicePopup.addEventListener("click", () => {
@@ -486,6 +505,16 @@ for (let i = 0; i < favPost.length; i++) {
         postBtn(favPost[i], favPostImg[i], "image/bookmark-regular-240.png", "image/bookmark-solid-240-or.png", "#FFC107", favPostNumber[i]);
     })
 }
+
+
+//Infobulles
+tippy(".link-container img", {
+    content: "Copier",
+    placement: 'bottom',
+    theme: 'custom',
+});
+
+
 
 
 

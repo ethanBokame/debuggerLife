@@ -23,7 +23,7 @@ nav {
     top: 0;
     z-index: 2;
     display: flex;
-    padding: 12px 16px;
+    padding: 10px 16px;
     justify-content: space-between;
     border-bottom: 1px solid #9198a1a6;
     
@@ -44,13 +44,13 @@ nav {
         gap: 25px;
         
         .search {
-            border: 1px solid #9198a1;
+            border: 1px solid white;
             display: flex;
             align-items: center;
             gap: 5px;
             padding: 4px 5px;
             border-radius: 6px;
-
+            
             &:hover {
                 background-color: #9198a133;
             }
@@ -63,8 +63,6 @@ nav {
                 background: none;
                 color: white;
                 font-size: 16px;
-
-
             }
             
             img {
@@ -75,7 +73,7 @@ nav {
         .add-debug-nav {
             height: 18px;
             border-radius: 50px;
-            border: 1.5px solid #9198a1;
+            border: 1.5px solid white;
             padding: 7px;
             cursor: pointer;
             
@@ -97,11 +95,11 @@ nav {
             &:hover {
                 background-color: #9198a133;
             }
-
+            
             img {
                 height: 30px;
             }
-
+            
             .count-notif-container {
                 background-color: #4493f8;
                 position: absolute;
@@ -116,7 +114,7 @@ nav {
                 color: white;
                 font-size: 11px;
             }
-
+            
         }
         
         .profil_pic {
@@ -136,33 +134,62 @@ nav {
         display: flex;
         flex-direction: column;
         padding: 20px;
-        height: 100vh;
+        height:  calc(100vh - 63px);
         box-sizing: border-box;
         gap: 10px;
+        overflow-y: scroll;
+        scrollbar-color: #0d1117 #0d1117;
+        scrollbar-width: thin;
 
+        &:hover {
+            scrollbar-color: #9198a184 #0d1117;
+        }
+        
         .group {
             div {
                 display: flex;
                 align-items: center;
-                color: #9198a1;
+                color: white;
                 gap: 10px;
                 padding: 10px;
                 cursor: pointer;
                 border-radius: 6px;
-    
+                
                 &:hover {
-                    background-color: #9198a133;
+                    background-color: #9198a11d;
                 }
-    
+                
             }
+            
         }
-
+        
         img {
             height: 22px;
         }
-
+        
         hr {
             border: 0.5px solid #9198a12d;
+        }
+
+        .copyright {
+            color: #9198a1;
+            font-size: 12px;
+            margin: 0 auto;
+            margin-top: auto;
+        }
+    }
+
+    .page {
+        width: 80%;
+
+        div {
+            background-color: #fff;
+            width: 100%;
+            display: none;
+        }
+
+        div:nth-of-type(1) {
+            display: block;
         }
     }
 }

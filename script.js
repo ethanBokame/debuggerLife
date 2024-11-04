@@ -16,3 +16,30 @@ tippy(".profil_pic", {
     placement: 'bottom',
     theme: 'custom',
 });
+
+// Tabulation pour grand écran
+let tabBtn = document.querySelectorAll('.tab .group div');
+
+function toPage(index) {
+    
+    let page = document.querySelectorAll('.page div');
+    
+    page.forEach(function(item, i) {
+        
+        i == index ? 
+        
+        (tabBtn[i].style.backgroundColor = "#9198a184",
+        item.style.display = "block") : 
+        
+        (tabBtn[i].style.backgroundColor = "",
+        item.style.display = "none");
+    });
+    
+}
+
+
+tabBtn.forEach((item, i) => {
+    item.addEventListener("click", () => {
+        toPage(i);
+    })
+});

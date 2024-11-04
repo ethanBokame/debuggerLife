@@ -29,745 +29,89 @@
     <title>debuggerLife</title>
 </head>
 <body>
+    
     <div class="smoke"></div>
-    <div class="nav-pagination">
-        <!--NAVBAR-->
-        <nav>
-            <div class="logo">
-                <img src="image\stylo-a-plume.png">
-                <p>Debuggs</p>
-            </div>
-
-            <div class="menu-search">
-                <div class="search">
-                    <img src="image/loupe.png">
-                    <input type="search" name="search" id="search">
-                </div>
-                <img src="profil_pic_user/image-5.jpeg" class="profil_pic">
-            </div>
-        </nav>
-
-        <!--BOUTON DE SLIDES-->
-        <div class="page">
-            <button>Pour toi</button>
-            <button class="active">Moi et favoris</button>
+    
+    <!--NAVBAR-->
+    <nav>
+        
+        <div class="logo">
+            <img src="image\stylo-a-plume.png">
+            <p>Explorer</p>
         </div>
-
-
-
-    </div>
-
-    <!--NOTIFICATION-->
-
-    <div class="notif">
-        <img src="" alt="notification">
-        <p></p>
-    </div>
-
-    <!--POP-UP-->
-    <div class="popup">
-        <div class="top">
-            <h3></h3>
-            <img src="image/x.png" alt="cancel">
-        </div>
-        <p></p>
-        <p class="choice"></p>
-    </div>
-
-    <!--FENETRE MODALE POUR LE PARTAGE-->
-    <div class="modal">
-        <div class="top">
-            <h2>Partager le contenu</h2>
-            <img src="image/x.png" alt="cancel" class="cancel-share">
-        </div>
-
-        <div class="link-type-container">
-            <h4 class="title">Lien du debug:</h4>
-            <div class="link-container">
-                <p class="debug-link">
-                    https://debuggerLife.com/ethanBokame/changement-de-compte-github
-                </p>
-                <img src="image/copy-solid-240.png" alt="copy">
+        
+        <div class="nav-menu">
+            
+            <div class="search">
+                <img src="image/loupe.png">
+                <input type="search" placeholder="Rechercher un debug" name="search" id="search">
             </div>
-        </div>
-
-        <div class="link-type-container">
-            <h4 class="title">Lien de la ressource:</h4>
-            <div class="link-container">
-                <p class="ressource-link">
-                    https://stackoverflow.com/questions/13108093/ajax-call-to-php-script-not-working
-                </p>
-                <img src="image/copy-solid-240.png" alt="copy" id="myButton">
-            </div>
-        </div>
-    </div>
-
-    <!--PAGES-->
-    <div class="swiper">
-
-        <div class="swiper-wrapper">
-
-            <div class="foryou swiper-slide swiper-slide-prev">
-                <div class="notmydebug">
-                    <div class="top">
-                        <div class="pic-name-post-date">
-                            <div class="img-container">
-                                <img src="profil_pic_user/image-3.jpeg">
-                            </div>
-                            
-                            <a href="">xoxo</a>
-                            <p>•</p>
-                            <p>1h</p>
-                        </div>
-
-                        <div class="option-container">
-                            <img src="image/options.png" class="option" >
-                            <div class="option-menu">
-                                <div class="op state-btn">
-                                    <img src="image/user-regular-240.png" alt="lock">
-                                    <p>Voir le profil</p>
-                                </div>
-                                <div class="op share-btn">
-                                    <img src="image/partager.png" alt="Statistiques">
-                                    <p>Partager</p>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-    
-                    <p class="title">
-                        Installation de nodejs
-                    </p>
-    
-                    <div class="description">
-                        <p>
-                            Article sur nodejs
-                        </p>
-                    </div>
-    
-                    <div class="ressource">
-                        <a href="https://kinsta.com/fr/blog/comment-installer-node-js/" target="_blank">https://kinsta.com/fr/blog/comment-installer-node-js/...</a>
-                    </div>
-
-                    <div class="bottom">
-                        <div class="count-like">
-                            <img src="image/heart-regular-240.png" alt="like">
-                            <p>
-                                4
-                            </p>
-                        </div>
-                        <div class="count-fav">
-                            <img src="image/bookmark-regular-240.png" alt="fav">
-                            <p>
-                                0
-                            </p>
-                        </div>
-                    </div>
-
-
-
+            
+            <img src="image/plus.png" alt="add" class="add-debug-nav">  
+            
+            <div class="notification-nav">
+                <img src="image/packard-bell.png" alt="cloche">
+                <div class="count-notif-container">
+                    <p>2</p>
                 </div>
-    
-                <div class="notmydebug">
-                    <div class="top">
-                        <div class="pic-name-post-date">
-                            <div class="img-container">
-                                <img src="https://roadtocinema.paris/wp-content/uploads/2021/01/7ef11bab08283e3f99a392b20f664b75.jpg">
-                            </div>
-                            
-                            <a href="">Onizuka㊙️</a>
-                            <p>•</p>
-                            <p>1h</p>
-                        </div>
-
-                        <div class="option-container">
-                            <img src="image/options.png" class="option" >
-                            <div class="option-menu">
-                                <div class="op state-btn">
-                                    <img src="image/user-regular-240.png" alt="lock">
-                                    <p>Voir le profil</p>
-                                </div>
-                                <div class="op share-btn">
-                                    <img src="image/partager.png" alt="Statistiques">
-                                    <p>Partager</p>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-    
-                    <p class="title">
-                        Ajax
-                    </p>
-    
-                    <div class="description">
-                        <p>
-                            Probleme au try catch des requetes ajax
-                        </p>
-                    </div>
-    
-                    <div class="ressource">
-                        <a href="https://stackoverflow.com/questions/13108093/ajax-call-to-php-script-not-working" target="_blank">https://stackoverflow.com/questions/13108093/ajax-call-to-php-script-not-working...</a>
-                    </div>
-
-                    <div class="bottom">
-                        <div class="count-like">
-                            <img src="image/heart-regular-240.png" alt="like">
-                            <p>
-                                450
-                            </p>
-                        </div>
-                        <div class="count-fav">
-                            <img src="image/bookmark-regular-240.png" alt="fav">
-                            <p>
-                                73
-                            </p>
-                        </div>
-                    </div>
-
-
-
-                </div>
-    
-                <div class="notmydebug">
-                    <div class="top">
-                        <div class="pic-name-post-date">
-                            <div class="img-container">
-                                <img src="profil_pic_user/téléchargement.jpeg">
-                            </div>
-                            
-                            <a href="">Armand_dev5</a>
-                            <p>•</p>
-                            <p>3h</p>
-                        </div>
-
-                        <div class="option-container">
-                            <img src="image/options.png" class="option" >
-                            <div class="option-menu">
-                                <div class="op state-btn">
-                                    <img src="image/user-regular-240.png" alt="lock">
-                                    <p>Voir le profil</p>
-                                </div>
-                                <div class="op share-btn">
-                                    <img src="image/partager.png" alt="Statistiques">
-                                    <p>Partager</p>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-    
-                    <p class="title">
-                        Position fixed css
-                    </p>
-    
-                    <div class="description">
-                        <p>
-                            centrer un element fixed
-                        </p>
-                    </div>
-    
-                    <div class="ressource">
-                        <a href="https://stackoverflow.com/questions/2005954/center-a-positionfixed-element" target="_blank">https://stackoverflow.com/questions/2005954/center-a-positionfixed-element...</a>
-                    </div>
-
-                    <div class="bottom">
-                        <div class="count-like">
-                            <img src="image/heart-regular-240.png" alt="like">
-                            <p>
-                                1
-                            </p>
-                        </div>
-                        <div class="count-fav">
-                            <img src="image/bookmark-regular-240.png" alt="fav">
-                            <p>
-                                0
-                            </p>
-                        </div>
-                    </div>
-
-
-
-                </div>
-
-                <div class="notmydebug">
-                    <div class="top">
-                        <div class="pic-name-post-date">
-                            <div class="img-container">
-                                <img src="profil_pic_user/téléchargement (1).jpeg">
-                            </div>
-                            
-                            <a href="">InvincibleGuts</a>
-                            <p>•</p>
-                            <p>10s</p>
-                        </div>
-
-                        <div class="option-container">
-                            <img src="image/options.png" class="option" >
-                            <div class="option-menu">
-                                <div class="op state-btn">
-                                    <img src="image/user-regular-240.png" alt="lock">
-                                    <p>Voir le profil</p>
-                                </div>
-                                <div class="op share-btn">
-                                    <img src="image/partager.png" alt="Statistiques">
-                                    <p>Partager</p>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-    
-                    <p class="title">
-                        XAMPP mysql
-                    </p>
-    
-                    <div class="description">
-                        <p>
-                            Erreur avec mysql
-                        </p>
-                    </div>
-    
-                    <div class="ressource">
-                        <a href="https://drive.google.com/file/d/1FTHHEksFm7C4A_FUJCvqOLDMvb6XtVcz/view?usp=sharing" target="_blank">https://drive.google.com/file/d/1FTHHEksFm7C4A_FUJCvqOLDMvb6XtVcz/view?usp=sharing...</a>
-                    </div>
-
-                    <div class="bottom">
-                        <div class="count-like">
-                            <img src="image/heart-regular-240.png" alt="like">
-                            <p>
-                                4
-                            </p>
-                        </div>
-                        <div class="count-fav">
-                            <img src="image/bookmark-regular-240.png" alt="fav">
-                            <p>
-                                1
-                            </p>
-                        </div>
-                    </div>
-
-
-
-                </div>
-
-                <div class="notmydebug">
-                    <div class="top">
-                        <div class="pic-name-post-date">
-                            <div class="img-container">
-                                <img src="profil_pic_user/image-3.jpeg">
-                            </div>
-                            
-                            <a href="">xoxo</a>
-                            <p>•</p>
-                            <p>1h</p>
-                        </div>
-
-                        <div class="option-container">
-                            <img src="image/options.png" class="option" >
-                            <div class="option-menu">
-                                <div class="op state-btn">
-                                    <img src="image/user-regular-240.png" alt="lock">
-                                    <p>Voir le profil</p>
-                                </div>
-                                <div class="op share-btn">
-                                    <img src="image/partager.png" alt="Statistiques">
-                                    <p>Partager</p>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-    
-                    <p class="title">
-                        Notifications en javascript
-                    </p>
-    
-                    <div class="description">
-                        <p>
-                            Liste de librairies de notifications en javascript et react
-                        </p>
-                    </div>
-    
-                    <div class="ressource">
-                        <a href="https://themeselection.com/javascript-notification-library/" target="_blank">https://themeselection.com/javascript-notification-library/...</a>
-                    </div>
-
-                    <div class="bottom">
-                        <div class="count-like">
-                            <img src="image/heart-regular-240.png" alt="like">
-                            <p>
-                                48
-                            </p>
-                        </div>
-                        <div class="count-fav">
-                            <img src="image/bookmark-regular-240.png" alt="fav">
-                            <p>
-                                9
-                            </p>
-                        </div>
-                    </div>
-
-                </div>
-
-
-            </div>
-
-            <div class="favoris swiper-slide swiper-slide-active">
-    
-                <div class="mydebug">
-                    <div class="top">
-                        <div class="pic-name-post-date">
-                            <div class="img-container">
-                                <img src="profil_pic_user/image-5.jpeg">
-                            </div>
-                            
-                            <a href="">ethanBokame☆</a>
-                            <p>•</p>
-                            <p>1h</p>
-                        </div>
-
-                        <div class="option-container">
-                            <img src="image/options.png" class="option" >
-                            <div class="option-menu">
-
-                                <div class="op share-btn">
-                                    <img src="image/partager.png" alt="Statistiques">
-                                    <p>Partager</p>
-                                </div>
-                                <div class="op state-btn">
-                                    <img src="image/privé .png" alt="lock">
-                                    <p>Mettre en privé</p>
-                                </div>
-                                <div class="op delete-btn">
-                                    <img src="image/trash.png" alt="trash">
-                                    <p>Supprimer</p>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-    
-                    <p class="title">
-                        Outils pour le developpement web
-                    </p>
-    
-                    <div class="description">
-                        <p>
-                            Liste de logiciels et de plugins pour le developpement web
-                        </p>
-                    </div>
-    
-                    <div class="ressource">
-                        <a href="https://www.reddit.com/r/learnprogramming/comments/h10ooq/tools_i_wish_i_had_known_about_when_i_started/" target="_blank">https://www.reddit.com/r/learnprogramming/comments/h10ooq/tools_i_wish_i_had_known_about_when_i_started/...</a>
-                    </div>
-
-                    <div class="bottom">
-                        <img src="image/public.png" alt="world" class="state-simple">
-                        <div class="count-like">
-
-                            <img src="image/heart-regular-240.png" alt="like">
-                            <p>
-                                101
-                            </p>
-                        </div>
-                        <div class="count-fav">
-
-                            <img src="image/bookmark-regular-240.png" alt="fav">
-                            <p>
-                                5
-                            </p>
-                        </div>
-                    </div>
-
-
-
-                </div>
-    
-                <div class="mydebug">
-                    <div class="top">
-                        <div class="pic-name-post-date">
-                            <div class="img-container">
-                                <img src="profil_pic_user/image-5.jpeg">
-                            </div>
-                            
-                            <a href="">ethanBokame☆</a>
-                            <p>•</p>
-                            <p>1h</p>
-                        </div>
-
-                        <div class="option-container">
-                            <img src="image/options.png" class="option" >
-                            <div class="option-menu">
-
-                                <div class="op share-btn">
-                                    <img src="image/partager.png" alt="Statistiques">
-                                    <p>Partager</p>
-                                </div>
-                                <div class="op state-btn">
-                                    <img src="image/privé .png" alt="lock">
-                                    <p>Mettre en privé</p>
-                                </div>
-                                <div class="op delete-btn">
-                                    <img src="image/trash.png" alt="trash">
-                                    <p>Supprimer</p>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-    
-                    <p class="title">
-                        Changement de compte github
-                    </p>
-    
-                    <div class="description">
-                        <p>
-                            J'ai changé de compte github mais mes push étaient toujours liés a mon ancien compte
-                        </p>
-                    </div>
-    
-                    <div class="ressource">
-                        <a href="https://stackoverflow.com/questions/13108093/ajax-call-to-php-script-not-working" target="_blank">https://stackoverflow.com/questions/13108093/ajax-call-to-php-script-not-working...</a>
-                    </div>
-
-                    <div class="bottom">
-                        <img src="image/public.png" alt="world" class="state-simple">
-                        <div class="count-like">
-
-                            <img src="image/heart-regular-240.png" alt="like">
-                            <p>
-                                101
-                            </p>
-                        </div>
-                        <div class="count-fav">
-
-                            <img src="image/bookmark-regular-240.png" alt="fav">
-                            <p>
-                                5
-                            </p>
-                        </div>
-                    </div>
-
-
-
-                </div>
-    
-                <div class="mydebug">
-                    <div class="top">
-                        <div class="pic-name-post-date">
-                            <div class="img-container">
-                                <img src="profil_pic_user/image-5.jpeg">
-                            </div>
-                            
-                            <a href="">ethanBokame☆</a>
-                            <p>•</p>
-                            <p>1h</p>
-                        </div>
-
-                        <div class="option-container">
-                            <img src="image/options.png" class="option" >
-                            <div class="option-menu">
-
-                                <div class="op share-btn">
-                                    <img src="image/partager.png" alt="Statistiques">
-                                    <p>Partager</p>
-                                </div>
-                                <div class="op state-btn">
-                                    <img src="image/privé .png" alt="lock">
-                                    <p>Mettre en privé</p>
-                                </div>
-                                <div class="op delete-btn">
-                                    <img src="image/trash.png" alt="trash">
-                                    <p>Supprimer</p>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-    
-                    <p class="title">
-                        Politique d'exécution powershell
-                    </p>
-    
-                    <div class="description">
-                        <p>
-                            Erreur au niveau de l'exécution de npm sur windows
-                        </p>
-                    </div>
-    
-                    <div class="ressource">
-                        <a href="https://stackoverflow.com/questions/4037939/powershell-says-execution-of-scripts-is-disabled-on-this-system" target="_blank">https://stackoverflow.com/questions/4037939/powershell-says-execution-of-scripts-is-disabled-on-this-system...</a>
-                    </div>
-
-                    <div class="bottom">
-                        <img src="image/public.png" alt="world" class="state-simple">
-                        <div class="count-like">
-
-                            <img src="image/heart-regular-240.png" alt="like">
-                            <p>
-                                101
-                            </p>
-                        </div>
-                        <div class="count-fav">
-
-                            <img src="image/bookmark-regular-240.png" alt="fav">
-                            <p>
-                                5
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mydebug">
-                    <div class="top">
-                        <div class="pic-name-post-date">
-                            <div class="img-container">
-                                <img src="profil_pic_user/image-5.jpeg">
-                            </div>
-                            
-                            <a href="">ethanBokame☆</a>
-                            <p>•</p>
-                            <p>5d</p>
-                        </div>
-
-                        <div class="option-container">
-                            <img src="image/options.png" class="option" >
-                            <div class="option-menu">
-
-                                <div class="op share-btn">
-                                    <img src="image/partager.png" alt="Statistiques">
-                                    <p>Partager</p>
-                                </div>
-                                <div class="op state-btn">
-                                    <img src="image/privé .png" alt="lock">
-                                    <p>Mettre en privé</p>
-                                </div>
-                                <div class="op delete-btn">
-                                    <img src="image/trash.png" alt="trash">
-                                    <p>Supprimer</p>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-    
-                    <p class="title">
-                        Overleaf
-                    </p>
-    
-                    <div class="description">
-                        <p>
-                            Outils pour la réalisation de cv
-                        </p>
-                    </div>
-    
-                    <div class="ressource">
-                        <a href="https://stackoverflow.com/questions/13108093/ajax-call-to-php-script-not-working" target="_blank">https://stackoverflow.com/questions/13108093/ajax-call-to-php-script-not-working...</a>
-                    </div>
-
-                    <div class="bottom">
-                        <img src="image/public.png" alt="world" class="state-simple">
-                        <div class="count-like">
-
-                            <img src="image/heart-regular-240.png" alt="like">
-                            <p>
-                                101
-                            </p>
-                        </div>
-                        <div class="count-fav">
-
-                            <img src="image/bookmark-regular-240.png" alt="fav">
-                            <p>
-                                5
-                            </p>
-                        </div>
-                    </div>
-
-
-
-                </div>
-
-                <div class="mydebug">
-                    <div class="top">
-                        <div class="pic-name-post-date">
-                            <div class="img-container">
-                                <img src="profil_pic_user/image-5.jpeg">
-                            </div>
-                            
-                            <a href="">ethanBokame☆</a>
-                            <p>•</p>
-                            <p>1h</p>
-                        </div>
-
-                        <div class="option-container">
-                            <img src="image/options.png" class="option" >
-                            <div class="option-menu">
-
-                                <div class="op share-btn">
-                                    <img src="image/partager.png" alt="Statistiques">
-                                    <p>Partager</p>
-                                </div>
-                                <div class="op state-btn">
-                                    <img src="image/privé .png" alt="lock">
-                                    <p>Mettre en privé</p>
-                                </div>
-                                <div class="op delete-btn">
-                                    <img src="image/trash.png" alt="trash">
-                                    <p>Supprimer</p>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-    
-                    <p class="title">
-                        Infobulle javascript
-                    </p>
-    
-                    <div class="description">
-                        <p>
-                            librairie javascript pour créer des infobulles et bien d'autres choses
-                        </p>
-                    </div>
-    
-                    <div class="ressource">
-                        <a href="https://atomiks.github.io/tippyjs/" target="_blank">https://atomiks.github.io/tippyjs/...</a>
-                    </div>
-
-                    <div class="bottom">
-                        <img src="image/public.png" alt="world" class="state-simple">
-                        <div class="count-like">
-
-                            <img src="image/heart-regular-240.png" alt="like">
-                            <p>
-                                10
-                            </p>
-                        </div>
-                        <div class="count-fav">
-
-                            <img src="image/bookmark-regular-240.png" alt="fav">
-                            <p>
-                                1
-                            </p>
-                        </div>
-                    </div>
-                </div>
-    
                 
+            </div>
+            
+            <img src="profil_pic_user/image-5.jpeg" class="profil_pic">
+            
+        </div>
+        
+    </nav>
 
-                <!--DANS LE CAS OU IL N'Y A PAS OU PLUS DE POSTS-->
-                <div class="nopost">
-                    <img src="image/chercher.png" alt="search">
-                    <h2>Vous n'avez pas de posts ni de favoris pour l'instant. Publiez quelque chose ou enregistrez le contenu qui vous paraît pertinent!</h2>
+    <!--SYSTEME DE TABULATION ENTRE LES PAGES POUR GRAND ECRAN-->
+    <div class="first-tab-system-container">
+        <div class="tab">
+            <div class="group">
+                <div class="explore">
+                    <img src="image/silhouette-dutilisateurs-multiples.png" alt="group">
+                    <p>Explorer</p>
                 </div>
+                <div class="mydebug">
+                    <img src="image/edit.png" alt="post">
+                    <p>Mes Debugs</p>
+                </div>
+                <div class="favoris">
+                    <img src="image/bookmark1.png" alt="save">
+                    <p>Favoris</p>
+                </div>
+            </div>
+            
+            <hr>
+            
+            <div class="group">
+                <div class="about">
+                    <img src="image/feather-pen-gray.png" alt="group">
+                    <p>DebuggerLife</p>
+                </div>
+                <div class="app-mobile">
+                    <img src="image/telephone-intelligent.png" alt="save">
+                    <p>Application mobile</p>
+                </div>
+                <div class="help">
+                    <img src="image/marque-dinterrogation.png" alt="post">
+                    <p>Aide</p>
+                </div>
+
+            </div>
+        </div>
+        <div class="page">
+            <div class="explore">
+                <p>explore</p>
+            </div>
+            <div class="mydebug">
+                <p>debug</p>
+            </div>
+            <div class="favoris">
+                <p>fav</p>
             </div>
         </div>
     </div>
 
-    <!--BOUTONS POUR AJOUTER DES DEBUGS-->
-    <img src="image/plus.png" alt="add" class="add">
 
 </body>
 </html>

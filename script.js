@@ -18,28 +18,32 @@ tippy(".profil_pic", {
 });
 
 // Tabulation pour grand écran
-let tabBtn = document.querySelectorAll('.tab .group div');
+// let tabBtn = document.querySelectorAll('.tab .group div');
 
-function toPage(index) {
+// function toPage(index) {
     
-    let page = document.querySelectorAll('.page div');
+//     let page = document.querySelectorAll('.page div'),
+//         brandText = document.querySelector('.logo p'),
+//         tabBtnText = document.querySelectorAll('.tab .group div p');
     
-    page.forEach(function(item, i) {
+//     // Changelent d'état pour le bouton et de page
+//     page.forEach(function(item, i) {
         
-        i == index ? 
+//         i == index ? 
         
-        (tabBtn[i].style.backgroundColor = "#9198a184",
-        item.style.display = "block") : 
+//         (tabBtn[i].style.backgroundColor = "#9198a184",
+//         brandText.innerText = tabBtnText[i].innerText,
+//         item.style.display = "block") : 
         
-        (tabBtn[i].style.backgroundColor = "",
-        item.style.display = "none");
-    });
+//         (tabBtn[i].style.backgroundColor = "",
+//         item.style.display = "none");
+//     });
     
-}
+// }
 
-
-tabBtn.forEach((item, i) => {
-    item.addEventListener("click", () => {
-        toPage(i);
-    })
-});
+// // Application de la fonction de changement de pages pour chaque bouton
+// tabBtn.forEach((item, i) => {
+//     item.addEventListener("click", () => {
+//         toPage(i);
+//     })
+// });

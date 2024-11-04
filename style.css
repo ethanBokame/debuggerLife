@@ -32,6 +32,10 @@ nav .logo {
   color: white;
   gap: 10px;
 }
+nav .logo p {
+  font-family: "Itim", cursive;
+  font-size: 18px;
+}
 nav .logo img {
   height: 32px;
 }

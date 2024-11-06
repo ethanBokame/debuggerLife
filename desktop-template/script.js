@@ -22,22 +22,6 @@ let search = document.querySelector('#search'),
     closeBtn = document.querySelector('.close'),
     searchBox = document.querySelector('.search-box'),
     loupe = document.querySelector('.loupe');
-    // option = ["html","css","javascript","php","react","vue","angular","node.js","express","mongodb","sql","python","java","swift","kotlin","android","ios","flutter","git","github","docker","jenkins","aws","azure","linux","bash","vscode","sublime text","webpack","npm","yarn","babel","firebase","graphql","rest api","ui/ux","design patterns","debugging","testing","performance optimization","ci/cd","machine learning","ai tools","cloud storage","version control",];
-
-// function Search(options, entry) {
-//     let goodOptions = [];
-//     options.forEach((item) => {
-//         if (item.includes(entry)) {
-//             goodOptions.push(item)
-//         }
-//     });
-//     return goodOptions;
-// }
-
-// searchBox.addEventListener("click", () => {
-//     searchBox.style.transition = "0.2s";
-//     searchBox.style.border = "1px solid white";
-// })
 
 search.addEventListener("input", () => {
     closeBtn.style.visibility = "visible";
@@ -59,3 +43,14 @@ closeBtn.addEventListener("click", () => {
     search.value = "";
     closeBtn.style.visibility = "hidden";
 })
+
+// Ajout des suggestions a la recherche
+let suggestion = document.querySelectorAll('.suggestion'),
+    suggestionText = document.querySelectorAll('.suggestion h5');
+
+suggestion.forEach((item, i) => {
+    item.addEventListener("click", () => {
+        search.value = suggestionText[i].innerText;
+        closeBtn.style.visibility = "visible";
+    })
+});

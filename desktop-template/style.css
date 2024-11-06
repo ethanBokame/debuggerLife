@@ -35,7 +35,7 @@ nav .logo {
 }
 nav .logo p {
   font-family: "Itim", cursive;
-  font-size: 20px;
+  font-size: 24px;
 }
 nav .logo img {
   height: 32px;
@@ -95,7 +95,7 @@ nav .nav-menu .profil_pic {
   display: flex;
 }
 .first-tab-system-container .tab {
-  width: 270px;
+  width: 20%;
   border-right: 1px solid rgba(145, 152, 161, 0.6509803922);
   display: flex;
   flex-direction: column;
@@ -143,7 +143,10 @@ nav .nav-menu .profil_pic {
   text-decoration: underline;
 }
 .first-tab-system-container .page {
-  width: 60%;
+  width: 54%;
+  height: calc(100vh - 63px);
+  overflow-y: scroll;
+  scrollbar-width: 0;
 }
 .first-tab-system-container .page .mydebug {
   width: 100%;
@@ -246,8 +249,19 @@ nav .nav-menu .profil_pic {
 .first-tab-system-container .page .mydebug .bottom .count-fav img, .first-tab-system-container .page .mydebug .bottom .count-like img {
   height: 20px;
 }
+.first-tab-system-container .page .mydebug:last-child {
+  border-bottom: none;
+}
+.first-tab-system-container .page {
+  /* Masque la scrollbar dans tous les navigateurs */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer */
+}
+.first-tab-system-container .page::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
 .first-tab-system-container .search {
-  width: 380px;
+  width: auto;
   padding: 10px 20px;
   border-left: 1px solid rgba(145, 152, 161, 0.6509803922);
   display: flex;

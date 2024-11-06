@@ -36,7 +36,7 @@ nav {
         
         p {
             font-family: "Itim", cursive;
-            font-size: 20px;
+            font-size: 24px;
         }
         
         img {
@@ -108,7 +108,7 @@ nav {
     display: flex;
     
     .tab {
-        width: 270px;
+        width: 20%;
         border-right: 1px solid #9198a1a6;
         display: flex;
         flex-direction: column;
@@ -169,7 +169,10 @@ nav {
     }
 
     .page {
-        width: 60%;
+        width: 54%;
+        height:  calc(100vh - 63px);
+        overflow-y: scroll;
+        scrollbar-width: 0;
         
         .mydebug {
             width: 100%;
@@ -298,10 +301,24 @@ nav {
                 }
             }
         }
+
+        .mydebug:last-child {
+            border-bottom: none;
+        }
     }
 
+    .page {
+        /* Masque la scrollbar dans tous les navigateurs */
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* Internet Explorer */
+      }
+      
+      .page::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Edge */
+      }
+
     .search {
-        width: 380px;
+        width: auto;
         padding: 10px 20px;
         border-left: 1px solid #9198a1a6;
         display: flex;

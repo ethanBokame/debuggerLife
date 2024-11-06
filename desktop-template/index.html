@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!--Icon-->
-    <link rel="shortcut icon" href="image/feather-pen.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../image/feather-pen.png" type="../image/x-icon">
 
     <!--Css-->
     <link rel="stylesheet" href="style.css">
@@ -25,6 +25,10 @@
     <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
     <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
 
+    <!--fuze.js-->
+    <!-- <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+    <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script> -->
+
     <!--font-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -40,26 +44,22 @@
     <nav>
         
         <div class="logo">
-            <img src="image\stylo-a-plume.png">
+            <img src="../image/stylo-a-plume.png">
             <p>DebuggerLife</p>
         </div>
         
         <div class="nav-menu">
             
-            <div class="search">
-                <img src="image/magnifier.png">
-                <input type="search" placeholder="Rechercher un debug" name="search" id="search">
-            </div>
             
             <div class="notification-nav">
-                <img src="image/packard-bell.png" alt="cloche">
+                <img src="../image/packard-bell.png" alt="cloche">
                 <div class="count-notif-container">
                     <p>3</p>
                 </div>
                 
             </div>
             
-            <img src="profil_pic_user/image-5.jpeg" class="profil_pic">
+            <img src="../image/profil_pic_user/image-5.jpeg" class="profil_pic">
             
         </div>
         
@@ -72,18 +72,18 @@
             
             <div class="group">
                 
-                <a class="explore" style="background-color: #9198a184;" href="explorer.html">
-                    <img src="image/multiple-users-silhouette.png" alt="group">
+                <a class="explore" href="index.html" style="background-color: #9198a184;">
+                    <img src="../image/multiple-users-silhouette.png" alt="group">
                     <p>Explorer</p>
                 </a>
                 
                 <a class="mydebug" href="mydebug.html">
-                    <img src="image/edit.png" alt="post">
+                    <img src="../image/edit.png" alt="post">
                     <p>Mes Debugs</p>
                 </a>
                 
                 <a class="favoris" href="favoris.html">
-                    <img src="image/bookmark-solid-240.png" alt="save">
+                    <img src="../image/bookmark-solid-240.png" alt="save">
                     <p>Favoris</p>
                 </a>
                 
@@ -92,7 +92,7 @@
             <hr>
             <div class="group">
                 <a class="favoris">
-                    <img src="image/plus.png" alt="save">
+                    <img src="../image/plus.png" alt="save">
                     <p>Ajouter un debug</p>
                 </a>
             </div>
@@ -100,39 +100,430 @@
             
             <div class="group">
                 
-                <a class="about">
-                    <img src="image/feather-pen.png" alt="group">
-                    <p>DebuggerLife</p>
+                <a class="">
+                    <img src="../image/parametres.png" alt="group">
+                    <p>Paramètres</p>
                 </a>
                 
                 <a class="app-mobile">
-                    <img src="image/smartphone.png" alt="save">
+                    <img src="../image/smartphone.png" alt="save">
                     <p>Application mobile</p>
                 </a>
                 
                 <a class="help">
-                    <img src="image/interrogation-mark.png" alt="post">
+                    <img src="../image/interrogation-mark.png" alt="post">
                     <p>Aide</p>
                 </a>
                 
             </div>
-
+            
             <p class="copyright">© 2024 DebuggerLife, Inc.</p>
+            <a href="#" class="about">A propos de nous</a>
             
         </div>
         
         <div class="page">
             
-            <div class="explore">
-                <p>explore</p>
-            </div>
-            
             <div class="mydebug">
-                <p>debug</p>
+                
+                <div class="top">
+                    
+                    <div class="pic-name-post-date">
+                        
+                        <div class="img-container">
+                            <img src="../image/profil_pic_user/image-5.jpeg">
+                        </div>
+                        
+                        <a href="">ethanBokame☆</a>
+                        <p>•</p>
+                        <p>1h</p>
+                        
+                    </div>
+                    
+                    <div class="option-container">
+                        
+                        <img src="../image/options.png" class="option" >
+                        
+                        <div class="option-menu">
+                            
+                            <div class="op share-btn">
+                                <img src="../image/partager.png" alt="Statistiques">
+                                <p>Partager</p>
+                            </div>
+                            
+                            <div class="op state-btn">
+                                <img src="../image/privé .png" alt="lock">
+                                <p>Mettre en privé</p>
+                            </div>
+                            
+                            <div class="op delete-btn">
+                                <img src="../image/trash.png" alt="trash">
+                                <p>Supprimer</p>
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                
+                <p class="title">
+                    Infobulle javascript
+                </p>
+                
+                <div class="description">
+                    <p>
+                        librairie javascript pour créer des infobulles et bien d'autres choses
+                    </p>
+                </div>
+                
+                <div class="ressource">
+                    <a href="https://atomiks.github.io/tippyjs/" target="_blank">https://atomiks.github.io/tippyjs/...</a>
+                </div>
+                
+                <div class="bottom">
+                    
+                    <img src="../image/public.png" alt="world" class="state-simple">
+                    
+                    <div class="count-like">
+                        <img src="../image/heart-regular-240.png" alt="like">
+                        <p>
+                            10
+                        </p>
+                    </div>
+                    
+                    <div class="count-fav">
+                        <img src="../image/bookmark-regular-240.png" alt="fav">
+                        <p>
+                            1
+                        </p>
+                    </div>
+                    
+                </div>
+                
+            </div>
+            <div class="mydebug">
+                <div class="top">
+                    <div class="pic-name-post-date">
+                        <div class="img-container">
+                            <img src="../image/profil_pic_user/image-5.jpeg">
+                        </div>
+                        
+                        <a href="">ethanBokame☆</a>
+                        <p>•</p>
+                        <p>1h</p>
+                    </div>
+
+                    <div class="option-container">
+                        <img src="../image/options.png" class="option" >
+                        <div class="option-menu">
+
+                            <div class="op share-btn">
+                                <img src="../image/partager.png" alt="Statistiques">
+                                <p>Partager</p>
+                            </div>
+                            <div class="op state-btn">
+                                <img src="../image/privé .png" alt="lock">
+                                <p>Mettre en privé</p>
+                            </div>
+                            <div class="op delete-btn">
+                                <img src="../image/trash.png" alt="trash">
+                                <p>Supprimer</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <p class="title">
+                    Outils pour le developpement web
+                </p>
+
+                <div class="description">
+                    <p>
+                        Liste de logiciels et de plugins pour le developpement web
+                    </p>
+                </div>
+
+                <div class="ressource">
+                    <a href="https://www.reddit.com/r/learnprogramming/comments/h10ooq/tools_i_wish_i_had_known_about_when_i_started/" target="_blank">https://www.reddit.com/r/learnprogramming/comments/h10ooq/tools_i_wish_i_had_known_about_when_i_started/...</a>
+                </div>
+
+                <div class="bottom">
+                    <img src="../image/public.png" alt="world" class="state-simple">
+                    <div class="count-like">
+
+                        <img src="../image/heart-regular-240.png" alt="like">
+                        <p>
+                            101
+                        </p>
+                    </div>
+                    <div class="count-fav">
+
+                        <img src="../image/bookmark-regular-240.png" alt="fav">
+                        <p>
+                            5
+                        </p>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+            <div class="mydebug">
+                <div class="top">
+                    <div class="pic-name-post-date">
+                        <div class="img-container">
+                            <img src="../image/profil_pic_user/image-5.jpeg">
+                        </div>
+                        
+                        <a href="">ethanBokame☆</a>
+                        <p>•</p>
+                        <p>1h</p>
+                    </div>
+
+                    <div class="option-container">
+                        <img src="../image/options.png" class="option" >
+                        <div class="option-menu">
+
+                            <div class="op share-btn">
+                                <img src="../image/partager.png" alt="Statistiques">
+                                <p>Partager</p>
+                            </div>
+                            <div class="op state-btn">
+                                <img src="../image/privé .png" alt="lock">
+                                <p>Mettre en privé</p>
+                            </div>
+                            <div class="op delete-btn">
+                                <img src="../image/trash.png" alt="trash">
+                                <p>Supprimer</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <p class="title">
+                    Changement de compte github
+                </p>
+
+                <div class="description">
+                    <p>
+                        J'ai changé de compte github mais mes push étaient toujours liés a mon ancien compte
+                    </p>
+                </div>
+
+                <div class="ressource">
+                    <a href="https://stackoverflow.com/questions/13108093/ajax-call-to-php-script-not-working" target="_blank">https://stackoverflow.com/questions/13108093/ajax-call-to-php-script-not-working...</a>
+                </div>
+
+                <div class="bottom">
+                    <img src="../image/public.png" alt="world" class="state-simple">
+                    <div class="count-like">
+
+                        <img src="../image/heart-regular-240.png" alt="like">
+                        <p>
+                            101
+                        </p>
+                    </div>
+                    <div class="count-fav">
+
+                        <img src="../image/bookmark-regular-240.png" alt="fav">
+                        <p>
+                            5
+                        </p>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+            <div class="mydebug">
+                <div class="top">
+                    <div class="pic-name-post-date">
+                        <div class="img-container">
+                            <img src="../image/profil_pic_user/image-5.jpeg">
+                        </div>
+                        
+                        <a href="">ethanBokame☆</a>
+                        <p>•</p>
+                        <p>1h</p>
+                    </div>
+
+                    <div class="option-container">
+                        <img src="../image/options.png" class="option" >
+                        <div class="option-menu">
+
+                            <div class="op share-btn">
+                                <img src="../image/partager.png" alt="Statistiques">
+                                <p>Partager</p>
+                            </div>
+                            <div class="op state-btn">
+                                <img src="../image/privé .png" alt="lock">
+                                <p>Mettre en privé</p>
+                            </div>
+                            <div class="op delete-btn">
+                                <img src="../image/trash.png" alt="trash">
+                                <p>Supprimer</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <p class="title">
+                    Politique d'exécution powershell
+                </p>
+
+                <div class="description">
+                    <p>
+                        Erreur au niveau de l'exécution de npm sur windows
+                    </p>
+                </div>
+
+                <div class="ressource">
+                    <a href="https://stackoverflow.com/questions/4037939/powershell-says-execution-of-scripts-is-disabled-on-this-system" target="_blank">https://stackoverflow.com/questions/4037939/powershell-says-execution-of-scripts-is-disabled-on-this-system...</a>
+                </div>
+
+                <div class="bottom">
+                    <img src="../image/public.png" alt="world" class="state-simple">
+                    <div class="count-like">
+
+                        <img src="../image/heart-regular-240.png" alt="like">
+                        <p>
+                            101
+                        </p>
+                    </div>
+                    <div class="count-fav">
+
+                        <img src="../image/bookmark-regular-240.png" alt="fav">
+                        <p>
+                            5
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mydebug">
+                <div class="top">
+                    <div class="pic-name-post-date">
+                        <div class="img-container">
+                            <img src="../image/profil_pic_user/image-5.jpeg">
+                        </div>
+                        
+                        <a href="">ethanBokame☆</a>
+                        <p>•</p>
+                        <p>5d</p>
+                    </div>
+
+                    <div class="option-container">
+                        <img src="../image/options.png" class="option" >
+                        <div class="option-menu">
+
+                            <div class="op share-btn">
+                                <img src="../image/partager.png" alt="Statistiques">
+                                <p>Partager</p>
+                            </div>
+                            <div class="op state-btn">
+                                <img src="../image/privé .png" alt="lock">
+                                <p>Mettre en privé</p>
+                            </div>
+                            <div class="op delete-btn">
+                                <img src="../image/trash.png" alt="trash">
+                                <p>Supprimer</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <p class="title">
+                    Overleaf
+                </p>
+
+                <div class="description">
+                    <p>
+                        Outils pour la réalisation de cv
+                    </p>
+                </div>
+
+                <div class="ressource">
+                    <a href="https://stackoverflow.com/questions/13108093/ajax-call-to-php-script-not-working" target="_blank">https://stackoverflow.com/questions/13108093/ajax-call-to-php-script-not-working...</a>
+                </div>
+
+                <div class="bottom">
+                    <img src="../image/public.png" alt="world" class="state-simple">
+                    <div class="count-like">
+
+                        <img src="../image/heart-regular-240.png" alt="like">
+                        <p>
+                            101
+                        </p>
+                    </div>
+                    <div class="count-fav">
+
+                        <img src="../image/bookmark-regular-240.png" alt="fav">
+                        <p>
+                            5
+                        </p>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+        
+        <div class="search">
+            
+            <div class="search-box">
+                
+                <img src="../image/loupe.png" class="loupe">
+                <input type="search" list="data-search" placeholder="Rechercher des debugs" name="search" id="search">
+                
+                <img src="../image/x.png" alt="close" class="close">
+                
             </div>
             
-            <div class="favoris">
-                <p>fav</p>
+            <div class="trend">
+                
+                <h3>Suggestions</h3>
+                
+                <div class="suggestion">
+                    <h5>React Js</h5>
+                    <p>10 debugs</p>
+                </div>
+                
+                <div class="suggestion">
+                    <h5>Angular</h5>
+                    <p>5 debugs</p>
+                </div>
+                
+                <div class="suggestion">
+                    <h5>Machine learning</h5>
+                    <p>5 debugs</p>
+                </div>
+                
+                <div class="suggestion">
+                    <h5>Css</h5>
+                    <p>4 debugs</p>
+                </div>
+                
+                <div class="suggestion">
+                    <h5>Html</h5>
+                </div>
+                
+                <div class="suggestion">
+                    <h5>Git</h5>
+                    <p>2 debugs</p>
+                </div>
+                
+                <div class="suggestion">
+                    <h5>Npm</h5>
+                    <p>2 debugs</p>
+                </div>
             </div>
             
         </div>

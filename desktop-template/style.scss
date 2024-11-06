@@ -36,7 +36,7 @@ nav {
 
         p {
             font-family: "Itim", cursive;
-            font-size: 18px;
+            font-size: 20px;
         }
         
         img {
@@ -114,7 +114,7 @@ nav {
         border-right: 1px solid #9198a1a6;
         display: flex;
         flex-direction: column;
-        padding: 20px 18px;
+        padding: 10px 18px;
         height:  calc(100vh - 63px);
         box-sizing: border-box;
         gap: 10px;
@@ -163,6 +163,28 @@ nav {
 
     .page {
         width: 60%;
+
+        // .loader {
+        //         border: 3px solid #9198a11d;
+        //         /* Light grey */
+        //         border-top: 3px solid #4493f8;
+        //         /* Blue */
+        //         border-radius: 50%;
+        //         width: 30px;
+        //         height: 30px;
+        //         margin: 10px auto;
+        //         animation: spin 1s linear infinite;
+        //     }
+        
+        //     @keyframes spin {
+        //         0% {
+        //             transform: rotate(0deg);
+        //         }
+        
+        //         100% {
+        //             transform: rotate(360deg);
+        //         }
+        //     }
         
         .mydebug {
             width: 100%;
@@ -294,7 +316,7 @@ nav {
     }
 
     .search {
-        padding: 20px;
+        padding: 10px 20px;
         border-left: 1px solid #9198a1a6;
         display: flex;
         flex-direction: column;
@@ -302,7 +324,7 @@ nav {
 
         .trend {
             color: white;
-            background-color: #9198a11d;
+            border: 1px solid #9198a1a6;
             border-radius: 25px;
             overflow: hidden;
             display: flex;
@@ -313,53 +335,31 @@ nav {
                 padding: 13px;
             }
 
-            h5 {
+            .suggestion {
                 padding: 13px;
                 cursor: pointer;
 
                 &:hover {
                     background-color: #131922;
                 }
-            }
-        }
-
-        .discover {
-
-            color: white;
-            background-color: #9198a11d;
-            border-radius: 25px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-
-            h3 {
-                padding: 5px 0;
-                padding: 13px;
-            }
-
-            .user-min {
-                display: flex;
-                align-items: center;
-                
-                img {
-                    height: 37px;
-                    width: 37px;
-                    cursor: pointer;
-                    object-fit: cover;
-                    border-radius: 50px;
+                p {
+                    font-size: 13px;
+                    color: #9198a1a6;
                 }
             }
 
-
         }
 
+
         .search-box {
-            border: 1px solid white;
+            border: 1px solid #9198a1a6;
             display: flex;
             align-items: center;
             gap: 5px;
             padding: 7px;
             border-radius: 50px;
+
+
             
 
             input {
@@ -370,6 +370,7 @@ nav {
                 background: none;
                 color: white;
                 font-size: 16px;
+
             }
             
             img {

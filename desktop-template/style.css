@@ -132,8 +132,15 @@ nav .nav-menu .profil_pic {
 .first-tab-system-container .tab .copyright {
   color: #9198a1;
   font-size: 12px;
-  margin: 0 auto;
   margin-top: auto;
+}
+.first-tab-system-container .tab .about {
+  font-size: 11px;
+  text-decoration: none;
+  color: #4493f8;
+}
+.first-tab-system-container .tab .about:hover {
+  text-decoration: underline;
 }
 .first-tab-system-container .page {
   width: 60%;

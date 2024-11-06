@@ -154,8 +154,17 @@ nav {
         .copyright {
             color: #9198a1;
             font-size: 12px;
-            margin: 0 auto;
             margin-top: auto;
+        }
+
+        .about {
+            font-size: 11px;
+            text-decoration: none;
+            color: #4493f8;
+
+            &:hover {
+                text-decoration: underline;
+            }
         }
     }
 

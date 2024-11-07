@@ -123,6 +123,11 @@ nav .nav-menu .profil_pic {
 .first-tab-system-container .tab .group a:hover {
   background-color: rgba(145, 152, 161, 0.1137254902);
 }
+.first-tab-system-container .tab .group .profil_pic {
+  height: 23px;
+  border-radius: 50px;
+  cursor: pointer;
+}
 .first-tab-system-container .tab img {
   height: 22px;
 }

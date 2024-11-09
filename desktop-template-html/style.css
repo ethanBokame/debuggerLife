@@ -24,6 +24,7 @@ body {
   position: fixed;
   z-index: 4;
   display: none;
+  color: rgba(0, 0, 0, 0.436);
 }
 
 .nopost {

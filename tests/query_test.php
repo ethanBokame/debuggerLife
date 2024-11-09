@@ -1,4 +1,8 @@
 <?php
+
+require("../desktop-template-php/conn.php");
+require("../desktop-template-php/session.php");
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -34,7 +38,17 @@ try {
 
 
 
-foreach ($_SERVER as $key => $item) {
-    echo $key . " : " . $item . "<br><br>";
+// foreach ($_SERVER as $key => $item) {
+//     echo $key . " : " . $item . "<br><br>";
+// }
+
+$sql = "SELECT * FROM post WHERE id_user!={$_SESSION['id_user']} AND status_post!='private'";
+$result = $conn->query($sql);
+$row = $result->fetchAll(PDO::FETCH_ASSOC);
+
+foreach ($row as $item) {
+    $id_user_array[] = $item["id_user"];
 }
+
+print_r($id_user_array)
 ?>

@@ -343,7 +343,7 @@ nav {
         overflow-y: scroll;
         scrollbar-width: 0;
         
-        .mydebug {
+        .mydebug, .notmydebug {
             width: 100%;
             border-bottom: 1px solid #9198a1a6;
             display: flex;
@@ -459,7 +459,10 @@ nav {
                     margin-right: auto;
                 }
     
-                .count-fav, .count-like {
+                .count-fav, .count-like, .share-btn {
+                    
+                    
+                    border-radius: 50px;
                     display: flex;
                     align-items: center;
                     gap: 3px;
@@ -472,9 +475,44 @@ nav {
             }
         }
 
-        // .mydebug:last-child {
-        //     border-bottom: none;
-        // }
+        .notmydebug {
+
+            .bottom { 
+                gap: 30px;
+                color: white;
+                .count-fav, .count-like, .share-btn {
+                    gap: 4px;
+                    padding: 5px 10px;
+                    background-color: #9198a14a;
+                    cursor: pointer;
+                    margin: 0;
+                    transition: 0.1s;
+                }
+
+                .count-like:hover {
+                    transition: 0.1s;
+                    background-color: #f9188179;
+                }
+
+                .count-fav:hover {
+                    transition: 0.1s;
+                    background-color: #FFC10179;
+                }
+
+                .share-btn:hover {
+                    transition: 0.1s;
+                    background-color: #9198a180;
+                }
+            }
+    
+            .option-menu {
+                
+                .op:nth-child(1) {
+                    border: none;
+                }
+    
+            }
+        }
     }
 
     .page {

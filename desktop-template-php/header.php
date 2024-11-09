@@ -10,10 +10,10 @@
     <link rel="shortcut icon" href="../image/feather-pen.png" type="../image/x-icon">
     
     <!--Css-->
-    <link rel="stylesheet" href="../desktop-template-html/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     
     <!--Javascript-->
-    <script src="../desktop-template-html/script.js" defer></script>
+    <script src="../js/script.js" defer></script>
     
     <!--tippy.js-->
     <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>

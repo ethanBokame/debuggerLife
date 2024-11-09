@@ -455,13 +455,13 @@ function postBtn(btn, btnImg, btnImgOldColor, btnImgNewColor, color, count) {
 for (let i = 0; i < likePost.length; i++) {
     
     likePost[i].addEventListener("click", () => {
-        postBtn(likePost[i], likePostImg[i], "image/heart-regular-240.png", "image/heart-solid-240-pink.png", "#f91880", likePostNumber[i]);
+        postBtn(likePost[i], likePostImg[i], "../image/heart-regular-240-white.png", "../image/heart-solid-240-pink.png", "#f91880", likePostNumber[i]);
     })
 }
 
 for (let i = 0; i < favPost.length; i++) {
     
     favPost[i].addEventListener("click", () => {
-        postBtn(favPost[i], favPostImg[i], "image/bookmark-regular-240.png", "image/bookmark-solid-240-or.png", "#FFC107", favPostNumber[i]);
+        postBtn(favPost[i], favPostImg[i], "../image/bookmark-regular-240-white.png", "../image/bookmark-solid-240-or.png", "#FFC107", favPostNumber[i]);
     })
 }

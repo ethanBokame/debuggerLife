@@ -3,7 +3,17 @@
             <div class="search-box">
                 
                 <img src="../image/loupe.png" class="loupe">
-                <input type="search" list="data-search" placeholder="Parmis vos debugs" name="search" id="search">
+                <input type="search" list="data-search" name="search" id="search" placeholder = "<?php 
+                
+                if (basename($_SERVER["PHP_SELF"]) == "favoris.php") {
+                    echo "Parmis vos debugs";
+                } elseif (basename($_SERVER["PHP_SELF"]) == "explorer.php") {
+                    echo "Rechercher un debug";
+                } else {
+                    echo "Parmis vos favoris";
+                }
+
+                ?>" > 
                 
                 <img src="../image/x.png" alt="close" class="close">
                 

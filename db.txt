@@ -53,3 +53,19 @@ DELETE FROM post WHERE id_post=2;
 
 //Jointure
 SELECT user.profile_pic, user.username, post.post_date, post.title, post.fav_number, post.like_number, post.status_post, post.link_ressource, post.description FROM user JOIN post ON user.id_user=post.id_user;
+
+
+CREATE TABLE favoris (
+    id_user INT NOT NULL,
+    id_post INT NOT NULL,
+    PRIMARY KEY (id_user, id_post),
+    FOREIGN KEY (id_user) REFERENCES user(id_user) ON DELETE CASCADE,
+    FOREIGN KEY (id_post) REFERENCES post(id_post) ON DELETE CASCADE
+);
+
+
+INSERT INTO favoris (id_user, id_post) VALUES 
+    (2, 24);
+
+
+SELECT user.profile_pic, user.username, post.post_date, post.title, post.fav_number, post.like_number, post.status_post, post.link_ressource, post.description FROM user JOIN post JOIN favoris ON user.id_user=favoris.id_user AND favoris.id_post=post.id_post;

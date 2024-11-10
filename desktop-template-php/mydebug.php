@@ -86,7 +86,7 @@ require("session.php");
                     
                     <div class="bottom">
                         
-                        <img src="../image/public.png" alt="world" class="state-simple">
+                        <img src="<?php echo($post["status_post"] == "public") ? "../image/public.png" : "../image/privé .png" ?>" alt="world" class="state-simple"> 
                         
                         <div class="count-like">
                             <img src="../image/heart-regular-240.png" alt="like">

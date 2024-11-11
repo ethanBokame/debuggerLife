@@ -31,26 +31,33 @@ let search = document.querySelector('#search'),
     searchBox = document.querySelector('.search-box'),
     loupe = document.querySelector('.loupe');
 
-search.addEventListener("input", () => {
-    closeBtn.style.visibility = "visible";
-})
+if (search) {
+    
+    search.addEventListener("input", () => {
+        closeBtn.style.visibility = "visible";
+    })
+    
+    search.addEventListener("focus", () => {
+        searchBox.style.transition = "0.2s";
+        searchBox.style.border = "1px solid white";
+        loupe.setAttribute("src", "../image/magnifier.png")
+    })
+    
+    search.addEventListener("blur", () => {
+        searchBox.style.transition = "0.2s";
+        searchBox.style.border = "1px solid #9198a1a6";
+        loupe.setAttribute("src", "../image/loupe.png")
+    })
+}
 
-search.addEventListener("focus", () => {
-    searchBox.style.transition = "0.2s";
-    searchBox.style.border = "1px solid white";
-    loupe.setAttribute("src", "../image/magnifier.png")
-})
 
-search.addEventListener("blur", () => {
-    searchBox.style.transition = "0.2s";
-    searchBox.style.border = "1px solid #9198a1a6";
-    loupe.setAttribute("src", "../image/loupe.png")
-})
+if (closeBtn) {
+    closeBtn.addEventListener("click", () => {
+        search.value = "";
+        closeBtn.style.visibility = "hidden";
+    })
+}
 
-closeBtn.addEventListener("click", () => {
-    search.value = "";
-    closeBtn.style.visibility = "hidden";
-})
 
 // Ajout des suggestions a la recherche
 let suggestion = document.querySelectorAll('.suggestion'),
@@ -354,7 +361,7 @@ for (let i = 0; i < copyBtn.length; i++) {
     
 }
 
-console.log(nopost);
+
 // Traitement de la popup en fonction de l'option
 choicePopup.addEventListener("click", () => {
     popup(state = "none");
@@ -465,3 +472,13 @@ for (let i = 0; i < favPost.length; i++) {
         postBtn(favPost[i], favPostImg[i], "../image/bookmark-regular-240-white.png", "../image/bookmark-solid-240-or.png", "#FFC107", favPostNumber[i]);
     })
 }
+
+
+// Animation du formulaire d'ajout des debugs en cas d'erreurs
+let inputTitle = document.querySelector('.title-form-add'),
+    inputDescription = document.querySelector('.description-form-add'),
+    inputAddError = document.querySelector('.entry error');
+
+inputTitle.addEventListener("input", function () {
+    console.log(this.value);
+})

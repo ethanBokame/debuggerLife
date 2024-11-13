@@ -1,7 +1,7 @@
 * {
   padding: 0;
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
   box-sizing: border-box;
 }
 * p {
@@ -428,11 +428,14 @@ nav .nav-menu .profil_pic {
 }
 .first-tab-system-container .page {
   /* Masque la scrollbar dans tous les navigateurs */
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* Internet Explorer */
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* Internet Explorer */
 }
 .first-tab-system-container .page::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Edge */
+  display: none;
+  /* Chrome, Safari, Edge */
 }
 .first-tab-system-container .search {
   width: auto;
@@ -515,6 +518,127 @@ nav .nav-menu .profil_pic {
 
 .tippy-box[data-theme~=custom][data-placement^=right] > .tippy-arrow::before {
   border-right-color: #666a70;
+}
+
+.add-debug-form-container {
+  overflow-y: scroll;
+  width: 80%;
+  padding: 30px 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: calc(100vh - 63px);
+}
+.add-debug-form-container .add-debug-form {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  gap: 20px;
+  width: 70%;
+}
+.add-debug-form-container .add-debug-form .header {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.add-debug-form-container .add-debug-form .header p {
+  color: #9198a1;
+  font-size: 14.5px;
+}
+.add-debug-form-container .add-debug-form .error {
+  display: flex;
+  gap: 5px;
+  margin-top: -3px;
+  display: none;
+}
+.add-debug-form-container .add-debug-form .error img {
+  margin-top: 1px;
+  height: 15px;
+}
+.add-debug-form-container .add-debug-form .error p {
+  color: #f85149;
+  font-weight: 500;
+  font-size: 13.5px;
+}
+.add-debug-form-container .add-debug-form .entry {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.add-debug-form-container .add-debug-form .entry label {
+  font-weight: 500;
+}
+.add-debug-form-container .add-debug-form .entry input {
+  color: white;
+  background: none;
+  border: 1px solid rgba(145, 152, 161, 0.6509803922);
+  padding: 8px;
+  border-radius: 9px;
+  outline: none;
+  width: 500px;
+}
+.add-debug-form-container .add-debug-form .entry input:focus {
+  border: 2px solid #4493f8;
+}
+.add-debug-form-container .add-debug-form .title-debug input {
+  width: 300px;
+}
+.add-debug-form-container .add-debug-form hr {
+  border: 0.5px solid rgba(145, 152, 161, 0.6509803922);
+  width: 100%;
+}
+.add-debug-form-container .add-debug-form h3 {
+  position: relative;
+  margin-bottom: -10px;
+}
+.add-debug-form-container .add-debug-form h3::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2.5px;
+  height: 2px;
+  background-color: #4493f8;
+  border-radius: 50px;
+}
+.add-debug-form-container .add-debug-form i {
+  font-size: 14.5px;
+}
+.add-debug-form-container .add-debug-form .status-form {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.add-debug-form-container .add-debug-form .status-form img {
+  height: 30px;
+}
+.add-debug-form-container .add-debug-form .status-form p:nth-child(1) {
+  font-weight: 500;
+}
+.add-debug-form-container .add-debug-form .status-form p:nth-child(2) {
+  color: #9198a1;
+  font-size: 13.5px;
+}
+.add-debug-form-container .add-debug-form .status-form input {
+  cursor: pointer;
+  height: 17px;
+  width: 17px;
+  margin-right: 5px;
+  accent-color: #4493f8;
+}
+.add-debug-form-container .add-debug-form input[type=submit] {
+  color: white;
+  border: none;
+  padding: 8px;
+  border-radius: 6px;
+  background-color: #4493f8;
+  margin-left: auto;
+  font-weight: 500;
+  cursor: pointer;
+}
+.add-debug-form-container .add-debug-form input[type=submit]:focus {
+  background-color: #1a5db5;
 }
 
 /*# sourceMappingURL=style.css.map */

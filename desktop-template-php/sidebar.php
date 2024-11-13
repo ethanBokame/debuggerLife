@@ -21,7 +21,7 @@
             
             <hr>
             <div class="group">
-                <a class="favoris">
+                <a class="favoris" href="add.php" <?php echo(basename($_SERVER["PHP_SELF"])) == "add.php" ? 'style="background-color: #9198a184;"' : "" ?>>
                     <img src="../image/plus.png" alt="save">
                     <p>Ajouter un debug</p>
                 </a>

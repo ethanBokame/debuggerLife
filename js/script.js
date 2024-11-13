@@ -477,8 +477,32 @@ for (let i = 0; i < favPost.length; i++) {
 // Animation du formulaire d'ajout des debugs en cas d'erreurs
 let inputTitle = document.querySelector('.title-form-add'),
     inputDescription = document.querySelector('.description-form-add'),
-    inputAddError = document.querySelector('.entry error');
+    inputUrl = document.querySelector('.url-form-add'),
+    inputAddErrorMessage = document.querySelectorAll('.entry .max-count'),
+    errorMessage = document.querySelectorAll('.entry .error-simple');
+
+
+    function displayError(obj, max, indexErrorMessage) {
+        if (obj.value.length = max) {
+            obj.style.borderColor = "#f85149";
+            inputAddErrorMessage[indexErrorMessage].style.display = "flex";
+        }
+    
+        if (obj.value.length < max) {
+            obj.style.borderColor = "";
+            inputAddErrorMessage[indexErrorMessage].style.display = "none";
+        }
+    }
 
 inputTitle.addEventListener("input", function () {
-    console.log(this.value);
+    displayError(this, 150, 0);
+    errorMessage[0].style.display = "none";
+})
+
+inputDescription.addEventListener("input", function () {
+    displayError(this, 450, 1);
+})
+
+inputUrl.addEventListener("input", function () {
+    errorMessage[1].style.display = "none";
 })

@@ -20,9 +20,10 @@ require("session.php");
             
             <!--AFFICHAGE DES DEBUGS-->
             <?php 
-            $sql = "SELECT * FROM post WHERE id_user={$_SESSION['id_user']}";
-            $result = $conn->query($sql);
-            $row = $result->fetchAll(PDO::FETCH_ASSOC);
+            $sql = $conn->prepare("SELECT * FROM post WHERE id_user=:id_user");
+            $sql->bindValue(':id_user', $_SESSION['id_user'], PDO::PARAM_INT);
+            $sql->execute();
+            $row = $sql->fetchAll(PDO::FETCH_ASSOC);
             
             foreach ( $row as $post) {
                 

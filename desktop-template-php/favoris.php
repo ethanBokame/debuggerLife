@@ -20,14 +20,14 @@ require("session.php");
             
             <!--AFFICHAGE DES DEBUGS-->
             <?php
-            $sql = "SELECT user.id_user, user.profile_pic, user.username, post.id_post, post.post_date, post.title, post.fav_number, post.      like_number, post.status_post, post.link_ressource, post.description 
+            $sql = $conn->prepare("SELECT user.id_user, user.profile_pic, user.username, post.id_post, post.post_date, post.title, post.fav_number, post.like_number, post.status_post, post.link_ressource, post.description 
             FROM user 
-            JOIN post 
-            JOIN favoris 
-            ON user.id_user=post.id_user AND favoris.id_post=post.id_post 
-            WHERE favoris.id_user={$_SESSION['id_user']}";
-            $result = $conn->query($sql);
-            $row = $result->fetchAll(PDO::FETCH_ASSOC);
+            JOIN post ON user.id_user = post.id_user
+            JOIN favoris ON favoris.id_post = post.id_post 
+            WHERE favoris.id_user = :id_user");
+            $sql->bindParam(':id_user', $_SESSION['id_user'], PDO::PARAM_INT);
+            $sql->execute();
+            $row = $sql->fetchAll(PDO::FETCH_ASSOC);
             
             foreach ($row as $post) {
             

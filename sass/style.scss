@@ -282,7 +282,7 @@ nav {
 
     
     .tab {
-        width: 250px;
+        width: 260px;
         border-right: 1px solid #9198a1a6;
         display: flex;
         flex-direction: column;
@@ -385,6 +385,10 @@ nav {
                     color: #ffffff;
                     text-decoration: none;
                     font-weight: 550;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
                 }
     
                 p {
@@ -457,6 +461,15 @@ nav {
                 }
     
             }
+
+            .img-debug {
+
+                img {
+                    width: 100%;
+                    border-radius: 15px;
+                }
+
+            }
     
             .bottom { 
                 display: flex;
@@ -486,7 +499,7 @@ nav {
         .notmydebug {
 
             .bottom { 
-                gap: 30px;
+                gap: 20px;
                 color: white;
                 .count-fav, .count-like, .share-btn {
                     gap: 4px;
@@ -537,7 +550,7 @@ nav {
         }
 
     .search {
-        width: 340px;
+        width: 350px;
         padding: 10px 20px;
         border-left: 1px solid #9198a1a6;
         display: flex;
@@ -713,6 +726,66 @@ nav {
 
 
 
+        }
+
+        .file-input {
+
+            .image-preview-container {
+                display: flex;
+                display: none;
+                
+                
+
+                img:nth-child(1) {
+                    width: 300px;
+                    border-radius: 15px;
+                    
+                }
+
+                img:nth-child(2) {
+                    margin-top: 7px;
+                    margin-left: -35px;
+                    height: 30px;
+                    background-color: #61666c;
+                    padding: 5px;
+                    border-radius: 50px;
+                    cursor: pointer;
+
+                    &:hover {
+                        background-color: #3b3d41;
+                    }
+                }
+            }
+
+
+            
+
+            .file-input-container {
+                display: flex;
+                border: 1px solid #9198a1a6;
+                border-radius: 9px;
+                overflow: hidden;
+                width: 500px;
+                cursor: pointer;
+
+
+
+
+                label {
+                    padding: 8px;
+                    background-color: #9198a16b;
+                    border-right: 1px solid #9198a1a6;
+                }
+
+                p {
+                    padding: 8px;
+                }
+
+            }
+
+            input {
+                display: none;
+            }
         }
 
         .title-debug {

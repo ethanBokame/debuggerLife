@@ -248,7 +248,7 @@ nav .nav-menu .profil_pic {
   overflow: auto; /* Permet le défilement dans chaque section */
 }
 .first-tab-system-container .tab {
-  width: 250px;
+  width: 260px;
   border-right: 1px solid rgba(145, 152, 161, 0.6509803922);
   display: flex;
   flex-direction: column;
@@ -335,6 +335,9 @@ nav .nav-menu .profil_pic {
   text-decoration: none;
   font-weight: 550;
 }
+.first-tab-system-container .page .mydebug .pic-name-post-date a:hover, .first-tab-system-container .page .notmydebug .pic-name-post-date a:hover {
+  text-decoration: underline;
+}
 .first-tab-system-container .page .mydebug .pic-name-post-date p, .first-tab-system-container .page .notmydebug .pic-name-post-date p {
   color: #9198a1;
 }
@@ -387,6 +390,10 @@ nav .nav-menu .profil_pic {
 .first-tab-system-container .page .mydebug .option-menu .op:nth-child(3), .first-tab-system-container .page .notmydebug .option-menu .op:nth-child(3) {
   border: none;
 }
+.first-tab-system-container .page .mydebug .img-debug img, .first-tab-system-container .page .notmydebug .img-debug img {
+  width: 100%;
+  border-radius: 15px;
+}
 .first-tab-system-container .page .mydebug .bottom, .first-tab-system-container .page .notmydebug .bottom {
   display: flex;
   color: #9198a1;
@@ -407,7 +414,7 @@ nav .nav-menu .profil_pic {
   height: 20px;
 }
 .first-tab-system-container .page .notmydebug .bottom {
-  gap: 30px;
+  gap: 20px;
   color: white;
 }
 .first-tab-system-container .page .notmydebug .bottom .count-fav, .first-tab-system-container .page .notmydebug .bottom .count-like, .first-tab-system-container .page .notmydebug .bottom .share-btn {
@@ -445,7 +452,7 @@ nav .nav-menu .profil_pic {
   /* Chrome, Safari, Edge */
 }
 .first-tab-system-container .search {
-  width: 340px;
+  width: 350px;
   padding: 10px 20px;
   border-left: 1px solid rgba(145, 152, 161, 0.6509803922);
   display: flex;
@@ -587,6 +594,45 @@ nav .nav-menu .profil_pic {
 }
 .add-debug-form-container .add-debug-form .entry input:focus {
   border: 2px solid #4493f8;
+}
+.add-debug-form-container .add-debug-form .file-input .image-preview-container {
+  display: flex;
+  display: none;
+}
+.add-debug-form-container .add-debug-form .file-input .image-preview-container img:nth-child(1) {
+  width: 300px;
+  border-radius: 15px;
+}
+.add-debug-form-container .add-debug-form .file-input .image-preview-container img:nth-child(2) {
+  margin-top: 7px;
+  margin-left: -35px;
+  height: 30px;
+  background-color: #61666c;
+  padding: 5px;
+  border-radius: 50px;
+  cursor: pointer;
+}
+.add-debug-form-container .add-debug-form .file-input .image-preview-container img:nth-child(2):hover {
+  background-color: #3b3d41;
+}
+.add-debug-form-container .add-debug-form .file-input .file-input-container {
+  display: flex;
+  border: 1px solid rgba(145, 152, 161, 0.6509803922);
+  border-radius: 9px;
+  overflow: hidden;
+  width: 500px;
+  cursor: pointer;
+}
+.add-debug-form-container .add-debug-form .file-input .file-input-container label {
+  padding: 8px;
+  background-color: rgba(145, 152, 161, 0.4196078431);
+  border-right: 1px solid rgba(145, 152, 161, 0.6509803922);
+}
+.add-debug-form-container .add-debug-form .file-input .file-input-container p {
+  padding: 8px;
+}
+.add-debug-form-container .add-debug-form .file-input input {
+  display: none;
 }
 .add-debug-form-container .add-debug-form .title-debug input {
   width: 300px;

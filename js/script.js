@@ -474,12 +474,13 @@ for (let i = 0; i < favPost.length; i++) {
 }
 
 
-// Animation du formulaire d'ajout des debugs en cas d'erreurs
+// Formulaire d'ajout des debugs
 let inputTitle = document.querySelector('.title-form-add'),
     inputDescription = document.querySelector('.description-form-add'),
     inputUrl = document.querySelector('.url-form-add'),
     inputAddErrorMessage = document.querySelectorAll('.entry .max-count'),
     errorMessage = document.querySelectorAll('.entry .error-simple');
+
 
 
     function displayError(obj, max, indexErrorMessage) {
@@ -505,4 +506,46 @@ inputDescription.addEventListener("input", function () {
 
 inputUrl.addEventListener("input", function () {
     errorMessage[1].style.display = "none";
+})
+
+// Image
+let inputFileContainer = document.querySelector(".file-input"),
+    inputFileImagePreview = document.querySelector(".file-input img"),
+    inputFileText = document.querySelector(".file-input p"),
+    inputFileInput = document.querySelector(".file-input input"),
+    imageContainer = document.querySelector(".image-preview-container"),
+    closeImage = document.querySelectorAll(".image-preview-container img")[1];
+
+inputFileText.addEventListener("click", () => {
+    inputFileInput.click();
+    console.log("click");
+})
+
+function previewFile() {
+    const reader = new FileReader();
+
+    reader.addEventListener(
+        "load",
+        () => {
+            // convert image file to base64 string
+            inputFileImagePreview.src = reader.result;
+        },
+        false
+    );
+
+    if (inputFileInput.files[0]) {
+        reader.readAsDataURL(inputFileInput.files[0]);
+    }
+}
+
+inputFileInput.addEventListener("change", () => {
+    previewFile();
+    inputFileText.innerText = inputFileInput.files[0].name;
+    imageContainer.style.display = "flex";
+    console.dir(inputFileInput.value);
+})
+
+closeImage.addEventListener("click", () => {
+    imageContainer.style.display = "none";
+    inputFileText.innerText = "Aucune image choisie";
 })

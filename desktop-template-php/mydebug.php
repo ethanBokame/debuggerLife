@@ -84,6 +84,10 @@ require("session.php");
                     <div class="ressource">
                         <a href="<?php echo $post["link_ressource"] ?>" target="_blank"><?php echo $post["link_ressource"] ?></a>
                     </div>
+
+                    <div class="img-debug">
+                        <img src="../image/chrome_5UwMpheWQ7.png" alt="debug-image">
+                    </div>
                     
                     <div class="bottom">
                         

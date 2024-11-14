@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        nav {
+            height: 50px;
+            background-color: pink;
+        }
+
+        .content {
+            flex-grow: 1;
+            display: flex;
+            overflow: hidden; /* Garde le défilement uniquement dans les sections */
+        }
+
+        .sidebar, .page, .complement {
+            height: 100%; /* Prend toute la hauteur de .content */
+            overflow: auto; /* Permet le défilement dans chaque section */
+        }
+
+        .sidebar {
+            background-color: lightgray;
+            width: 150px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .page {
+            background-color: green;
+            flex-grow: 1;
+        }
+
+        .complement {
+            background-color: blue;
+            width: 200px;
+        }
+
+        .sidebar p {
+            background-color: #fff;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <nav></nav>
+    <div class="content">
+        <div class="sidebar">
+            <p>Content 1</p>
+            <p>Content 2</p>
+            <p>Content 3</p>
+            <p>Content 4</p>
+            <p>Content 5</p>
+            <p>Content 6</p>
+            <p>Content 7</p>
+            <p>Content 8</p>
+            <p>Content 9</p>
+            <p>Content 10</p>
+            <p>Content 11</p>
+            <p>Content 12</p>
+            <p>Content 13</p>
+            <p>Content 14</p>
+            <p>Content 15</p>
+            <p>Content 16</p>
+            <p>Content 17</p>
+            <p>Content 18</p>
+            <p>Content 19</p>
+            <p>Content 20</p>
+        </div>
+        <div class="page">
+            <p>Main content area</p>
+        </div>
+        <div class="complement">
+            <p>Complementary content</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -53,8 +53,8 @@ require("session.php");
 
                             <div class="option-menu">
 
-                                <div class="op share-btn">
-                                    <img src="../image/user-regular-240.png" alt="Statistiques">
+                                <div class="op">
+                                    <img src="../image/user-regular-240.png" alt="profil">
                                     <p>Voir le profil</p>
                                 </div>
 
@@ -91,9 +91,13 @@ require("session.php");
                                 <?php echo $post["fav_number"] ?>
                             </p>
                         </div>
+                        <div class="copy-btn">
+                            <img src="../image/copier.png" alt="copier">
+                            <!-- <p>Copier</p> -->
+                        </div>
                         <div class="share-btn">
-                            <img src="../image/share-white.png" alt="Statistiques">
-                            <p>Partager</p>
+                            <img src="../image/share-white.png" alt="share">
+                            <!-- <p>Partager</p> -->
                         </div>
                     </div>
 

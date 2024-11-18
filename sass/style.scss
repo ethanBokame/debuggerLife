@@ -442,10 +442,6 @@ nav {
                     padding: 13px;
                     border-bottom: 1.5px solid #313845; 
     
-                    p {
-                        margin-top: 3px;
-                    }
-    
                     img {
                         height: 20px;
                     }
@@ -456,7 +452,7 @@ nav {
     
                 }
     
-                .op:nth-child(3) {
+                .op:nth-child(4) {
                     border: none;
                 }
     
@@ -481,7 +477,7 @@ nav {
                     margin-right: auto;
                 }
     
-                .count-fav, .count-like, .share-btn {
+                .count-fav, .count-like, .share-btn, .copy-btn {
                     
                     border-radius: 50px;
                     display: flex;
@@ -501,7 +497,7 @@ nav {
             .bottom { 
                 gap: 20px;
                 color: white;
-                .count-fav, .count-like, .share-btn {
+                .count-fav, .count-like, .share-btn, .copy-btn {
                     gap: 4px;
                     padding: 5px 10px;
                     background-color: #9198a14a;
@@ -520,7 +516,7 @@ nav {
                     background-color: #FFC10179;
                 }
 
-                .share-btn:hover {
+                .share-btn:hover, .copy-btn:hover {
                     transition: 0.1s;
                     background-color: #9198a180;
                 }

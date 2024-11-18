@@ -378,16 +378,13 @@ nav .nav-menu .profil_pic {
   padding: 13px;
   border-bottom: 1.5px solid #313845;
 }
-.first-tab-system-container .page .mydebug .option-menu .op p, .first-tab-system-container .page .notmydebug .option-menu .op p {
-  margin-top: 3px;
-}
 .first-tab-system-container .page .mydebug .option-menu .op img, .first-tab-system-container .page .notmydebug .option-menu .op img {
   height: 20px;
 }
 .first-tab-system-container .page .mydebug .option-menu .op:hover, .first-tab-system-container .page .notmydebug .option-menu .op:hover {
   background-color: #313845;
 }
-.first-tab-system-container .page .mydebug .option-menu .op:nth-child(3), .first-tab-system-container .page .notmydebug .option-menu .op:nth-child(3) {
+.first-tab-system-container .page .mydebug .option-menu .op:nth-child(4), .first-tab-system-container .page .notmydebug .option-menu .op:nth-child(4) {
   border: none;
 }
 .first-tab-system-container .page .mydebug .img-debug img, .first-tab-system-container .page .notmydebug .img-debug img {
@@ -403,21 +400,21 @@ nav .nav-menu .profil_pic {
   width: 20px;
   margin-right: auto;
 }
-.first-tab-system-container .page .mydebug .bottom .count-fav, .first-tab-system-container .page .mydebug .bottom .count-like, .first-tab-system-container .page .mydebug .bottom .share-btn, .first-tab-system-container .page .notmydebug .bottom .count-fav, .first-tab-system-container .page .notmydebug .bottom .count-like, .first-tab-system-container .page .notmydebug .bottom .share-btn {
+.first-tab-system-container .page .mydebug .bottom .count-fav, .first-tab-system-container .page .mydebug .bottom .count-like, .first-tab-system-container .page .mydebug .bottom .share-btn, .first-tab-system-container .page .mydebug .bottom .copy-btn, .first-tab-system-container .page .notmydebug .bottom .count-fav, .first-tab-system-container .page .notmydebug .bottom .count-like, .first-tab-system-container .page .notmydebug .bottom .share-btn, .first-tab-system-container .page .notmydebug .bottom .copy-btn {
   border-radius: 50px;
   display: flex;
   align-items: center;
   gap: 3px;
   margin: 0 7px;
 }
-.first-tab-system-container .page .mydebug .bottom .count-fav img, .first-tab-system-container .page .mydebug .bottom .count-like img, .first-tab-system-container .page .mydebug .bottom .share-btn img, .first-tab-system-container .page .notmydebug .bottom .count-fav img, .first-tab-system-container .page .notmydebug .bottom .count-like img, .first-tab-system-container .page .notmydebug .bottom .share-btn img {
+.first-tab-system-container .page .mydebug .bottom .count-fav img, .first-tab-system-container .page .mydebug .bottom .count-like img, .first-tab-system-container .page .mydebug .bottom .share-btn img, .first-tab-system-container .page .mydebug .bottom .copy-btn img, .first-tab-system-container .page .notmydebug .bottom .count-fav img, .first-tab-system-container .page .notmydebug .bottom .count-like img, .first-tab-system-container .page .notmydebug .bottom .share-btn img, .first-tab-system-container .page .notmydebug .bottom .copy-btn img {
   height: 20px;
 }
 .first-tab-system-container .page .notmydebug .bottom {
   gap: 20px;
   color: white;
 }
-.first-tab-system-container .page .notmydebug .bottom .count-fav, .first-tab-system-container .page .notmydebug .bottom .count-like, .first-tab-system-container .page .notmydebug .bottom .share-btn {
+.first-tab-system-container .page .notmydebug .bottom .count-fav, .first-tab-system-container .page .notmydebug .bottom .count-like, .first-tab-system-container .page .notmydebug .bottom .share-btn, .first-tab-system-container .page .notmydebug .bottom .copy-btn {
   gap: 4px;
   padding: 5px 10px;
   background-color: rgba(145, 152, 161, 0.2901960784);
@@ -433,7 +430,7 @@ nav .nav-menu .profil_pic {
   transition: 0.1s;
   background-color: rgba(255, 193, 1, 0.4745098039);
 }
-.first-tab-system-container .page .notmydebug .bottom .share-btn:hover {
+.first-tab-system-container .page .notmydebug .bottom .share-btn:hover, .first-tab-system-container .page .notmydebug .bottom .copy-btn:hover {
   transition: 0.1s;
   background-color: rgba(145, 152, 161, 0.5019607843);
 }

@@ -25,6 +25,18 @@ tippy(".copy", {
     theme: 'custom',
 });
 
+tippy(".bottom .copy-btn", {
+    content: "Copier",
+    placement: 'bottom',
+    theme: 'custom',
+});
+
+tippy(".bottom .share-btn", {
+    content: "Partager",
+    placement: 'bottom',
+    theme: 'custom',
+});
+
 // Search box
 let search = document.querySelector('#search'),
     closeBtn = document.querySelector('.close'),

@@ -54,6 +54,11 @@ require("session.php");
                                     <img src="../image/partager.png" alt="Statistiques">
                                     <p>Partager</p>
                                 </div>
+
+                                <div class="op modif-btn">
+                                    <img src="../image/outil-crayon.png" alt="setter">
+                                    <p>Modifier le debug</p>
+                                </div>
                                 
                                 <div class="op state-btn">
                                     <img src="../image/privé .png" alt="lock">

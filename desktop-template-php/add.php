@@ -37,8 +37,8 @@ require("session.php");
     if (isset($_POST["submit_add_form"])) {
 
         // Préparation de la requete
-        $sql = $conn->prepare("INSERT INTO post (title, description, link_ressource, status_post, id_user) 
-        VALUES (:title, :description, :link_ressource, :status_post, :id_user)");
+        $sql = $conn->prepare("INSERT INTO post (title, description, link_ressource, status_post, id_user, link_picture) 
+        VALUES (:title, :description, :link_ressource, :status_post, :id_user, :link_picture)");
 
         // Traitement du formulaire
         $title = strip_tags($_POST['title']);
@@ -46,6 +46,7 @@ require("session.php");
         $link_ressource = (filter_var($_POST['link_ressource'], FILTER_SANITIZE_URL));
         $status_post = empty($_POST['status_post']) ? null : $_POST['status_post'];
         $id_user = $_SESSION['id_user'];
+        $link_picture = "../image/debug_picture/" . time() . "_" . $_FILES["link_picture"]["name"];
 
         // Vérification des champs
         if (empty($title) || trim($title) == '') {
@@ -68,8 +69,11 @@ require("session.php");
             $sql->bindValue(':link_ressource', $link_ressource);
             $sql->bindValue(':status_post', $status_post);
             $sql->bindValue(':id_user', $id_user, PDO::PARAM_INT);
+            $sql->bindValue(':link_picture', $link_picture);
 
             $sql->execute();
+
+            move_uploaded_file($_FILES["link_picture"]["tmp_name"], $link_picture);
 
             header("Location: mydebug.php");
         } else {
@@ -90,7 +94,7 @@ require("session.php");
 
         <div class="add-debug-form-container">
 
-            <form method="post" action="" class="add-debug-form">
+            <form method="post" action="" class="add-debug-form" enctype="multipart/form-data">
 
                 <div class="header">
                     <h2>Ajouter un nouveau debug</h2>

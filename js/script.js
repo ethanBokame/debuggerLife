@@ -518,7 +518,6 @@ let inputFileContainer = document.querySelector(".file-input"),
 
 inputFileText.addEventListener("click", () => {
     inputFileInput.click();
-    console.log("click");
 })
 
 function previewFile() {
@@ -539,13 +538,25 @@ function previewFile() {
 }
 
 inputFileInput.addEventListener("change", () => {
-    previewFile();
-    inputFileText.innerText = inputFileInput.files[0].name;
-    imageContainer.style.display = "flex";
-    console.dir(inputFileInput.value);
+
+    // Vérification de la taille de l'image
+    let inputSize = (inputFileInput.files[0].size / (1024 * 1024)).toFixed(1)
+    console.log(inputSize);
+
+    if (inputSize > 5) {
+        alert("La taille de l'image est trop grande (maximum 10 Mo)");
+        inputFileInput.value = "";
+    }
+    else {
+        previewFile();
+        inputFileText.innerText = inputFileInput.files[0].name;
+        imageContainer.style.display = "flex";
+    }
+
 })
 
 closeImage.addEventListener("click", () => {
     imageContainer.style.display = "none";
     inputFileText.innerText = "Aucune image choisie";
+    inputFileInput.value = "";
 })

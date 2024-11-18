@@ -86,7 +86,7 @@ require("session.php");
                     </div>
 
                     <div class="img-debug">
-                        <img src="../image/chrome_5UwMpheWQ7.png" alt="debug-image">
+                        <img src="<?php echo $post["link_picture"] ?>" alt="debug-image">
                     </div>
                     
                     <div class="bottom">

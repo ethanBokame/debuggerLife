@@ -1,7 +1,7 @@
 <?php
+session_start();
 require("header.php");
 require("conn.php");
-require("session.php");
 ?>
 
 <body>

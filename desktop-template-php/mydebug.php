@@ -1,7 +1,8 @@
 <?php
+session_start();
 require("header.php");
 require("conn.php");
-require("session.php");
+require("classes/user.php");
 ?>
 
 <body>
@@ -122,7 +123,7 @@ require("session.php");
             
         </div>
         
-        <?php require("search.php")?>
+        <?php require("mini-profil.php")?>
         
     </div>
     

@@ -212,19 +212,58 @@ nav {
     .nav-menu {
         display: flex;
         align-items: center;
-        gap: 25px;
-        
-        .add-debug-nav {
-            height: 18px;
+        gap: 30px;
+
+        .search-box {
+            border: 1px solid #9198a1a6;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 5px;
             border-radius: 50px;
-            border: 1.5px solid white;
-            padding: 7px;
-            cursor: pointer;
+
+
             
-            &:hover {
-                background-color: #9198a133;
+
+            input {
+                width: 240px;
+                outline: none;
+                border: none;
+                caret-color: white;
+                background: none;
+                color: white;
+                font-size: 16px;
+
             }
-        }   
+            
+            img {
+                height: 24px;
+            }
+
+            .close {
+                height: 16px;
+                cursor: pointer;
+                margin-right: 5px;
+                visibility: hidden;
+            }
+
+            input[type="search"]::-webkit-search-cancel-button {
+                -webkit-appearance: none;
+                appearance: none;
+            }
+        }
+        
+        // .add-debug-nav {
+        //     height: 18px;
+        //     border-radius: 50px;
+        //     border: 1.5px solid white;
+        //     padding: 7px;
+        //     cursor: pointer;
+            
+        //     &:hover {
+        //         background-color: #9198a133;
+        //     }
+        // }   
         
         .notification-nav {
             border-radius: 50px;
@@ -258,6 +297,8 @@ nav {
                 color: white;
                 font-size: 11px;
             }
+
+            
             
         }
         
@@ -274,7 +315,7 @@ nav {
     display: flex;
     overflow: hidden;
 
-    .tab, .page, .search {
+    .tab, .page, .mini-profil {
         height: 100%; /* Prend toute la hauteur de .content */
         overflow: auto; /* Permet le défilement dans chaque section */
     }
@@ -545,82 +586,130 @@ nav {
             /* Chrome, Safari, Edge */
         }
 
-    .search {
-        width: 350px;
-        padding: 10px 20px;
-        border-left: 1px solid #9198a1a6;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-
-        .trend {
-            color: white;
-            border: 1px solid #9198a1a6;
-            border-radius: 25px;
-            overflow: hidden;
+        .mini-profil {
+            width: 350px;
+            border-left: 1px solid #9198a1a6;
             display: flex;
             flex-direction: column;
+            align-items: baseline;
 
-            h3 {
-                padding: 5px 0;
-                padding: 13px;
+            .banniere {
+                width: 100%;
+                height: 110px;
+                object-fit: cover;
+                background-color: #7a8ea884;
+                
             }
 
-            .suggestion {
-                padding: 13px;
-                cursor: pointer;
-
-                &:hover {
-                    background-color: #131922;
-                }
-                p {
-                    font-size: 13px;
-                    color: #9198a1a6;
-                }
-            }
-
-        }
-
-
-        .search-box {
-            border: 1px solid #9198a1a6;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            padding: 7px;
-            border-radius: 50px;
-
-
-            
-
-            input {
-                width: 230px;
-                outline: none;
-                border: none;
-                caret-color: white;
-                background: none;
+            .username {
                 color: white;
-                font-size: 16px;
+                font-weight: 550;
+                font-size: 26px;
+                padding-left: 10px;
+                margin-top: -47px;
+                
+            }
+
+            .rank {
+                color: white;
+                font-weight: 550; 
+                padding-left: 10px;
+            }
+
+            .progress {
+                padding-left: 10px;
+                margin-bottom: 23px;
+                font-size: 14px;
+                margin-top: 3px;
+                color: #B0BEC5;
+
+                span {
+                    color: #edb200;
+                }
+            }
+
+            .mini-profil-pic-container {
+                background-color:#0d1117; 
+                height: 95px;
+                width: 95px;
+                border-radius: 50px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+                top: -50px;
+                left: 10px;
+
+                .mini-profil-pic {
+                    height: 80px;
+                    border-radius: 50px;
+                    cursor: pointer;
+                }
 
             }
             
-            img {
-                height: 24px;
+
+            .stats-container {
+                display: flex;
+                flex-direction: column;
+                margin: 0 auto;
+                gap: 30px;
+
+                .stat-block {
+                    display: flex;
+                    gap: 40px;
+                }
+
+                .stat {
+                    display: flex;
+                    // align-items: center;
+                    gap: 5px;
+                    
+                    img {
+                        height: 22px;
+                    }
+
+
+
+                    div {
+                        display: flex;
+                        gap: 4px;
+
+                        p:nth-of-type(1) {
+                            color: white;
+                            font-weight: 600;
+                            font-size: 17px;
+                        }
+    
+                        p:nth-of-type(2) {
+                            color: #9198a1;
+                            font-size: 14px;
+                            margin-top: auto;
+                            margin-bottom: 1px;
+                        }
+                    }
+                }
+
+                .dl-age {
+                    margin-left: 5px;
+                }
             }
 
-            .close {
-                height: 16px;
-                cursor: pointer;
-                margin-right: 5px;
-                visibility: hidden;
+            .link-container {
+                width: 100%;
+                text-align: center;
+                margin-top: auto;
+                border-top: 1px solid #9198a1a6;
             }
 
-            input[type="search"]::-webkit-search-cancel-button {
-                -webkit-appearance: none;
-                appearance: none;
+            a {
+                display: flex;
+                justify-content: center;
+                padding: 10px 0;
+                text-decoration: none;
+                color: #9198a1;
             }
         }
-    }
 
 }
 

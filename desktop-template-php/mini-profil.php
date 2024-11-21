@@ -10,7 +10,7 @@
     
     <p class="username"> <?php echo $_SESSION["username"]?> </p>
     
-    <i class="rank"> Rang : Résolveur 🛠️ </i>
+    <i class="rank"> Rang : <?php echo $user->rank() ?> </i>
     
     <i class="progress"> (Prochain rang dans <span>5 Debugs !</span>) </i>
     

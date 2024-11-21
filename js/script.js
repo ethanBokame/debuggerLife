@@ -37,6 +37,37 @@ tippy(".bottom .share-btn", {
     theme: 'custom',
 });
 
+tippy(".stat-db", {
+    content: "Nombre total de Debugs",
+    placement: 'bottom',
+    theme: 'custom',
+});
+
+tippy(".stat-like", {
+    content: "Nombre total de j'aime",
+    placement: 'bottom',
+    theme: 'custom',
+});
+
+tippy(".stat-fav", {
+    content: "Nombre total de favoris",
+    placement: 'bottom',
+    theme: 'custom',
+});
+
+tippy(".stat-age", {
+    content: "Nombre de jours depuis que vous nous avez rejoins",
+    placement: 'bottom',
+    theme: 'custom',
+});
+
+tippy(".mini-profil .rank", {
+    content: "Votre rang change en fonction du nombre de vos Debugs",
+    placement: 'bottom',
+    theme: 'custom',
+});
+
+
 // Search box
 let search = document.querySelector('#search'),
     closeBtn = document.querySelector('.close'),
@@ -507,18 +538,21 @@ let inputTitle = document.querySelector('.title-form-add'),
         }
     }
 
-inputTitle.addEventListener("input", function () {
-    displayError(this, 150, 0);
-    errorMessage[0].style.display = "none";
-})
+if (inputTitle) {
+    inputTitle.addEventListener("input", function () {
+        displayError(this, 150, 0);
+        errorMessage[0].style.display = "none";
+    })
+    
+    inputDescription.addEventListener("input", function () {
+        displayError(this, 450, 1);
+    })
+    
+    inputUrl.addEventListener("input", function () {
+        errorMessage[1].style.display = "none";
+    })
+}
 
-inputDescription.addEventListener("input", function () {
-    displayError(this, 450, 1);
-})
-
-inputUrl.addEventListener("input", function () {
-    errorMessage[1].style.display = "none";
-})
 
 // Image
 let inputFileContainer = document.querySelector(".file-input"),
@@ -528,9 +562,12 @@ let inputFileContainer = document.querySelector(".file-input"),
     imageContainer = document.querySelector(".image-preview-container"),
     closeImage = document.querySelectorAll(".image-preview-container img")[1];
 
-inputFileText.addEventListener("click", () => {
-    inputFileInput.click();
-})
+if (inputFileText) {
+    inputFileText.addEventListener("click", () => {
+        inputFileInput.click();
+    })
+}
+
 
 function previewFile() {
     const reader = new FileReader();
@@ -549,26 +586,45 @@ function previewFile() {
     }
 }
 
-inputFileInput.addEventListener("change", () => {
+if (inputFileInput) {
+    inputFileInput.addEventListener("change", () => {
 
-    // Vérification de la taille de l'image
-    let inputSize = (inputFileInput.files[0].size / (1024 * 1024)).toFixed(1)
-    console.log(inputSize);
-
-    if (inputSize > 5) {
-        alert("La taille de l'image est trop grande (maximum 10 Mo)");
+        // Vérification de la taille de l'image
+        let inputSize = (inputFileInput.files[0].size / (1024 * 1024)).toFixed(1)
+        console.log(inputSize);
+    
+        if (inputSize > 5) {
+            alert("La taille de l'image est trop grande (maximum 10 Mo)");
+            inputFileInput.value = "";
+        }
+        else {
+            previewFile();
+            inputFileText.innerText = inputFileInput.files[0].name;
+            imageContainer.style.display = "flex";
+        }
+    
+    })
+    
+    closeImage.addEventListener("click", () => {
+        imageContainer.style.display = "none";
+        inputFileText.innerText = "Aucune image choisie";
         inputFileInput.value = "";
-    }
-    else {
-        previewFile();
-        inputFileText.innerText = inputFileInput.files[0].name;
-        imageContainer.style.display = "flex";
-    }
+    })
+}
 
+
+
+// Banner
+let setBannerContainer = document.querySelector('.set-banner-container'),
+    bannerFile = document.querySelector('.form-set-banner input[type="file"]'),
+    bannerSub = document.querySelector('.form-set-banner input[type="submit"]');
+
+console.dir(bannerFile);
+
+setBannerContainer.addEventListener("click", () => {
+    bannerFile.click();
 })
 
-closeImage.addEventListener("click", () => {
-    imageContainer.style.display = "none";
-    inputFileText.innerText = "Aucune image choisie";
-    inputFileInput.value = "";
+bannerFile.addEventListener("change", () => {
+    bannerSub.click();
 })

@@ -12,5 +12,6 @@
     $_SESSION["profile_pic"] = $user["profile_pic"];
     $_SESSION["id_user"] = $user["id_user"];
     $_SESSION["signup_date"] = $user["signup_date"];
+    $_SESSION["banner"] = $user["banner"];
     
 ?>

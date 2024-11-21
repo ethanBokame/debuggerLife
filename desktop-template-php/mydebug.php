@@ -1,8 +1,9 @@
 <?php
-session_start();
+require("session.php");
 require("header.php");
 require("conn.php");
-require("classes/user.php");
+require_once("classes/user.php");
+require("fonctions.php");
 ?>
 
 <body>

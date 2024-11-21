@@ -601,6 +601,28 @@ nav {
                 
             }
 
+            .form-set-banner {
+                display: none;
+            }
+
+            .set-banner-container {
+                padding: 7px 10px;
+                cursor: pointer;
+                border-radius: 50px;
+                position: absolute;
+                right: 4px;
+                margin-top: 3px;
+    
+                &:hover {
+                    background-color: #9198a14a;
+                }
+
+                .set-banner {
+                    margin-top: 3px;
+                    height: 20px;
+                }
+            }
+
             .username {
                 color: white;
                 font-weight: 550;
@@ -651,18 +673,18 @@ nav {
 
             .stats-container {
                 display: flex;
-                flex-direction: column;
                 margin: 0 auto;
-                gap: 30px;
+                gap: 35px;
 
                 .stat-block {
                     display: flex;
+                    flex-direction: column;
                     gap: 40px;
                 }
 
                 .stat {
                     display: flex;
-                    // align-items: center;
+                    cursor: pointer;
                     gap: 5px;
                     
                     img {
@@ -689,10 +711,7 @@ nav {
                         }
                     }
                 }
-
-                .dl-age {
-                    margin-left: 5px;
-                }
+                
             }
 
             .link-container {

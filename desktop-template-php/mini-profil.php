@@ -12,7 +12,7 @@
     
     <i class="rank"> Rang : <?php echo $user->rank() ?> </i>
     
-    <i class="progress"> (Prochain rang dans <span>5 Debugs !</span>) </i>
+    <i class="progress"> (Prochain rang dans <span> <?php echo $user->progressRank() ?> Debugs !</span>) </i>
     
     <div class="stats-container">
         

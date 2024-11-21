@@ -49,19 +49,51 @@ class User
     }
 
     public function rank() {
-        $sql = $this->conn->prepare("SELECT COUNT(*) FROM post WHERE id_user= :id_user");
-        $sql->execute(['id_user' => $_SESSION["id_user"]]);
-        $nbDebug = $sql->fetchColumn();
+        $nbDebug = $this->nbDebug();
 
-        $rank = ($nbDebug >= 0 && $nbDebug <= 4) ? "Novice 🌱" : "";
-        $rank = ($nbDebug >= 5 && $nbDebug <= 9) ? "Débrouillard 🔧" : "";
-        $rank = ($nbDebug >= 10 && $nbDebug <= 19) ? "Résolveur 🛠️" : "";
-        $rank = ($nbDebug >= 20 && $nbDebug <= 49) ? "Contributeur Actif 🚀" : "";
-        $rank = ($nbDebug >= 50 && $nbDebug <= 99) ? "Expert Debugger 🔍" : "";
-        $rank = ($nbDebug >= 100 && $nbDebug <= 199) ? "Maître du Debug 🧙‍♂️ 🔍" : "";
-        $rank = ($nbDebug >= 200) ? "Légende 🌟" : "";
-
+        if ($nbDebug >= 0 && $nbDebug <= 4) {
+            $rank = "Novice 🌱";
+        } elseif ($nbDebug >= 5 && $nbDebug <= 9) {
+            $rank = "Débrouillard 🔧";
+        } elseif ($nbDebug >= 10 && $nbDebug <= 19) {
+            $rank = "Résolveur 🛠️";
+        } elseif ($nbDebug >= 20 && $nbDebug <= 49) {
+            $rank = "Contributeur Actif 🚀";
+        } elseif ($nbDebug >= 50 && $nbDebug <= 99) {
+            $rank = "Expert Debugger 🔍";
+        } elseif ($nbDebug >= 100 && $nbDebug <= 199) {
+            $rank = "Maître du Debug 🧙‍♂️ 🔍";
+        } elseif ($nbDebug >= 200) {
+            $rank = "Légende 🌟";
+        }
+        
         return $rank;
     }
+
+    
+    public function progressRank() {
+        $rank = $this->rank();
+        $nbDebug = $this->nbDebug();
+        
+        if ($rank == "Novice 🌱") {
+            $progressRank = 4 - $nbDebug; // Progrès pour atteindre le rang suivant
+        } elseif ($rank == "Débrouillard 🔧") {
+            $progressRank = 9 - $nbDebug;
+        } elseif ($rank == "Résolveur 🛠️") {
+            $progressRank = 19 - $nbDebug;
+        } elseif ($rank == "Contributeur Actif 🚀") {
+            $progressRank = 49 - $nbDebug;
+        } elseif ($rank == "Expert Debugger 🔍") {
+            $progressRank = 99 - $nbDebug;
+        } elseif ($rank == "Maître du Debug 🧙‍♂️ 🔍") {
+            $progressRank = 199 - $nbDebug;
+        } elseif ($rank == "Légende 🌟") {
+            $progressRank = 0; // Plus de progression possible
+        }
+    
+        return $progressRank;
+    }
+
+
     
 }

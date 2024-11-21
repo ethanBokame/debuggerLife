@@ -21,32 +21,32 @@
             <div class="stat">
                 <img src="../image/feather-pen.png" alt="">
                 <div>
-                    <p> <?php echo $user->nbDebug() ?> </p> <p>Debugs</p>
+                    <p> <?php echo number_format_short($user->nbDebug()) ?> </p> <p>Debugs</p>
                 </div>
             </div>
             
             <div class="stat">
                 <img src="../image/heart-regular-240-white.png" alt="">
                 <div>
-                    <p>5</p> <p>J'aime</p>
+                <p> <?php echo number_format_short($user->nbLike()) ?> </p> <p>J'aime</p>
                 </div>
             </div>
             
         </div>
-
+        
         <div class="stat-block">
             
             <div class="stat">
                 <img src="../image/bookmark-regular-240-white.png" alt="">
                 <div>
-                    <p>7</p> <p>Favoris</p>
+                <p> <?php echo number_format_short($user->nbFav()) ?> </p> <p>Favoris</p>
                 </div>
             </div>
             
             <div class="stat dl-age">
                 <img src="../image/epee.png" alt="">
                 <div>
-                    <p>12 j</p> <p>Debugger age</p>
+                <p> <?php echo number_format_short($user->age()) ?> </p> <p>Debugger age</p>
                 </div>
             </div>
             

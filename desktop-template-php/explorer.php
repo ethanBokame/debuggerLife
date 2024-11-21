@@ -3,6 +3,7 @@ session_start();
 require("header.php");
 require("conn.php");
 require("classes/user.php");
+require("fonctions.php");
 ?>
 
 <body>
@@ -21,10 +22,10 @@ require("classes/user.php");
 
             <!--AFFICHAGE DES DEBUGS-->
             <?php
-            $sql = $conn->prepare("SELECT user.id_user, user.profile_pic, user.username, post.post_date, post.title, post.fav_number, post.like_number, post.status_post, post.link_ressource, post.description 
-            FROM user 
-            JOIN post ON user.id_user=post.id_user
-            WHERE user.id_user!=:id_user AND post.status_post!='private'");
+            $sql = $conn->prepare("SELECT users.id_user, users.profile_pic, users.username, post.post_date, post.title, post.fav_number, post.like_number, post.status_post, post.link_ressource, post.description 
+            FROM users 
+            JOIN post ON users.id_user=post.id_user
+            WHERE users.id_user!=:id_user AND post.status_post!='private'");
             $sql->bindValue(':id_user', $_SESSION['id_user'], PDO::PARAM_INT);
             $sql->execute();
             $row = $sql->fetchAll(PDO::FETCH_ASSOC);

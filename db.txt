@@ -1,5 +1,5 @@
 // Création de tables
-CREATE TABLE user (
+CREATE TABLE users (
     id_user INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     username VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL UNIQUE,
@@ -12,7 +12,7 @@ CREATE TABLE user (
 );
 
 //Insertion de données
-INSERT INTO user (username, email, password, profile_pic, status, role, last_login) VALUES
+INSERT INTO users (username, email, password, profile_pic, status, role, last_login) VALUES
     ('PhoenixRider', 'phoenix@example.com', '$2y$10$abcdefghijklmnopqrstuvwx12345678901234', 'plume.png', 'active', 'member', '2024-11-01 08:30:00'),
     ('MysticOwl', 'mysticowl@example.com', '$2y$10$abcdefghijklmnopqrstuvwx56789012345678', 'plume (1).png', 'active', 'member', '2024-11-03 14:12:00'),
     ('StarGazer88', 'stargazer88@example.com', '$2y$10$abcdefghijklmnopqrstuvwx78901234567890', 'plume (2).png', 'suspended', 'member', NULL),
@@ -33,17 +33,18 @@ CREATE TABLE post (
     fav_number INT DEFAULT 0,
     like_number INT DEFAULT 0,
     status_post ENUM('private', 'public'),
+    link_picture VARCHAR(350),
     post_date DATETIME DEFAULT CURRENT_TIMESTAMP,
     id_user INT,
-    FOREIGN KEY (id_user) REFERENCES user(id_user) ON DELETE CASCADE
+    FOREIGN KEY (id_user) REFERENCES users(id_user) ON DELETE CASCADE
 );
 
 INSERT INTO post (title, description, link_ressource, status_post, id_user) VALUES
-    ("Changement de compte github", "Liste de logiciels et de plugins pour le developpement web", "https://www.reddit.com/r/learnprogramming/comments/h10ooq/tools_i_wish_i_had_known_about_when_i_started/", "public", 1),
-    ("Outils pour le developpement web", "J'ai changé de compte github mais mes push étaient toujours liés a mon ancien compte", "https://www.reddit.com/r/learnprogramming/comments/h10ooq/tools_i_wish_i_had_known_about_when_i_started/", "public", 1),
-    ("Politique d'exécution powershell", "Erreur au niveau de l'exécution de npm sur windows", "https://stackoverflow.com/questions/4037939/powershell-says-execution-of-scripts-is-disabled-on-this-system", "private", 1),
-    ("Overleaf", "Outils pour la réalisation de cv", "https://stackoverflow.com/questions/13108093/ajax-call-to-php-script-not-working", "private", 1),
-    ("Infobulle javascript", "librairie javascript pour créer des infobulles et bien d'autres choses", "https://atomiks.github.io/tippyjs/", "private", 1);
+    ("Changement de compte github", "Liste de logiciels et de plugins pour le developpement web", "https://www.reddit.com/r/learnprogramming/comments/h10ooq/tools_i_wish_i_had_known_about_when_i_started/", "public", 2),
+    ("Outils pour le developpement web", "J'ai changé de compte github mais mes push étaient toujours liés a mon ancien compte", "https://www.reddit.com/r/learnprogramming/comments/h10ooq/tools_i_wish_i_had_known_about_when_i_started/", "public", 3),
+    ("Politique d'exécution powershell", "Erreur au niveau de l'exécution de npm sur windows", "https://stackoverflow.com/questions/4037939/powershell-says-execution-of-scripts-is-disabled-on-this-system", "private", 6),
+    ("Overleaf", "Outils pour la réalisation de cv", "https://stackoverflow.com/questions/13108093/ajax-call-to-php-script-not-working", "private", 4),
+    ("Infobulle javascript", "librairie javascript pour créer des infobulles et bien d'autres choses", "https://atomiks.github.io/tippyjs/", "private", 3);
 
 INSERT INTO post (title, description, link_ressource, status_post, id_user) VALUES
     ("Infobulle javascript", "librairie javascript pour créer  à des infobulles et bien d'autres choses", "https://atomiks.github.io/tippyjs/", "private", 1);
@@ -68,13 +69,13 @@ CREATE TABLE favoris (
     id_user INT NOT NULL,
     id_post INT NOT NULL,
     PRIMARY KEY (id_user, id_post),
-    FOREIGN KEY (id_user) REFERENCES post(id_user) ON DELETE CASCADE,
+    FOREIGN KEY (id_user) REFERENCES users(id_user) ON DELETE CASCADE,
     FOREIGN KEY (id_post) REFERENCES post(id_post) ON DELETE CASCADE
 );
 
 
 INSERT INTO favoris (id_user, id_post) VALUES 
-    (2, 24);
+    (1, 5);
 
 
 SELECT user.profile_pic, user.username, post.post_date, post.title, post.fav_number, post.like_number, post.status_post, post.link_ressource, post.description FROM user JOIN post JOIN favoris ON user.id_user=favoris.id_user AND favoris.id_post=post.id_post;

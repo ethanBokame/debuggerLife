@@ -73,6 +73,8 @@ tippy(".set-banner-container", {
     theme: 'custom',
 });
 
+let notMyDebug = document.querySelectorAll('.notmydebug'),
+    myDebug = document.querySelectorAll('.mydebug');
 
 // Search box
 let search = document.querySelector('#search'),
@@ -486,20 +488,23 @@ let likePost = document.querySelectorAll(".notmydebug .count-like"),
     favPostImg = document.querySelectorAll(".notmydebug .count-fav img"),
     favPostNumber = document.querySelectorAll(".notmydebug .count-fav p");
 
-function postBtn(btn, btnImg, btnImgOldColor, btnImgNewColor, color, count) {
+function postBtn(btn, btnImg, btnImgOldColor, btnImgNewColor, color, count, index_post) {
     btn.style.transition = "0.2s";
     btn.style.transform = "scale(1.2)";
+    let id_post = notMyDebug[index_post].getAttribute("id-post");
 
     if (!btn.style.color) {
         btn.style.color = color;
         btnImg.setAttribute("src", btnImgNewColor);
         let number = parseInt(count.innerText);
         count.innerText = number + 1;
+        fetch("http://localhost/debugger_life/desktop-template-php/like.php?id_post=" + id_post + "&step=1");
     } else {
         btn.style.color = "";
         btnImg.setAttribute("src", btnImgOldColor);
         let number = parseInt(count.innerText);
         count.innerText = number - 1;
+        fetch("http://localhost/debugger_life/desktop-template-php/like.php?id_post=" + id_post + "&step=-1");
     }
 
     setTimeout(() => {
@@ -511,14 +516,14 @@ function postBtn(btn, btnImg, btnImgOldColor, btnImgNewColor, color, count) {
 for (let i = 0; i < likePost.length; i++) {
     
     likePost[i].addEventListener("click", () => {
-        postBtn(likePost[i], likePostImg[i], "../image/heart-regular-240-white.png", "../image/heart-solid-240-pink.png", "#f91880", likePostNumber[i]);
+        postBtn(likePost[i], likePostImg[i], "../image/heart-regular-240-white.png", "../image/heart-solid-240-pink.png", "#f91880", likePostNumber[i], i);
     })
 }
 
 for (let i = 0; i < favPost.length; i++) {
     
     favPost[i].addEventListener("click", () => {
-        postBtn(favPost[i], favPostImg[i], "../image/bookmark-regular-240-white.png", "../image/bookmark-solid-240-or.png", "#FFC107", favPostNumber[i]);
+        postBtn(favPost[i], favPostImg[i], "../image/bookmark-regular-240-white.png", "../image/bookmark-solid-240-or.png", "#FFC107", favPostNumber[i], i);
     })
 }
 
@@ -625,8 +630,6 @@ let setBannerContainer = document.querySelector('.set-banner-container'),
     bannerFile = document.querySelector('.form-set-banner input[type="file"]'),
     bannerSub = document.querySelector('.form-set-banner input[type="submit"]');
 
-console.dir(bannerFile);
-
 setBannerContainer.addEventListener("click", () => {
     bannerFile.click();
 })
@@ -634,3 +637,5 @@ setBannerContainer.addEventListener("click", () => {
 bannerFile.addEventListener("change", () => {
     bannerSub.click();
 })
+
+// Interaction notmydebug

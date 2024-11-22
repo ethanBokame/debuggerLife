@@ -22,21 +22,33 @@ require("fonctions.php");
 
             <!--AFFICHAGE DES DEBUGS-->
             <?php
-            $sql = $conn->prepare("SELECT users.id_user, users.profile_pic, users.username, post.post_date, post.title, post.fav_number, post.like_number, post.status_post, post.link_ressource, post.description 
-            FROM users 
-            JOIN post 
-            ON users.id_user=post.id_user
-            WHERE users.id_user!=:id_user AND post.status_post!='private'
-            ORDER BY post.post_date DESC
+            // Chargement des debugs
+            $sql = $conn->prepare("SELECT u.id_user, u.profile_pic, u.username, p.id_post, p.post_date, p.title, p.fav_number, p.like_number, p.status_post, p.link_ressource, p.description 
+            FROM users u 
+            JOIN post p 
+            ON u.id_user=p.id_user
+            WHERE u.id_user!=:id_user AND p.status_post!='private'
+            ORDER BY p.post_date DESC
             ");
-            $sql->bindValue(':id_user', $_SESSION['id_user'], PDO::PARAM_INT);
+            $sql->bindValue(':id_user', $_SESSION["id_user"], PDO::PARAM_INT);
             $sql->execute();
             $row = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+            // Tableau contenant les identifiants des debugs liké par l'utilisateur
+            $sql = $conn->prepare("SELECT l.id_post
+            FROM users u
+            JOIN post p ON u.id_user = p.id_user
+            JOIN likes l ON l.id_post = p.id_post 
+            WHERE l.id_user = :id_user
+            ");
+            $sql->bindParam(':id_user', $_SESSION['id_user'], PDO::PARAM_INT);
+            $sql->execute();
+            $likes_debug_array = $sql->fetchAll(PDO::FETCH_COLUMN);
 
             foreach ($row as $post) {
 
             ?>
-                <div class="notmydebug">
+                <div class="notmydebug" id-post="<?php echo $post["id_post"] ?>">
 
                     <div class="top">
 
@@ -88,8 +100,8 @@ require("fonctions.php");
                     </div>
 
                     <div class="bottom">
-                        <div class="count-like">
-                            <img src="../image/heart-regular-240-white.png" alt="like">
+                        <div class="count-like" <?php echo(in_array($post["id_post"], $likes_debug_array)) ? 'style="color: rgb(249, 24, 128)"' : "" ?>>
+                            <img src="<?php echo(in_array($post["id_post"], $likes_debug_array)) ? "../image/heart-solid-240-pink.png" : "../image/heart-regular-240-white.png" ?>" alt="like">
                             <p>
                                 <?php echo $post["like_number"] ?>
                             </p>

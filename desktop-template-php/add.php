@@ -45,7 +45,7 @@ require("conn.php");
         $description = strip_tags($_POST['description']);
         $link_ressource = (filter_var($_POST['link_ressource'], FILTER_SANITIZE_URL));
         $status_post = empty($_POST['status_post']) ? null : $_POST['status_post'];
-        $id_user = $_SESSION['id_user'];
+        $id_user = $user['id_user'];
         $link_picture = empty($_FILES["link_picture"]["name"]) ? null : "../image/debug_picture/" . time() . "_" . $_FILES["link_picture"]["name"];
 
         // Vérification des champs

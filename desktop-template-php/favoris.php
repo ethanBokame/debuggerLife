@@ -22,12 +22,12 @@ require("fonctions.php");
             
             <!--AFFICHAGE DES DEBUGS-->
             <?php
-            $sql = $conn->prepare("SELECT users.id_user, users.profile_pic, users.username, post.id_post, post.post_date, post.title, post.fav_number, post.like_number, post.status_post, post.link_ressource, post.description 
-            FROM users
-            JOIN post ON users.id_user = post.id_user
-            JOIN favoris ON favoris.id_post = post.id_post 
-            WHERE favoris.id_user = :id_user
-            ORDER BY favoris.fav_date DESC
+            $sql = $conn->prepare("SELECT u.id_user, u.profile_pic, u.username, p.id_post, p.post_date, p.title, p.fav_number, p.like_number, p.status_post, p.link_ressource, p.description 
+            FROM users u
+            JOIN post p ON u.id_user = p.id_user
+            JOIN favoris f ON f.id_post = p.id_post 
+            WHERE f.id_user = :id_user
+            ORDER BY f.fav_date DESC
             ");
             $sql->bindParam(':id_user', $_SESSION['id_user'], PDO::PARAM_INT);
             $sql->execute();

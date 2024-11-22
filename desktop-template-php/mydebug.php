@@ -28,7 +28,7 @@ require("fonctions.php");
                 WHERE id_user=:id_user
                 ORDER BY post_date DESC
                 ");
-            $sql->bindValue(':id_user', $_SESSION['id_user'], PDO::PARAM_INT);
+            $sql->bindValue(':id_user', $_SESSION["id_user"], PDO::PARAM_INT);
             $sql->execute();
             $row = $sql->fetchAll(PDO::FETCH_ASSOC);
             
@@ -42,10 +42,10 @@ require("fonctions.php");
                         <div class="pic-name-post-date">
                             
                             <div class="img-container">
-                                <img src="<?php echo "../image/profil_pic_user/" . $_SESSION["profile_pic"]?>">
+                                <img src="<?php echo "../image/profil_pic_user/" . $user["profile_pic"]?>">
                             </div>
                             
-                            <a href=""><?php echo $_SESSION["username"]?></a>
+                            <a href=""><?php echo $user["username"]?></a>
                             <p>•</p>
                             <p> <?php echo shortTimePost($post["post_date"]) ?> </p>
                             

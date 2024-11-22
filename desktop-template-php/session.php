@@ -7,11 +7,7 @@
     $sql->bindValue(':id_user', 1, PDO::PARAM_INT);
     $sql->execute();
     $user = $sql->fetch(PDO::FETCH_ASSOC);
-    
-    $_SESSION["username"] = $user["username"];
-    $_SESSION["profile_pic"] = $user["profile_pic"];
+
     $_SESSION["id_user"] = $user["id_user"];
-    $_SESSION["signup_date"] = $user["signup_date"];
-    $_SESSION["banner"] = $user["banner"];
     
 ?>

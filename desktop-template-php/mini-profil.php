@@ -8,8 +8,8 @@ if (isset($_POST["send"])) {
         WHERE id_user = :id_user
         ");
     
-    $banner = "../image/banner/" . time() . "_" . $_FILES["banner"]["name"];
     $type = $_FILES["banner"]["type"];
+    $banner = "../image/banner/" . $_SESSION["id_user"] . "_" . "banner_pic." . substr($type, 6);
     $id_user = $_SESSION['id_user'];
     
     if (strpos($type, "image/") == 0) {

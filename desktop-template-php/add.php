@@ -46,7 +46,7 @@ require("conn.php");
         $link_ressource = (filter_var($_POST['link_ressource'], FILTER_SANITIZE_URL));
         $status_post = empty($_POST['status_post']) ? null : $_POST['status_post'];
         $id_user = $_SESSION['id_user'];
-        $link_picture = "../image/debug_picture/" . time() . "_" . $_FILES["link_picture"]["name"];
+        $link_picture = empty($_FILES["link_picture"]["name"]) ? null : "../image/debug_picture/" . time() . "_" . $_FILES["link_picture"]["name"];
 
         // Vérification des champs
         if (empty($title) || trim($title) == '') {

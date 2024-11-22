@@ -26,7 +26,9 @@ require("fonctions.php");
             FROM users
             JOIN post ON users.id_user = post.id_user
             JOIN favoris ON favoris.id_post = post.id_post 
-            WHERE favoris.id_user = :id_user");
+            WHERE favoris.id_user = :id_user
+            ORDER BY favoris.fav_date DESC
+            ");
             $sql->bindParam(':id_user', $_SESSION['id_user'], PDO::PARAM_INT);
             $sql->execute();
             $row = $sql->fetchAll(PDO::FETCH_ASSOC);
@@ -46,7 +48,7 @@ require("fonctions.php");
                             
                             <a href=""><?php echo $post["username"] ?></a>
                             <p>•</p>
-                            <p>1h</p>
+                            <p> <?php echo shortTimePost($post["post_date"]) ?> </p>
                             
                         </div>
                         

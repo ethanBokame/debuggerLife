@@ -22,7 +22,12 @@ require("fonctions.php");
             
             <!--AFFICHAGE DES DEBUGS-->
             <?php 
-            $sql = $conn->prepare("SELECT * FROM post WHERE id_user=:id_user");
+            $sql = $conn->prepare(
+                "SELECT * 
+                FROM post 
+                WHERE id_user=:id_user
+                ORDER BY post_date DESC
+                ");
             $sql->bindValue(':id_user', $_SESSION['id_user'], PDO::PARAM_INT);
             $sql->execute();
             $row = $sql->fetchAll(PDO::FETCH_ASSOC);
@@ -42,7 +47,7 @@ require("fonctions.php");
                             
                             <a href=""><?php echo $_SESSION["username"]?></a>
                             <p>•</p>
-                            <p>1h</p>
+                            <p> <?php echo shortTimePost($post["post_date"]) ?> </p>
                             
                         </div>
                         
@@ -78,11 +83,11 @@ require("fonctions.php");
                         
                     </div>
                     
-                    <p class="title">
+                    <p class="title" <?php echo(empty($post["description"])) ? 'style="margin: -8px 0 3px 0"' : ""?>>
                         <?php echo $post["title"] ?>
                     </p>
                     
-                    <div class="description">
+                    <div class="description" <?php echo(empty($post["description"])) ? 'style="margin: -11px"' : ""?> >
                         <p>
                             <?php echo $post["description"] ?>
                         </p>
@@ -92,7 +97,7 @@ require("fonctions.php");
                         <a href="<?php echo $post["link_ressource"] ?>" target="_blank"><?php echo $post["link_ressource"] ?></a>
                     </div>
 
-                    <div class="img-debug">
+                    <div class="img-debug" <?php echo(empty($post["link_picture"])) ? 'style="display:none"' : "" ?>>
                         <img src="<?php echo $post["link_picture"] ?>" alt="debug-image">
                     </div>
                     

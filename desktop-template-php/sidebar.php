@@ -31,7 +31,7 @@
     <hr>
 
     <div class="group">
-        <a class="favoris" href="add.php" <?php echo(basename($_SERVER["PHP_SELF"])) == "add.php" ? 'style="background-color: #9198a184;"' : "" ?>>
+        <a class="favoris" href="add.php" <?php echo(basename($_SERVER["PHP_SELF"])) == "discover.php" ? 'style="background-color: #9198a184;"' : "" ?>>
             <img src="../image/multiple-users-silhouette.png" alt="save">
             <p>Découvrir des profils</p>
         </a>

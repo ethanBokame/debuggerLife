@@ -67,6 +67,12 @@ tippy(".mini-profil .rank", {
     theme: 'custom',
 });
 
+tippy(".set-banner-container", {
+    content: "Modifier la bannière",
+    placement: 'bottom',
+    theme: 'custom',
+});
+
 
 // Search box
 let search = document.querySelector('#search'),

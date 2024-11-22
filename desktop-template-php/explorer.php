@@ -24,8 +24,11 @@ require("fonctions.php");
             <?php
             $sql = $conn->prepare("SELECT users.id_user, users.profile_pic, users.username, post.post_date, post.title, post.fav_number, post.like_number, post.status_post, post.link_ressource, post.description 
             FROM users 
-            JOIN post ON users.id_user=post.id_user
-            WHERE users.id_user!=:id_user AND post.status_post!='private'");
+            JOIN post 
+            ON users.id_user=post.id_user
+            WHERE users.id_user!=:id_user AND post.status_post!='private'
+            ORDER BY post.post_date DESC
+            ");
             $sql->bindValue(':id_user', $_SESSION['id_user'], PDO::PARAM_INT);
             $sql->execute();
             $row = $sql->fetchAll(PDO::FETCH_ASSOC);
@@ -45,7 +48,7 @@ require("fonctions.php");
 
                             <a href=""><?php echo $post["username"] ?></a>
                             <p>•</p>
-                            <p>1h</p>
+                            <p> <?php echo shortTimePost($post["post_date"]) ?> </p>
 
                         </div>
 
@@ -78,6 +81,10 @@ require("fonctions.php");
 
                     <div class="ressource">
                         <a href="<?php echo $post["link_ressource"] ?>" target="_blank"><?php echo $post["link_ressource"] ?></a>
+                    </div>
+
+                    <div class="img-debug" <?php echo(empty($post["link_picture"])) ? 'style="display:none"' : "" ?>>
+                        <img src="<?php echo $post["link_picture"] ?>" alt="debug-image">
                     </div>
 
                     <div class="bottom">

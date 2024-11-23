@@ -45,6 +45,17 @@ require("fonctions.php");
             $sql->execute();
             $likes_debug_array = $sql->fetchAll(PDO::FETCH_COLUMN);
 
+            // Tableau contenant les identifiants des debugs mis en favoris par l'utilisateur
+            $sql = $conn->prepare("SELECT f.id_post
+            FROM users u
+            JOIN post p ON u.id_user = p.id_user
+            JOIN favoris f ON f.id_post = p.id_post 
+            WHERE f.id_user = :id_user
+            ");
+            $sql->bindParam(':id_user', $_SESSION['id_user'], PDO::PARAM_INT);
+            $sql->execute();
+            $fav_debug_array = $sql->fetchAll(PDO::FETCH_COLUMN);
+
             foreach ($row as $post) {
 
             ?>
@@ -106,8 +117,9 @@ require("fonctions.php");
                                 <?php echo $post["like_number"] ?>
                             </p>
                         </div>
-                        <div class="count-fav">
-                            <img src="../image/bookmark-regular-240-white.png" alt="fav">
+                        
+                        <div class="count-fav" <?php echo(in_array($post["id_post"], $fav_debug_array)) ? 'style="color: rgb(255, 193, 7)"' : "" ?>>
+                            <img src="<?php echo(in_array($post["id_post"], $fav_debug_array)) ? "../image/bookmark-solid-240-or.png" : "../image/bookmark-regular-240-white.png" ?>" alt="fav">
                             <p>
                                 <?php echo $post["fav_number"] ?>
                             </p>

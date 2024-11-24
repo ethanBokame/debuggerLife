@@ -1,5 +1,20 @@
 <!--DANS LE CAS OU IL N'Y A PAS OU PLUS DE POSTS-->
-<div class="nopost">
-    <img src="../image/chercher.png" alt="search">
-    <h3>Vous n'avez pas de posts ni de favoris pour l'instant. Publiez quelque chose ou enregistrez le contenu qui vous paraît pertinent!</h3>
-</div>
+
+<?php 
+if (basename($_SERVER["PHP_SELF"]) == "favoris.php") {
+    ?>
+    <div class="nopost nofav">
+        <h1>Vous n'avez pas encore de favoris</h1>
+        <h3>Appuyez sur le drapeau d'un debug pour l'ajouter à vos favoris. Vous les retrouverez tous ici.</h3>
+    </div>
+    <?php
+}
+else if (basename($_SERVER["PHP_SELF"]) == "mydebug.php") {
+    ?>
+    <div class="nopost nodebug">
+        <h1>Aucun Debug pour l'instant</h1>
+        <h3>Publier un Debug, c'est garder une trace précieuse : une solution à un bug, un outil, un article ou le fruit de vos recherches. Ne perdez plus vos trouvailles !</h3>
+    </div>
+<?php
+}
+?>

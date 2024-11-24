@@ -33,13 +33,20 @@ body {
 
 .nopost {
     color: #9198a1;
-    text-align: center;
-    width: 100%;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0 auto;
+    align-items: center;
     display: none;
-    padding: 0 30px;
+    margin-top: 30px;
+    padding: 0 50px;
     
-    img {
-        height: 170px;
+    h1 {
+        margin-right: auto;
+    }
+
+    h3 {
+        color: #767b81;
     }
 }
 

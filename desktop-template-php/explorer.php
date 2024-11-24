@@ -142,8 +142,6 @@ require("fonctions.php");
             }
             ?>
             
-            <?php require("empty-page.php") ?>
-            
         </div>
         
         <?php require("mini-profil.php") ?>

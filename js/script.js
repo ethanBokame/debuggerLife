@@ -78,18 +78,6 @@ if (closeBtn) {
     })
 }
 
-
-// Ajout des suggestions a la recherche
-let suggestion = document.querySelectorAll('.suggestion'),
-    suggestionText = document.querySelectorAll('.suggestion h5');
-
-suggestion.forEach((item, i) => {
-    item.addEventListener("click", () => {
-        search.value = suggestionText[i].innerText;
-        closeBtn.style.visibility = "visible";
-    })
-});
-
 // Fixation du body
 function fixeBody() {  
     let scrollY = window.scrollY; // positionnement du body
@@ -248,9 +236,6 @@ for (let i = 0; i < option.length; i++) {
     
 }
 
-
-
-
 // Menu contextuel des debugs
 
 // Animation du bouton state
@@ -283,8 +268,7 @@ for (let i = 0; i < state.length; i++) {
 // Bouton delete
 let delBtn = document.querySelectorAll(".delete-btn"),
     mydebug = document.querySelectorAll(".mydebug"),
-    mydebugPage = document.querySelector(".page"),
-    nopost = document.querySelector(".nopost");
+    mydebugPage = document.querySelector(".page");
 
 for (let i = 0; i < delBtn.length; i++) {
     
@@ -435,18 +419,14 @@ cancelPopup.addEventListener("click", () => {
 
 })
 
+// Affichage d'un message un message lorsque certaines pages sont vides
+let nopost = document.querySelector(".nopost"),
+    nofav = document.querySelector(".nofav"),
+    nodebug = document.querySelector(".nodebug");
 
-// Bouton add
-let add = document.querySelector('.add');
-
-window.addEventListener("touchmove", () => {
-    add.style.transition = "0.2s"
-    add.style.opacity = "30%"
-})
-
-window.addEventListener("touchend", (e) => {
-    add.style.transition = "0.2s"
-    add.style.opacity = ""
+window.addEventListener("load", () => {
+    nofav && notMyDebug.length == 0 ? nofav.style.display = "flex" : "";
+    nodebug && myDebug.length == 0 ? nodebug.style.display = "flex" : "";
 })
 
 // Bouton like et favoris d'un debug autre que celui de l'utilisateur
@@ -482,6 +462,7 @@ function postBtn(btn, btnImg, btnImgOldColor, btnImgNewColor, color, count, inde
     }, 400);
 }
 
+// Bouton like
 for (let i = 0; i < likePost.length; i++) {
     
     likePost[i].addEventListener("click", () => {
@@ -489,10 +470,17 @@ for (let i = 0; i < likePost.length; i++) {
     })
 }
 
+// Bouton favoris
 for (let i = 0; i < favPost.length; i++) {
     
     favPost[i].addEventListener("click", () => {
         postBtn(favPost[i], favPostImg[i], "../image/bookmark-regular-240-white.png", "../image/bookmark-solid-240-or.png", "#FFC107", favPostNumber[i], i, "fav");
+
+        if (window.location.pathname.includes("favoris.php")) {
+            notMyDebug[i].remove();
+            let notMyDebugCount = document.querySelectorAll('.notmydebug');
+            nofav && notMyDebugCount.length == 0 ? nofav.style.display = "flex" : "";
+        }
     })
 }
 

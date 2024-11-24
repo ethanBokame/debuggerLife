@@ -1,77 +1,46 @@
 let body = document.querySelector('body');
 
 //Infobulles
-tippy(".add-debug-nav", {
-    content: "Ajouter un debug",
-    placement: 'bottom',
-    theme: 'custom',
+let classes_array = [
+    ".add-debug-nav",
+    ".notification-nav",
+    ".profil_pic",
+    ".bottom .copy-btn",
+    ".bottom .share-btn",
+    ".stat-db",
+    ".stat-like",
+    ".stat-fav",
+    ".stat-age",
+    ".mini-profil .rank",
+    ".set-banner-container",
+    ".count-like",
+    ".count-fav"
+];
+
+let contents_array = [
+    "Ajouter un debug",
+    "Notifications",
+    "Menu utilisateur",
+    "Copier",
+    "Partager",
+    "Nombre total de Debugs",
+    "Nombre total de j'aime",
+    "Nombre total de favoris",
+    "Nombre de jours depuis que vous nous avez rejoints",
+    "Votre rang change en fonction du nombre de vos Debugs",
+    "Modifier la bannière",
+    "Aimer",
+    "Favoris"
+];
+
+classes_array.forEach((selector, index) => {
+    tippy(selector, {
+        content: contents_array[index],
+        placement: 'bottom',
+        theme: 'custom',
+    });
 });
 
-tippy(".notification-nav", {
-    content: "Notifications",
-    placement: 'bottom',
-    theme: 'custom',
-});
-
-tippy(".profil_pic", {
-    content: "Menu utilisateur",
-    placement: 'bottom',
-    theme: 'custom',
-});
-
-tippy(".copy", {
-    content: "Copier",
-    placement: 'bottom',
-    theme: 'custom',
-});
-
-tippy(".bottom .copy-btn", {
-    content: "Copier",
-    placement: 'bottom',
-    theme: 'custom',
-});
-
-tippy(".bottom .share-btn", {
-    content: "Partager",
-    placement: 'bottom',
-    theme: 'custom',
-});
-
-tippy(".stat-db", {
-    content: "Nombre total de Debugs",
-    placement: 'bottom',
-    theme: 'custom',
-});
-
-tippy(".stat-like", {
-    content: "Nombre total de j'aime",
-    placement: 'bottom',
-    theme: 'custom',
-});
-
-tippy(".stat-fav", {
-    content: "Nombre total de favoris",
-    placement: 'bottom',
-    theme: 'custom',
-});
-
-tippy(".stat-age", {
-    content: "Nombre de jours depuis que vous nous avez rejoins",
-    placement: 'bottom',
-    theme: 'custom',
-});
-
-tippy(".mini-profil .rank", {
-    content: "Votre rang change en fonction du nombre de vos Debugs",
-    placement: 'bottom',
-    theme: 'custom',
-});
-
-tippy(".set-banner-container", {
-    content: "Modifier la bannière",
-    placement: 'bottom',
-    theme: 'custom',
-});
 
 let notMyDebug = document.querySelectorAll('.notmydebug'),
     myDebug = document.querySelectorAll('.mydebug');

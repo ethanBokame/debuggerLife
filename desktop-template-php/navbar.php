@@ -35,7 +35,7 @@
                 
             </div>
             
-            <img src="<?php echo "../image/profil_pic_user/" . $_SESSION["profile_pic"]?>" class="profil_pic">
+            <img src="<?php echo "../image/profil_pic_user/" . $user["profile_pic"]?>" class="profil_pic">
             
         </div>
         

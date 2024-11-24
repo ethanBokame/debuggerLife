@@ -119,25 +119,6 @@ let notif = document.querySelector(".notif"),
         notif.style.transform = "translatey(-100px)";
     }
 
-    // Verifie si les deux positions sont définies et enleve la notif
-    function notifTouch() {
-        if (positionTop != undefined && positionBottom != undefined && positionBottom < 220 && (positionBottom - positionTop) > 10) {
-            hideNotif()
-        }
-    }
-
-    // Notification pour mobile
-    window.addEventListener("touchstart", (e) => {
-        positionBottom = e.targetTouches[0].screenY;
-        // console.log(positionBottom);
-    });
-
-    window.addEventListener("touchend", (e) => {
-        positionTop = e.changedTouches[0].screenY;
-        notifTouch();
-        // console.log(positionTop);
-    });
-
 
 // Popup
 cancelPopup = document.querySelector(".popup img");
@@ -437,23 +418,49 @@ let likePost = document.querySelectorAll(".notmydebug .count-like"),
     favPostImg = document.querySelectorAll(".notmydebug .count-fav img"),
     favPostNumber = document.querySelectorAll(".notmydebug .count-fav p");
 
+// Fonction pour les boutons like et favoris
 function postBtn(btn, btnImg, btnImgOldColor, btnImgNewColor, color, count, index_post, action) {
     btn.style.transition = "0.2s";
     btn.style.transform = "scale(1.2)";
     let id_post = notMyDebug[index_post].getAttribute("id-post");
 
+    // ON
     if (!btn.style.color) {
+        
+        // changement du style
         btn.style.color = color;
         btnImg.setAttribute("src", btnImgNewColor);
         let number = parseInt(count.innerText);
         count.innerText = number + 1;
+        
+        // Requete http
         fetch("http://localhost/debugger_life/desktop-template-php/" + action + ".php?id_post=" + id_post + "&step=1");
+        
+        // Notification
+        if (action == "fav") {
+            showNotif("../image/fait.png", "Ajouté a vos favoris");
+            setTimeout(() => {
+                hideNotif();
+            }, 2000);
+        }
+        
+    // OFF
     } else {
+        
         btn.style.color = "";
         btnImg.setAttribute("src", btnImgOldColor);
         let number = parseInt(count.innerText);
         count.innerText = number - 1;
+        
         fetch("http://localhost/debugger_life/desktop-template-php/" + action + ".php?id_post=" + id_post + "&step=-1");
+        
+        if (action == "fav") {
+            showNotif("../image/fait.png", "Retiré de vos favoris");
+            setTimeout(() => {
+                hideNotif();
+            }, 2000);
+        }
+        
     }
 
     setTimeout(() => {
@@ -476,10 +483,16 @@ for (let i = 0; i < favPost.length; i++) {
     favPost[i].addEventListener("click", () => {
         postBtn(favPost[i], favPostImg[i], "../image/bookmark-regular-240-white.png", "../image/bookmark-solid-240-or.png", "#FFC107", favPostNumber[i], i, "fav");
 
+        // Retrait du debug des favoris
         if (window.location.pathname.includes("favoris.php")) {
             notMyDebug[i].remove();
             let notMyDebugCount = document.querySelectorAll('.notmydebug');
             nofav && notMyDebugCount.length == 0 ? nofav.style.display = "flex" : "";
+            
+            showNotif("../image/fait.png", "Retiré de vos favoris");
+            setTimeout(() => {
+                hideNotif();
+            }, 2000);
         }
     })
 }

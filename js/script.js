@@ -21,7 +21,7 @@ let contents_array = [
     "Ajouter un debug",
     "Notifications",
     "Menu utilisateur",
-    "Copier",
+    "Copier le lien",
     "Partager",
     "Nombre total de Debugs",
     "Nombre total de j'aime",
@@ -612,9 +612,28 @@ bannerFile.addEventListener("change", () => {
 
 
 // Rechargement de la page au clic du logo 
-
 let logo = document.querySelector('.logo');
 
 logo.addEventListener("click", () => {
     window.location.href = window.location.pathname;
 })
+
+// Copie du lien d'un debug
+let copyLink = document.querySelectorAll('.copy-btn'),
+    linkPost = document.querySelectorAll('.notmydebug .ressource a');
+
+for (let i = 0; i < copyLink.length; i++) {
+    
+    copyLink[i].addEventListener("click", () => {
+        
+        navigator.clipboard.writeText(linkPost[i].href).then(() => {
+            
+            showNotif("../image/fait.png", "Lien de la ressource copié");
+            setTimeout(() => {
+                hideNotif();
+            }, 2000);
+            
+        });
+        
+    });
+}

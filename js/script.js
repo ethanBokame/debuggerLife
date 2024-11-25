@@ -609,3 +609,12 @@ bannerFile.addEventListener("change", () => {
 })
 
 // Interaction notmydebug
+
+
+// Rechargement de la page au clic du logo 
+
+let logo = document.querySelector('.logo');
+
+logo.addEventListener("click", () => {
+    window.location.href = window.location.pathname;
+})

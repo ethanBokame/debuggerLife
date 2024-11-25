@@ -408,7 +408,11 @@ nav {
             padding: 10px 30px;
             overflow-wrap: break-word;
             position: relative;
-            
+            cursor: pointer;
+
+            &:hover {
+                background-color: #ffffff07;
+            }
             
             .top {
                 display: flex;
@@ -486,6 +490,7 @@ nav {
                 margin-top: 6px;
                 right: 3%;
                 display: none;
+                z-index: 2;
                 
                 .op {
                     display: flex;

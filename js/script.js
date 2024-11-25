@@ -622,3 +622,47 @@ for (let i = 0; i < sharePost.length; i++) {
         
     });
 }
+
+// Copie du lien d'un debug dans mydebug.php
+let copyLinkMydebug = document.querySelectorAll('.ressource-btn'),
+    linkPostMydebug = document.querySelectorAll('.mydebug .ressource a');
+
+for (let i = 0; i < copyLinkMydebug.length; i++) {
+    
+    copyLinkMydebug[i].addEventListener("click", () => {
+        
+        navigator.clipboard.writeText(linkPostMydebug[i].href).then(() => {
+            
+            showNotif("../image/fait.png", "Lien de la ressource copié");
+            setTimeout(() => {
+                hideNotif();
+            }, 2000);
+            
+        });
+        
+    });
+}
+
+
+// Copie du lien d'un debug dans mydebug.php
+let sharePostMydebug = document.querySelectorAll('.option-menu .share-btn'),
+    usernamePostMydebug = document.querySelectorAll('.mydebug .top .pic-name-post-date a');
+
+for (let i = 0; i < sharePostMydebug.length; i++) {
+    
+    sharePostMydebug[i].addEventListener("click", () => {
+        
+        let idPost = myDebug[i].getAttribute("id-post"),
+            contentToShare = "https://debuggerLife.com/" + usernamePostMydebug[i].innerText + "/" + idPost;
+        
+        navigator.clipboard.writeText(contentToShare).then(() => {
+            
+            showNotif("../image/fait.png", "Lien du debug copié");
+            setTimeout(() => {
+                hideNotif();    
+            }, 2000);
+            
+        });
+        
+    });
+}

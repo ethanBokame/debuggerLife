@@ -35,7 +35,7 @@ require("fonctions.php");
             foreach ( $row as $post) {
                 
                 ?>
-                <div class="mydebug">
+                <div class="mydebug" id-post="<?php echo $post["id_post"] ?>">
                     
                     <div class="top">
                         
@@ -60,6 +60,11 @@ require("fonctions.php");
                                 <div class="op share-btn">
                                     <img src="../image/partager.png" alt="Statistiques">
                                     <p>Partager</p>
+                                </div>
+
+                                <div class="op ressource-btn">
+                                    <img src="../image/liens.png" alt="setter">
+                                    <p>Copier le lien</p>
                                 </div>
 
                                 <div class="op modif-btn">
@@ -105,14 +110,14 @@ require("fonctions.php");
                         
                         <img src="<?php echo($post["status_post"] == "public") ? "../image/public.png" : "../image/privé .png" ?>" alt="world" class="state-simple"> 
                         
-                        <div class="count-like">
+                        <div class="count-like-mydebug">
                             <img src="../image/heart-regular-240.png" alt="like">
                             <p>
                                 <?php echo $post["like_number"] ?>
                             </p>
                         </div>
                         
-                        <div class="count-fav">
+                        <div class="count-fav-mydebug">
                             <img src="../image/bookmark-regular-240.png" alt="fav">
                             <p>
                                 <?php echo $post["fav_number"] ?>

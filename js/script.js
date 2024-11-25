@@ -265,44 +265,6 @@ for (let i = 0; i < delBtn.length; i++) {
     
 }
 
-// Bouton share
-let shareBtn = document.querySelectorAll(".share-btn"),
-    modalShare = document.querySelector(".modal"),
-    linkDebug = document.querySelector(".debug-link"),
-    linkRessource = document.querySelector(".ressource-link"),
-    debugName = document.querySelectorAll(".mydebug .title, .notmydebug .title"),
-    ressource = document.querySelectorAll(".mydebug .ressource a, .notmydebug .ressource a")
-    smokePage = document.querySelector(".smoke"),
-    cancelShare = document.querySelector(".cancel-share");
-
-for (let i = 0; i < shareBtn.length; i++) {
-    
-    shareBtn[i].addEventListener("click", () => {
-        
-        fixeBody();
-        linkDebug.innerText = "https://debuggerLife.com/ethanBokame/" + debugName[i].innerText.replaceAll(" ", "-");
-        linkRessource.innerText = ressource[i].innerText;
-
-        modalShare.style.display = "block";
-        smokePage.style.display = "block";
-        modalShare.style.display = "flex";
-        
-    })
-    
-}
-
-window.addEventListener("click", (e) => {
-    if (modalShare.style.display == "flex") {
-        // Fermetture de la fenetre modale
-        if (cancelShare.contains(e.target) || smokePage.contains(e.target)) {
-            modalShare.style.display = "none";
-            smokePage.style.display = "none";
-            noFixeBody();
-        }
-    }
-});
-
-
 // Boutons copier
 
 let copyBtn = document.querySelectorAll(".link-container img");
@@ -631,6 +593,29 @@ for (let i = 0; i < copyLink.length; i++) {
             showNotif("../image/fait.png", "Lien de la ressource copié");
             setTimeout(() => {
                 hideNotif();
+            }, 2000);
+            
+        });
+        
+    });
+}
+
+// Copie du lien d'un debug
+let sharePost = document.querySelectorAll('.share-btn'),
+    usernamePost = document.querySelectorAll('.notmydebug .top .pic-name-post-date a');
+
+for (let i = 0; i < sharePost.length; i++) {
+    
+    sharePost[i].addEventListener("click", () => {
+        
+        let idPost = notMyDebug[i].getAttribute("id-post"),
+            contentToShare = "https://debuggerLife.com/" + usernamePost[i].innerText + "/" + idPost;
+        
+        navigator.clipboard.writeText(contentToShare).then(() => {
+            
+            showNotif("../image/fait.png", "Lien du debug copié");
+            setTimeout(() => {
+                hideNotif();    
             }, 2000);
             
         });

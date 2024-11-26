@@ -33,13 +33,19 @@ body {
 
 .nopost {
   color: #9198a1;
-  text-align: center;
-  width: 100%;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0 auto;
+  align-items: center;
   display: none;
-  padding: 0 30px;
+  margin-top: 30px;
+  padding: 0 50px;
 }
-.nopost img {
-  height: 170px;
+.nopost h1 {
+  margin-right: auto;
+}
+.nopost h3 {
+  color: #767b81;
 }
 
 .popup {
@@ -179,6 +185,7 @@ nav .logo {
   align-items: center;
   color: white;
   gap: 10px;
+  cursor: pointer;
 }
 nav .logo p {
   font-family: "Itim", cursive;
@@ -328,10 +335,14 @@ nav .nav-menu .profil_pic {
   border-bottom: 1px solid rgba(145, 152, 161, 0.6509803922);
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 11px;
   padding: 10px 30px;
   overflow-wrap: break-word;
   position: relative;
+  cursor: pointer;
+}
+.first-tab-system-container .page .mydebug:hover, .first-tab-system-container .page .notmydebug:hover {
+  background-color: rgba(255, 255, 255, 0.0274509804);
 }
 .first-tab-system-container .page .mydebug .top, .first-tab-system-container .page .notmydebug .top {
   display: flex;
@@ -344,8 +355,8 @@ nav .nav-menu .profil_pic {
   align-items: center;
 }
 .first-tab-system-container .page .mydebug .pic-name-post-date img, .first-tab-system-container .page .notmydebug .pic-name-post-date img {
-  height: 37px;
-  width: 37px;
+  height: 35px;
+  width: 35px;
   cursor: pointer;
   object-fit: cover;
   border-radius: 50px;
@@ -363,7 +374,9 @@ nav .nav-menu .profil_pic {
 }
 .first-tab-system-container .page .mydebug .title, .first-tab-system-container .page .notmydebug .title {
   font-size: 23px;
+  font-weight: 600;
   color: white;
+  margin: -8px 0 -5px 0;
 }
 .first-tab-system-container .page .mydebug .option, .first-tab-system-container .page .notmydebug .option {
   height: 35px;
@@ -380,6 +393,7 @@ nav .nav-menu .profil_pic {
 .first-tab-system-container .page .mydebug .description, .first-tab-system-container .page .notmydebug .description {
   color: white;
   line-height: 25px;
+  margin-bottom: -2px;
 }
 .first-tab-system-container .page .mydebug .option-menu, .first-tab-system-container .page .notmydebug .option-menu {
   color: #9198a1;
@@ -391,6 +405,7 @@ nav .nav-menu .profil_pic {
   margin-top: 6px;
   right: 3%;
   display: none;
+  z-index: 2;
 }
 .first-tab-system-container .page .mydebug .option-menu .op, .first-tab-system-container .page .notmydebug .option-menu .op {
   display: flex;
@@ -404,7 +419,7 @@ nav .nav-menu .profil_pic {
 .first-tab-system-container .page .mydebug .option-menu .op:hover, .first-tab-system-container .page .notmydebug .option-menu .op:hover {
   background-color: #313845;
 }
-.first-tab-system-container .page .mydebug .option-menu .op:nth-child(4), .first-tab-system-container .page .notmydebug .option-menu .op:nth-child(4) {
+.first-tab-system-container .page .mydebug .option-menu .op:nth-child(5), .first-tab-system-container .page .notmydebug .option-menu .op:nth-child(5) {
   border: none;
 }
 .first-tab-system-container .page .mydebug .img-debug img, .first-tab-system-container .page .notmydebug .img-debug img {
@@ -420,14 +435,14 @@ nav .nav-menu .profil_pic {
   width: 20px;
   margin-right: auto;
 }
-.first-tab-system-container .page .mydebug .bottom .count-fav, .first-tab-system-container .page .mydebug .bottom .count-like, .first-tab-system-container .page .mydebug .bottom .share-btn, .first-tab-system-container .page .mydebug .bottom .copy-btn, .first-tab-system-container .page .notmydebug .bottom .count-fav, .first-tab-system-container .page .notmydebug .bottom .count-like, .first-tab-system-container .page .notmydebug .bottom .share-btn, .first-tab-system-container .page .notmydebug .bottom .copy-btn {
+.first-tab-system-container .page .mydebug .bottom .count-fav, .first-tab-system-container .page .mydebug .bottom .count-like, .first-tab-system-container .page .mydebug .bottom .share-btn, .first-tab-system-container .page .mydebug .bottom .copy-btn, .first-tab-system-container .page .mydebug .bottom .count-fav-mydebug, .first-tab-system-container .page .mydebug .bottom .count-like-mydebug, .first-tab-system-container .page .notmydebug .bottom .count-fav, .first-tab-system-container .page .notmydebug .bottom .count-like, .first-tab-system-container .page .notmydebug .bottom .share-btn, .first-tab-system-container .page .notmydebug .bottom .copy-btn, .first-tab-system-container .page .notmydebug .bottom .count-fav-mydebug, .first-tab-system-container .page .notmydebug .bottom .count-like-mydebug {
   border-radius: 50px;
   display: flex;
   align-items: center;
   gap: 3px;
   margin: 0 7px;
 }
-.first-tab-system-container .page .mydebug .bottom .count-fav img, .first-tab-system-container .page .mydebug .bottom .count-like img, .first-tab-system-container .page .mydebug .bottom .share-btn img, .first-tab-system-container .page .mydebug .bottom .copy-btn img, .first-tab-system-container .page .notmydebug .bottom .count-fav img, .first-tab-system-container .page .notmydebug .bottom .count-like img, .first-tab-system-container .page .notmydebug .bottom .share-btn img, .first-tab-system-container .page .notmydebug .bottom .copy-btn img {
+.first-tab-system-container .page .mydebug .bottom .count-fav img, .first-tab-system-container .page .mydebug .bottom .count-like img, .first-tab-system-container .page .mydebug .bottom .share-btn img, .first-tab-system-container .page .mydebug .bottom .copy-btn img, .first-tab-system-container .page .mydebug .bottom .count-fav-mydebug img, .first-tab-system-container .page .mydebug .bottom .count-like-mydebug img, .first-tab-system-container .page .notmydebug .bottom .count-fav img, .first-tab-system-container .page .notmydebug .bottom .count-like img, .first-tab-system-container .page .notmydebug .bottom .share-btn img, .first-tab-system-container .page .notmydebug .bottom .copy-btn img, .first-tab-system-container .page .notmydebug .bottom .count-fav-mydebug img, .first-tab-system-container .page .notmydebug .bottom .count-like-mydebug img {
   height: 20px;
 }
 .first-tab-system-container .page .notmydebug .bottom {
@@ -481,6 +496,24 @@ nav .nav-menu .profil_pic {
   object-fit: cover;
   background-color: rgba(122, 142, 168, 0.5176470588);
 }
+.first-tab-system-container .mini-profil .form-set-banner {
+  display: none;
+}
+.first-tab-system-container .mini-profil .set-banner-container {
+  padding: 7px 10px;
+  cursor: pointer;
+  border-radius: 50px;
+  position: absolute;
+  right: 4px;
+  margin-top: 3px;
+}
+.first-tab-system-container .mini-profil .set-banner-container:hover {
+  background-color: rgba(145, 152, 161, 0.2901960784);
+}
+.first-tab-system-container .mini-profil .set-banner-container .set-banner {
+  margin-top: 3px;
+  height: 20px;
+}
 .first-tab-system-container .mini-profil .username {
   color: white;
   font-weight: 550;
@@ -522,16 +555,17 @@ nav .nav-menu .profil_pic {
 }
 .first-tab-system-container .mini-profil .stats-container {
   display: flex;
-  flex-direction: column;
   margin: 0 auto;
-  gap: 30px;
+  gap: 35px;
 }
 .first-tab-system-container .mini-profil .stats-container .stat-block {
   display: flex;
+  flex-direction: column;
   gap: 40px;
 }
 .first-tab-system-container .mini-profil .stats-container .stat {
   display: flex;
+  cursor: pointer;
   gap: 5px;
 }
 .first-tab-system-container .mini-profil .stats-container .stat img {
@@ -551,9 +585,6 @@ nav .nav-menu .profil_pic {
   font-size: 14px;
   margin-top: auto;
   margin-bottom: 1px;
-}
-.first-tab-system-container .mini-profil .stats-container .dl-age {
-  margin-left: 5px;
 }
 .first-tab-system-container .mini-profil .link-container {
   width: 100%;
@@ -639,7 +670,7 @@ nav .nav-menu .profil_pic {
 .add-debug-form-container .add-debug-form .entry label {
   font-weight: 500;
 }
-.add-debug-form-container .add-debug-form .entry input {
+.add-debug-form-container .add-debug-form .entry input, .add-debug-form-container .add-debug-form .entry textarea {
   color: white;
   background: none;
   border: 1px solid rgba(145, 152, 161, 0.6509803922);
@@ -648,8 +679,12 @@ nav .nav-menu .profil_pic {
   outline: none;
   width: 500px;
 }
-.add-debug-form-container .add-debug-form .entry input:focus {
+.add-debug-form-container .add-debug-form .entry input:focus, .add-debug-form-container .add-debug-form .entry textarea:focus {
   border: 2px solid #4493f8;
+}
+.add-debug-form-container .add-debug-form .entry textarea {
+  max-width: 500px;
+  min-height: 85px;
 }
 .add-debug-form-container .add-debug-form .file-input .image-preview-container {
   display: flex;
@@ -748,6 +783,25 @@ nav .nav-menu .profil_pic {
 }
 .add-debug-form-container .add-debug-form input[type=submit]:focus {
   background-color: #1a5db5;
+}
+
+.add-debug-form-container form .choice-group {
+  display: flex;
+  gap: 10px;
+  margin-left: auto;
+}
+.add-debug-form-container form .choice-group .cancel {
+  color: white;
+  border: none;
+  padding: 8px;
+  border-radius: 6px;
+  background-color: #9198a1;
+  margin-left: auto;
+  font-weight: 500;
+  cursor: pointer;
+}
+.add-debug-form-container form .choice-group .cancel:focus {
+  background-color: #6f767f;
 }
 
 /*# sourceMappingURL=style.css.map */

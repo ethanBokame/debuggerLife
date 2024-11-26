@@ -10,6 +10,23 @@ require("conn.php");
     require("component.php");
     require("navbar.php");
 
+    // Récupération des informations du post pour remplir les champs
+    $sql = $conn->prepare(
+        "SELECT title, description, link_ressource, status_post, link_picture, post_date, id_user
+        FROM post
+        WHERE id_post=:id_post
+        ");
+    $sql->bindValue(':id_post', $_GET["id_post"]);
+    $sql->execute();
+    $post = $sql->fetch(PDO::FETCH_ASSOC);
+
+    // Initialisation des variables de session pour le remplissage des champs
+    $_SESSION["title"] = $post["title"];
+    $_SESSION["description"] = $post["description"];
+    $_SESSION["link_ressource"] = $post["link_ressource"];
+    $_SESSION["status_post"] = $post["status_post"];
+    $_SESSION["link_picture"] = $post["link_picture"];
+
     //Ajout d'un debug dans la base de données
 
     // Fonction pour afficher les erreurs si elles existent
@@ -28,27 +45,30 @@ require("conn.php");
     // Initialisation des variables d'erreur
     $error_link = $error_title = $error_status = false;
 
-    // Initialisation des variables de session pour le remplissage des champs
-    $_SESSION["title"] = "";
-    $_SESSION["description"] = "";
-    $_SESSION["link_ressource"] = "";
-    $_SESSION["status_post"] = "";
-
-    if (isset($_POST["submit_add_form"])) {
+    if (isset($_POST["submit_modif_debug"])) {
 
         // Préparation de la requete
-        $sql = $conn->prepare("INSERT INTO post (title, description, link_ressource, status_post, id_user, link_picture) 
-        VALUES (:title, :description, :link_ressource, :status_post, :id_user, :link_picture)");
+        $sql = $conn->prepare(
+        "UPDATE post
+        SET 
+        title = :title,
+        description = :description,
+        link_ressource = :link_ressource, 
+        status_post = :status_post,
+        link_picture = :link_picture
+        WHERE id_post = :id_post"
+        );
 
         // Traitement du formulaire
         $title = strip_tags($_POST['title']);
         $description = strip_tags($_POST['description']);
         $link_ressource = (filter_var($_POST['link_ressource'], FILTER_SANITIZE_URL));
         $status_post = empty($_POST['status_post']) ? null : $_POST['status_post'];
-        $id_user = $user['id_user'];
+        $id_post = $_GET['id_post'];
 
         $type = $_FILES["link_picture"]["type"];
-        $link_picture = empty($_FILES["link_picture"]["name"]) ? null : "../image/debug_picture/" . $id_user . "_" . date("Y-m-d-H-i-s", strtotime("-1 hour")) . "_" . "debug_pic." . substr($type, 6);
+        $post_date = str_replace([':', ' '], ['-', '-'], $post["post_date"]);
+        $link_picture = empty($_FILES["link_picture"]["name"]) ? $_POST["link_picture_hidden"] : "../image/debug_picture/" . $post["id_user"] . "_" . $post_date . "_" . "debug_pic." . substr($type, 6);
 
         // Vérification des champs
         if (empty($title) || trim($title) == '') {
@@ -70,7 +90,7 @@ require("conn.php");
             $sql->bindValue(':description', $description);
             $sql->bindValue(':link_ressource', $link_ressource);
             $sql->bindValue(':status_post', $status_post);
-            $sql->bindValue(':id_user', $id_user, PDO::PARAM_INT);
+            $sql->bindValue(':id_post', $id_post, PDO::PARAM_INT);
             $sql->bindValue(':link_picture', $link_picture);
 
             $sql->execute();
@@ -99,10 +119,7 @@ require("conn.php");
             <form method="post" action="" class="add-debug-form" enctype="multipart/form-data">
 
                 <div class="header">
-                    <h2>Ajouter un nouveau debug</h2>
-                    <p>
-                        Vous avez une solution à un bug ou un outil utile ? Partagez-les ici pour aider d’autres développeurs confrontés aux mêmes défis ou pour leur faire découvrir des ressources pratiques !
-                    </p>
+                    <h2>Modifier un debug</h2>
                 </div>
 
                 <hr>
@@ -115,7 +132,7 @@ require("conn.php");
 
                 <div class="entry title-debug">
                     <label for="title-debug">Titre du debug *</label>
-                    <input type="text" name="title" class="title-form-add" id="title-debug" maxlength="150" required value=<?php echo $_SESSION["title"] ?>>
+                    <input type="text" name="title" class="title-form-add" id="title-debug" maxlength="150" required value="<?php echo $_SESSION["title"] ?>">
                     <div class="error max-count">
                         <img src="../image/point-dexclamation.png" alt="error">
                         <p>
@@ -127,7 +144,7 @@ require("conn.php");
 
                 <div class="entry">
                     <label for="description-debug">Description (optionnelle)</label>
-                    <textarea name="description" id="description-debug" class="description-form-add" maxlength="450" value=<?php echo $_SESSION["description"] ?>></textarea>
+                    <textarea name="description" id="description-debug" class="description-form-add" maxlength="450"><?php echo $_SESSION["description"] ?></textarea>
                     <div class="error max-count">
                         <img src="../image/point-dexclamation.png" alt="eror">
                         <p>
@@ -139,23 +156,25 @@ require("conn.php");
 
                 <div class="entry">
                     <label for="link-debug">Lien *</label>
-                    <input type="url" name="link_ressource" id="link-debug" class="url-form-add" required value=<?php echo $_SESSION["link_ressource"] ?>>
+                    <input type="url" name="link_ressource" id="link-debug" class="url-form-add" required value="<?php echo $_SESSION["link_ressource"] ?>">
                     <?php displayError("Le lien ne doit pas être vide", $error_link) ?>
                 </div>
 
                 <div class="entry file-input">
                     <label>Image (optionnelle)</label>
-                    <div class="image-preview-container">
-                        <img src="" alt="">
+                    <div class="image-preview-container" <?php echo($_SESSION["link_picture"] != "") ? 'style="display:flex"' : "" ?>>
+                        <img src="<?php echo($_SESSION["link_picture"] != "") ? $_SESSION["link_picture"] : "" ?>" alt="">
                         <img src="../image/x-2.png">
                     </div>
-
+                    
                     <div class="file-input-container">
                         <label for="image-debug">Choisissez votre image</label>
                         <p>Aucune image choisie</p>
                         <input type="file" name="link_picture" id="image-debug" accept="image/*">
                     </div>
                 </div>
+                
+                <input type="hidden" name="link_picture_hidden" value="<?php echo($_SESSION["link_picture"]) ?>" class="link_picture_value">
 
                 <hr>
 
@@ -191,7 +210,10 @@ require("conn.php");
 
                 <hr>
 
-                <input type="submit" name="submit_add_form" value="Ajouter un debug">
+                <div class="choice-group">
+                    <input type="button" name="cancel" value="Annuler" class="cancel">
+                    <input type="submit" name="submit_modif_debug" value="Modifier le debug">
+                </div>
 
             </form>
 

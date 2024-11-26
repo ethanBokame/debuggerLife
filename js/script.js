@@ -503,7 +503,8 @@ let inputFileContainer = document.querySelector(".file-input"),
     inputFileText = document.querySelector(".file-input p"),
     inputFileInput = document.querySelector(".file-input input"),
     imageContainer = document.querySelector(".image-preview-container"),
-    closeImage = document.querySelectorAll(".image-preview-container img")[1];
+    closeImage = document.querySelectorAll(".image-preview-container img")[1],
+    link_picture_value = document.querySelector(".link_picture_value");
 
 if (inputFileText) {
     inputFileText.addEventListener("click", () => {
@@ -534,7 +535,6 @@ if (inputFileInput) {
 
         // Vérification de la taille de l'image
         let inputSize = (inputFileInput.files[0].size / (1024 * 1024)).toFixed(1)
-        console.log(inputSize);
     
         if (inputSize > 5) {
             alert("La taille de l'image est trop grande (maximum 10 Mo)");
@@ -545,13 +545,14 @@ if (inputFileInput) {
             inputFileText.innerText = inputFileInput.files[0].name;
             imageContainer.style.display = "flex";
         }
-    
+
     })
     
     closeImage.addEventListener("click", () => {
         imageContainer.style.display = "none";
         inputFileText.innerText = "Aucune image choisie";
         inputFileInput.value = "";
+        link_picture_value.value = "";
     })
 }
 
@@ -562,13 +563,16 @@ let setBannerContainer = document.querySelector('.set-banner-container'),
     bannerFile = document.querySelector('.form-set-banner input[type="file"]'),
     bannerSub = document.querySelector('.form-set-banner input[type="submit"]');
 
-setBannerContainer.addEventListener("click", () => {
-    bannerFile.click();
-})
+if (setBannerContainer) {
+    setBannerContainer.addEventListener("click", () => {
+        bannerFile.click();
+    })
+    
+    bannerFile.addEventListener("change", () => {
+        bannerSub.click();
+    })
+}
 
-bannerFile.addEventListener("change", () => {
-    bannerSub.click();
-})
 
 // Interaction notmydebug
 
@@ -665,4 +669,24 @@ for (let i = 0; i < sharePostMydebug.length; i++) {
         });
         
     });
+}
+
+// Modification d'un de mes debugs
+let modifBtn = document.querySelectorAll('.option-menu .modif-btn'),
+    cancelModification = document.querySelector('.choice-group .cancel');
+
+for (let i = 0; i < modifBtn.length; i++) {
+    
+    modifBtn[i].addEventListener("click", () => {
+        
+        let idPost = myDebug[i].getAttribute("id-post");
+
+        window.location.href = "modif-debug.php?id_post=" + idPost;
+    })
+}
+
+if (cancelModification) {
+    cancelModification.addEventListener("click", () => {
+        history.back();
+    })
 }

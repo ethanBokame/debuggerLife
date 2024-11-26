@@ -19,5 +19,6 @@ require("../desktop-template-php/fonctions.php");
 // $interval = $origin->diff($target);
 // echo $interval->format('%a');
 
-echo number_format_short("1505");
+// echo number_format_short("1505");
+
 ?>

@@ -829,7 +829,7 @@ nav {
                 font-weight: 500;
             }
 
-            input {
+            input, textarea {
                 color: white;
                 background: none;
                 border: 1px solid #9198a1a6;
@@ -837,14 +837,16 @@ nav {
                 border-radius: 9px;
                 outline: none;
                 width: 500px;
-
+                
                 &:focus {
                     border: 2px solid #4493f8;
                 }
             }
 
-
-
+            textarea {
+                max-width: 500px;
+                min-height: 85px;
+            }
 
         }
 
@@ -992,7 +994,32 @@ nav {
 }
 
 
+.add-debug-form-container {
 
+    form {
+
+        .choice-group {
+            display: flex;
+            gap: 10px;
+            margin-left: auto;
+
+            .cancel {
+                color: white;
+                border: none;
+                padding: 8px;
+                border-radius: 6px;
+                background-color: #9198a1;
+                margin-left: auto;
+                font-weight: 500;
+                cursor: pointer;
+    
+                &:focus {
+                    background-color: #6f767f;
+                }
+            }
+        }
+    }
+}
 
 
 

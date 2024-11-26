@@ -73,8 +73,10 @@ require("fonctions.php");
                                 </div>
                                 
                                 <div class="op state-btn">
-                                    <img src="../image/privé .png" alt="lock">
-                                    <p>Mettre en privé</p>
+                                    <img src="<?php echo($post["status_post"] == "public") ? "../image/privé .png" : "../image/public.png" ?>" alt="lock">
+                                    <p>
+                                    <?php echo($post["status_post"] == "public") ? "Mettre en privé" : "Mettre en public" ?>
+                                    </p>
                                 </div>
                                 
                                 <div class="op delete-btn">

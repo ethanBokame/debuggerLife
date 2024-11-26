@@ -225,6 +225,7 @@ let state = document.querySelectorAll(".state-btn"),
     stateText = document.querySelectorAll(".state-btn p"),
     stateImgSimple = document.querySelectorAll(".state-simple");
 
+
 for (let i = 0; i < state.length; i++) {
     
     state[i].addEventListener("click", () => {
@@ -232,7 +233,7 @@ for (let i = 0; i < state.length; i++) {
         currentIndex = i; // Indice actuel
         
         newStateTextPopup = stateText[i].innerText.slice(10,stateText[i].length);
-        
+
         fixeBody();
         
         if (newStateTextPopup == "privé") {
@@ -341,10 +342,17 @@ choicePopup.addEventListener("click", () => {
         stateImg[currentIndex].setAttribute("src", newStateImgSimple);
         stateImgSimple[currentIndex].setAttribute("src", newStateImg);
     
-        //console.log(newStateImg, newStateImgSimple);
+        console.log(newStateImg, newStateImgSimple);
         
         newStateTextMenu = newStateImgSimple.slice(9,15);
+        console.log(newStateTextMenu);
         stateText[currentIndex].innerText = "Mettre en " + newStateTextMenu;
+
+        // Fetching pour la mise a jour du status
+        let id_post = myDebug[currentIndex].getAttribute("id-post"),
+            status = newStateTextPopup == "privé" ? "private" : "public";
+
+        fetch("http://localhost/debugger_life/desktop-template-php/status.php?id_post=" + id_post + "&status=" + status);
         
         showNotif("../image/fait.png", "Votre Debug est maintenant " + newStateTextPopup);
         setTimeout(() => {

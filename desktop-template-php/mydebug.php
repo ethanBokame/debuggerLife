@@ -26,6 +26,7 @@ require("fonctions.php");
                 "SELECT * 
                 FROM post 
                 WHERE id_user=:id_user
+                AND visibility='visible'
                 ORDER BY post_date DESC
                 ");
             $sql->bindValue(':id_user', $_SESSION["id_user"], PDO::PARAM_INT);

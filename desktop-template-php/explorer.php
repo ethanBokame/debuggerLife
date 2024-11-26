@@ -28,7 +28,7 @@ require("fonctions.php");
             FROM users u 
             JOIN post p 
             ON u.id_user=p.id_user
-            WHERE u.id_user!=:id_user AND p.status_post!='private'
+            WHERE u.id_user!=:id_user AND p.status_post!='private' AND visibility='visible'
             ORDER BY p.post_date DESC
             ");
             $sql->bindValue(':id_user', $_SESSION["id_user"], PDO::PARAM_INT);

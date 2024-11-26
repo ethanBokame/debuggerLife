@@ -325,6 +325,10 @@ choicePopup.addEventListener("click", () => {
             nopost.style.display = "block";
         }
 
+        let id_post = myDebug[currentIndex].getAttribute("id-post");
+        // Fetching pour la suppression d'un debug
+        fetch("http://localhost/debugger_life/desktop-template-php/delete.php?id_post=" + id_post);
+
         // Notification
         showNotif("../image/fait.png", "Votre debug a été supprimé");
         setTimeout(() => {

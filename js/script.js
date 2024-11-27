@@ -1,4 +1,7 @@
-let body = document.querySelector('body');
+let body = document.querySelector('body'),
+    hostname = window.location.hostname == "localhost" ? "http://localhost/debugger_life/" : "https://debuggerlife.org/",
+    notMyDebug = document.querySelectorAll('.notmydebug'),
+    myDebug = document.querySelectorAll('.mydebug');
 
 //Infobulles
 let classes_array = [
@@ -40,10 +43,6 @@ classes_array.forEach((selector, index) => {
         theme: 'custom',
     });
 });
-
-
-let notMyDebug = document.querySelectorAll('.notmydebug'),
-    myDebug = document.querySelectorAll('.mydebug');
 
 // Search box
 let search = document.querySelector('#search'),
@@ -327,7 +326,7 @@ choicePopup.addEventListener("click", () => {
 
         let id_post = myDebug[currentIndex].getAttribute("id-post");
         // Fetching pour la suppression d'un debug
-        fetch("http://localhost/debugger_life/desktop-template-php/delete.php?id_post=" + id_post);
+        fetch(hostname + "desktop-template-php/delete.php?id_post=" + id_post);
 
         // Notification
         showNotif("../image/fait.png", "Votre debug a été supprimé");
@@ -356,7 +355,7 @@ choicePopup.addEventListener("click", () => {
         let id_post = myDebug[currentIndex].getAttribute("id-post"),
             status = newStateTextPopup == "privé" ? "private" : "public";
 
-        fetch("http://localhost/debugger_life/desktop-template-php/status.php?id_post=" + id_post + "&status=" + status);
+        fetch(hostname + "desktop-template-php/status.php?id_post=" + id_post + "&status=" + status);
         
         showNotif("../image/fait.png", "Votre Debug est maintenant " + newStateTextPopup);
         setTimeout(() => {
@@ -408,7 +407,7 @@ function postBtn(btn, btnImg, btnImgOldColor, btnImgNewColor, color, count, inde
         count.innerText = number + 1;
         
         // Requete http
-        fetch("http://localhost/debugger_life/desktop-template-php/" + action + ".php?id_post=" + id_post + "&step=1");
+        fetch(hostname + "desktop-template-php/" + action + ".php?id_post=" + id_post + "&step=1");
         
         // Notification
         if (action == "fav") {
@@ -426,7 +425,7 @@ function postBtn(btn, btnImg, btnImgOldColor, btnImgNewColor, color, count, inde
         let number = parseInt(count.innerText);
         count.innerText = number - 1;
         
-        fetch("http://localhost/debugger_life/desktop-template-php/" + action + ".php?id_post=" + id_post + "&step=-1");
+        fetch(hostname + "desktop-template-php/" + action + ".php?id_post=" + id_post + "&step=-1");
         
         if (action == "fav") {
             showNotif("../image/fait.png", "Retiré de vos favoris");

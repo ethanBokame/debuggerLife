@@ -1,5 +1,5 @@
 let body = document.querySelector('body'),
-    hostname = window.location.hostname == "localhost" ? "http://localhost/debugger_life/" : "https://debuggerlife.org/",
+    hostname = window.location.hostname == "localhost" ? "http://localhost/debugger_life/" : "https://sharethevision.net/",
     notMyDebug = document.querySelectorAll('.notmydebug'),
     myDebug = document.querySelectorAll('.mydebug');
 

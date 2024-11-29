@@ -8,8 +8,12 @@ require 'vendor/autoload.php';
 
 $router = new AltoRouter();
 
-$router->setBasePath('/debugger_life');
+// définition de la base
+$base = $_SERVER["HTTP_HOST"] == "localhost" ? '/debugger_life' : '';
 
+$router->setBasePath($base);
+
+// Définition ds routes
 $router->map('GET', '/', function() {
     require "desktop-template-php/explorer.php";
 });

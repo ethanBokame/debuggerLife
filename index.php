@@ -17,19 +17,19 @@ $_SESSION["base"] = $_SERVER["HTTP_HOST"] == "localhost" ? '/debugger_life' : ''
 $router->setBasePath($_SESSION["base"]);
 
 // Définition ds routes
-$router->map('GET', '/', function() {
+$router->map('GET | POST', '/', function() {
     require "desktop-template-php/explorer.php";
 });
 
-$router->map('GET', '/explorer', function() {
+$router->map('GET | POST', '/explorer', function() {
     require "desktop-template-php/explorer.php";
 });
 
-$router->map('GET', '/mydebug', function() {
+$router->map('GET | POST', '/mydebug', function() {
     require "desktop-template-php/mydebug.php";
 }, 'mydebug');
 
-$router->map('GET', '/favoris', function() {
+$router->map('GET | POST', '/favoris', function() {
     require "desktop-template-php/favoris.php";
 });
 

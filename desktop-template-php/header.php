@@ -8,7 +8,7 @@
     
     <!--Base-->
     <?php 
-    $base = $_SERVER["HTTP_HOST"] == "localhost" ? "http://localhost/debugger_life/" : '';
+    $base = $_SERVER["HTTP_HOST"] == "localhost" ? "http://localhost/debugger_life/" : '/';
     ?>
     <base href="<?= $base ?>">
     

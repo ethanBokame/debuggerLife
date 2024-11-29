@@ -16,7 +16,7 @@ require("conn.php");
         FROM post
         WHERE id_post=:id_post
         ");
-    $sql->bindValue(':id_post', $_GET["id_post"]);
+    $sql->bindValue(':id_post', $id_post_router);
     $sql->execute();
     $post = $sql->fetch(PDO::FETCH_ASSOC);
 
@@ -34,7 +34,7 @@ require("conn.php");
     {
     ?>
         <div class="error error-simple" <?php echo ($variable) ? "style='display: flex;'" : "" ?>>
-            <img src="../image/point-dexclamation.png" alt="error">
+            <img src="image/point-dexclamation.png" alt="error">
             <p>
                 <?php echo $message ?>
             </p>
@@ -64,11 +64,11 @@ require("conn.php");
         $description = strip_tags($_POST['description']);
         $link_ressource = (filter_var($_POST['link_ressource'], FILTER_SANITIZE_URL));
         $status_post = empty($_POST['status_post']) ? null : $_POST['status_post'];
-        $id_post = $_GET['id_post'];
+        $id_post = $id_post_router;
 
         $type = $_FILES["link_picture"]["type"];
         $post_date = str_replace([':', ' '], ['-', '-'], $post["post_date"]);
-        $link_picture = empty($_FILES["link_picture"]["name"]) ? $_POST["link_picture_hidden"] : "../image/debug_picture/" . $post["id_user"] . "_" . $post_date . "_" . "debug_pic." . substr($type, 6);
+        $link_picture = empty($_FILES["link_picture"]["name"]) ? $_POST["link_picture_hidden"] : "image/debug_picture/" . $post["id_user"] . "_" . $post_date . "_" . "debug_pic." . substr($type, 6);
 
         // Vérification des champs
         if (empty($title) || trim($title) == '') {
@@ -134,7 +134,7 @@ require("conn.php");
                     <label for="title-debug">Titre du debug *</label>
                     <input type="text" name="title" class="title-form-add" id="title-debug" maxlength="150" required value="<?php echo $_SESSION["title"] ?>">
                     <div class="error max-count">
-                        <img src="../image/point-dexclamation.png" alt="error">
+                        <img src="image/point-dexclamation.png" alt="error">
                         <p>
                             Le titre est trop long (100 caractères maximum).
                         </p>
@@ -146,7 +146,7 @@ require("conn.php");
                     <label for="description-debug">Description (optionnelle)</label>
                     <textarea name="description" id="description-debug" class="description-form-add" maxlength="450"><?php echo $_SESSION["description"] ?></textarea>
                     <div class="error max-count">
-                        <img src="../image/point-dexclamation.png" alt="eror">
+                        <img src="image/point-dexclamation.png" alt="eror">
                         <p>
                             La description est trop longue (350 caractères maximum).
                         </p>
@@ -164,7 +164,7 @@ require("conn.php");
                     <label>Image (optionnelle)</label>
                     <div class="image-preview-container" <?php echo($_SESSION["link_picture"] != "") ? 'style="display:flex"' : "" ?>>
                         <img src="<?php echo($_SESSION["link_picture"] != "") ? $_SESSION["link_picture"] : "" ?>" alt="">
-                        <img src="../image/x-2.png">
+                        <img src="image/x-2.png">
                     </div>
                     
                     <div class="file-input-container">
@@ -184,7 +184,7 @@ require("conn.php");
 
                     <input type="radio" name="status_post" value="public" required <?php echo ($_SESSION["status_post"] == "public") ? "checked" : "" ?>>
 
-                    <img src="../image/public.png" alt="public">
+                    <img src="image/public.png" alt="public">
 
                     <div>
                         <p>Public</p>
@@ -197,7 +197,7 @@ require("conn.php");
 
                     <input type="radio" name="status_post" value="private" <?php echo ($_SESSION["status_post"] == "private") ? "checked" : "" ?>>
 
-                    <img src="../image/privé .png " alt="private">
+                    <img src="image/privé .png " alt="private">
 
                     <div>
                         <p>Privé</p>

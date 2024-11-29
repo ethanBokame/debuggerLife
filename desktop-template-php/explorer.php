@@ -67,7 +67,7 @@ require("fonctions.php");
                         <div class="pic-name-post-date">
                             
                             <div class="img-container">
-                                <img src="<?php echo "../image/profil_pic_user/" . $post["profile_pic"] ?>">
+                                <img src="<?php echo "image/profil_pic_user/" . $post["profile_pic"] ?>">
                             </div>
                             
                             <a href=""><?php echo $post["username"] ?></a>
@@ -78,12 +78,12 @@ require("fonctions.php");
                         
                         <div class="option-container">
                             
-                            <img src="../image/options.png" class="option">
+                            <img src="image/options.png" class="option">
                             
                             <div class="option-menu">
                                 
                                 <div class="op">
-                                    <img src="../image/user-regular-240.png" alt="profil">
+                                    <img src="image/user-regular-240.png" alt="profil">
                                     <p>Voir le profil</p>
                                 </div>
                                 
@@ -114,25 +114,25 @@ require("fonctions.php");
                     <div class="bottom">
                         
                         <div class="count-like" <?php echo(in_array($post["id_post"], $likes_debug_array)) ? 'style="color: rgb(249, 24, 128)"' : "" ?>>
-                            <img src="<?php echo(in_array($post["id_post"], $likes_debug_array)) ? "../image/heart-solid-240-pink.png" : "../image/heart-regular-240-white.png" ?>" alt="like">
+                            <img src="<?php echo(in_array($post["id_post"], $likes_debug_array)) ? "image/heart-solid-240-pink.png" : "image/heart-regular-240-white.png" ?>" alt="like">
                             <p>
                                 <?php echo $post["like_number"] ?>
                             </p>
                         </div>
                         
                         <div class="count-fav" <?php echo(in_array($post["id_post"], $fav_debug_array)) ? 'style="color: rgb(255, 193, 7)"' : "" ?>>
-                            <img src="<?php echo(in_array($post["id_post"], $fav_debug_array)) ? "../image/bookmark-solid-240-or.png" : "../image/bookmark-regular-240-white.png" ?>" alt="fav">
+                            <img src="<?php echo(in_array($post["id_post"], $fav_debug_array)) ? "image/bookmark-solid-240-or.png" : "image/bookmark-regular-240-white.png" ?>" alt="fav">
                             <p>
                                 <?php echo $post["fav_number"] ?>
                             </p>
                         </div>
                         
                         <div class="copy-btn">
-                            <img src="../image/copier.png" alt="copier">
+                            <img src="image/copier.png" alt="copier">
                         </div>
                         
                         <div class="share-btn">
-                            <img src="../image/share-white.png" alt="share">
+                            <img src="image/share-white.png" alt="share">
                         </div>
                         
                     </div>

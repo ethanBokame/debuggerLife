@@ -691,8 +691,9 @@ for (let i = 0; i < modifBtn.length; i++) {
     modifBtn[i].addEventListener("click", () => {
         
         let idPost = myDebug[i].getAttribute("id-post");
+        console.log(typeof(idPost));
 
-        window.location.href = "modif-debug.php?id_post=" + idPost;
+        window.location.href = "update-debug/" + idPost;
     })
 }
 

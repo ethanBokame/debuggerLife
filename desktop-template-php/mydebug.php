@@ -43,7 +43,7 @@ require("fonctions.php");
                         <div class="pic-name-post-date">
                             
                             <div class="img-container">
-                                <img src="<?php echo "../image/profil_pic_user/" . $user["profile_pic"]?>">
+                                <img src="<?php echo "image/profil_pic_user/" . $user["profile_pic"]?>">
                             </div>
                             
                             <a href=""><?php echo $user["username"]?></a>
@@ -54,34 +54,34 @@ require("fonctions.php");
                         
                         <div class="option-container">
                             
-                            <img src="../image/options.png" class="option">
+                            <img src="image/options.png" class="option">
                             
                             <div class="option-menu">
                                 
                                 <div class="op share-btn">
-                                    <img src="../image/partager.png" alt="Statistiques">
+                                    <img src="image/partager.png" alt="Statistiques">
                                     <p>Partager</p>
                                 </div>
 
                                 <div class="op ressource-btn">
-                                    <img src="../image/liens.png" alt="setter">
+                                    <img src="image/liens.png" alt="setter">
                                     <p>Copier le lien</p>
                                 </div>
 
                                 <div class="op modif-btn">
-                                    <img src="../image/outil-crayon.png" alt="setter">
+                                    <img src="image/outil-crayon.png" alt="setter">
                                     <p>Modifier le debug</p>
                                 </div>
                                 
                                 <div class="op state-btn">
-                                    <img src="<?php echo($post["status_post"] == "public") ? "../image/privé .png" : "../image/public.png" ?>" alt="lock">
+                                    <img src="<?php echo($post["status_post"] == "public") ? "image/privé .png" : "image/public.png" ?>" alt="lock">
                                     <p>
                                     <?php echo($post["status_post"] == "public") ? "Mettre en privé" : "Mettre en public" ?>
                                     </p>
                                 </div>
                                 
                                 <div class="op delete-btn">
-                                    <img src="../image/trash.png" alt="trash">
+                                    <img src="image/trash.png" alt="trash">
                                     <p>Supprimer</p>
                                 </div>
                                 
@@ -111,17 +111,17 @@ require("fonctions.php");
                     
                     <div class="bottom">
                         
-                        <img src="<?php echo($post["status_post"] == "public") ? "../image/public.png" : "../image/privé .png" ?>" alt="world" class="state-simple"> 
+                        <img src="<?php echo($post["status_post"] == "public") ? "image/public.png" : "image/privé .png" ?>" alt="world" class="state-simple"> 
                         
                         <div class="count-like-mydebug">
-                            <img src="../image/heart-regular-240.png" alt="like">
+                            <img src="image/heart-regular-240.png" alt="like">
                             <p>
                                 <?php echo $post["like_number"] ?>
                             </p>
                         </div>
                         
                         <div class="count-fav-mydebug">
-                            <img src="../image/bookmark-regular-240.png" alt="fav">
+                            <img src="image/bookmark-regular-240.png" alt="fav">
                             <p>
                                 <?php echo $post["fav_number"] ?>
                             </p>

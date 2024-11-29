@@ -17,7 +17,7 @@ require("conn.php");
     {
     ?>
         <div class="error error-simple" <?php echo ($variable) ? "style='display: flex;'" : "" ?>>
-            <img src="../image/point-dexclamation.png" alt="error">
+            <img src="image/point-dexclamation.png" alt="error">
             <p>
                 <?php echo $message ?>
             </p>
@@ -48,7 +48,7 @@ require("conn.php");
         $id_user = $user['id_user'];
 
         $type = $_FILES["link_picture"]["type"];
-        $link_picture = empty($_FILES["link_picture"]["name"]) ? null : "../image/debug_picture/" . $id_user . "_" . date("Y-m-d-H-i-s", strtotime("-1 hour")) . "_" . "debug_pic." . substr($type, 6);
+        $link_picture = empty($_FILES["link_picture"]["name"]) ? null : "image/debug_picture/" . $id_user . "_" . date("Y-m-d-H-i-s", strtotime("-1 hour")) . "_" . "debug_pic." . substr($type, 6);
 
         // Vérification des champs
         if (empty($title) || trim($title) == '') {
@@ -117,7 +117,7 @@ require("conn.php");
                     <label for="title-debug">Titre du debug *</label>
                     <input type="text" name="title" class="title-form-add" id="title-debug" maxlength="150" required value=<?php echo $_SESSION["title"] ?>>
                     <div class="error max-count">
-                        <img src="../image/point-dexclamation.png" alt="error">
+                        <img src="image/point-dexclamation.png" alt="error">
                         <p>
                             Le titre est trop long (100 caractères maximum).
                         </p>
@@ -129,7 +129,7 @@ require("conn.php");
                     <label for="description-debug">Description (optionnelle)</label>
                     <textarea name="description" id="description-debug" class="description-form-add" maxlength="450" value=<?php echo $_SESSION["description"] ?>></textarea>
                     <div class="error max-count">
-                        <img src="../image/point-dexclamation.png" alt="eror">
+                        <img src="image/point-dexclamation.png" alt="eror">
                         <p>
                             La description est trop longue (350 caractères maximum).
                         </p>
@@ -147,7 +147,7 @@ require("conn.php");
                     <label>Image (optionnelle)</label>
                     <div class="image-preview-container">
                         <img src="" alt="">
-                        <img src="../image/x-2.png">
+                        <img src="image/x-2.png">
                     </div>
 
                     <div class="file-input-container">
@@ -165,7 +165,7 @@ require("conn.php");
 
                     <input type="radio" name="status_post" value="public" required <?php echo ($_SESSION["status_post"] == "public") ? "checked" : "" ?>>
 
-                    <img src="../image/public.png" alt="public">
+                    <img src="image/public.png" alt="public">
 
                     <div>
                         <p>Public</p>
@@ -178,7 +178,7 @@ require("conn.php");
 
                     <input type="radio" name="status_post" value="private" <?php echo ($_SESSION["status_post"] == "private") ? "checked" : "" ?>>
 
-                    <img src="../image/privé .png " alt="private">
+                    <img src="image/privé .png " alt="private">
 
                     <div>
                         <p>Privé</p>

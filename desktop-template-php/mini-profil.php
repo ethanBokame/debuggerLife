@@ -9,7 +9,7 @@ if (isset($_POST["send"])) {
         ");
     
     $type = $_FILES["banner"]["type"];
-    $banner = "../image/banner/" . $_SESSION["id_user"] . "_" . "banner_pic." . substr($type, 6);
+    $banner = "image/banner/" . $_SESSION["id_user"] . "_" . "banner_pic." . substr($type, 6);
     $id_user = $_SESSION["id_user"];
     
     if (strpos($type, "image/") == 0) {
@@ -34,7 +34,7 @@ if (isset($_POST["send"])) {
     
     <img src="<?php echo $user["banner"]?>" alt="background" class="banniere">
     <div class="set-banner-container">
-        <img src="../image/outil-crayon.png" alt="set_banner" class="set-banner">
+        <img src="image/outil-crayon.png" alt="set_banner" class="set-banner">
     </div>
 
     <form method="post" action="" enctype="multipart/form-data" class="form-set-banner">
@@ -43,7 +43,7 @@ if (isset($_POST["send"])) {
     </form>
     
     <div class="mini-profil-pic-container">
-        <img src="<?php echo "../image/profil_pic_user/" . $user["profile_pic"]?>" alt="" class="mini-profil-pic">
+        <img src="<?php echo "image/profil_pic_user/" . $user["profile_pic"]?>" alt="" class="mini-profil-pic">
     </div>
     
     <p class="username"> <?php echo $user["username"]?> </p>
@@ -57,7 +57,7 @@ if (isset($_POST["send"])) {
         <div class="stat-block">
             
             <div class="stat stat-db">
-                <img src="../image/feather-pen.png" alt="">
+                <img src="image/feather-pen.png" alt="">
                 <div>
                     <p> <?php echo number_format_short($userObj->nbDebug()) ?> </p> <p>Debugs</p>
                 </div>
@@ -65,7 +65,7 @@ if (isset($_POST["send"])) {
 
 
             <div class="stat stat-fav">
-                <img src="../image/bookmark-regular-240-white.png" alt="">
+                <img src="image/bookmark-regular-240-white.png" alt="">
                 <div>
                 <p> <?php echo number_format_short($userObj->nbFav()) ?> </p> <p>Favoris</p>
                 </div>
@@ -78,14 +78,14 @@ if (isset($_POST["send"])) {
         <div class="stat-block ">
             
         <div class="stat stat-like">
-                <img src="../image/heart-regular-240-white.png" alt="">
+                <img src="image/heart-regular-240-white.png" alt="">
                 <div>
                 <p> <?php echo number_format_short($userObj->nbLike()) ?> </p> <p>J'aime</p>
                 </div>
             </div>
             
             <div class="stat stat-age">
-                <img src="../image/epee.png" alt="">
+                <img src="image/epee.png" alt="">
                 <div>
                 <p> <?php echo number_format_short($userObj->age()) ?> </p> <p>Debugger age</p>
                 </div>

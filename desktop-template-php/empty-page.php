@@ -1,7 +1,7 @@
 <!--DANS LE CAS OU IL N'Y A PAS OU PLUS DE POSTS-->
 
 <?php 
-if (basename($_SERVER["PHP_SELF"]) == "favoris.php") {
+if (basename($_SERVER["REQUEST_URI"]) == "favoris") {
     ?>
     <div class="nopost nofav">
         <h1>Vous n'avez pas encore de favoris</h1>
@@ -9,7 +9,7 @@ if (basename($_SERVER["PHP_SELF"]) == "favoris.php") {
     </div>
     <?php
 }
-else if (basename($_SERVER["PHP_SELF"]) == "mydebug.php") {
+else if (basename($_SERVER["REQUEST_URI"]) == "mydebug") {
     ?>
     <div class="nopost nodebug">
         <h1>Aucun Debug pour l'instant</h1>

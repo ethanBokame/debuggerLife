@@ -11,6 +11,8 @@ $router = new AltoRouter();
 // définition de la base
 $base = $_SERVER["HTTP_HOST"] == "localhost" ? '/debugger_life' : '';
 
+echo $_SERVER["HTTP_HOST"];
+
 $router->setBasePath($base);
 
 // Définition ds routes

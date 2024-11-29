@@ -97,7 +97,7 @@ require("conn.php");
 
             move_uploaded_file($_FILES["link_picture"]["tmp_name"], $link_picture);
 
-            header("Location: mydebug.php");
+            header("Location: ../mydebug");
         } else {
             // Création des variables de session pour remplir les champs de formulaires en cas d'erreur
             $_SESSION["title"] = $title;

@@ -8,14 +8,13 @@ require 'vendor/autoload.php';
 
 $router = new AltoRouter();
 
-// définition de la base
-$base = $_SERVER["HTTP_HOST"] == "localhost" ? '/debugger_life' : '';
+$_SESSION["base"] = $_SERVER["HTTP_HOST"] == "localhost" ? '/debugger_life' : '';
 
 // echo $_SERVER["HTTP_HOST"];
 // echo "<br>";
 // echo $_SERVER["REQUEST_URI"];
 
-$router->setBasePath($base);
+$router->setBasePath($_SESSION["base"]);
 
 // Définition ds routes
 $router->map('GET', '/', function() {
@@ -28,17 +27,21 @@ $router->map('GET', '/explorer', function() {
 
 $router->map('GET', '/mydebug', function() {
     require "desktop-template-php/mydebug.php";
-});
+}, 'mydebug');
 
 $router->map('GET', '/favoris', function() {
     require "desktop-template-php/favoris.php";
 });
 
-$router->map('GET', '/add', function() {
+$router->map('GET | POST', '/add', function() {
     require "desktop-template-php/add.php";
 });
 
-$router->map('GET', '/update-debug/[i:id_post]', function($id_post) {
+// $router->map('POST', '/add', function() {
+//     require "desktop-template-php/add.php";
+// });
+
+$router->map('GET | POST', '/update-debug/[i:id_post]', function($id_post) {
 	// global $id_post_router;
 	$id_post_router = $id_post;
     require "desktop-template-php/modif-debug.php";

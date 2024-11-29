@@ -59,13 +59,13 @@ if (search) {
     search.addEventListener("focus", () => {
         searchBox.style.transition = "0.2s";
         searchBox.style.border = "1px solid white";
-        loupe.setAttribute("src", "../image/magnifier.png")
+        loupe.setAttribute("src", "image/magnifier.png")
     })
     
     search.addEventListener("blur", () => {
         searchBox.style.transition = "0.2s";
         searchBox.style.border = "1px solid #9198a1a6";
-        loupe.setAttribute("src", "../image/loupe.png")
+        loupe.setAttribute("src", "image/loupe.png")
     })
 }
 
@@ -274,7 +274,7 @@ function copyDebugLink() {
     navigator.clipboard.writeText(linkDebug.innerText);
     
     // Notification
-    showNotif("../image/fait.png", "Le lien du debug a été copié");
+    showNotif("image/fait.png", "Le lien du debug a été copié");
     setTimeout(() => {
         hideNotif();
     }, 2000);
@@ -293,7 +293,7 @@ function copyRessourceLink() {
       );
     
     // Notification
-    showNotif("../image/fait.png", "Le lien de la ressource a été copié");
+    showNotif("image/fait.png", "Le lien de la ressource a été copié");
     setTimeout(() => {
         hideNotif();
     }, 2000);
@@ -329,7 +329,7 @@ choicePopup.addEventListener("click", () => {
         fetch(hostname + "desktop-template-php/delete.php?id_post=" + id_post);
 
         // Notification
-        showNotif("../image/fait.png", "Votre debug a été supprimé");
+        showNotif("image/fait.png", "Votre debug a été supprimé");
         setTimeout(() => {
             hideNotif();
         }, 2000);
@@ -347,7 +347,7 @@ choicePopup.addEventListener("click", () => {
     
         console.log(newStateImg, newStateImgSimple);
         
-        newStateTextMenu = newStateImgSimple.slice(9,15);
+        newStateTextMenu = newStateImgSimple.slice(6,12);
         console.log(newStateTextMenu);
         stateText[currentIndex].innerText = "Mettre en " + newStateTextMenu;
 
@@ -357,7 +357,7 @@ choicePopup.addEventListener("click", () => {
 
         fetch(hostname + "desktop-template-php/status.php?id_post=" + id_post + "&status=" + status);
         
-        showNotif("../image/fait.png", "Votre Debug est maintenant " + newStateTextPopup);
+        showNotif("image/fait.png", "Votre Debug est maintenant " + newStateTextPopup);
         setTimeout(() => {
             hideNotif();
         }, 2000);
@@ -411,7 +411,7 @@ function postBtn(btn, btnImg, btnImgOldColor, btnImgNewColor, color, count, inde
         
         // Notification
         if (action == "fav") {
-            showNotif("../image/fait.png", "Ajouté a vos favoris");
+            showNotif("image/fait.png", "Ajouté a vos favoris");
             setTimeout(() => {
                 hideNotif();
             }, 2000);
@@ -428,7 +428,7 @@ function postBtn(btn, btnImg, btnImgOldColor, btnImgNewColor, color, count, inde
         fetch(hostname + "desktop-template-php/" + action + ".php?id_post=" + id_post + "&step=-1");
         
         if (action == "fav") {
-            showNotif("../image/fait.png", "Retiré de vos favoris");
+            showNotif("image/fait.png", "Retiré de vos favoris");
             setTimeout(() => {
                 hideNotif();
             }, 2000);
@@ -446,7 +446,7 @@ function postBtn(btn, btnImg, btnImgOldColor, btnImgNewColor, color, count, inde
 for (let i = 0; i < likePost.length; i++) {
     
     likePost[i].addEventListener("click", () => {
-        postBtn(likePost[i], likePostImg[i], "../image/heart-regular-240-white.png", "../image/heart-solid-240-pink.png", "#f91880", likePostNumber[i], i, "like");
+        postBtn(likePost[i], likePostImg[i], "image/heart-regular-240-white.png", "image/heart-solid-240-pink.png", "#f91880", likePostNumber[i], i, "like");
     })
 }
 
@@ -454,7 +454,7 @@ for (let i = 0; i < likePost.length; i++) {
 for (let i = 0; i < favPost.length; i++) {
     
     favPost[i].addEventListener("click", () => {
-        postBtn(favPost[i], favPostImg[i], "../image/bookmark-regular-240-white.png", "../image/bookmark-solid-240-or.png", "#FFC107", favPostNumber[i], i, "fav");
+        postBtn(favPost[i], favPostImg[i], "image/bookmark-regular-240-white.png", "image/bookmark-solid-240-or.png", "#FFC107", favPostNumber[i], i, "fav");
 
         // Retrait du debug des favoris
         if (window.location.pathname.includes("favoris.php")) {
@@ -462,7 +462,7 @@ for (let i = 0; i < favPost.length; i++) {
             let notMyDebugCount = document.querySelectorAll('.notmydebug');
             nofav && notMyDebugCount.length == 0 ? nofav.style.display = "flex" : "";
             
-            showNotif("../image/fait.png", "Retiré de vos favoris");
+            showNotif("image/fait.png", "Retiré de vos favoris");
             setTimeout(() => {
                 hideNotif();
             }, 2000);
@@ -605,7 +605,7 @@ for (let i = 0; i < copyLink.length; i++) {
         
         navigator.clipboard.writeText(linkPost[i].href).then(() => {
             
-            showNotif("../image/fait.png", "Lien de la ressource copié");
+            showNotif("image/fait.png", "Lien de la ressource copié");
             setTimeout(() => {
                 hideNotif();
             }, 2000);
@@ -628,7 +628,7 @@ for (let i = 0; i < sharePost.length; i++) {
         
         navigator.clipboard.writeText(contentToShare).then(() => {
             
-            showNotif("../image/fait.png", "Lien du debug copié");
+            showNotif("image/fait.png", "Lien du debug copié");
             setTimeout(() => {
                 hideNotif();    
             }, 2000);
@@ -648,7 +648,7 @@ for (let i = 0; i < copyLinkMydebug.length; i++) {
         
         navigator.clipboard.writeText(linkPostMydebug[i].href).then(() => {
             
-            showNotif("../image/fait.png", "Lien de la ressource copié");
+            showNotif("image/fait.png", "Lien de la ressource copié");
             setTimeout(() => {
                 hideNotif();
             }, 2000);
@@ -672,7 +672,7 @@ for (let i = 0; i < sharePostMydebug.length; i++) {
         
         navigator.clipboard.writeText(contentToShare).then(() => {
             
-            showNotif("../image/fait.png", "Lien du debug copié");
+            showNotif("image/fait.png", "Lien du debug copié");
             setTimeout(() => {
                 hideNotif();    
             }, 2000);

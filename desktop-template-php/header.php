@@ -7,7 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!--Base-->
-    <base href="http://localhost/debugger_life/">
+    <?php 
+    $base = $_SERVER["HTTP_HOST"] == "localhost" ? "http://localhost/debugger_life/" : '';
+    ?>
+    <base href="<?= $base ?>">
     
     <!--Icon-->
     <link rel="shortcut icon" href="image/feather-pen.png" type="../image/x-icon">

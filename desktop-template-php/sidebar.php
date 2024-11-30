@@ -1,9 +1,8 @@
 <div class="tab">
     
     <div class="group">
-        <?= basename($_SERVER["REQUEST_URI"]) ?>
         
-        <a class="explore" href="explorer" <?php echo(basename($_SERVER["REQUEST_URI"]) == "explorer" || basename($_SERVER["REQUEST_URI"]) == "/") ? 'style="background-color: #9198a184;"' : "" ?>>
+        <a class="explore" href="explorer" <?php echo(basename($_SERVER["REQUEST_URI"]) == "explorer") ? 'style="background-color: #9198a184;"' : "" ?>>
             <img src="image/saturne2.png" alt="group">
             <p>Explorer</p>
         </a>

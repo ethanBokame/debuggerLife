@@ -1,18 +1,19 @@
 <div class="tab">
     
     <div class="group">
+        <?= basename($_SERVER["REQUEST_URI"]) ?>
         
-        <a class="explore" href="explorer" <?php echo(basename($_SERVER["REQUEST_URI"])) == "explorer" ? 'style="background-color: #9198a184;"' : "" ?>>
+        <a class="explore" href="explorer" <?php echo(basename($_SERVER["REQUEST_URI"]) == "explorer" || basename($_SERVER["REQUEST_URI"]) == "/") ? 'style="background-color: #9198a184;"' : "" ?>>
             <img src="image/saturne2.png" alt="group">
             <p>Explorer</p>
         </a>
         
-        <a class="mydebug-page" href="mydebug" <?php echo(basename($_SERVER["REQUEST_URI"])) == "mydebug" ? 'style="background-color: #9198a184;"' : "" ?>>
+        <a class="mydebug-page" href="mydebug" <?php echo(basename($_SERVER["REQUEST_URI"]) == "mydebug") ? 'style="background-color: #9198a184;"' : "" ?>>
             <img src="image/edit.png" alt="post">
             <p>Mes Debugs</p>
         </a>
         
-        <a class="favoris" href="favoris" <?php echo(basename($_SERVER["REQUEST_URI"])) == "favoris" ? 'style="background-color: #9198a184;"' : "" ?>>
+        <a class="favoris" href="favoris" <?php echo(basename($_SERVER["REQUEST_URI"]) == "favoris") ? 'style="background-color: #9198a184;"' : "" ?>>
             <img src="image/bookmark-solid-240.png" alt="save">
             <p>Favoris</p>
         </a>
@@ -22,7 +23,7 @@
     <hr>
     
     <div class="group">
-        <a class="favoris" href="add" <?php echo(basename($_SERVER["REQUEST_URI"])) == "add" ? 'style="background-color: #9198a184;"' : "" ?>>
+        <a class="favoris" href="add" <?php echo(basename($_SERVER["REQUEST_URI"]) == "add" ) ? 'style="background-color: #9198a184;"' : "" ?>>
             <img src="image/plus.png" alt="save">
             <p>Ajouter un debug</p>
         </a>

@@ -24,7 +24,7 @@ body {
 .smoke {
   height: 1000%;
   width: 1000%;
-  background-color: rgba(0, 0, 0, 0.4666666667);
+  background-color: rgba(0, 0, 0, 0.6039215686);
   position: fixed;
   z-index: 4;
   display: none;
@@ -806,6 +806,34 @@ nav .nav-menu .profil_pic {
 }
 .add-debug-form-container form .choice-group .cancel:focus {
   background-color: #6f767f;
+}
+
+.image-debug-modal-container {
+  height: 100vh;
+  width: 100vw;
+  z-index: 4;
+  position: absolute;
+  display: none;
+}
+.image-debug-modal-container .close-debug-modal {
+  height: 48px;
+  background-color: #474a4e;
+  padding: 10px;
+  border-radius: 50px;
+  cursor: pointer;
+  position: absolute;
+  top: 7px;
+  right: 7px;
+}
+.image-debug-modal-container .close-debug-modal:hover {
+  background-color: #3b3d41;
+}
+.image-debug-modal-container .img-debug-modal {
+  position: absolute; /* postulat de départ */
+  top: 50%;
+  left: 50%; /* à 50%/50% du parent référent */
+  transform: translate(-50%, -50%); /* décalage de 50% de sa propre taille */
+  height: 100%;
 }
 
 /*# sourceMappingURL=style.css.map */

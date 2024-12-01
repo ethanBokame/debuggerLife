@@ -1,7 +1,8 @@
 let body = document.querySelector('body'),
     hostname = window.location.hostname == "localhost" ? "http://localhost/debugger_life/" : "https://sharethevision.net/",
     notMyDebug = document.querySelectorAll('.notmydebug'),
-    myDebug = document.querySelectorAll('.mydebug');
+    myDebug = document.querySelectorAll('.mydebug'),
+    smokePage = document.querySelector(".smoke");
 
 //Infobulles
 let classes_array = [
@@ -702,3 +703,49 @@ if (cancelModification) {
         history.back();
     })
 }
+
+
+// Image modale du debug
+let imgDebugModalContainer = document.querySelector('.image-debug-modal-container'),
+    imgDebugModal = document.querySelector('.img-debug-modal'),
+    imgDebug = document.querySelectorAll('.img-debug img'),
+    imgDebugClose = document.querySelector('.close-debug-modal');
+
+// Click sur l'image
+for (let i = 0; i < imgDebug.length; i++) {
+    
+    imgDebug[i].addEventListener("click", () => {
+        
+        // Récupération du path de l'image
+        let pathOfDebugImg = imgDebug[i].getAttribute("src");
+        
+        imgDebugModal.setAttribute("src", pathOfDebugImg);
+        smokePage.style.display = "block";
+        imgDebugModalContainer.style.display = "block";
+        
+        console.dir(imgDebugModal.width);
+        console.log(window.innerWidth);
+        
+        if (imgDebugModal.width > window.innerWidth * 80 / 100) {
+            console.log("l'image du debug a dépassé 80% de la largeur de la fenetre");
+            imgDebugModal.style.width = "80%";
+            imgDebugModal.style.height = "auto";
+        }
+    })
+    
+}
+
+// Click sur la croix pour fermer l'image
+imgDebugClose.addEventListener("click", () => {
+    smokePage.style.display = "none";
+    imgDebugModalContainer.style.display = "none";
+})
+
+// Click sur la zone neutre
+imgDebugModalContainer.addEventListener("click", (e) => {
+    if (e.target != imgDebugModal) {
+        smokePage.style.display = "none";
+        imgDebugModalContainer.style.display = "none";
+    }
+
+})

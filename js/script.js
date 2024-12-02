@@ -749,3 +749,27 @@ imgDebugModalContainer.addEventListener("click", (e) => {
     }
 
 })
+
+
+// Copie du code posté
+let copyCode = document.querySelectorAll('.code .header div'),
+    copyCodeImg = document.querySelectorAll('.code .header div img'),
+    copyCodeText = document.querySelectorAll('.code .header div p'),
+    codeBloc = document.querySelectorAll('.code pre code');
+
+for (let i = 0; i < copyCode.length; i++) {
+
+    copyCode[i].addEventListener("click", () => {
+        navigator.clipboard.writeText(codeBloc[i].innerText).then(() => {
+            copyCodeText[i].innerText = "Copié";
+            copyCodeImg[i].style.display = "none";
+
+            setTimeout(() => {
+                copyCodeText[i].innerText = "Copier le code";
+                copyCodeImg[i].style.display = "block";
+            }, 2000);
+        });
+    })
+    
+}
+

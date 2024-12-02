@@ -33,12 +33,13 @@ require("conn.php");
     $_SESSION["description"] = "";
     $_SESSION["link_ressource"] = "";
     $_SESSION["status_post"] = "";
+    $_SESSION["code"] = "";
 
     if (isset($_POST["submit_add_form"])) {
 
         // Préparation de la requete
-        $sql = $conn->prepare("INSERT INTO post (title, description, link_ressource, status_post, id_user, link_picture) 
-        VALUES (:title, :description, :link_ressource, :status_post, :id_user, :link_picture)");
+        $sql = $conn->prepare("INSERT INTO post (title, description, link_ressource, status_post, id_user, link_picture, code) 
+        VALUES (:title, :description, :link_ressource, :status_post, :id_user, :link_picture, :code)");
 
         // Traitement du formulaire
         $title = strip_tags($_POST['title']);
@@ -46,6 +47,7 @@ require("conn.php");
         $link_ressource = (filter_var($_POST['link_ressource'], FILTER_SANITIZE_URL));
         $status_post = empty($_POST['status_post']) ? null : $_POST['status_post'];
         $id_user = $user['id_user'];
+        $code = htmlspecialchars($_POST['code'] , ENT_QUOTES, 'UTF-8');
 
         $type = $_FILES["link_picture"]["type"];
         $link_picture = empty($_FILES["link_picture"]["name"]) ? null : "image/debug_picture/" . $id_user . "_" . date("Y-m-d-H-i-s", strtotime("-1 hour")) . "_" . "debug_pic." . substr($type, 6);
@@ -72,6 +74,7 @@ require("conn.php");
             $sql->bindValue(':status_post', $status_post);
             $sql->bindValue(':id_user', $id_user, PDO::PARAM_INT);
             $sql->bindValue(':link_picture', $link_picture);
+            $sql->bindValue(':code', $code);
 
             $sql->execute();
 
@@ -141,6 +144,17 @@ require("conn.php");
                     <label for="link-debug">Lien *</label>
                     <input type="url" name="link_ressource" id="link-debug" class="url-form-add" required value=<?php echo $_SESSION["link_ressource"] ?>>
                     <?php displayError("Le lien ne doit pas être vide", $error_link) ?>
+                </div>
+
+                <div class="entry">
+                    <label for="description-debug">Code (optionnel)</label>
+                    <textarea name="code" id="code" class="code-form-add" placeholder="Collez votre snippet de code ici (HTML, Python, etc.)" maxlength="3000" value=<?php echo $_SESSION["description"] ?>></textarea>
+                    <div class="error max-count">
+                        <img src="image/point-dexclamation.png" alt="eror">
+                        <p>
+                            La description est trop longue (350 caractères maximum).
+                        </p>
+                    </div>
                 </div>
 
                 <div class="entry file-input">

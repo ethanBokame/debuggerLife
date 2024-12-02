@@ -429,6 +429,48 @@ nav .nav-menu .profil_pic {
   width: 100%;
   border-radius: 15px;
 }
+.first-tab-system-container .page .mydebug .code, .first-tab-system-container .page .notmydebug .code {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: -10px;
+  border-radius: 15px;
+  overflow: hidden;
+}
+.first-tab-system-container .page .mydebug .code .header, .first-tab-system-container .page .notmydebug .code .header {
+  display: flex;
+  align-items: center;
+  color: #9198a1;
+  background-color: rgba(145, 152, 161, 0.5058823529);
+  justify-content: space-between;
+  padding: 0 10px;
+}
+.first-tab-system-container .page .mydebug .code .header p, .first-tab-system-container .page .notmydebug .code .header p {
+  font-size: 14px;
+}
+.first-tab-system-container .page .mydebug .code .header div, .first-tab-system-container .page .notmydebug .code .header div {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  padding: 13px 0;
+  z-index: 2;
+  cursor: pointer;
+}
+.first-tab-system-container .page .mydebug .code .header div img, .first-tab-system-container .page .notmydebug .code .header div img {
+  height: 17px;
+}
+.first-tab-system-container .page .mydebug .code pre, .first-tab-system-container .page .notmydebug .code pre {
+  margin-top: -22px;
+  cursor: auto;
+}
+.first-tab-system-container .page .mydebug .code pre code, .first-tab-system-container .page .notmydebug .code pre code {
+  width: 100%;
+  max-height: 400px;
+  border-radius: 0 0 15px 15px;
+  overflow: auto;
+  scrollbar-color: rgba(145, 152, 161, 0.5176470588) #0d1117;
+  scrollbar-width: thin;
+}
 .first-tab-system-container .page .mydebug .bottom, .first-tab-system-container .page .notmydebug .bottom {
   display: flex;
   color: #9198a1;
@@ -627,7 +669,7 @@ nav .nav-menu .profil_pic {
 
 .add-debug-form-container {
   overflow-y: scroll;
-  width: 80%;
+  flex-grow: 1;
   padding: 30px 0;
   display: flex;
   align-items: center;
@@ -689,6 +731,10 @@ nav .nav-menu .profil_pic {
 .add-debug-form-container .add-debug-form .entry textarea {
   max-width: 500px;
   min-height: 85px;
+}
+.add-debug-form-container .add-debug-form .entry .code-form-add {
+  min-height: 150px;
+  overflow: auto;
 }
 .add-debug-form-container .add-debug-form .file-input .image-preview-container {
   display: flex;

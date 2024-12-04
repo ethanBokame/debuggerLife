@@ -96,7 +96,7 @@ require("fonctions.php");
                         <?php echo $post["title"] ?>
                     </p>
 
-                    <div class="description" <?php echo (empty($post["description"])) ? 'style="margin: -11px"' : "" ?>>
+                    <div class="description" <?php echo (empty($post["description"])) ? 'style="margin: -10px"' : "" ?>>
                         <p>
                             <?php echo $post["description"] ?>
                         </p>

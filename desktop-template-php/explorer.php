@@ -24,7 +24,7 @@ require("fonctions.php");
             <?php
             
             // Chargement des debugs
-            $sql = $conn->prepare("SELECT u.id_user, u.profile_pic, u.username, p.id_post, p.post_date, p.title, p.fav_number, p.like_number, p.status_post, p.link_ressource, p.description, p.link_picture 
+            $sql = $conn->prepare("SELECT u.id_user, u.profile_pic, u.username, p.id_post, p.code, p.post_date, p.title, p.fav_number, p.like_number, p.status_post, p.link_ressource, p.description, p.link_picture 
             FROM users u 
             JOIN post p 
             ON u.id_user=p.id_user
@@ -97,7 +97,15 @@ require("fonctions.php");
                         <?php echo $post["title"] ?>
                     </p>
                     
-                    <div class="description" <?php echo(empty($post["description"])) ? 'style="margin: -11px"' : ""?>>
+                    <div class="description" <?php
+                    if (empty($post["description"]) && $post["code"] == "") {
+                        echo 'style="margin: -11px"';
+                    } elseif (empty($post["description"]) && $post["code"] != "") {
+                        echo 'style="margin: -15px"';
+                    } else {
+                        echo "";
+                    }
+                    ?>>
                         <p>
                             <?php echo $post["description"] ?>
                         </p>
@@ -109,6 +117,19 @@ require("fonctions.php");
                     
                     <div class="img-debug" <?php echo(empty($post["link_picture"])) ? 'style="display:none"' : 'style="margin-bottom: -4px"' ?>>
                         <img src="<?php echo $post["link_picture"] ?>" alt="debug-image">
+                    </div>
+
+                    <div class="code" <?php echo (empty($post["code"])) ? 'style="display:none"' : "" ?>>
+                        <div class="header">
+                            <p>code</p>
+                            <div>
+                            <img src="image/copy-regular-240.png" alt="">
+                            <p>Copier le code</p>
+                            </div>
+                        </div>
+                        <pre>
+                        <code><?php echo $post["code"] ?></code>
+                        </pre>
                     </div>
                     
                     <div class="bottom">

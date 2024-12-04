@@ -110,7 +110,7 @@ require("fonctions.php");
                         <img src="<?php echo $post["link_picture"] ?>" alt="debug-image">
                     </div>
 
-                    <div class="code">
+                    <div class="code" <?php echo (empty($post["code"])) ? 'style="display:none"' : "" ?>>
                         <div class="header">
                             <p>code</p>
                             <div>
@@ -118,9 +118,9 @@ require("fonctions.php");
                             <p>Copier le code</p>
                             </div>
                         </div>
-                        <pre <?php echo (empty($post["code"])) ? 'style="display:none"' : "" ?>>
+                        <pre>
                         <code><?php echo $post["code"] ?></code>
-                    </pre>
+                        </pre>
                     </div>
 
 

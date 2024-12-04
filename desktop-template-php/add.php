@@ -47,7 +47,7 @@ require("conn.php");
         $link_ressource = (filter_var($_POST['link_ressource'], FILTER_SANITIZE_URL));
         $status_post = empty($_POST['status_post']) ? null : $_POST['status_post'];
         $id_user = $user['id_user'];
-        $code = htmlspecialchars($_POST['code'] , ENT_QUOTES, 'UTF-8');
+        $code = htmlspecialchars($_POST['code'], ENT_QUOTES, 'UTF-8');
 
         $type = $_FILES["link_picture"]["type"];
         $link_picture = empty($_FILES["link_picture"]["name"]) ? null : "image/debug_picture/" . $id_user . "_" . date("Y-m-d-H-i-s", strtotime("-1 hour")) . "_" . "debug_pic." . substr($type, 6);
@@ -57,7 +57,7 @@ require("conn.php");
             $error_title = true;
         }
 
-        if (empty($link_ressource) || trim($link_ressource) == '') {
+        if ((empty($link_ressource) || trim($link_ressource) == '') && (empty($code) || trim($code) == '')) {
             $error_link = true;
         }
 
@@ -113,62 +113,96 @@ require("conn.php");
                 <h3>Contenu</h3>
 
                 <i>
-                    Les champs obligatoires sont marqués d'un astérisque (*).
+                    Les champs obligatoires sont marqués d'un astérisque (*). Vous pouvez ajouter une image ou du code, mais pas les deux à la fois. Notez également que l'ajout de code rend le lien facultatif.
                 </i>
 
                 <div class="entry title-debug">
+
                     <label for="title-debug">Titre du debug *</label>
+
                     <input type="text" name="title" class="title-form-add" id="title-debug" maxlength="150" required value=<?php echo $_SESSION["title"] ?>>
+
+                    <p class="mini-description">
+                        Donnez un titre clair et concis à votre debug.
+                    </p>
+
                     <div class="error max-count">
                         <img src="image/point-dexclamation.png" alt="error">
                         <p>
-                            Le titre est trop long (100 caractères maximum).
+                            Le titre est trop long (150 caractères maximum).
                         </p>
                     </div>
+
                     <?php displayError("Le titre du debug ne doit pas être vide.", $error_title) ?>
+
                 </div>
 
                 <div class="entry">
+
                     <label for="description-debug">Description (optionnelle)</label>
-                    <textarea name="description" id="description-debug" class="description-form-add" maxlength="450" value=<?php echo $_SESSION["description"] ?>></textarea>
+
+                    <textarea name="description" id="description-debug" class="description-form-add" maxlength="500" value=<?php echo $_SESSION["description"] ?>></textarea>
+
+                    <p class="mini-description">
+                        Décrivez votre trouvaille ou le problème résolu avec des détails si nécessaire !
+                    </p>
+
                     <div class="error max-count">
                         <img src="image/point-dexclamation.png" alt="eror">
                         <p>
-                            La description est trop longue (350 caractères maximum).
+                            La description est trop longue (500 caractères maximum).
                         </p>
                     </div>
+
                 </div>
 
+                <div class="entry entry-code">
 
-                <div class="entry">
-                    <label for="link-debug">Lien *</label>
-                    <input type="url" name="link_ressource" id="link-debug" class="url-form-add" required value=<?php echo $_SESSION["link_ressource"] ?>>
-                    <?php displayError("Le lien ne doit pas être vide", $error_link) ?>
-                </div>
-
-                <div class="entry">
                     <label for="description-debug">Code (optionnel)</label>
-                    <textarea name="code" id="code" class="code-form-add" placeholder="Collez votre snippet de code ici (HTML, Python, etc.)" maxlength="3000" value=<?php echo $_SESSION["description"] ?>></textarea>
+
+                    <textarea name="code" id="code" class="code-form-add" placeholder="print('Hello world !')" maxlength="3000" value=<?php echo $_SESSION["description"] ?>></textarea>
+
+                    <p class="mini-description">
+                        Collez votre code ici. Assurez-vous qu'il est lisible et bien indenté.
+                    </p>
+
                     <div class="error max-count">
                         <img src="image/point-dexclamation.png" alt="eror">
                         <p>
                             La description est trop longue (350 caractères maximum).
                         </p>
                     </div>
+
                 </div>
 
                 <div class="entry file-input">
+                    
                     <label>Image (optionnelle)</label>
+                    
                     <div class="image-preview-container">
                         <img src="" alt="">
                         <img src="image/x-2.png">
                     </div>
-
+                    
                     <div class="file-input-container">
                         <label for="image-debug">Choisissez votre image</label>
                         <p>Aucune image choisie</p>
                         <input type="file" name="link_picture" id="image-debug" accept="image/*">
                     </div>
+                    
+                    <p class="mini-description">
+                        Ajoutez une image pertinente pour votre publication.
+                    </p>
+                    
+                </div>
+                
+                <div class="entry">
+                    <label for="link-debug">Lien *</label>
+                    <input type="url" name="link_ressource" id="link-debug" required class="url-form-add" value=<?php echo $_SESSION["link_ressource"] ?>>
+                    <p class="mini-description">
+                        Ajoutez le lien de la ressource que vous voulez stocker sur la plateforme.
+                    </p>
+                    <?php displayError("Le lien ne doit pas être vide", $error_link) ?>
                 </div>
 
                 <hr>

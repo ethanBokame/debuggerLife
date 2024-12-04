@@ -500,7 +500,7 @@ if (inputTitle) {
     })
     
     inputDescription.addEventListener("input", function () {
-        displayError(this, 450, 1);
+        displayError(this, 500, 1);
     })
     
     inputUrl.addEventListener("input", function () {
@@ -516,7 +516,8 @@ let inputFileContainer = document.querySelector(".file-input"),
     inputFileInput = document.querySelector(".file-input input"),
     imageContainer = document.querySelector(".image-preview-container"),
     closeImage = document.querySelectorAll(".image-preview-container img")[1],
-    link_picture_value = document.querySelector(".link_picture_value");
+    link_picture_value = document.querySelector(".link_picture_value"),
+    inputCodeContainer = document.querySelector('.entry-code');
 
 if (inputFileText) {
     inputFileText.addEventListener("click", () => {
@@ -524,7 +525,7 @@ if (inputFileText) {
     })
 }
 
-
+// Miniature de l'image
 function previewFile() {
     const reader = new FileReader();
 
@@ -539,6 +540,7 @@ function previewFile() {
 
     if (inputFileInput.files[0]) {
         reader.readAsDataURL(inputFileInput.files[0]);
+        inputCodeContainer.style.display = "none";
     }
 }
 
@@ -560,13 +562,36 @@ if (inputFileInput) {
 
     })
     
+    // fermetture de l'image en cliquand sur le x
     closeImage.addEventListener("click", () => {
         imageContainer.style.display = "none";
         inputFileText.innerText = "Aucune image choisie";
         inputFileInput.value = "";
-        link_picture_value.value = "";
+        link_picture_value ? link_picture_value.value = "" : "";
+        inputCodeContainer.style.display = "flex";
     })
 }
+
+// Snippet de code
+let inputCode = document.querySelector('.code-form-add');
+
+if (inputCode) {
+    
+    inputCode.addEventListener("input", () => {
+        if (inputCode.value.length > 0) {
+            inputFileContainer.style.display = "none";
+            inputUrl.required = false;
+            inputUrl.innerText = "Lien (optionel)";
+        }
+        else {
+            inputFileContainer.style.display = "flex";
+            inputUrl.required = true;
+            inputUrl.innerText = "Lien *";
+        }
+        
+    })
+}
+
 
 
 
@@ -772,4 +797,6 @@ for (let i = 0; i < copyCode.length; i++) {
     })
     
 }
+
+
 

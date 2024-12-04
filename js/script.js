@@ -792,9 +792,10 @@ for (let i = 0; i < copyCode.length; i++) {
     copyCode[i].addEventListener("click", () => {
         navigator.clipboard.writeText(codeBloc[i].innerText).then(() => {
             copyCodeText[i].innerText = "Copié";
-            copyCodeImg[i].style.display = "none";
+            copyCodeImg[i].setAttribute("src", "image/check-regular-240.png");
 
             setTimeout(() => {
+                copyCodeImg[i].setAttribute("src", "image/copy-regular-240.png");
                 copyCodeText[i].innerText = "Copier le code";
                 copyCodeImg[i].style.display = "block";
             }, 2000);

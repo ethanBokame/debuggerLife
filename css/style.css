@@ -405,7 +405,7 @@ nav .nav-menu .profil_pic {
   margin-top: 6px;
   right: 3%;
   display: none;
-  z-index: 2;
+  z-index: 3;
 }
 .first-tab-system-container .page .mydebug .option-menu .op, .first-tab-system-container .page .notmydebug .option-menu .op {
   display: flex;

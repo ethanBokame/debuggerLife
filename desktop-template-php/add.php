@@ -50,7 +50,7 @@ require("conn.php");
         $code = htmlspecialchars($_POST['code'], ENT_QUOTES, 'UTF-8');
 
         $type = $_FILES["link_picture"]["type"];
-        $link_picture = empty($_FILES["link_picture"]["name"]) ? null : "image/debug_picture/" . $id_user . "_" . date("Y-m-d-H-i-s", strtotime("-1 hour")) . "_" . "debug_pic." . substr($type, 6);
+        $link_picture = empty($_FILES["link_picture"]["name"]) ? "" : "image/debug_picture/" . $id_user . "_" . date("Y-m-d-H-i-s", strtotime("-1 hour")) . "_" . "debug_pic." . substr($type, 6);
 
         // Vérification des champs
         if (empty($title) || trim($title) == '') {
@@ -160,7 +160,7 @@ require("conn.php");
 
                     <label for="description-debug">Code (optionnel)</label>
 
-                    <textarea name="code" id="code" class="code-form-add" placeholder="print('Hello world !')" maxlength="3000" value=<?php echo $_SESSION["description"] ?>></textarea>
+                    <textarea name="code" id="code" class="code-form-add" placeholder="print('Hello world !')" maxlength="7000" value=<?php echo $_SESSION["description"] ?>></textarea>
 
                     <p class="mini-description">
                         Collez votre code ici. Assurez-vous qu'il est lisible et bien indenté.
@@ -169,7 +169,7 @@ require("conn.php");
                     <div class="error max-count">
                         <img src="image/point-dexclamation.png" alt="eror">
                         <p>
-                            La description est trop longue (350 caractères maximum).
+                            Le code est trop long (3000 caractères maximum).
                         </p>
                     </div>
 
@@ -197,7 +197,7 @@ require("conn.php");
                 </div>
                 
                 <div class="entry">
-                    <label for="link-debug">Lien *</label>
+                    <label for="link-debug" class="label-link">Lien *</label>
                     <input type="url" name="link_ressource" id="link-debug" required class="url-form-add" value=<?php echo $_SESSION["link_ressource"] ?>>
                     <p class="mini-description">
                         Ajoutez le lien de la ressource que vous voulez stocker sur la plateforme.

@@ -477,7 +477,9 @@ let inputTitle = document.querySelector('.title-form-add'),
     inputDescription = document.querySelector('.description-form-add'),
     inputUrl = document.querySelector('.url-form-add'),
     inputAddErrorMessage = document.querySelectorAll('.entry .max-count'),
-    errorMessage = document.querySelectorAll('.entry .error-simple');
+    errorMessage = document.querySelectorAll('.entry .error-simple'),
+    inputCode = document.querySelector('.code-form-add'),
+    labelUrl = document.querySelector('.label-link');
 
 
 
@@ -505,6 +507,11 @@ if (inputTitle) {
     
     inputUrl.addEventListener("input", function () {
         errorMessage[1].style.display = "none";
+    })
+
+    inputCode.addEventListener("input", function () {
+        displayError(this, 7000, 2);
+        // errorMessage[2].style.display = "none";
     })
 }
 
@@ -573,20 +580,18 @@ if (inputFileInput) {
 }
 
 // Snippet de code
-let inputCode = document.querySelector('.code-form-add');
-
 if (inputCode) {
     
     inputCode.addEventListener("input", () => {
         if (inputCode.value.length > 0) {
             inputFileContainer.style.display = "none";
             inputUrl.required = false;
-            inputUrl.innerText = "Lien (optionel)";
+            labelUrl.innerText = "Lien (optionel)";
         }
         else {
             inputFileContainer.style.display = "flex";
             inputUrl.required = true;
-            inputUrl.innerText = "Lien *";
+            labelUrl.innerText = "Lien *";
         }
         
     })

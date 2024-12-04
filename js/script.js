@@ -797,7 +797,6 @@ for (let i = 0; i < copyCode.length; i++) {
             setTimeout(() => {
                 copyCodeImg[i].setAttribute("src", "image/copy-regular-240.png");
                 copyCodeText[i].innerText = "Copier le code";
-                copyCodeImg[i].style.display = "block";
             }, 2000);
         });
     })

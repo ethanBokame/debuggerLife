@@ -13,9 +13,9 @@
         
         <input type="search" list="data-search" name="search" id="search" placeholder=
         "<?php
-        if (basename($_SERVER["PHP_SELF"]) == "favoris.php") {
+        if (basename($_SERVER["REQUEST_URI"]) == "mydebug") {
             echo "Parmis vos debugs";
-        } elseif (basename($_SERVER["PHP_SELF"]) == "explorer.php") {
+        } elseif (basename($_SERVER["REQUEST_URI"]) == "explorer") {
             echo "Rechercher un debug";
         } else {
             echo "Parmis vos favoris";

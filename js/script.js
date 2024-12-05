@@ -739,12 +739,13 @@ if (cancelModification) {
 let imgDebugModalContainer = document.querySelector('.image-debug-modal-container'),
     imgDebugModal = document.querySelector('.img-debug-modal'),
     imgDebug = document.querySelectorAll('.img-debug img'),
-    imgDebugClose = document.querySelector('.close-debug-modal');
+    imgDebugClose = document.querySelector('.close-debug-modal'),
+    imgDebugContainer = document.querySelectorAll('.img-debug');
 
 // Click sur l'image
 for (let i = 0; i < imgDebug.length; i++) {
     
-    imgDebug[i].addEventListener("click", () => {
+    imgDebugContainer[i].addEventListener("click", () => {
         
         // Récupération du path de l'image
         let pathOfDebugImg = imgDebug[i].getAttribute("src");
@@ -757,9 +758,13 @@ for (let i = 0; i < imgDebug.length; i++) {
         console.log(window.innerWidth);
         
         if (imgDebugModal.width > window.innerWidth * 80 / 100) {
-            console.log("l'image du debug a dépassé 80% de la largeur de la fenetre");
             imgDebugModal.style.width = "80%";
             imgDebugModal.style.height = "auto";
+        }
+
+        if (imgDebugModal.height > window.innerHeight * 90 / 100) {
+            imgDebugModal.style.width = "auto";
+            imgDebugModal.style.height = "90%";
         }
     })
     
@@ -800,6 +805,15 @@ for (let i = 0; i < copyCode.length; i++) {
             }, 2000);
         });
     })
+    
+}
+
+// Formatage de l'image du debug en cas d'hauteur trop grande
+for (let i = 0; i < imgDebug.length; i++) {
+    if (imgDebug[i].height > 400) {
+        imgDebug[i].style.height = "400px";
+        imgDebug[i].style.width = "auto";
+    }
     
 }
 

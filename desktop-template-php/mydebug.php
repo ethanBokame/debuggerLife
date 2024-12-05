@@ -107,15 +107,17 @@ require("fonctions.php");
                     </div>
 
                     <div class="img-debug" <?php echo (empty($post["link_picture"])) ? 'style="display:none"' : "" ?>>
+                        <div class="img-debug-bg" style="background-image: url('<?php echo $post["link_picture"]; ?>');"></div>
                         <img src="<?php echo $post["link_picture"] ?>" alt="debug-image">
                     </div>
+
 
                     <div class="code" <?php echo (empty($post["code"])) ? 'style="display:none"' : "" ?>>
                         <div class="header">
                             <p>code</p>
                             <div>
-                            <img src="image/copy-regular-240.png" alt="">
-                            <p>Copier le code</p>
+                                <img src="image/copy-regular-240.png" alt="">
+                                <p>Copier le code</p>
                             </div>
                         </div>
                         <pre>

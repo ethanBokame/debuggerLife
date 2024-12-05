@@ -329,6 +329,7 @@ nav .nav-menu .profil_pic {
   flex-grow: 1;
   flex-basis: 0;
   scrollbar-width: 0;
+  overflow-x: hidden;
 }
 .first-tab-system-container .page .mydebug, .first-tab-system-container .page .notmydebug {
   width: 100%;
@@ -425,9 +426,28 @@ nav .nav-menu .profil_pic {
 .first-tab-system-container .page .mydebug .option-menu .op:nth-child(5), .first-tab-system-container .page .notmydebug .option-menu .op:nth-child(5) {
   border: none;
 }
-.first-tab-system-container .page .mydebug .img-debug img, .first-tab-system-container .page .notmydebug .img-debug img {
+.first-tab-system-container .page .mydebug .img-debug, .first-tab-system-container .page .notmydebug .img-debug {
   width: 100%;
   border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.first-tab-system-container .page .mydebug .img-debug .img-debug-bg, .first-tab-system-container .page .notmydebug .img-debug .img-debug-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  filter: blur(11px); /* Applique un flou */
+  z-index: 1;
+}
+.first-tab-system-container .page .mydebug .img-debug img, .first-tab-system-container .page .notmydebug .img-debug img {
+  width: 100%;
+  z-index: 2;
 }
 .first-tab-system-container .page .mydebug .code, .first-tab-system-container .page .notmydebug .code {
   position: relative;

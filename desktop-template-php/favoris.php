@@ -115,6 +115,7 @@ require("fonctions.php");
                     </div>
                     
                     <div class="img-debug" <?php echo(empty($post["link_picture"])) ? 'style="display:none"' : 'style="margin-bottom: -4px"' ?>>
+                        <div class="img-debug-bg" style="background-image: url('<?php echo $post["link_picture"]; ?>');"></div>
                         <img src="<?php echo $post["link_picture"] ?>" alt="debug-image">
                     </div>
 

@@ -37,15 +37,15 @@ $router->map('GET | POST', '/add', function() {
     require "desktop-template-php/add.php";
 });
 
-// $router->map('POST', '/add', function() {
-//     require "desktop-template-php/add.php";
-// });
-
 $router->map('GET | POST', '/update-debug/[i:id_post]', function($id_post) {
-	// global $id_post_router;
 	$id_post_router = $id_post;
     require "desktop-template-php/modif-debug.php";
-	// echo $id_post_router;
+});
+
+$router->map('GET', '/[*:username]/[i:id_post]', function($username, $id_post) {
+    $username_router = $username;
+	$id_post_router = $id_post;
+    require "desktop-template-php/debug.php";
 });
 
 // $router->map('GET', '/contact', 'contact', 'contact');

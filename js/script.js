@@ -656,7 +656,7 @@ for (let i = 0; i < sharePost.length; i++) {
     sharePost[i].addEventListener("click", () => {
         
         let idPost = notMyDebug[i].getAttribute("id-post"),
-            contentToShare = "https://debuggerLife.com/" + usernamePost[i].innerText + "/" + idPost;
+            contentToShare = hostname + usernamePost[i].innerText + "/" + idPost;
         
         navigator.clipboard.writeText(contentToShare).then(() => {
             
@@ -700,7 +700,7 @@ for (let i = 0; i < sharePostMydebug.length; i++) {
     sharePostMydebug[i].addEventListener("click", () => {
         
         let idPost = myDebug[i].getAttribute("id-post"),
-            contentToShare = "https://debuggerLife.com/" + usernamePostMydebug[i].innerText + "/" + idPost;
+            contentToShare = hostname + usernamePostMydebug[i].innerText + "/" + idPost;
         
         navigator.clipboard.writeText(contentToShare).then(() => {
             
@@ -836,8 +836,6 @@ for (let i = 0; i < mydebug.length; i++) {
             let idPost = myDebug[i].getAttribute("id-post");
             
             window.location.href = usernamePostMydebug[i].innerText + "/" + idPost;
-
-            // page.style.display = "flex";
         }
         
     })
@@ -848,9 +846,12 @@ for (let i = 0; i < notMyDebug.length; i++) {
     
     notMyDebug[i].addEventListener("click", () => {
         
-        let idPost = notMyDebug[i].getAttribute("id-post");
+        if (!nameContainer[i].contains(e.target) && !option[i].contains(e.target) && !linkDebug[i].contains(e.target) && !imgDebugContainer[i].contains(e.target)) {
+            
+            let idPost = notMyDebug[i].getAttribute("id-post");
 
-        window.location.href =  usernamePost[i].innerText + "/" + idPost;
+            window.location.href =  usernamePost[i].innerText + "/" + idPost;
+        }
     })
 }
 

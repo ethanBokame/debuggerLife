@@ -338,6 +338,7 @@ nav .nav-menu .profil_pic {
   flex-direction: column;
   gap: 11px;
   padding: 10px 30px;
+  display: flex;
   overflow-wrap: break-word;
   position: relative;
   cursor: pointer;
@@ -387,6 +388,9 @@ nav .nav-menu .profil_pic {
 }
 .first-tab-system-container .page .mydebug .option:hover, .first-tab-system-container .page .notmydebug .option:hover {
   background-color: rgba(145, 152, 161, 0.2901960784);
+}
+.first-tab-system-container .page .mydebug .ressource, .first-tab-system-container .page .notmydebug .ressource {
+  align-self: baseline;
 }
 .first-tab-system-container .page .mydebug .ressource a, .first-tab-system-container .page .notmydebug .ressource a {
   color: #4493f8;
@@ -537,6 +541,25 @@ nav .nav-menu .profil_pic {
 }
 .first-tab-system-container .page .notmydebug .option-menu .op:nth-child(1) {
   border: none;
+}
+.first-tab-system-container .page .back-big-debug {
+  margin-left: 15px;
+  margin-top: 9px;
+  border-radius: 50px;
+  padding: 10px;
+  background-color: rgba(145, 152, 161, 0.5019607843);
+  height: 38px;
+  cursor: pointer;
+}
+.first-tab-system-container .page .back-big-debug:hover {
+  background-color: rgba(145, 152, 161, 0.4078431373);
+}
+.first-tab-system-container .page .big-debug {
+  border-bottom: 1px solid transparent;
+  padding-left: 15px;
+}
+.first-tab-system-container .page .big-debug:hover {
+  background-color: transparent;
 }
 .first-tab-system-container .page {
   /* Masque la scrollbar dans tous les navigateurs */

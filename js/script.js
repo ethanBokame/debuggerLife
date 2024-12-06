@@ -2,7 +2,8 @@ let body = document.querySelector('body'),
     hostname = window.location.hostname == "localhost" ? "http://localhost/debugger_life/" : "https://sharethevision.net/",
     notMyDebug = document.querySelectorAll('.notmydebug'),
     myDebug = document.querySelectorAll('.mydebug'),
-    smokePage = document.querySelector(".smoke");
+    smokePage = document.querySelector(".smoke"),
+    page = document.querySelector(".page");
 
 //Infobulles
 let classes_array = [
@@ -646,7 +647,7 @@ for (let i = 0; i < copyLink.length; i++) {
     });
 }
 
-// Copie du lien d'un debug
+// Copie du lien d'un debug de notmydebug
 let sharePost = document.querySelectorAll('.share-btn'),
     usernamePost = document.querySelectorAll('.notmydebug .top .pic-name-post-date a');
 
@@ -815,7 +816,63 @@ for (let i = 0; i < imgDebug.length; i++) {
         imgDebug[i].style.width = "auto";
     }
     
+}   
+
+
+// Debug en grand
+
+// console.log(window.location);
+// mydebug
+let nameContainer = document.querySelectorAll('.pic-name-post-date .img-container'),
+    linkDebug = document.querySelectorAll('.ressource');
+
+
+for (let i = 0; i < mydebug.length; i++) {
+    
+    myDebug[i].addEventListener("click", (e) => {
+        
+        if (!nameContainer[i].contains(e.target) && !option[i].contains(e.target) && !linkDebug[i].contains(e.target) && !imgDebugContainer[i].contains(e.target)) {
+            
+            let idPost = myDebug[i].getAttribute("id-post");
+            
+            window.location.href = usernamePostMydebug[i].innerText + "/" + idPost;
+
+            // page.style.display = "flex";
+        }
+        
+    })
 }
 
+// notmydebug
+for (let i = 0; i < notMyDebug.length; i++) {
+    
+    notMyDebug[i].addEventListener("click", () => {
+        
+        let idPost = notMyDebug[i].getAttribute("id-post");
 
+        window.location.href =  usernamePost[i].innerText + "/" + idPost;
+    })
+}
+
+// retour 
+let backBigDebug = document.querySelector('.back-big-debug'),
+    referrer = document.referrer;
+    isFromApp = referrer.includes(hostname);
+
+backBigDebug.addEventListener("click", () => {
+    if (isFromApp) {
+        // Retour à la page précédente
+        window.history.back();
+    } else {
+        // Redirige vers une page par défaut (par exemple, la page d'accueil de l'application)
+        window.location.href = "/explorer"; // Remplacez par l'URL de la page d'accueil
+    }
+});
+
+
+// if (cancelModification) {
+//     cancelModification.addEventListener("click", () => {
+//         history.back();
+//     })
+// }
 

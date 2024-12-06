@@ -409,7 +409,7 @@ nav {
             display: flex;
             flex-direction: column;
             gap: 11px;
-            padding: 10px 30px;
+            padding: 10px 30px;display: flex;
             overflow-wrap: break-word;
             position: relative;
             cursor: pointer;
@@ -472,6 +472,7 @@ nav {
             }
     
             .ressource {
+                align-self: baseline;
                 
                 a {
                     color: #4493f8;
@@ -671,7 +672,36 @@ nav {
                 }
     
             }
+
+
+
         }
+
+        .back-big-debug {   
+            margin-left: 15px;
+            margin-top: 9px;
+            border-radius: 50px;
+            padding: 10px;
+            background-color: #9198a180;
+            height: 38px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: #9198a168;
+            }
+        }
+
+            
+
+            .big-debug {
+                border-bottom: 1px solid transparent;
+                padding-left: 15px;
+    
+                &:hover {
+                    background-color: transparent;
+                }
+            }
+
     }
 
         .page {

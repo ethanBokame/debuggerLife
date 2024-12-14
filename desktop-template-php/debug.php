@@ -151,9 +151,9 @@ require("fonctions.php");
                         </p>
                     </div>
 
-                    <div class="copy-btn">
-                        <img src="image/copier.png" alt="copier">
-                    </div>
+                    <div class="copy-btn" <?php echo (empty($post["link_ressource"])) ? 'style="display:none"' : "" ?>>
+                            <img src="image/copier.png" alt="copier">
+                        </div>
 
                     <div class="share-btn">
                         <img src="image/share-white.png" alt="share">

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://unpkg.com/photoswipe/dist/photoswipe.css">
+<script src="https://unpkg.com/photoswipe"></script>
+<script src="https://unpkg.com/photoswipe/dist/photoswipe-lightbox.esm.js" type="module"></script>
+
+</head>
+<body>
+    <div class="my-gallery">
+        <a href="../image/banner/8_banner_pic.jpeg" data-pswp-width="1200" data-pswp-height="800">
+          <img src="../image/banner/8_banner_pic.jpeg" alt="Image 1" height="400">
+        </a>
+        <a href="image2-large.jpg" data-pswp-width="1200" data-pswp-height="800">
+          <img src="image2-thumbnail.jpg" alt="Image 2">
+        </a>
+      </div>
+      
+      <script type="module">
+        import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe/dist/photoswipe-lightbox.esm.js';
+      
+        const lightbox = new PhotoSwipeLightbox({
+          gallery: '.my-gallery', // Sélecteur de la galerie
+          children: 'a',          // Les enfants à prendre en compte dans la galerie
+          pswpModule: () => import('https://unpkg.com/photoswipe')
+        });
+      
+        lightbox.init();
+      </script>
+      
+</body>
+</html>

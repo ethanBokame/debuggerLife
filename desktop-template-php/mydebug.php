@@ -19,6 +19,8 @@ require("fonctions.php");
         <?php require("sidebar.php") ?>
 
         <div class="page">
+            <!--spinner au chargement-->
+            <!-- <div class="loader"></div> -->
 
             <!--AFFICHAGE DES DEBUGS-->
             <?php
@@ -53,7 +55,7 @@ require("fonctions.php");
 
                         </div>
 
-                        <div class="option-container">
+                        <div class="option-container">          
 
                             <img src="image/options.png" class="option">
 

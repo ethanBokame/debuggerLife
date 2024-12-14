@@ -81,6 +81,14 @@ CREATE TABLE likes (
     FOREIGN KEY (id_post) REFERENCES post(id_post) ON DELETE CASCADE
 );
 
+CREATE TABLE warning_post (
+    id_user INT NOT NULL,
+    id_post INT NOT NULL,
+    PRIMARY KEY (id_user, id_post),
+    FOREIGN KEY (id_user) REFERENCES users(id_user) ON DELETE CASCADE,
+    FOREIGN KEY (id_post) REFERENCES post(id_post) ON DELETE CASCADE
+);
+
 
 INSERT INTO favoris (id_user, id_post) VALUES 
     (1, 5);

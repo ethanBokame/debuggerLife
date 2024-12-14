@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitter-like Loading Example</title>
+    <style>
+        /* Style général */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f5;
+            margin: 20px;
+        }
+
+        .post {
+            margin: 20px auto;
+            padding: 20px;
+            width: 80%;
+            max-width: 500px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            position: relative;
+            text-align: center;
+        }
+
+        /* Loader (spinner) */
+        .loader {
+            border: 4px solid #f3f3f3; /* Couleur de fond */
+            border-top: 4px solid #3498db; /* Couleur active */
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: auto; /* Centrer le spinner */
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Contenu des posts */
+        .content {
+            padding: 10px;
+            opacity: 0; /* Invisible au début */
+            transition: opacity 0.5s ease-in-out;
+            display: none; /* Masqué par défaut */
+        }
+
+        .content.loaded {
+            display: block;
+            opacity: 1; /* Apparition en douceur */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Placeholder pour les posts -->
+    <div class="post">
+        <div class="loader"></div>
+        <div class="content">
+            <h3></h3>
+            <p></p>
+        </div>
+    </div>
+
+    <div class="post">
+        <div class="loader"></div>
+        <div class="content">
+            <h3></h3>
+            <p></p>
+        </div>
+    </div>
+
+    <div class="post">
+        <div class="loader"></div>
+        <div class="content">
+            <h3></h3>
+            <p></p>
+        </div>
+    </div>
+
+    <script>
+        // Simulation des données venant d'une API
+        const posts = [
+            { title: "Post 1", content: "Content for post 1: Tips and tricks for web developers." },
+            { title: "Post 2", content: "Content for post 2: Exploring new CSS frameworks." },
+            { title: "Post 3", content: "Content for post 3: JavaScript best practices in 2024." },
+        ];
+
+        // Charger chaque post individuellement
+        document.querySelectorAll(".post").forEach((post, index) => {
+            const loader = post.querySelector(".loader");
+            const content = post.querySelector(".content");
+
+            // Simuler un appel API avec un délai pour chaque élément
+            setTimeout(() => {
+                // Injecter les données dans le contenu
+                content.querySelector("h3").innerText = posts[index].title;
+                content.querySelector("p").innerText = posts[index].content;
+
+                // Masquer le loader
+                loader.style.display = "none";
+
+                // Afficher le contenu avec un effet d'apparition
+                content.classList.add("loaded");
+            }, 1000 + index * 500); // Délai progressif : 1s, 1.5s, etc.
+        });
+    </script>
+</body>
+</html>

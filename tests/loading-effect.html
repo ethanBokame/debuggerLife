@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            opacity: 0;
+            transition: opacity 0.2s ease-in-out;
+        }
+    
+        body.loaded {
+            opacity: 1;
+        }
+    </style>
+
+</head>
+
+<body>
+    <p>J'ai une animation au chargement !</p>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            document.body.classList.add("loaded");
+        });
+    </script>
+</body>
+</html>

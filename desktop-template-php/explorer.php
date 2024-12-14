@@ -86,6 +86,11 @@ require("fonctions.php");
                                     <img src="image/user-regular-240.png" alt="profil">
                                     <p>Voir le profil</p>
                                 </div>
+
+                                <div class="op warning-op">
+                                    <img src="image/point-dexclamation2.png" alt="profil">
+                                    <p>Signaler le debug</p>
+                                </div>
                                 
                             </div>
                             

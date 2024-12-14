@@ -3,7 +3,8 @@ let body = document.querySelector('body'),
     notMyDebug = document.querySelectorAll('.notmydebug'),
     myDebug = document.querySelectorAll('.mydebug'),
     smokePage = document.querySelector(".smoke"),
-    page = document.querySelector(".page");
+    page = document.querySelector(".page"),
+    spinner = document.querySelector(".loader");
 
 //Infobulles
 let classes_array = [
@@ -176,6 +177,19 @@ function popup(title="", text="", choice="", state="") {
             popupChoice.style.backgroundColor = "#4493f8";
         })
     }
+    else if (choice == "warning"){
+
+        popupChoice.innerText = "Signaler ce debug";
+        popupChoice.style.backgroundColor = "#f85149";
+        
+        popupChoice.addEventListener("mouseover", () => {
+            popupChoice.style.backgroundColor = "#ff6058";
+        })
+        
+        popupChoice.addEventListener("mouseout", () => {
+            popupChoice.style.backgroundColor = "#f85149";
+        })
+    }
     
     smokePage.style.display = state;
     popup.style.display = state;
@@ -335,6 +349,12 @@ choicePopup.addEventListener("click", () => {
         setTimeout(() => {
             hideNotif();
         }, 2000);
+    }
+    else if (choicePopup.innerText == "Signaler ce debug") {
+        
+        let id_post = notMyDebug[currentIndex].getAttribute("id-post");
+        // Fetching pour le signalement d'un debug
+        fetch(hostname + "desktop-template-php/warning.php?id_post=" + id_post)
     }
     else {
         popup(state = "none");
@@ -820,55 +840,142 @@ for (let i = 0; i < imgDebug.length; i++) {
 
 
 // Debug en grand
+let filePath = window.location.pathname,
+    fileName = filePath.split('/').pop(),
+    nameContainer = document.querySelectorAll('.pic-name-post-date .img-container'),
+    linkDebug = document.querySelectorAll('.ressource'),
+    bottomDebug = document.querySelectorAll(".page .bottom"),
+    backBigDebug = document.querySelector('.back-big-debug'),
+    referrer = document.referrer,
+    isFromApp = referrer.includes(hostname),
+    codeBlocContainer = document.querySelectorAll('.code');
+    // console.log();
 
 // console.log(window.location);
 // mydebug
-let nameContainer = document.querySelectorAll('.pic-name-post-date .img-container'),
-    linkDebug = document.querySelectorAll('.ressource');
 
-
-for (let i = 0; i < mydebug.length; i++) {
+    for (let i = 0; i < myDebug.length; i++) {
+        myDebug[i].addEventListener("click", (e) => {
+            // Vérification préalable pour s'assurer que les éléments existent
+            if (
+                nameContainer[i] &&
+                option[i] &&
+                linkDebug[i] &&
+                imgDebugContainer[i] &&
+                usernamePostMydebug[i] &&
+                codeBloc[i] &&
+                !backBigDebug
+            ) {
+                // Vérification que e.target n'est dans aucun des éléments
+                if (
+                    !nameContainer[i].contains(e.target) &&
+                    !option[i].contains(e.target) &&
+                    !linkDebug[i].contains(e.target) &&
+                    !imgDebugContainer[i].contains(e.target) &&
+                    !codeBlocContainer[i].contains(e.target) &&
+                    !optionMenu[i].contains(e.target)
+                ) {
+                    let idPost = myDebug[i].getAttribute("id-post");
     
-    myDebug[i].addEventListener("click", (e) => {
-        
-        if (!nameContainer[i].contains(e.target) && !option[i].contains(e.target) && !linkDebug[i].contains(e.target) && !imgDebugContainer[i].contains(e.target)) {
-            
-            let idPost = myDebug[i].getAttribute("id-post");
-            
-            window.location.href = usernamePostMydebug[i].innerText + "/" + idPost;
-        }
-        
-    })
-}
+                    // Navigation vers la nouvelle URL
+                    window.location.href = usernamePostMydebug[i].innerText + "/" + idPost;
+                }
+            } else {
+                console.warn(`Un ou plusieurs éléments sont indéfinis pour l'index ${i}`);
+            }
+        });
+    }
+    
 
 // notmydebug
 for (let i = 0; i < notMyDebug.length; i++) {
-    
-    notMyDebug[i].addEventListener("click", () => {
-        
-        if (!nameContainer[i].contains(e.target) && !option[i].contains(e.target) && !linkDebug[i].contains(e.target) && !imgDebugContainer[i].contains(e.target)) {
-            
-            let idPost = notMyDebug[i].getAttribute("id-post");
+    notMyDebug[i].addEventListener("click", (e) => { // Ajout du paramètre 'e' ici pour capturer l'événement
+        // Vérification préalable pour s'assurer que tous les éléments sont définis
+        if (
+            nameContainer[i] &&
+            option[i] &&
+            linkDebug[i] &&
+            imgDebugContainer[i] &&
+            bottomDebug[i] &&
+            codeBloc[i] &&
+            !backBigDebug
+        ) {
+            // Vérification que e.target n'est dans aucun de ces éléments
+            if (
+                !nameContainer[i].contains(e.target) &&
+                !option[i].contains(e.target) &&
+                !linkDebug[i].contains(e.target) && 
+                !imgDebugContainer[i].contains(e.target) &&
+                !bottomDebug[i].contains(e.target) &&
+                !codeBlocContainer[i].contains(e.target) &&
+                !optionMenu[i].contains(e.target)
+            ) {
+                let idPost = notMyDebug[i].getAttribute("id-post");
 
-            window.location.href =  usernamePost[i].innerText + "/" + idPost;
+                // Navigation vers la nouvelle URL
+                window.location.href = usernamePost[i].innerText + "/" + idPost;
+            }
         }
+    });
+}
+
+
+// retour 
+if (backBigDebug) {
+    backBigDebug.addEventListener("click", () => {
+        if (isFromApp) {
+            // Retour à la page précédente
+            window.history.back();
+        } else {
+            // Redirige vers une page par défaut (par exemple, la page d'accueil de l'application)
+            window.location.href = "/explorer"; // Remplacez par l'URL de la page d'accueil
+        }
+    });
+}
+
+// Signalement du debug
+let warningBtn = document.querySelectorAll('.warning-op');
+console.log(warningBtn);
+
+for (let i = 0; i < warningBtn.length; i++) {
+    
+    warningBtn[i].addEventListener("click", () => {
+        console.log("ee");
+
+        currentIndex = i;
+        
+        fixeBody();
+        
+        popup("Êtes vous sûr?", "Cette action est irréversible et notifiera l'administrateur.", "warning", "block");
     })
 }
 
-// retour 
-let backBigDebug = document.querySelector('.back-big-debug'),
-    referrer = document.referrer;
-    isFromApp = referrer.includes(hostname);
+// document.addEventListener("DOMContentLoaded", () => {
 
-backBigDebug.addEventListener("click", () => {
-    if (isFromApp) {
-        // Retour à la page précédente
-        window.history.back();
-    } else {
-        // Redirige vers une page par défaut (par exemple, la page d'accueil de l'application)
-        window.location.href = "/explorer"; // Remplacez par l'URL de la page d'accueil
-    }
-});
+
+//     spinner.style.display = "none";
+//     myDebug.forEach(element => {
+//         element,style.display = "flex";
+//     });
+// })
+
+// let observer = new IntersectionObserver(function (entries) {
+//     console.log(entries);
+//     if (entries[0].intersectionRatio > 0) {
+//         entries[0].target.style.display = "flex";
+//         spinner.style.display = "none";
+//         console.log(entries[0].target);
+//     }
+//   });
+
+// // Pour observer un élément
+// observer.observe(mydebug[0])
+
+// Mais on peut regarder plusieurs éléments
+// const items = document.querySelectorAll('.text, .image')
+// for (const item of items) {
+//   observer.observe(item)
+// }
 
 
 // if (cancelModification) {

@@ -339,6 +339,7 @@ nav .nav-menu .profil_pic {
   height: 37px;
   margin: 0 auto;
   animation: spin 0.8s linear infinite;
+  margin-top: 20px;
 }
 @keyframes spin {
   0% {
@@ -359,6 +360,7 @@ nav .nav-menu .profil_pic {
   overflow-wrap: break-word;
   position: relative;
   cursor: pointer;
+  display: none;
 }
 .first-tab-system-container .page .mydebug:hover, .first-tab-system-container .page .notmydebug:hover {
   background-color: rgba(255, 255, 255, 0.0274509804);
@@ -649,6 +651,7 @@ nav .nav-menu .profil_pic {
   display: flex;
   flex-direction: column;
   gap: 35px;
+  max-width: 100%;
 }
 .first-tab-system-container .page .comments-big-container .comments-container {
   margin-right: 30px;
@@ -666,6 +669,7 @@ nav .nav-menu .profil_pic {
   display: flex;
   gap: 15px;
   flex-direction: column;
+  width: 750px;
 }
 .first-tab-system-container .page .comments-big-container .comments-container .name-date-content .name-date {
   display: flex;
@@ -686,6 +690,9 @@ nav .nav-menu .profil_pic {
 }
 .first-tab-system-container .page .comments-big-container .comments-container .name-date-content .content {
   color: white;
+  word-wrap: break-word; /* Permet au texte long de revenir à la ligne */
+  overflow-wrap: break-word; /* Gère également le retour à la ligne */
+  white-space: normal; /* Empêche le texte de rester sur une seule ligne */
 }
 .first-tab-system-container .page {
   /* Masque la scrollbar dans tous les navigateurs */

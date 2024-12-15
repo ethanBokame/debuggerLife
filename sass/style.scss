@@ -411,6 +411,7 @@ nav {
             height: 37px;
             margin: 0 auto;
             animation: spin 0.8s linear infinite;
+            margin-top: 20px;
           }
           
           @keyframes spin {
@@ -429,7 +430,7 @@ nav {
             overflow-wrap: break-word;
             position: relative;
             cursor: pointer;
-            // display: none;
+            display: none;
 
             &:hover {
                 background-color: #ffffff07;
@@ -803,6 +804,8 @@ nav {
             display: flex;
             flex-direction: column;
             gap: 35px;
+            max-width: 100%;
+            
             
 
             .comments-container {
@@ -822,6 +825,7 @@ nav {
                     display: flex;
                     gap: 15px;
                     flex-direction: column;
+                    width: 750px;
 
                     .name-date {
                         display: flex;
@@ -849,7 +853,11 @@ nav {
 
                     .content {
                         color: white;
+                        word-wrap: break-word; /* Permet au texte long de revenir à la ligne */
+                        overflow-wrap: break-word; /* Gère également le retour à la ligne */
+                        white-space: normal; /* Empêche le texte de rester sur une seule ligne */
                     }
+                    
                 }
             }
         }

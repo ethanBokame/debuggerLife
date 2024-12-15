@@ -20,7 +20,7 @@ require("fonctions.php");
 
         <div class="page">
             <!--spinner au chargement-->
-            <!-- <div class="loader"></div> -->
+            <div class="loader"></div>
 
             <!--AFFICHAGE DES DEBUGS-->
             <?php

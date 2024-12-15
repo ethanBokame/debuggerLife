@@ -1069,6 +1069,23 @@ function createComment(username, postDate, content, profilePic) {
 
 }
 
-// Exemple d'utilisation
+// Chargement avec spinner
+window.addEventListener("load", () => {
+
+    setTimeout(() => {
+        if (spinner) spinner.style.display = "none"; // Masque le spinner s'il existe
+
+        if (myDebug.length > 0) { // Vérifie si myDebug contient des éléments
+            myDebug.forEach(element => {
+                element.style.display = "flex";
+            });
+        } else if (notMyDebug.length > 0) { // Sinon, vérifie si notMyDebug existe
+            notMyDebug.forEach(element => {
+                element.style.display = "flex";
+            });
+        }
+    }, 500);
+});
+
 
 

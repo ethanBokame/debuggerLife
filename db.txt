@@ -89,9 +89,22 @@ CREATE TABLE warning_post (
     FOREIGN KEY (id_post) REFERENCES post(id_post) ON DELETE CASCADE
 );
 
+CREATE TABLE comment_post (
+    id_comment_post INT PRIMARY KEY AUTO_INCREMENT,
+    id_user INT NOT NULL,
+    id_post INT NOT NULL,
+    content_comment VARCHAR(500),
+    status_comment ENUM('first', 'lambda'),
+    comment_post_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_user) REFERENCES users(id_user) ON DELETE CASCADE,
+    FOREIGN KEY (id_post) REFERENCES post(id_post) ON DELETE CASCADE
+);
+
 
 INSERT INTO favoris (id_user, id_post) VALUES 
     (1, 5);
 
 
 SELECT user.profile_pic, user.username, post.post_date, post.title, post.fav_number, post.like_number, post.status_post, post.link_ressource, post.description FROM user JOIN post JOIN favoris ON user.id_user=favoris.id_user AND favoris.id_post=post.id_post;
+
+ALTER TABLE comment_post DROP PRIMARY KEY; pour avoir des doublons

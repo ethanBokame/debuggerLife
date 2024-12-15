@@ -21,31 +21,42 @@ $router->map('GET | POST', '/', function() {
     require "desktop-template-php/explorer.php";
 });
 
+// Page explorer
 $router->map('GET | POST', '/explorer', function() {
     require "desktop-template-php/explorer.php";
 });
 
+// Page des debugs perso
 $router->map('GET | POST', '/mydebug', function() {
     require "desktop-template-php/mydebug.php";
 }, 'mydebug');
 
+// Page favoris
 $router->map('GET | POST', '/favoris', function() {
     require "desktop-template-php/favoris.php";
 });
 
+// Ajout d'un debug
 $router->map('GET | POST', '/add', function() {
     require "desktop-template-php/add.php";
 });
 
+// Modification d'un debug
 $router->map('GET | POST', '/update-debug/[i:id_post]', function($id_post) {
 	$id_post_router = $id_post;
     require "desktop-template-php/modif-debug.php";
 });
 
-$router->map('GET', '/[*:username]/[i:id_post]', function($username, $id_post) {
+// Debug singulier
+$router->map('GET | POST', '/[*:username]/[i:id_post]', function($username, $id_post) {
     $username_router = $username;
 	$id_post_router = $id_post;
     require "desktop-template-php/debug.php";
+});
+
+// TEST
+$router->map('GET | POST', '/desktop-template-php/comment_post.php', function() {
+    require "desktop-template-php/comment_post.php";
 });
 
 // $router->map('GET', '/contact', 'contact', 'contact');

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section de Commentaires</title>
+    <style>
+        /* Style général */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .comment-section {
+            width: 50%;
+            margin: 20px auto;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+        }
+
+        /* Commentaire principal */
+        .comment {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        .username {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .time {
+            color: #888;
+            font-size: 12px;
+        }
+
+        .comment-text {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+
+        .comment-actions {
+            font-size: 12px;
+            color: #0073b1;
+            cursor: pointer;
+        }
+
+        .comment-actions span {
+            margin-right: 10px;
+        }
+
+        .comment-actions span:hover {
+            text-decoration: underline;
+        }
+
+        /* Réponses imbriquées */
+        .replies {
+            margin-left: 30px; /* Décalage pour les réponses */
+            border-left: 2px solid #ddd;
+            padding-left: 10px;
+        }
+
+        .reply {
+            background-color: #f9f9f9;
+        }
+
+        .badge {
+            background-color: #0073b1;
+            color: white;
+            font-size: 10px;
+            padding: 2px 5px;
+            border-radius: 4px;
+            margin-left: 5px;
+        }
+
+        .mention {
+            color: #0073b1;
+            font-weight: bold;
+        }
+
+        /* Boîte de réponse */
+        textarea {
+            width: 100%;
+            font-size: 14px;
+            padding: 8px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            resize: none;
+        }
+
+        button {
+            background-color: #0073b1;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #005582;
+        }
+    </style>
+</head>
+<body>
+    <!-- Section de commentaires -->
+    <div class="comment-section">
+        <!-- Comment principal -->
+        <div class="comment">
+            <div class="user-info">
+                <span class="username">Aicha Yeo ✨</span>
+                <span class="time">3d</span>
+            </div>
+            <p class="comment-text">Félicitations Fawas ! ❤️</p>
+            <div class="comment-actions">
+                <span class="like">Like</span> · 
+                <span class="reply-action">Reply</span> · 
+                <span>1 Reply</span>
+            </div>
+        </div>
+
+        <!-- Réponse imbriquée -->
+        <div class="replies">
+            <div class="comment reply">
+                <div class="user-info">
+                    <span class="username">Fawas KARIM</span>
+                    <span class="badge">Author</span>
+                    <span class="time">3d</span>
+                </div>
+                <p class="comment-text">
+                    <span class="mention">@Aicha Yeo ✨</span> merci bien 🙏
+                </p>
+                <div class="comment-actions">
+                    <span class="like">Like</span> · 
+                    <span class="reply-action">Reply</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript pour les interactions -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Fonction pour gérer les clics sur "Reply"
+            document.querySelectorAll('.reply-action').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    // Créer une boîte de réponse si elle n'existe pas déjà
+                    if (!button.parentElement.querySelector('textarea')) {
+                        let replyBox = document.createElement('div');
+                        replyBox.innerHTML = `
+                            <textarea placeholder="Répondre..."></textarea>
+                            <button>Envoyer</button>
+                        `;
+                        replyBox.style.marginTop = "10px";
+                        button.parentElement.appendChild(replyBox);
+
+                        // Gestion de l'envoi du commentaire
+                        let sendButton = replyBox.querySelector('button');
+                        sendButton.addEventListener('click', () => {
+                            let textarea = replyBox.querySelector('textarea');
+                            if (textarea.value.trim() !== "") {
+                                alert("Votre réponse : " + textarea.value);
+                                replyBox.remove(); // Retire la boîte après envoi (à remplacer par ta logique backend)
+                            }
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

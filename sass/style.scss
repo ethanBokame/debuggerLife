@@ -424,7 +424,8 @@ nav {
             display: flex;
             flex-direction: column;
             gap: 11px;
-            padding: 10px 30px;display: flex;
+            padding: 10px 30px;
+            display: flex;
             overflow-wrap: break-word;
             position: relative;
             cursor: pointer;
@@ -696,7 +697,8 @@ nav {
         }
 
         .back-big-debug {   
-            margin-left: 15px;
+            margin-left: 23px;
+            margin-right: 5px;
             margin-top: 9px;
             border-radius: 50px;
             padding: 10px;
@@ -714,11 +716,143 @@ nav {
             .big-debug {
                 border-bottom: 1px solid transparent;
                 padding-left: 15px;
+                flex-grow: 1;
     
                 &:hover {
                     background-color: transparent;
                 }
+
+
             }
+
+            .comment-big-container {
+                width: 100%;
+                padding-bottom: 30px;
+
+                .comment-container {
+                    color: white;
+                    margin-top: 10px;
+                    background-color: transparent;
+                    font-size: 16px;
+                    border: 1.5px solid #313845;
+                    border-radius: 50px;
+                    overflow: hidden;
+                    padding-left: 20px;
+                    margin-right: 30px;
+                    margin-left: 10px;
+
+
+                    textarea {
+                            width: 100%;
+                            font-size: 16px;
+                            padding-top: 16px;
+                            height: 45px;
+                            resize: vertical;
+                            min-height: 45px;
+                            background-color: transparent;
+                            border: none;
+                            outline: none;
+                            color: white;
+                            padding-right: 15px;
+                            /* Masque la scrollbar dans tous les navigateurs */
+                            overflow: hidden;
+                            /* Assure que le scroll est masqué */
+                            scrollbar-width: none;
+                            /* Firefox */
+                            -ms-overflow-style: none;
+                            /* Internet Explorer */
+                        }
+                    
+                        .textarea::-webkit-scrollbar {
+                            display: none;
+                            /* Chrome, Safari, Edge */
+                        }
+
+                    .bottom-comment {
+                        margin-right: 15px;
+                        display: flex;
+                        gap: 15px;
+                        padding: 5px 0;
+                        display: none;
+
+                        .cancel, .comment-btn {
+                            border-radius: 6px;
+                            padding: 8px;
+                            color: white;
+                            border: none;
+                            font-weight: 500;
+                            cursor: pointer;
+                        }
+
+                        .cancel {
+                            background-color: #9198a1;
+                            margin-left: auto;
+                        }
+
+                        .comment-btn {
+                            background-color: #4493f8;
+                        }
+
+                    }
+                }
+            }
+
+        .comments-big-container {
+            width: 100%;
+            padding-bottom: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 35px;
+            
+
+            .comments-container {
+                margin-right: 30px;
+                margin-left: 10px;
+                display: flex;
+                gap: 10px;
+                font-size: 15px;
+
+                .profil-pic-comment {
+                    height: 28px;
+                    border-radius: 50px;
+                }
+
+                .name-date-content {
+                    padding-top: 6px; 
+                    display: flex;
+                    gap: 15px;
+                    flex-direction: column;
+
+                    .name-date {
+                        display: flex;
+                        gap: 7px;
+
+                        p {
+                            color: #9198a1;
+                        }
+
+                        i {
+                            color: #edb200;
+                        }
+                    }
+                    
+
+
+                    a {
+                        color: white;
+                        text-decoration: none;
+
+                        &:hover {
+                            text-decoration: underline;
+                        }
+                    }
+
+                    .content {
+                        color: white;
+                    }
+                }
+            }
+        }
 
     }
 
@@ -836,6 +970,7 @@ nav {
                     display: flex;
                     cursor: pointer;
                     gap: 5px;
+                    align-items: center;
                     
                     img {
                         height: 22px;

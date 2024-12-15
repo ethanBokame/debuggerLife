@@ -935,12 +935,12 @@ if (backBigDebug) {
 
 // Signalement du debug
 let warningBtn = document.querySelectorAll('.warning-op');
-console.log(warningBtn);
+// console.log(warningBtn);
 
 for (let i = 0; i < warningBtn.length; i++) {
     
     warningBtn[i].addEventListener("click", () => {
-        console.log("ee");
+        // console.log("ee");
 
         currentIndex = i;
         
@@ -950,37 +950,125 @@ for (let i = 0; i < warningBtn.length; i++) {
     })
 }
 
-// document.addEventListener("DOMContentLoaded", () => {
+// Animation pour l'input du container
+let commentContainerTextarea = document.querySelector('.comment-container textarea'),
+    commentContainer = document.querySelector('.comment-container'),
+    bottomComment = document.querySelector('.bottom-comment'),
+    cancelComment = document.querySelector('.bottom-comment .cancel'),
+    commentBtn = document.querySelector('.bottom-comment .comment-btn');
+
+if(commentContainerTextarea) {
+    commentContainerTextarea.addEventListener("focus", () => {
+        bottomComment.style.display = "flex";
+        commentContainerTextarea.style.height = "70px";
+        commentContainerTextarea.style.minHeight = "70px"
+        commentContainer.style.borderRadius = "20px"
+    })
+    
+    cancelComment.addEventListener("click", () => {
+        bottomComment.style.display = "none";
+        commentContainerTextarea.style.height = "45px";
+        commentContainerTextarea.style.minHeight = "45px";
+        commentContainer.style.borderRadius = "50px";
+        commentContainerTextarea.value = "";
+    })
+    
+    commentBtn.addEventListener("click", () => {
+        let profil_pic = document.querySelector('.mini-profil-pic-container img').getAttribute("src"),
+            username = document.querySelector('.mini-profil .username').innerText,
+            bigContainer = document.querySelector('.comments-big-container'),
+            idPost = document.querySelector('.notmydebug').getAttribute("id-post");
+        
+        // Ajout du commentaire dans la DB
+        fetch(hostname + "desktop-template-php/comment_post.php?id_post=" + idPost + "&" + "content_comment=" + commentContainerTextarea.value + "&" + "status_comment=" + (bigContainer.childNodes.length == 1 ? "first" : "lambda"));
+
+        createComment(
+            username, // Nom d'utilisateur
+            "0s",   // Date du post
+            commentContainerTextarea.value, // Contenu
+            profil_pic // Image de profil
+        );
+    
+        bottomComment.style.display = "none";
+        commentContainerTextarea.style.height = "45px";
+        commentContainerTextarea.style.minHeight = "45px";
+        commentContainer.style.borderRadius = "50px";
+        commentContainerTextarea.value = "";
+    })
+}
 
 
-//     spinner.style.display = "none";
-//     myDebug.forEach(element => {
-//         element,style.display = "flex";
-//     });
-// })
+// Fonction pour créer un nouveau commentaire
+function createComment(username, postDate, content, profilePic) {
+    // Sélectionner le conteneur parent
+    const bigContainer = document.querySelector('.comments-big-container');
 
-// let observer = new IntersectionObserver(function (entries) {
-//     console.log(entries);
-//     if (entries[0].intersectionRatio > 0) {
-//         entries[0].target.style.display = "flex";
-//         spinner.style.display = "none";
-//         console.log(entries[0].target);
-//     }
-//   });
+    // Créer le conteneur principal du commentaire
+    const commentsContainer = document.createElement('div');
+    commentsContainer.classList.add('comments-container');
 
-// // Pour observer un élément
-// observer.observe(mydebug[0])
+    // Créer l'image de profil
+    const profileImg = document.createElement('img');
+    profileImg.src = profilePic; // Source de l'image de profil
+    profileImg.classList.add('profil-pic-comment');
 
-// Mais on peut regarder plusieurs éléments
-// const items = document.querySelectorAll('.text, .image')
-// for (const item of items) {
-//   observer.observe(item)
-// }
+    // Créer le conteneur pour le nom, la date et le contenu
+    const nameDateContent = document.createElement('div');
+    nameDateContent.classList.add('name-date-content');
 
+    // Créer le conteneur pour le nom et la date
+    const nameDate = document.createElement('div');
+    nameDate.classList.add('name-date');
 
-// if (cancelModification) {
-//     cancelModification.addEventListener("click", () => {
-//         history.back();
-//     })
-// }
+    // Créer le lien pour le nom d'utilisateur
+    const userLink = document.createElement('a');
+    userLink.href = "#"; // Tu peux remplacer par une URL dynamique
+    userLink.textContent = username;
+
+    // Créer le séparateur "•"
+    const separator = document.createElement('p');
+    separator.textContent = '•';
+
+    // Créer la date du post
+    const postDateElement = document.createElement('p');
+    postDateElement.textContent = postDate;
+
+    // Ajouter le nom, le séparateur et la date au conteneur "name-date"
+    nameDate.appendChild(userLink);
+    nameDate.appendChild(separator);
+    nameDate.appendChild(postDateElement);
+
+    if (bigContainer.childNodes.length == 1) {
+        // Créer le 2eme séparateur "•"
+        const separatorTwo = document.createElement("p");
+        separatorTwo.textContent = "•";
+
+        // Mention first comment
+        const firstComment = document.createElement("i");
+        firstComment.textContent = "first comment 🥇";
+
+        nameDate.appendChild(separatorTwo);
+        nameDate.appendChild(firstComment);
+    }
+
+    // Créer le contenu du commentaire
+    const contentParagraph = document.createElement('p');
+    contentParagraph.classList.add('content');
+    contentParagraph.textContent = content;
+
+    // Assembler les éléments dans "name-date-content"
+    nameDateContent.appendChild(nameDate);
+    nameDateContent.appendChild(contentParagraph);
+
+    // Ajouter l'image de profil et "name-date-content" dans "comments-container"
+    commentsContainer.appendChild(profileImg);
+    commentsContainer.appendChild(nameDateContent);
+
+    // Ajouter le commentaire complet dans le conteneur principal
+    bigContainer.appendChild(commentsContainer);
+
+}
+
+// Exemple d'utilisation
+
 

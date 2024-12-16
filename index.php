@@ -55,8 +55,8 @@ $router->map('GET | POST', '/[*:username]/[i:id_post]', function($username, $id_
 });
 
 // TEST
-$router->map('GET | POST', '/desktop-template-php/comment_post.php', function() {
-    require "desktop-template-php/comment_post.php";
+$router->map('GET | POST', '/tests/api-rest.php', function() {
+    require "tests/api-rest.php";
 });
 
 // $router->map('GET', '/contact', 'contact', 'contact');

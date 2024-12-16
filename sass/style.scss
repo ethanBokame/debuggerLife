@@ -397,6 +397,11 @@ nav {
         }
     }
 
+    .highlight {
+        background-color: rgb(255, 118, 26);
+        font-weight: bold;
+    }
+    
     .page {
         flex-grow: 1;
         flex-basis: 0;

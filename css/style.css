@@ -325,6 +325,10 @@ nav .nav-menu .profil_pic {
 .first-tab-system-container .tab .about:hover {
   text-decoration: underline;
 }
+.first-tab-system-container .highlight {
+  background-color: rgb(255, 118, 26);
+  font-weight: bold;
+}
 .first-tab-system-container .page {
   flex-grow: 1;
   flex-basis: 0;

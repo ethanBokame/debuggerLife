@@ -62,7 +62,7 @@ require("fonctions.php");
             foreach ($row as $post) {
             
             ?>
-                <div class="notmydebug" id-post="<?php echo $post["id_post"] ?>">
+                <div class="notmydebug old-debug" id-post="<?php echo $post["id_post"] ?>">
                     
                     <div class="top">
                         
@@ -170,6 +170,7 @@ require("fonctions.php");
             <?php
             }
             ?>
+            <?php require("empty-page.php") ?>
             
         </div>
         

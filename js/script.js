@@ -273,7 +273,15 @@ if (search) {
                             noResultExplorer.style.display = "flex";
                             
                         } else {
+
+                            // Faire disparaitre les debugs de la recherche
+                            let notMyDebug = document.querySelectorAll(".notmydebug");
+                            notMyDebug.forEach(function (item) {
+                                item.style.display = "none";
+                            });
+
                             noResultExplorer.style.display = "none";
+                            
                             data.forEach(function (post) {
                                 page.appendChild(
                                     createNotMyDebug(post, search.value, [], [])

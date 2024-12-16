@@ -257,28 +257,25 @@ if (search) {
                     let noResultExplorer = document.querySelector('.noresult-explorer');
                     
                     setTimeout(() => {
+                        // Faire disparaitre les debugs de la recherche
+                        let notMyDebug = document.querySelectorAll(".notmydebug");
+                        notMyDebug.forEach(function (item) {
+                            item.style.display = "none";
+                        });
+
                         // Fin du chargement
                         spinner.style.display = "none";
 
                         // En cas non resultat
                         if (data.length == 0) {
 
-                            // Faire disparaitre les debugs de la recherche
-                            let notMyDebug = document.querySelectorAll(".notmydebug");
-                            notMyDebug.forEach(function (item) {
-                                item.style.display = "none";
-                            });
+
 
 
                             noResultExplorer.style.display = "flex";
                             
                         } else {
 
-                            // Faire disparaitre les debugs de la recherche
-                            let notMyDebug = document.querySelectorAll(".notmydebug");
-                            notMyDebug.forEach(function (item) {
-                                item.style.display = "none";
-                            });
 
                             noResultExplorer.style.display = "none";
                             

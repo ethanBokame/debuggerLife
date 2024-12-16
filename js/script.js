@@ -225,6 +225,8 @@ function createNotMyDebug(post, query, likesArray, favArray) {
     return container;
 }
 
+let noResultExplorer = document.querySelector('.noresult-explorer');
+
 
 if (search) {
     search.addEventListener("input", () => {
@@ -233,6 +235,8 @@ if (search) {
         
         // Appel API pour obtenir les debugs
         if (search.value.length > 0 && search.value.trim() != "") {
+            // faire disparaitre le message en cas de non résultat
+            noResultExplorer.style.display = "none";
             
             // Spinner pour le chargement
             spinner.style.display = "flex";
@@ -253,13 +257,21 @@ if (search) {
                     let noResultExplorer = document.querySelector('.noresult-explorer');
                     
                     setTimeout(() => {
-                        
                         // Fin du chargement
-                        spinner.style.display = "none"
-                        
+                        spinner.style.display = "none";
+
                         // En cas non resultat
                         if (data.length == 0) {
+
+                            // Faire disparaitre les debugs de la recherche
+                            let notMyDebug = document.querySelectorAll(".notmydebug");
+                            notMyDebug.forEach(function (item) {
+                                item.style.display = "none";
+                            });
+
+
                             noResultExplorer.style.display = "flex";
+                            
                         } else {
                             noResultExplorer.style.display = "none";
                             data.forEach(function (post) {
@@ -268,12 +280,15 @@ if (search) {
                                 );
                             });
                         }
-                    }, 500);
+                    }, 300);
 
                     console.log(data);
                 });
         }
         else {
+            // Faire disparaitre le message de non-résultat
+            noResultExplorer.style.display = "none";
+            
             // Faire disparaitre les debugs de la recherche
             let notMyDebug = document.querySelectorAll(".notmydebug");
             notMyDebug.forEach(function (item) {
@@ -307,6 +322,9 @@ if (closeBtn) {
     closeBtn.addEventListener("click", () => {
         search.value = "";
         closeBtn.style.visibility = "hidden";
+        
+        // Faire disparaitre le message de non-résultat
+        noResultExplorer.style.display = "none";
         
         // Faire disparaitre les debugs de la recherche
         let notMyDebug = document.querySelectorAll(".notmydebug");

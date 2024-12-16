@@ -234,6 +234,9 @@ if (search) {
         // Appel API pour obtenir les debugs
         if (search.value.length > 0 && search.value.trim() != "") {
             
+            // Spinner pour le chargement
+            spinner.style.display = "flex";
+            
             // Faire disparaitre les debugs deja là de base
             let notMyDebug = document.querySelectorAll(".notmydebug");
             notMyDebug.forEach(function (item) {
@@ -249,16 +252,24 @@ if (search) {
                 .then((data) => {
                     let noResultExplorer = document.querySelector('.noresult-explorer');
                     
-                    // En cas non resultat
-                    if (data.length == 0) {
-                        noResultExplorer.style.display = "flex"
-                    }
-                    else {
-                        noResultExplorer.style.display = "none"
-                        data.forEach(function(post) {
-                            page.appendChild(createNotMyDebug(post, search.value, [], []));
-                        });
-                    }
+                    setTimeout(() => {
+                        
+                        // Fin du chargement
+                        spinner.style.display = "none"
+                        
+                        // En cas non resultat
+                        if (data.length == 0) {
+                            noResultExplorer.style.display = "flex";
+                        } else {
+                            noResultExplorer.style.display = "none";
+                            data.forEach(function (post) {
+                                page.appendChild(
+                                    createNotMyDebug(post, search.value, [], [])
+                                );
+                            });
+                        }
+                    }, 500);
+
                     console.log(data);
                 });
         }

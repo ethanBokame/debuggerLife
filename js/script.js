@@ -556,11 +556,9 @@ function debugState(state, selector) {
 
 // Faire disparaitre les debugs de la recherche
 function removeDebugSearch() {
-    let debug = document.querySelectorAll(".notmydebug");
+    let debug = document.querySelectorAll(".new-debug");
     debug.forEach(function (item) {
-        if (!item.classList.contains("old-debug")) {
-            item.remove();
-        }
+        item.remove();
     });
 }
 
@@ -642,15 +640,40 @@ if (search) {
             // Faire apparaitre les debugs de base
             debugState("flex", ".old-debug")
 
-            setTimeout(() => {
+            // setTime(() => {
+            //     // Faire disparaitre les debugs de la recherche
+            //     let debug = document.querySelectorAll(".new-debug");
+
+            //     if (debug.length > 0) {
+            //         removeDebugSearch();
+
+            //     } else {
+                    
+            //     }
+            //     // debug.forEach(function (item) {
+            //     //     if (!item.classList.contains("old-debug")) {
+            //     //         item.remove();
+            //     //     }
+            //     // });
+            // }, 300);
+
+            setInterval(() => {
                 // Faire disparaitre les debugs de la recherche
-                let debug = document.querySelectorAll(".notmydebug");
-                debug.forEach(function (item) {
-                    if (!item.classList.contains("old-debug")) {
-                        item.remove();
-                    }
-                });
-            }, 300);
+                let debug = document.querySelectorAll(".new-debug");
+
+                if (debug.length > 0) {
+                    removeDebugSearch();
+                    "remove"
+
+                } else {
+                    ""
+                }
+                // debug.forEach(function (item) {
+                //     if (!item.classList.contains("old-debug")) {
+                //         item.remove();
+                //     }
+                // });
+            }, 100);
         }
     });
     

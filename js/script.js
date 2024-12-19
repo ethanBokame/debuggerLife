@@ -3,10 +3,11 @@ let body = document.querySelector("body"),
         window.location.hostname == "localhost"
             ? "http://localhost/debugger_life/"
             : "https://sharethevision.net/",
-    notMyDebug = document.querySelectorAll(".notmydebug"),
     myDebug = document.querySelectorAll(".mydebug"),
     smokePage = document.querySelector(".smoke"),
     page = document.querySelector(".page"),
+    debugContainer = document.querySelector('.debug-container'),
+    debug = debugContainer ? debugContainer.children : document.querySelectorAll(".notmydebug"),
     spinner = document.querySelector(".loader");
 
 //Infobulles
@@ -83,6 +84,8 @@ function shortTimePost(date) {
     return shortTime;
 }
 
+console.log(debug);
+
 // Fonction pour la surbrillance de la recherche
 function highlightMatch(text, query) {
     if (!query) return text; // Si aucune requête, retourner le texte d'origine
@@ -98,10 +101,324 @@ let search = document.querySelector("#search"),
     searchBox = document.querySelector(".search-box"),
     loupe = document.querySelector(".loupe");
 
+
+// Fonction pour rattacher les event listener
+function refreshEventListener() {
+
+let option = document.querySelectorAll(".option");
+let optionMenu = document.querySelectorAll(".option-menu");
+
+for (let i = 0; i < option.length; i++) {
+    option[i].addEventListener("click", () => {
+        let optionPosition = option[i].getBoundingClientRect().bottom;
+
+        if (
+            optionMenu[i].style.display == "" ||
+            optionMenu[i].style.display == "none"
+        ) {
+            option[i].style.transition = "0.1.75s";
+            option[i].style.backgroundColor = "#9198a16e";
+            // optionMenu[i].style.top = `${optionPosition}px`;
+            // console.log(optionMenu[i].style.top);
+            optionMenu[i].style.transition = "0.1.75s";
+            optionMenu[i].style.display = "block";
+        } else {
+            option[i].style.transition = "0.1.75s";
+            option[i].style.backgroundColor = "";
+            optionMenu[i].style.transition = "0.1.75s";
+            optionMenu[i].style.display = "none";
+        }
+
+        window.addEventListener("click", (e) => {
+            if (
+                !optionMenu[i].contains(e.target) &&
+                !option[i].contains(e.target)
+            ) {
+                option[i].style.transition = "0.1.75s";
+                option[i].style.backgroundColor = "";
+                optionMenu[i].style.transition = "0.1.75s";
+                optionMenu[i].style.display = "none";
+            }
+        });
+    });
+
+// Bouton like et favoris d'un debug autre que celui de l'utilisateur
+let likePost = document.querySelectorAll(".notmydebug .count-like"),
+    likePostImg = document.querySelectorAll(".notmydebug .count-like img"),
+    likePostNumber = document.querySelectorAll(".notmydebug .count-like p"),
+    favPost = document.querySelectorAll(".notmydebug .count-fav"),
+    favPostImg = document.querySelectorAll(".notmydebug .count-fav img"),
+    favPostNumber = document.querySelectorAll(".notmydebug .count-fav p");
+
+// Fonction pour les boutons like et favoris
+function postBtn(
+    btn,
+    btnImg,
+    btnImgOldColor,
+    btnImgNewColor,
+    color,
+    count,
+    index_post,
+    action
+) {
+    btn.style.transition = "0.2s";
+    btn.style.transform = "scale(1.2)";
+    let id_post = debug[index_post].getAttribute("id-post");
+
+    // ON
+    if (!btn.style.color) {
+        // changement du style
+        btn.style.color = color;
+        btnImg.setAttribute("src", btnImgNewColor);
+        let number = parseInt(count.innerText);
+        count.innerText = number + 1;
+
+        // Requete http
+        fetch(
+            hostname +
+                "desktop-template-php/" +
+                action +
+                ".php?id_post=" +
+                id_post +
+                "&step=1"
+        );
+
+        // Notification
+        if (action == "fav") {
+            showNotif("image/fait.png", "Ajouté a vos favoris");
+            setTimeout(() => {
+                hideNotif();
+            }, 2000);
+        }
+
+        // OFF
+    } else {
+        btn.style.color = "";
+        btnImg.setAttribute("src", btnImgOldColor);
+        let number = parseInt(count.innerText);
+        count.innerText = number - 1;
+
+        fetch(
+            hostname +
+                "desktop-template-php/" +
+                action +
+                ".php?id_post=" +
+                id_post +
+                "&step=-1"
+        );
+
+        if (action == "fav") {
+            showNotif("image/fait.png", "Retiré de vos favoris");
+            setTimeout(() => {
+                hideNotif();
+            }, 2000);
+        }
+    }
+
+    setTimeout(() => {
+        btn.style.transition = "0.4s";
+        btn.style.transform = "scale(1)";
+    }, 400);
+}
+
+// Bouton like
+for (let i = 0; i < likePost.length; i++) {
+    likePost[i].addEventListener("click", () => {
+        postBtn(
+            likePost[i],
+            likePostImg[i],
+            "image/heart-regular-240-white.png",
+            "image/heart-solid-240-pink.png",
+            "#f91880",
+            likePostNumber[i],
+            i,
+            "like"
+        );
+    });
+}
+
+// Bouton favoris
+for (let i = 0; i < favPost.length; i++) {
+    favPost[i].addEventListener("click", () => {
+        postBtn(
+            favPost[i],
+            favPostImg[i],
+            "image/bookmark-regular-240-white.png",
+            "image/bookmark-solid-240-or.png",
+            "#FFC107",
+            favPostNumber[i],
+            i,
+            "fav"
+        );
+
+        // Retrait du debug des favoris
+        if (window.location.pathname.includes("favoris.php")) {
+            debug[i].remove();
+            let notMyDebugCount = document.querySelectorAll(".notmydebug");
+            nofav && notMyDebugCount.length == 0
+                ? (nofav.style.display = "flex")
+                : "";
+
+            showNotif("image/fait.png", "Retiré de vos favoris");
+            setTimeout(() => {
+                hideNotif();
+            }, 2000);
+        }
+    });
+}
+}
+
+// Copie du lien d'un debug
+let copyLink = document.querySelectorAll(".copy-btn"),
+    linkPost = document.querySelectorAll(".notmydebug .ressource a");
+
+for (let i = 0; i < copyLink.length; i++) {
+    copyLink[i].addEventListener("click", () => {
+        navigator.clipboard.writeText(linkPost[i].href).then(() => {
+            showNotif("image/fait.png", "Lien de la ressource copié");
+            setTimeout(() => {
+                hideNotif();
+            }, 2000);
+        });
+    });
+}
+
+// Copie du lien d'un debug de notmydebug
+let sharePost = document.querySelectorAll(".share-btn"),
+    usernamePost = document.querySelectorAll(
+        ".notmydebug .top .pic-name-post-date a"
+    );
+
+for (let i = 0; i < sharePost.length; i++) {
+    sharePost[i].addEventListener("click", () => {
+        let idPost = debug[i].getAttribute("id-post"),
+            contentToShare =
+                hostname + usernamePost[i].innerText + "/" + idPost;
+
+        navigator.clipboard.writeText(contentToShare).then(() => {
+            showNotif("image/fait.png", "Lien du debug copié");
+            setTimeout(() => {
+                hideNotif();
+            }, 2000);
+        });
+    });
+}
+
+// Copie du lien d'un debug dans mydebug.php
+let copyLinkMydebug = document.querySelectorAll(".ressource-btn"),
+    linkPostMydebug = document.querySelectorAll(".mydebug .ressource a");
+
+for (let i = 0; i < copyLinkMydebug.length; i++) {
+    copyLinkMydebug[i].addEventListener("click", () => {
+        navigator.clipboard.writeText(linkPostMydebug[i].href).then(() => {
+            showNotif("image/fait.png", "Lien de la ressource copié");
+            setTimeout(() => {
+                hideNotif();
+            }, 2000);
+        });
+    });
+}
+
+// Copie du lien d'un debug dans mydebug.php
+let sharePostMydebug = document.querySelectorAll(".option-menu .share-btn"),
+    usernamePostMydebug = document.querySelectorAll(
+        ".notmydebug .top .pic-name-post-date a"
+    );
+
+for (let i = 0; i < sharePostMydebug.length; i++) {
+    sharePostMydebug[i].addEventListener("click", () => {
+        let idPost = debug[i].getAttribute("id-post"),
+            contentToShare =
+                hostname + usernamePostMydebug[i].innerText + "/" + idPost;
+
+        navigator.clipboard.writeText(contentToShare).then(() => {
+            showNotif("image/fait.png", "Lien du debug copié");
+            setTimeout(() => {
+                hideNotif();
+            }, 2000);
+        });
+    });
+}
+
+// Debug en grand
+let filePath = window.location.pathname,
+    fileName = filePath.split("/").pop(),
+    nameContainer = document.querySelectorAll(
+        ".pic-name-post-date .img-container"
+    ),
+    linkDebug = document.querySelectorAll(".ressource"),
+    bottomDebug = document.querySelectorAll(".page .bottom"),
+    backBigDebug = document.querySelector(".back-big-debug"),
+    referrer = document.referrer,
+    isFromApp = referrer.includes(hostname),
+    codeBlocContainer = document.querySelectorAll(".code"),
+    usernamePostSearch = document.querySelectorAll(".top .pic-name-post-date a"),
+    imgDebugContainer = document.querySelectorAll(".img-debug");
+
+for (let i = 0; i < debug.length; i++) {
+
+    debug[i].addEventListener("click", (e) => {
+        // Ajout du paramètre 'e' ici pour capturer l'événement
+        // Vérification préalable pour s'assurer que tous les éléments sont définis
+        
+        // Vérification que e.target n'est dans aucun de ces éléments
+        if (
+            (!nameContainer[i] || !nameContainer[i].contains(e.target)) &&
+            (!option[i] || !option[i].contains(e.target)) &&
+            (!linkDebug[i] || !linkDebug[i].contains(e.target)) &&
+            (!imgDebugContainer[i] || !imgDebugContainer[i].contains(e.target)) &&
+            (!bottomDebug[i] || !bottomDebug[i].contains(e.target)) &&
+            (!codeBlocContainer[i] || !codeBlocContainer[i].contains(e.target)) &&
+            (!optionMenu[i] || !optionMenu[i].contains(e.target))
+        ) {
+            let idPost = debug[i].getAttribute("id-post");
+        
+            // Navigation vers la nouvelle URL
+            window.location.href = usernamePostSearch[i].innerText + "/" + idPost;
+        }
+    });
+}
+
+// retour
+if (backBigDebug) {
+    backBigDebug.addEventListener("click", () => {
+        if (isFromApp) {
+            // Retour à la page précédente
+            window.history.back();
+        } else {
+            // Redirige vers une page par défaut (par exemple, la page d'accueil de l'application)
+            window.location.href = "/explorer"; // Remplacez par l'URL de la page d'accueil
+        }
+    });
+}
+
+// Signalement du debug
+let warningBtn = document.querySelectorAll(".warning-op");
+// console.log(warningBtn);
+
+for (let i = 0; i < warningBtn.length; i++) {
+    warningBtn[i].addEventListener("click", () => {
+        // console.log("ee");
+
+        currentIndex = i;
+
+        fixeBody();
+
+        popup(
+            "Êtes vous sûr?",
+            "Cette action est irréversible et notifiera l'administrateur.",
+            "warning",
+            "block"
+        );
+    });
+}
+}
+
 // fonction pour créer un post notmydebug
 function createNotMyDebug(post, query, likesArray, favArray) {
     let container = document.createElement("div");
     container.classList.add("notmydebug");
+    container.classList.add("new-debug");
     container.setAttribute("id-post", post.id_post);
     container.style.display = "flex";
 
@@ -223,10 +540,29 @@ function createNotMyDebug(post, query, likesArray, favArray) {
     // });
 
     return container;
+
 }
+
 
 let noResultExplorer = document.querySelector('.noresult-explorer');
 
+// Fonction qui manipule l'état des debugs
+function debugState(state, selector) {
+    let debug = document.querySelectorAll(selector);
+    debug.forEach(function (item) {
+        item.style.display = state;
+    });
+}
+
+// Faire disparaitre les debugs de la recherche
+function removeDebugSearch() {
+    let debug = document.querySelectorAll(".notmydebug");
+    debug.forEach(function (item) {
+        if (!item.classList.contains("old-debug")) {
+            item.remove();
+        }
+    });
+}
 
 if (search) {
     search.addEventListener("input", () => {
@@ -242,10 +578,10 @@ if (search) {
             spinner.style.display = "flex";
             
             // Faire disparaitre les debugs deja là de base
-            let notMyDebug = document.querySelectorAll(".notmydebug");
-            notMyDebug.forEach(function (item) {
-                item.style.display = "none";
-            });
+            debugState("none", ".old-debug")
+
+            // Faire disparaitre les debugs de la recherche
+            removeDebugSearch()
             
             fetch(
                 hostname +
@@ -254,57 +590,67 @@ if (search) {
             )
                 .then((response) => response.json())
                 .then((data) => {
+                    
                     let noResultExplorer = document.querySelector('.noresult-explorer');
                     
                     setTimeout(() => {
+                        
                         // Faire disparaitre les debugs de la recherche
-                        let notMyDebug = document.querySelectorAll(".notmydebug");
-                        notMyDebug.forEach(function (item) {
-                            item.style.display = "none";
+                        let debug = document.querySelectorAll(".notmydebug");
+                        debug.forEach(function (item) {
+                            if (!item.classList.contains("old-debug")) {
+                                item.remove();
+                            }
                         });
-
+                        
+                        
                         // Fin du chargement
                         spinner.style.display = "none";
-
+                        
                         // En cas non resultat
                         if (data.length == 0) {
-
-
-
-
+                            
                             noResultExplorer.style.display = "flex";
                             
                         } else {
-
-
+                            
                             noResultExplorer.style.display = "none";
                             
+                            // Création des debugs issus de la recherche
                             data.forEach(function (post) {
-                                page.appendChild(
+                                debugContainer.appendChild(
                                     createNotMyDebug(post, search.value, [], [])
                                 );
+                                console.log(debug);
                             });
+                            
+                            // Attachement des events
+                            refreshEventListener()
                         }
                     }, 300);
-
+                    
                     console.log(data);
                 });
         }
-        else {
+        else if (search.value.length == 0) {
             // Faire disparaitre le message de non-résultat
             noResultExplorer.style.display = "none";
             
             // Faire disparaitre les debugs de la recherche
-            let notMyDebug = document.querySelectorAll(".notmydebug");
-            notMyDebug.forEach(function (item) {
-                item.style.display = "none";
-            });
+            removeDebugSearch()
             
             // Faire apparaitre les debugs de base
-            let oldDebug = document.querySelectorAll(".old-debug");
-            oldDebug.forEach(function (item) {
-                item.style.display = "flex";
-            });
+            debugState("flex", ".old-debug")
+
+            setTimeout(() => {
+                // Faire disparaitre les debugs de la recherche
+                let debug = document.querySelectorAll(".notmydebug");
+                debug.forEach(function (item) {
+                    if (!item.classList.contains("old-debug")) {
+                        item.remove();
+                    }
+                });
+            }, 300);
         }
     });
     
@@ -328,20 +674,14 @@ if (closeBtn) {
         search.value = "";
         closeBtn.style.visibility = "hidden";
         
-        // Faire disparaitre le message de non-résultat
-        noResultExplorer.style.display = "none";
-        
-        // Faire disparaitre les debugs de la recherche
-        let notMyDebug = document.querySelectorAll(".notmydebug");
-        notMyDebug.forEach(function (item) {
-            item.style.display = "none";
-        });
-        
-        // Faire apparaitre les debugs de base
-        let oldDebug = document.querySelectorAll(".old-debug");
-        oldDebug.forEach(function (item) {
-            item.style.display = "flex";
-        });
+            // Faire disparaitre le message de non-résultat
+            noResultExplorer.style.display = "none";
+            
+            // Faire disparaitre les debugs de la recherche
+            removeDebugSearch()
+            
+            // Faire apparaitre les debugs de base
+            debugState("flex", ".old-debug")
     });
 }
 
@@ -588,14 +928,14 @@ choicePopup.addEventListener("click", () => {
 
     if (choicePopup.innerText == "Supprimer ce debug") {
         // Suppression du debug
-        mydebug[currentIndex].remove();
+        debug[currentIndex].style.display = "none";
         let debugPage = document.querySelectorAll(".page .mydebug");
 
         if (debugPage.length == 0) {
             nopost.style.display = "block";
         }
 
-        let id_post = myDebug[currentIndex].getAttribute("id-post");
+        let id_post = debug[currentIndex].getAttribute("id-post");
         // Fetching pour la suppression d'un debug
         fetch(hostname + "desktop-template-php/delete.php?id_post=" + id_post);
 
@@ -605,7 +945,7 @@ choicePopup.addEventListener("click", () => {
             hideNotif();
         }, 2000);
     } else if (choicePopup.innerText == "Signaler ce debug") {
-        let id_post = notMyDebug[currentIndex].getAttribute("id-post");
+        let id_post = debug[currentIndex].getAttribute("id-post");
         // Fetching pour le signalement d'un debug
         fetch(hostname + "desktop-template-php/warning.php?id_post=" + id_post);
     } else {
@@ -627,7 +967,7 @@ choicePopup.addEventListener("click", () => {
         stateText[currentIndex].innerText = "Mettre en " + newStateTextMenu;
 
         // Fetching pour la mise a jour du status
-        let id_post = myDebug[currentIndex].getAttribute("id-post"),
+        let id_post = debug[currentIndex].getAttribute("id-post"),
             status = newStateTextPopup == "privé" ? "private" : "public";
 
         fetch(
@@ -659,8 +999,8 @@ let nopost = document.querySelector(".nopost"),
     nodebug = document.querySelector(".nodebug");
 
 window.addEventListener("load", () => {
-    nofav && notMyDebug.length == 0 ? (nofav.style.display = "flex") : "";
-    nodebug && myDebug.length == 0 ? (nodebug.style.display = "flex") : "";
+    nofav && debug.length == 0 ? (nofav.style.display = "flex") : "";
+    nodebug && debug.length == 0 ? (nodebug.style.display = "flex") : "";
 });
 
 // Bouton like et favoris d'un debug autre que celui de l'utilisateur
@@ -684,7 +1024,7 @@ function postBtn(
 ) {
     btn.style.transition = "0.2s";
     btn.style.transform = "scale(1.2)";
-    let id_post = notMyDebug[index_post].getAttribute("id-post");
+    let id_post = debug[index_post].getAttribute("id-post");
 
     // ON
     if (!btn.style.color) {
@@ -774,7 +1114,7 @@ for (let i = 0; i < favPost.length; i++) {
 
         // Retrait du debug des favoris
         if (window.location.pathname.includes("favoris.php")) {
-            notMyDebug[i].remove();
+            debug[i].remove();
             let notMyDebugCount = document.querySelectorAll(".notmydebug");
             nofav && notMyDebugCount.length == 0
                 ? (nofav.style.display = "flex")
@@ -953,7 +1293,7 @@ let sharePost = document.querySelectorAll(".share-btn"),
 
 for (let i = 0; i < sharePost.length; i++) {
     sharePost[i].addEventListener("click", () => {
-        let idPost = notMyDebug[i].getAttribute("id-post"),
+        let idPost = debug[i].getAttribute("id-post"),
             contentToShare =
                 hostname + usernamePost[i].innerText + "/" + idPost;
 
@@ -989,7 +1329,7 @@ let sharePostMydebug = document.querySelectorAll(".option-menu .share-btn"),
 
 for (let i = 0; i < sharePostMydebug.length; i++) {
     sharePostMydebug[i].addEventListener("click", () => {
-        let idPost = myDebug[i].getAttribute("id-post"),
+        let idPost = debug[i].getAttribute("id-post"),
             contentToShare =
                 hostname + usernamePostMydebug[i].innerText + "/" + idPost;
 
@@ -1008,7 +1348,7 @@ let modifBtn = document.querySelectorAll(".option-menu .modif-btn"),
 
 for (let i = 0; i < modifBtn.length; i++) {
     modifBtn[i].addEventListener("click", () => {
-        let idPost = myDebug[i].getAttribute("id-post");
+        let idPost = debug[i].getAttribute("id-post");
         console.log(typeof idPost);
 
         window.location.href = "update-debug/" + idPost;
@@ -1117,8 +1457,8 @@ let filePath = window.location.pathname,
 // console.log(window.location);
 // mydebug
 
-for (let i = 0; i < myDebug.length; i++) {
-    myDebug[i].addEventListener("click", (e) => {
+for (let i = 0; i < debug.length; i++) {
+    debug[i].addEventListener("click", (e) => {
         // Vérification préalable pour s'assurer que les éléments existent
         if (
             nameContainer[i] &&
@@ -1138,7 +1478,7 @@ for (let i = 0; i < myDebug.length; i++) {
                 !codeBlocContainer[i].contains(e.target) &&
                 !optionMenu[i].contains(e.target)
             ) {
-                let idPost = myDebug[i].getAttribute("id-post");
+                let idPost = debug[i].getAttribute("id-post");
 
                 // Navigation vers la nouvelle URL
                 window.location.href =
@@ -1153,8 +1493,8 @@ for (let i = 0; i < myDebug.length; i++) {
 }
 
 // notmydebug
-for (let i = 0; i < notMyDebug.length; i++) {
-    notMyDebug[i].addEventListener("click", (e) => {
+for (let i = 0; i < debug.length; i++) {
+    debug[i].addEventListener("click", (e) => {
         // Ajout du paramètre 'e' ici pour capturer l'événement
         // Vérification préalable pour s'assurer que tous les éléments sont définis
         if (
@@ -1176,7 +1516,7 @@ for (let i = 0; i < notMyDebug.length; i++) {
                 !codeBlocContainer[i].contains(e.target) &&
                 !optionMenu[i].contains(e.target)
             ) {
-                let idPost = notMyDebug[i].getAttribute("id-post");
+                let idPost = debug[i].getAttribute("id-post");
 
                 // Navigation vers la nouvelle URL
                 window.location.href = usernamePost[i].innerText + "/" + idPost;
@@ -1359,16 +1699,23 @@ window.addEventListener("load", () => {
     setTimeout(() => {
         if (spinner) spinner.style.display = "none"; // Masque le spinner s'il existe
 
-        if (myDebug.length > 0) {
-            // Vérifie si myDebug contient des éléments
-            myDebug.forEach((element) => {
-                element.style.display = "flex";
-            });
-        } else if (notMyDebug.length > 0) {
+        // if (myDebug.length > 0) {
+        //     // Vérifie si myDebug contient des éléments
+        //     myDebug.forEach((element) => {
+        //         element.style.display = "flex";
+        //     });
+        // } else 
+        if (debug.length > 0) {
             // Sinon, vérifie si notMyDebug existe
-            notMyDebug.forEach((element) => {
+            [...debug].forEach((element) => {
                 element.style.display = "flex";
             });
         }
     }, 500);
 });
+
+console.log("Debug length:", debug.length);
+console.log("nameContainer length:", nameContainer.length);
+console.log("linkDebug length:", linkDebug.length);
+console.log("bottomDebug length:", bottomDebug.length);
+console.log("imgDebugContainer length:", imgDebugContainer.length);

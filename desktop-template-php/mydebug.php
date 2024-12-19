@@ -23,6 +23,7 @@ require("fonctions.php");
             <div class="loader"></div>
 
             <!--AFFICHAGE DES DEBUGS-->
+            <div class="debug-container">
             <?php
             $sql = $conn->prepare(
                 "SELECT * 
@@ -152,6 +153,7 @@ require("fonctions.php");
             <?php
             }
             ?>
+            </div>
             <?php require("empty-page.php") ?>
 
         </div>

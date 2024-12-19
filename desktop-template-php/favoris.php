@@ -23,6 +23,7 @@ require("fonctions.php");
             <div class="loader"></div>
             
             <!--AFFICHAGE DES DEBUGS-->
+            <div class="debug-container">
             <?php
             // Chargement des favoris de l'utilisateur
             $sql = $conn->prepare("SELECT u.id_user, u.profile_pic, u.username, p.id_post, p.code, p.post_date, p.title, p.fav_number, p.like_number, p.status_post, p.link_ressource, p.description, p.link_picture 
@@ -164,6 +165,7 @@ require("fonctions.php");
             <?php
             }
             ?>
+            </div>
             <?php require("empty-page.php") ?>
             
         </div>

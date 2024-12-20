@@ -412,6 +412,29 @@ for (let i = 0; i < warningBtn.length; i++) {
         );
     });
 }
+
+// Copie du code posté
+let copyCode = document.querySelectorAll(".code .header div"),
+    copyCodeImg = document.querySelectorAll(".code .header div img"),
+    copyCodeText = document.querySelectorAll(".code .header div p"),
+    codeBloc = document.querySelectorAll(".code pre code");
+
+for (let i = 0; i < copyCode.length; i++) {
+    copyCode[i].addEventListener("click", () => {
+        navigator.clipboard.writeText(codeBloc[i].innerText).then(() => {
+            copyCodeText[i].innerText = "Copié";
+            copyCodeImg[i].setAttribute("src", "image/check-regular-240.png");
+
+            setTimeout(() => {
+                copyCodeImg[i].setAttribute(
+                    "src",
+                    "image/copy-regular-240.png"
+                );
+                copyCodeText[i].innerText = "Copier le code";
+            }, 2000);
+        });
+    });
+}
 }
 
 // fonction pour créer un post notmydebug
@@ -425,7 +448,15 @@ function createNotMyDebug(post, query, likesArray, favArray) {
     // Mise en évidence de la recherche
     let highlightedTitle = highlightMatch(post.title, query),
         highlightedDescription = highlightMatch(post.description, query),
-        highlightedLink = highlightMatch(post.link_ressource, query);
+        highlightedLink = highlightMatch(post.link_ressource, query),
+        highlightedCode = highlightMatch(post.code, query);
+
+
+    // Charger le style de Highlight.js
+    const highlightJsStyle = document.createElement("link");
+    highlightJsStyle.rel = "stylesheet";
+    highlightJsStyle.href = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css";
+    document.head.appendChild(highlightJsStyle);
 
     container.innerHTML = `
         <div class="top">
@@ -534,6 +565,18 @@ function createNotMyDebug(post, query, likesArray, favArray) {
         </div>  
     `;
 
+    // Appliquer Highlight.js uniquement si le code existe
+    if (post.code) {
+
+        // Appliquer Highlight.js uniquement si le code existe
+        const codeElement = container.querySelector("pre code");
+        hljs.highlightElement(codeElement);
+
+        // Formattage du code
+        container.querySelector("pre").style.marginTop = "0";
+        container.querySelector("pre").style.marginBottom = "0";
+    }
+
     // Recharger highlight.js
     // document.querySelectorAll("pre code").forEach((block) => {
     //     hljs.highlightElement(block);
@@ -542,6 +585,12 @@ function createNotMyDebug(post, query, likesArray, favArray) {
     return container;
 
 }
+
+// p = document.getElementById("para1");
+// p_prime = debug[3].cloneNode(true);
+// debug[3].appendChild(p_prime)
+// debugContainer.appendChild(p_prime)
+
 
 
 let noResultExplorer = document.querySelector('.noresult-explorer');

@@ -28,8 +28,35 @@ $stmt->bindValue(':search', '%' . $search . '%', PDO::PARAM_STR);
 $stmt->execute();
 
 // Récupérer les résultats
-$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$debug = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-echo json_encode($results)
+// Tableau contenant les identifiants des debugs liké par l'utilisateur
+$sql = $conn->prepare("SELECT l.id_post
+FROM users u
+JOIN post p ON u.id_user = p.id_user
+JOIN likes l ON l.id_post = p.id_post 
+WHERE l.id_user = :id_user
+");
+$sql->bindParam(':id_user', $_SESSION['id_user'], PDO::PARAM_INT);
+$sql->execute();
+$likes_debug_array = $sql->fetchAll(PDO::FETCH_COLUMN);
+
+// Tableau contenant les identifiants des debugs mis en favoris par l'utilisateur
+$sql = $conn->prepare("SELECT f.id_post
+FROM users u
+JOIN post p ON u.id_user = p.id_user
+JOIN favoris f ON f.id_post = p.id_post 
+WHERE f.id_user = :id_user
+");
+$sql->bindParam(':id_user', $_SESSION['id_user'], PDO::PARAM_INT);
+$sql->execute();
+$fav_debug_array = $sql->fetchAll(PDO::FETCH_COLUMN);
+
+$response = [
+    'debugs' => $debug,
+    'likesArray' => $likes_debug_array,
+    'favArray' => $fav_debug_array
+];
+echo json_encode($response);
 
 ?>

@@ -664,9 +664,17 @@ if (search) {
                             noResultExplorer.style.display = "none";
                             
                             // Création des debugs issus de la recherche
-                            data.forEach(function (post) {
+                            // data.debugs.forEach(function (post) {
+                            //     debugContainer.appendChild(
+                            //         createNotMyDebug(post, search.value, [], [])
+                            //     );
+                            //     console.log(debug);
+                            // });
+
+                            console.log(data.favArray);
+                            data.debugs.map(post => {
                                 debugContainer.appendChild(
-                                    createNotMyDebug(post, search.value, [], [])
+                                    createNotMyDebug(post, search.value, data.likesArray, data.favArray)
                                 );
                                 console.log(debug);
                             });

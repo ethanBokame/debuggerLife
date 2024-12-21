@@ -405,7 +405,8 @@ nav {
     .page {
         flex-grow: 1;
         flex-basis: 0;
-        scrollbar-width: 0;
+        scrollbar-color: #9198a184 #0d1117;
+        scrollbar-width: auto;
         overflow-x: hidden;
 
         .loader {
@@ -869,18 +870,18 @@ nav {
 
     }
 
-        .page {
-            /* Masque la scrollbar dans tous les navigateurs */
-            scrollbar-width: none;
-            /* Firefox */
-            -ms-overflow-style: none;
-            /* Internet Explorer */
-        }
+        // .page {
+        //     /* Masque la scrollbar dans tous les navigateurs */
+        //     scrollbar-width: none;
+        //     /* Firefox */
+        //     -ms-overflow-style: none;
+        //     /* Internet Explorer */
+        // }
     
-        .page::-webkit-scrollbar {
-            display: none;
-            /* Chrome, Safari, Edge */
-        }
+        // .page::-webkit-scrollbar {
+        //     display: none;
+        //     /* Chrome, Safari, Edge */
+        // }
 
         .mini-profil {
             width: 350px;

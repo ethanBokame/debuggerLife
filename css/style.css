@@ -332,7 +332,8 @@ nav .nav-menu .profil_pic {
 .first-tab-system-container .page {
   flex-grow: 1;
   flex-basis: 0;
-  scrollbar-width: 0;
+  scrollbar-color: rgba(145, 152, 161, 0.5176470588) #0d1117;
+  scrollbar-width: auto;
   overflow-x: hidden;
 }
 .first-tab-system-container .page .loader {
@@ -697,17 +698,6 @@ nav .nav-menu .profil_pic {
   word-wrap: break-word; /* Permet au texte long de revenir à la ligne */
   overflow-wrap: break-word; /* Gère également le retour à la ligne */
   white-space: normal; /* Empêche le texte de rester sur une seule ligne */
-}
-.first-tab-system-container .page {
-  /* Masque la scrollbar dans tous les navigateurs */
-  scrollbar-width: none;
-  /* Firefox */
-  -ms-overflow-style: none;
-  /* Internet Explorer */
-}
-.first-tab-system-container .page::-webkit-scrollbar {
-  display: none;
-  /* Chrome, Safari, Edge */
 }
 .first-tab-system-container .mini-profil {
   width: 350px;

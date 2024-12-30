@@ -32,7 +32,7 @@ $router->map('GET | POST', '/mydebug', function() {
 }, 'mydebug');
 
 // Page favoris
-$router->map('GET | POST', '/favoris', function() {
+$router->map('GET | POST', '/favoris', function() { 
     require "desktop-template-php/favoris.php";
 });
 

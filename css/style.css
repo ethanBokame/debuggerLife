@@ -19,6 +19,7 @@ body {
   display: flex;
   flex-direction: column;
   height: 100vh;
+  font-size: 14px;
 }
 
 .smoke {
@@ -275,7 +276,9 @@ nav .nav-menu .profil_pic {
   overflow: auto; /* Permet le défilement dans chaque section */
 }
 .first-tab-system-container .tab {
-  width: 260px;
+  width: 240px;
+  max-width: 240px;
+  min-width: 240px;
   border-right: 1px solid rgba(145, 152, 161, 0.6509803922);
   display: flex;
   flex-direction: column;
@@ -333,7 +336,7 @@ nav .nav-menu .profil_pic {
   flex-grow: 1;
   flex-basis: 0;
   scrollbar-color: rgba(145, 152, 161, 0.5176470588) #0d1117;
-  scrollbar-width: auto;
+  scrollbar-width: thin;
   overflow-x: hidden;
 }
 .first-tab-system-container .page .loader {
@@ -606,8 +609,8 @@ nav .nav-menu .profil_pic {
 }
 .first-tab-system-container .page .comment-big-container .comment-container textarea {
   width: 100%;
-  font-size: 16px;
-  padding-top: 16px;
+  font-size: 15px;
+  padding-top: 15px;
   height: 45px;
   resize: vertical;
   min-height: 45px;
@@ -674,7 +677,6 @@ nav .nav-menu .profil_pic {
   display: flex;
   gap: 15px;
   flex-direction: column;
-  width: 750px;
 }
 .first-tab-system-container .page .comments-big-container .comments-container .name-date-content .name-date {
   display: flex;
@@ -700,7 +702,7 @@ nav .nav-menu .profil_pic {
   white-space: normal; /* Empêche le texte de rester sur une seule ligne */
 }
 .first-tab-system-container .mini-profil {
-  width: 350px;
+  width: 315px;
   border-left: 1px solid rgba(145, 152, 161, 0.6509803922);
   display: flex;
   flex-direction: column;
@@ -796,11 +798,9 @@ nav .nav-menu .profil_pic {
 .first-tab-system-container .mini-profil .stats-container .stat div p:nth-of-type(1) {
   color: white;
   font-weight: 600;
-  font-size: 17px;
 }
 .first-tab-system-container .mini-profil .stats-container .stat div p:nth-of-type(2) {
   color: #9198a1;
-  font-size: 14px;
   margin-top: auto;
   margin-bottom: 1px;
 }

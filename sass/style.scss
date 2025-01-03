@@ -19,6 +19,7 @@ body {
     display: flex;
     flex-direction: column;
     height: 100vh;
+    font-size: 14px;
 }
 
 
@@ -333,7 +334,9 @@ nav {
 
     
     .tab {
-        width: 260px;
+        width: 240px;
+        max-width: 240px;
+        min-width: 240px;
         border-right: 1px solid #9198a1a6;
         display: flex;
         flex-direction: column;
@@ -406,7 +409,7 @@ nav {
         flex-grow: 1;
         flex-basis: 0;
         scrollbar-color: #9198a184 #0d1117;
-        scrollbar-width: auto;
+        scrollbar-width: thin;
         overflow-x: hidden;
 
         .loader {
@@ -751,8 +754,8 @@ nav {
 
                     textarea {
                             width: 100%;
-                            font-size: 16px;
-                            padding-top: 16px;
+                            font-size: 15px;
+                            padding-top: 15px;
                             height: 45px;
                             resize: vertical;
                             min-height: 45px;
@@ -831,7 +834,7 @@ nav {
                     display: flex;
                     gap: 15px;
                     flex-direction: column;
-                    width: 750px;
+                    // width: 750px;
 
                     .name-date {
                         display: flex;
@@ -884,7 +887,7 @@ nav {
         // }
 
         .mini-profil {
-            width: 350px;
+            width: 315px;
             border-left: 1px solid #9198a1a6;
             display: flex;
             flex-direction: column;
@@ -999,12 +1002,12 @@ nav {
                         p:nth-of-type(1) {
                             color: white;
                             font-weight: 600;
-                            font-size: 17px;
+                            // font-size: 17px;
                         }
     
                         p:nth-of-type(2) {
                             color: #9198a1;
-                            font-size: 14px;
+                            // font-size: 14px;
                             margin-top: auto;
                             margin-bottom: 1px;
                         }

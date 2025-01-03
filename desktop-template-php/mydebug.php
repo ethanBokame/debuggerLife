@@ -40,7 +40,7 @@ require("fonctions.php");
             foreach ($row as $post) {
 
             ?>
-                <div class="mydebug" id-post="<?php echo $post["id_post"] ?>">
+                <div class="mydebug old-debug" id-post="<?php echo $post["id_post"] ?>">
 
                     <div class="top">
 
@@ -95,7 +95,7 @@ require("fonctions.php");
 
                     </div>
 
-                    <p class="title" <?php echo (empty($post["description"])) ? 'style="margin: -8px 0 3px 0"' : "" ?>>
+                    <p class="title" <?php echo (empty($post["description"])) ? 'style="margin: -12px 0 1px 0"' : "" ?>>
                         <?php echo $post["title"] ?>
                     </p>
 

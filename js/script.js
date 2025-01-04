@@ -549,7 +549,7 @@ if (cancelModification) {
 }
 
 // fonction pour créer un post notmydebug
-function createDebug(post, query, likesArray, favArray, page = fileName) {
+function createDebug(post, query = "", likesArray, favArray, page = fileName) {
 
     // Création du noeud
     let container = document.createElement("div");
@@ -802,92 +802,6 @@ if (search) {
     search.addEventListener("input", () => {
         
         closeBtn.style.visibility = "visible";
-        
-        // Appel API pour obtenir les debugs
-        // if (search.value.length > 0 && search.value.trim() != "") {
-        //     // faire disparaitre le message en cas de non résultat
-        //     noResultExplorer.style.display = "none";
-            
-        //     // Spinner pour le chargement
-        //     spinner.style.display = "flex";
-            
-        //     // Faire disparaitre les debugs deja là de base
-        //     debugState("none", ".old-debug");
-
-        //     // Faire disparaitre les debugs de la recherche
-        //     removeDebugSearch();
-            
-        //     fetch(`${hostname}desktop-template-php/live-search-${fileName}.php?query=${search.value}`)
-                
-        //         .then((response) => response.json())
-        //         .then((data) => {
-                    
-        //             let noResultExplorer = document.querySelector('.noresult-explorer');
-        //             console.dir(noResultExplorer);
-                    
-        //             setTimeout(() => {
-                        
-        //                 // Faire disparaitre les debugs de la recherche
-        //                 removeDebugSearch()
-                        
-        //                 // Fin du chargement
-        //                 spinner.style.display = "none";
-                        
-        //                 // En cas non resultat
-        //                 if (data.debugs.length == 0) {
-                            
-        //                     noResultExplorer.style.display = "flex";
-        //                     console.log("ok");
-                            
-        //                 } else if (fileName == "explorer" || fileName == "favoris") {
-                            
-        //                     noResultExplorer.style.display = "none";
-
-        //                     data.debugs.map(post => {
-        //                         debugContainer.appendChild(
-        //                             createDebug(post, search.value, data.likesArray, data.favArray)
-        //                         );
-        //                         console.log(debug);
-        //                     });
-                            
-        //                     // Attachement des events
-        //                     refreshEventListener()
-        //                 }
-        //                 else {
-                            
-        //                     noResultExplorer.style.display = "none";
-
-        //                     data.debugs.map(post => {
-        //                         debugContainer.appendChild(
-        //                             createDebug(post, search.value)
-        //                         );
-        //                         console.log(debug);
-        //                     });
-                            
-        //                     // Attachement des events
-        //                     refreshEventListener()
-        //                 }
-        //             }, 300);
-                    
-        //             console.log(data);
-        //         });
-        // }
-        // else if (search.value.length == 0) {
-        //     // Faire disparaitre le message de non-résultat
-        //     noResultExplorer.style.display = "none";
-            
-        //     // Faire disparaitre les debugs de la recherche
-        //     removeDebugSearch()
-            
-        //     // Faire apparaitre les debugs de base
-        //     debugState("flex", ".old-debug")
-
-        //     setTimeout(() => {
-        //         // Faire disparaitre les debugs de la recherche
-        //         removeDebugSearch();
-        //         console.log("remove");
-        //     }, 2000);
-        // }
     });
 
     search.addEventListener("keydown", (event) => {
@@ -944,6 +858,9 @@ if (search) {
 
                                 // Attachement des events
                                 refreshEventListener();
+
+                                // Formattage des images
+                                formatDebugImg()
                             } else {
                                 noResultExplorer.style.display = "none";
 
@@ -956,6 +873,9 @@ if (search) {
 
                                 // Attachement des events
                                 refreshEventListener();
+                                
+                                // Formattage des images
+                                formatDebugImg()
                             }
                         }, 300);
 
@@ -2027,21 +1947,87 @@ window.addEventListener("load", () => {
             [...debug].forEach((element) => {
                 element.style.display = "flex";
             });
-            console.log(imgDebug[0].clientHeight);
 
             // Formattage de l'image des debugs
-            for (let i = 0; i < imgDebug.length; i++) {
-                if (imgDebug[i].clientHeight > 310) {
-                    imgDebug[i].style.height = "310px";
-                    imgDebug[i].style.width = "auto";
-                }
-            }
+            formatDebugImg()
         }
     }, 500);
 });
 
-console.log("Debug length:", debug.length);
-console.log("nameContainer length:", nameContainer.length);
-console.log("linkDebug length:", linkDebug.length);
-console.log("bottomDebug length:", bottomDebug.length);
-console.log("imgDebugContainer length:", imgDebugContainer.length);
+// Fonction pour le formattage de l'image des debugs
+function formatDebugImg() {
+    for (let i = 0; i < imgDebug.length; i++) {
+        if (imgDebug[i].clientHeight > 310) {
+            imgDebug[i].style.height = "310px";
+            imgDebug[i].style.width = "auto";
+        }
+    }
+
+}
+
+// console.log("Debug length:", debug.length);
+// console.log("nameContainer length:", nameContainer.length);
+// console.log("linkDebug length:", linkDebug.length);
+// console.log("bottomDebug length:", bottomDebug.length);
+// console.log("imgDebugContainer length:", imgDebugContainer.length);
+
+// Scroll infini 15 par 15
+
+// Créer une instance de l'Intersection Observer
+
+let start_point = 15,
+    index_observation = 14;
+
+const observer = new IntersectionObserver((element, observer) => {
+
+    if (element[0].isIntersecting) {
+        console.log(element);
+        console.log("dernier debug vu !");
+
+        let spinnerClone = spinner.cloneNode(true);
+        page.appendChild(spinnerClone);
+        spinnerClone.style.display = "flex"
+        spinnerClone.style.marginBottom = "20px"
+        observer.unobserve(element[0].target);
+
+        fetch(`${hostname}desktop-template-php/infinite-scroll-${fileName}.php?start_point=${start_point}`)
+        
+        .then((response) => response.json())
+
+        .then((data) => {
+            setTimeout(() => {
+                
+                // Création des debugs supplémentaires
+                data.map((post) => {
+                    debugContainer.appendChild(
+                        createDebug(post)
+                    );
+                });
+
+                // Raffraichissement des ecouteurs d'events
+                refreshEventListener()
+                
+                // Suppression du spinner
+                spinnerClone.remove();
+                
+                // Incrémentation des index d'observation et de points de départ
+                index_observation += 15;
+                start_point += 15;
+                
+                // Observer le dernier debug
+                observer.observe(debug[index_observation]);
+                
+                console.log(data);
+                console.log(debug);
+            }, 2000);
+
+            
+        });
+
+        
+    }
+});
+
+// Observer le dernier debug
+observer.observe(debug[index_observation]);
+

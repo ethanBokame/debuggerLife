@@ -593,122 +593,6 @@ window.addEventListener("load", () => {
     nodebug && debug.length == 0 ? (nodebug.style.display = "flex") : "";
 });
 
-// Bouton like et favoris d'un debug autre que celui de l'utilisateur
-let likePost = document.querySelectorAll(".notmydebug .count-like"),
-    likePostImg = document.querySelectorAll(".notmydebug .count-like img"),
-    likePostNumber = document.querySelectorAll(".notmydebug .count-like p"),
-    favPost = document.querySelectorAll(".notmydebug .count-fav"),
-    favPostImg = document.querySelectorAll(".notmydebug .count-fav img"),
-    favPostNumber = document.querySelectorAll(".notmydebug .count-fav p");
-
-// Fonction pour les boutons like et favoris
-function postBtn( btn, btnImg, btnImgOldColor, btnImgNewColor, color, count, index_post, action) {
-    btn.style.transition = "0.2s";
-    btn.style.transform = "scale(1.2)";
-    let id_post = debug[index_post].getAttribute("id-post");
-    
-    // ON
-    if (!btn.style.color) {
-        // changement du style
-        btn.style.color = color;
-        btnImg.setAttribute("src", btnImgNewColor);
-        let number = parseInt(count.innerText);
-        count.innerText = number + 1;
-        
-        // Requete http
-        fetch(
-            hostname +
-                "desktop-template-php/" +
-                action +
-                ".php?id_post=" +
-                id_post +
-                "&step=1"
-        );
-        
-        // Notification
-        if (action == "fav") {
-            showNotif("image/fait.png", "Ajouté a vos favoris");
-            setTimeout(() => {
-                hideNotif();
-            }, 2000);
-        }
-        
-        // OFF
-    } else {
-        btn.style.color = "";
-        btnImg.setAttribute("src", btnImgOldColor);
-        let number = parseInt(count.innerText);
-        count.innerText = number - 1;
-        
-        fetch(
-            hostname +
-                "desktop-template-php/" +
-                action +
-                ".php?id_post=" +
-                id_post +
-                "&step=-1"
-        );
-        
-        if (action == "fav") {
-            showNotif("image/fait.png", "Retiré de vos favoris");
-            setTimeout(() => {
-                hideNotif();
-            }, 2000);
-        }
-    }
-    
-    setTimeout(() => {
-        btn.style.transition = "0.4s";
-        btn.style.transform = "scale(1)";
-    }, 400);
-}
-
-// Bouton like
-for (let i = 0; i < likePost.length; i++) {
-    likePost[i].addEventListener("click", () => {
-        postBtn(
-            likePost[i],
-            likePostImg[i],
-            "image/heart-regular-240-white.png",
-            "image/heart-solid-240-pink.png",
-            "#f91880",
-            likePostNumber[i],
-            i,
-            "like"
-        );
-    });
-}
-
-// Bouton favoris
-for (let i = 0; i < favPost.length; i++) {
-    favPost[i].addEventListener("click", () => {
-        postBtn(
-            favPost[i],
-            favPostImg[i],
-            "image/bookmark-regular-240-white.png",
-            "image/bookmark-solid-240-or.png",
-            "#FFC107",
-            favPostNumber[i],
-            i,
-            "fav"
-        );
-
-        // Retrait du debug des favoris
-        if (window.location.pathname.includes("favoris.php")) {
-            debug[i].remove();
-            let notMyDebugCount = document.querySelectorAll(".notmydebug");
-            nofav && notMyDebugCount.length == 0
-                ? (nofav.style.display = "flex")
-                : "";
-
-            showNotif("image/fait.png", "Retiré de vos favoris");
-            setTimeout(() => {
-                hideNotif();
-            }, 2000);
-        }
-    });
-}
-
 // Formulaire d'ajout des debugs
 let inputTitle = document.querySelector(".title-form-add"),
     inputDescription = document.querySelector(".description-form-add"),
@@ -1247,11 +1131,8 @@ debugContainer?.addEventListener("click", (event) => {
             idPost = event.target.offsetParent.getAttribute("id-post");
         }
         
-        console.log(`usernamePost: ${usernamePost}`);
-        console.log(`idPost: ${idPost}`);
-        
         // Navigation vers la nouvelle URL
-        window.location.href = usernamePost.innerText + "/" + idPost;
+        window.location.href = usernamePost + "/" + idPost;
     }
     
     // Image modale du debug
@@ -1281,6 +1162,84 @@ debugContainer?.addEventListener("click", (event) => {
         if (imgDebugModal.height > (window.innerHeight * 90) / 100) {
             imgDebugModal.style.width = "auto";
             imgDebugModal.style.height = "90%";
+        }
+        
+    }
+
+    // like d'un debug
+    if (event.target.classList.contains("count-like") || event.target.parentNode.classList.contains("count-like")) {
+        
+        if (event.target.classList.contains("count-like")) {
+            
+            var debugLike = event.target.offsetParent,
+                likePost = event.target,
+                likePostImg = event.target.querySelector(".count-like img"),
+                likePostNumber = event.target.querySelector(".count-like p");
+            
+        }
+        else {
+            
+            var debugLike = event.target.offsetParent,
+                likePost = event.target.parentElement,
+                likePostImg = event.target.offsetParent.querySelector(".count-like img"),
+                likePostNumber = event.target.offsetParent.querySelector(".count-like p");
+            
+        }
+        
+        postBtn(
+            likePost,
+            likePostImg,
+            "image/heart-regular-240-white.png",
+            "image/heart-solid-240-pink.png",
+            "#f91880",
+            likePostNumber,
+            debugLike,
+            "like"
+        );
+        
+    }
+    
+    // fav d'un debug
+    if (event.target.classList.contains("count-fav") || event.target.parentNode.classList.contains("count-fav")) {
+        
+        if (event.target.classList.contains("count-fav")) {
+            
+            var debugFav = event.target.offsetParent,
+                favPost = event.target,
+                favPostImg = event.target.querySelector(".count-fav img"),
+                favPostNumber = event.target.querySelector(".count-fav p");
+            
+        }
+        else {
+            
+            var debugFav = event.target.offsetParent,
+                favPost = event.target.parentElement,
+                favPostImg = event.target.offsetParent.querySelector(".count-fav img"),
+                favPostNumber = event.target.offsetParent.querySelector(".count-fav p");
+            
+        }
+        
+        postBtn(
+            favPost,
+            favPostImg,
+            "image/bookmark-regular-240-white.png",
+            "image/bookmark-solid-240-or.png",
+            "#FFC107",
+            favPostNumber,
+            debugFav,
+            "fav"
+        );
+
+        if (fileName == "favoris") {
+            debugFav.remove();
+
+            if (debug.length == 0) nofav.style.display = "flex";
+            
+            showNotif("image/fait.png", "Retiré de vos favoris");
+            setTimeout(() => {
+                hideNotif();
+            }, 2000);
+            
         }
         
     }
@@ -1404,4 +1363,72 @@ if (e.target != imgDebugModal) {
 });
 
 
+// // Bouton like et favoris d'un debug autre que celui de l'utilisateur
+// let likePost = document.querySelectorAll(".notmydebug .count-like"),
+//     likePostImg = document.querySelectorAll(".notmydebug .count-like img"),
+//     likePostNumber = document.querySelectorAll(".notmydebug .count-like p"),
+//     favPost = document.querySelectorAll(".notmydebug .count-fav"),
+//     favPostImg = document.querySelectorAll(".notmydebug .count-fav img"),
+//     favPostNumber = document.querySelectorAll(".notmydebug .count-fav p");
 
+// // Fonction pour les boutons like et favoris
+function postBtn( btn, btnImg, btnImgOldColor, btnImgNewColor, color, count, debug, action) {
+    btn.style.transition = "0.2s";
+    btn.style.transform = "scale(1.2)";
+    let id_post = debug.getAttribute("id-post");
+    
+    // ON
+    if (!btn.style.color) {
+        // changement du style
+        btn.style.color = color;
+        btnImg.setAttribute("src", btnImgNewColor);
+        let number = parseInt(count.innerText);
+        count.innerText = number + 1;
+        
+        // Requete http
+        fetch(
+            hostname +
+                "desktop-template-php/" +
+                action +
+                ".php?id_post=" +
+                id_post +
+                "&step=1"
+        );
+        
+        // Notification
+        if (action == "fav") {
+            showNotif("image/fait.png", "Ajouté a vos favoris");
+            setTimeout(() => {
+                hideNotif();
+            }, 2000);
+        }
+        
+        // OFF
+    } else {
+        btn.style.color = "";
+        btnImg.setAttribute("src", btnImgOldColor);
+        let number = parseInt(count.innerText);
+        count.innerText = number - 1;
+        
+        fetch(
+            hostname +
+                "desktop-template-php/" +
+                action +
+                ".php?id_post=" +
+                id_post +
+                "&step=-1"
+        );
+        
+        if (action == "fav") {
+            showNotif("image/fait.png", "Retiré de vos favoris");
+            setTimeout(() => {
+                hideNotif();
+            }, 2000);
+        }
+    }
+    
+    setTimeout(() => {
+        btn.style.transition = "0.4s";
+        btn.style.transform = "scale(1)";
+    }, 400);
+}

@@ -441,6 +441,7 @@ nav .nav-menu .profil_pic {
 }
 .first-tab-system-container .page .mydebug .option-menu .op, .first-tab-system-container .page .notmydebug .option-menu .op {
   display: flex;
+  align-items: center;
   gap: 5px;
   padding: 13px;
   border-bottom: 1.5px solid #313845;

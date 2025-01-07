@@ -1546,53 +1546,53 @@ let sharePostMydebug = document.querySelectorAll(".option-menu .share-btn"),
 //     });
 // }
 
-// Image modale du debug
-let imgDebugModalContainer = document.querySelector(
-        ".image-debug-modal-container"
-    ),
-    imgDebugModal = document.querySelector(".img-debug-modal"),
-    imgDebug = document.querySelectorAll(".img-debug img"),
-    imgDebugClose = document.querySelector(".close-debug-modal"),
-    imgDebugContainer = document.querySelectorAll(".img-debug");
+// // Image modale du debug
+// let imgDebugModalContainer = document.querySelector(
+//         ".image-debug-modal-container"
+//     ),
+//     imgDebugModal = document.querySelector(".img-debug-modal"),
+//     imgDebug = document.querySelectorAll(".img-debug img"),
+//     imgDebugClose = document.querySelector(".close-debug-modal"),
+//     imgDebugContainer = document.querySelectorAll(".img-debug");
 
-// Click sur l'image
-for (let i = 0; i < imgDebug.length; i++) {
-    imgDebugContainer[i].addEventListener("click", () => {
-        // Récupération du path de l'image
-        let pathOfDebugImg = imgDebug[i].getAttribute("src");
+// // Click sur l'image
+// for (let i = 0; i < imgDebug.length; i++) {
+//     imgDebugContainer[i].addEventListener("click", () => {
+//         // Récupération du path de l'image
+//         let pathOfDebugImg = imgDebug[i].getAttribute("src");
 
-        imgDebugModal.setAttribute("src", pathOfDebugImg);
-        smokePage.style.display = "block";
-        imgDebugModalContainer.style.display = "block";
+//         imgDebugModal.setAttribute("src", pathOfDebugImg);
+//         smokePage.style.display = "block";
+//         imgDebugModalContainer.style.display = "block";
 
-        console.dir(imgDebugModal.width);
-        console.log(window.innerWidth);
+//         console.dir(imgDebugModal.width);
+//         console.log(window.innerWidth);
 
-        if (imgDebugModal.width > (window.innerWidth * 80) / 100) {
-            imgDebugModal.style.width = "80%";
-            imgDebugModal.style.height = "auto";
-        }
+//         if (imgDebugModal.width > (window.innerWidth * 80) / 100) {
+//             imgDebugModal.style.width = "80%";
+//             imgDebugModal.style.height = "auto";
+//         }
 
-        if (imgDebugModal.height > (window.innerHeight * 90) / 100) {
-            imgDebugModal.style.width = "auto";
-            imgDebugModal.style.height = "90%";
-        }
-    });
-}
+//         if (imgDebugModal.height > (window.innerHeight * 90) / 100) {
+//             imgDebugModal.style.width = "auto";
+//             imgDebugModal.style.height = "90%";
+//         }
+//     });
+// }
 
-// Click sur la croix pour fermer l'image
-imgDebugClose.addEventListener("click", () => {
-    smokePage.style.display = "none";
-    imgDebugModalContainer.style.display = "none";
-});
+// // Click sur la croix pour fermer l'image
+// imgDebugClose.addEventListener("click", () => {
+//     smokePage.style.display = "none";
+//     imgDebugModalContainer.style.display = "none";
+// });
 
-// Click sur la zone neutre
-imgDebugModalContainer.addEventListener("click", (e) => {
-    if (e.target != imgDebugModal) {
-        smokePage.style.display = "none";
-        imgDebugModalContainer.style.display = "none";
-    }
-});
+// // Click sur la zone neutre
+// imgDebugModalContainer.addEventListener("click", (e) => {
+//     if (e.target != imgDebugModal) {
+//         smokePage.style.display = "none";
+//         imgDebugModalContainer.style.display = "none";
+//     }
+// });
 
 // // Copie du code posté
 // let copyCode = document.querySelectorAll(".code .header div"),
@@ -1618,13 +1618,13 @@ imgDebugModalContainer.addEventListener("click", (e) => {
 // }
 
 // Debug en grand
-let nameContainer = document.querySelectorAll(".pic-name-post-date .img-container"),
-    linkDebug = document.querySelectorAll(".ressource"),
-    bottomDebug = document.querySelectorAll(".page .bottom"),
-    backBigDebug = document.querySelector(".back-big-debug"),
-    referrer = document.referrer,
-    isFromApp = referrer.includes(hostname),
-    codeBlocContainer = document.querySelectorAll(".code");
+// let nameContainer = document.querySelectorAll(".pic-name-post-date .img-container"),
+//     linkDebug = document.querySelectorAll(".ressource"),
+//     bottomDebug = document.querySelectorAll(".page .bottom"),
+//     backBigDebug = document.querySelector(".back-big-debug"),
+//     referrer = document.referrer,
+//     isFromApp = referrer.includes(hostname),
+//     codeBlocContainer = document.querySelectorAll(".code");
 // console.log();
 
 // console.log(window.location);
@@ -1699,17 +1699,17 @@ let nameContainer = document.querySelectorAll(".pic-name-post-date .img-containe
 // }
 
 // retour
-if (backBigDebug) {
-    backBigDebug.addEventListener("click", () => {
-        if (isFromApp) {
-            // Retour à la page précédente
-            window.history.back();
-        } else {
-            // Redirige vers une page par défaut (par exemple, la page d'accueil de l'application)
-            window.location.href = "/explorer"; // Remplacez par l'URL de la page d'accueil
-        }
-    });
-}
+// if (backBigDebug) {
+//     backBigDebug.addEventListener("click", () => {
+//         if (isFromApp) {
+//             // Retour à la page précédente
+//             window.history.back();
+//         } else {
+//             // Redirige vers une page par défaut (par exemple, la page d'accueil de l'application)
+//             window.location.href = "/explorer"; // Remplacez par l'URL de la page d'accueil
+//         }
+//     });
+// }
 
 // // Signalement du debug
 // let warningBtn = document.querySelectorAll(".warning-op");
@@ -1886,13 +1886,17 @@ window.addEventListener("load", () => {
 
 // Fonction pour le formattage de l'image des debugs
 function formatDebugImg() {
+    
+    // let imgDebug = document.querySelectorAll(".img-debug img");
+    
     for (let i = 0; i < imgDebug.length; i++) {
         if (imgDebug[i].clientHeight > 310) {
             imgDebug[i].style.height = "310px";
             imgDebug[i].style.width = "auto";
         }
     }
-
+    console.log(imgDebug[imgDebug.length - 1].clientHeight);
+console.log(imgDebug.length);
 }
 
 // console.log("Debug length:", debug.length);
@@ -1930,9 +1934,6 @@ if (fileName == "mydebug" || fileName == "explorer" || fileName == "favoris") {
                             debugContainer.appendChild(createDebug(post));
                         });
                         
-                        // Formattage de l'image du debug
-                        // formatDebugImg()
-                        
                         // Suppression du spinner
                         spinnerClone.remove();
                         
@@ -1945,6 +1946,13 @@ if (fileName == "mydebug" || fileName == "explorer" || fileName == "favoris") {
                         
                         console.log(data);
                         console.log(debug);
+                        
+                        setTimeout(() => {
+                            // Formattage de l'image du debug
+                            imgDebug = document.querySelectorAll(".img-debug img");
+                            formatDebugImg();
+                        }, 100);
+                        
                     }, 500);
                 });
         }
@@ -2133,12 +2141,10 @@ debugContainer?.addEventListener("click", (event) => {
             "block"
         );
     }
-
-    // console.dir(event.target);
+    
+    // Redirection vers le debug en grand
     if (event.target.hasAttribute("redirect-big-debug")) {
-
-        // console.dir(event);
-
+        
         if (event.target.classList.contains("old-debug") || event.target.classList.contains("new-debug")) {
             var usernamePost = event.target.querySelector(".top .pic-name-post-date a").innerText,
             idPost = event.target.getAttribute("id-post");
@@ -2153,16 +2159,44 @@ debugContainer?.addEventListener("click", (event) => {
         // Navigation vers la nouvelle URL
         window.location.href = usernamePost.innerText + "/" + idPost;
     }
+    
+    // Image modale du debug
+    if (event.target.parentNode.classList.contains("img-debug")) {
+        
+        let imgDebugModalContainer = document.querySelector(".image-debug-modal-container"),
+            imgDebugModal = document.querySelector(".img-debug-modal");
+        
+        if (event.target.alt == "debug-image") {
+            var imgDebug = event.target;
+        } else {
+            var imgDebug = event.target.nextElementSibling;
+        }
+        
+        // Récupération du path de l'image
+        let pathOfDebugImg = imgDebug.getAttribute("src");
+        
+        imgDebugModal.setAttribute("src", pathOfDebugImg);
+        smokePage.style.display = "block";
+        imgDebugModalContainer.style.display = "block";
+        
+        if (imgDebugModal.width > (window.innerWidth * 80) / 100) {
+            imgDebugModal.style.width = "80%";
+            imgDebugModal.style.height = "auto";
+        }
+        
+        if (imgDebugModal.height > (window.innerHeight * 90) / 100) {
+            imgDebugModal.style.width = "auto";
+            imgDebugModal.style.height = "90%";
+        }
+        
+    }
 });
 
 // Annulation de la modification d'un debug
 let cancelModification = document.querySelector(".choice-group .cancel");
-
-if (cancelModification) {
-    cancelModification.addEventListener("click", () => {
-        history.back();
-    });
-}
+cancelModification?.addEventListener("click", () => {
+    history.back();
+});
 
 
 // Traitement de la popup en fonction de l'option
@@ -2237,32 +2271,43 @@ cancelPopup.addEventListener("click", () => {
     noFixeBody();
 });
 
-// Copie du code posté
-let copyCode = document.querySelectorAll(".code .header div"),
-    copyCodeImg = document.querySelectorAll(".code .header div img"),
-    copyCodeText = document.querySelectorAll(".code .header div p"),
-    codeBloc = document.querySelectorAll(".code pre code");
 
-// Signalement du debug
-// let warningBtn = document.querySelectorAll(".warning-op");
-// // console.log(warningBtn);
+// retour du debug en grand
+let backBigDebug = document.querySelector(".back-big-debug"),
+    referrer = document.referrer,
+    isFromApp = referrer.includes(hostname);
 
-// for (let i = 0; i < warningBtn.length; i++) {
-//     warningBtn[i].addEventListener("click", () => {
+backBigDebug?.addEventListener("click", () => {
+    if (isFromApp) {
+        // Retour à la page précédente
+        window.history.back();
+    } else {
+        // Redirige vers une page par défaut (par exemple, la page d'accueil de l'application)
+        window.location.href = "/explorer"; // Remplacez par l'URL de la page d'accueil
+    }
+});
 
-//         currentIndex = i;
 
-//         fixeBody();
+// Image modale du debug
+let imgDebugModalContainer = document.querySelector(".image-debug-modal-container"),
+imgDebugClose = document.querySelector(".close-debug-modal"),
+imgDebug = document.querySelectorAll(".img-debug img"),
+imgDebugModal = document.querySelector(".img-debug-modal"),
+imgDebugContainer = document.querySelectorAll(".img-debug");
 
-//         popup(
-//             "Êtes vous sûr?",
-//             "Cette action est irréversible et notifiera l'administrateur.",
-//             "warning",
-//             "block"
-//         );
-//     });
-// }
+// Click sur la croix pour fermer l'image modale du debug
+imgDebugClose.addEventListener("click", () => {
+smokePage.style.display = "none";
+imgDebugModalContainer.style.display = "none";
+});
 
+// Click sur la zone neutre pour fermer l'image modale du debug
+imgDebugModalContainer.addEventListener("click", (e) => {
+if (e.target != imgDebugModal) {
+    smokePage.style.display = "none";
+    imgDebugModalContainer.style.display = "none";
+}
+});
 
 
 

@@ -63,9 +63,9 @@ require("fonctions.php");
             foreach ($row as $post) {
             
             ?>
-                <div class="notmydebug old-debug" id-post="<?php echo $post["id_post"] ?>">
+                <div class="notmydebug old-debug" id-post="<?php echo $post["id_post"] ?>" redirect-big-debug>
                     
-                    <div class="top">
+                    <div class="top" redirect-big-debug>
                         
                         <div class="pic-name-post-date">
                             
@@ -74,8 +74,8 @@ require("fonctions.php");
                             </div>
                             
                             <a href=""><?php echo $post["username"] ?></a>
-                            <p>•</p>
-                            <p> <?php echo shortTimePost($post["post_date"]) ?> </p>
+                            <p redirect-big-debug>•</p>
+                            <p redirect-big-debug> <?php echo shortTimePost($post["post_date"]) ?> </p>
                             
                         </div>
                         
@@ -101,12 +101,12 @@ require("fonctions.php");
                         
                     </div>
                     
-                    <p class="title" <?php echo (empty($post["description"])) ? 'style="margin: -12px 0 1px 0"' : "" ?>>
+                    <p class="title" <?php echo (empty($post["description"])) ? 'style="margin: -12px 0 1px 0"' : "" ?> redirect-big-debug>
                         <?php echo $post["title"] ?>
                     </p>
                     
-                    <div class="description" <?php echo (empty($post["description"])) ? 'style="margin: -10px"' : "" ?>>
-                        <p>
+                    <div class="description" <?php echo (empty($post["description"])) ? 'style="margin: -10px"' : "" ?> redirect-big-debug>
+                        <p redirect-big-debug>
                             <?php echo $post["description"] ?>
                         </p>
                     </div>
@@ -123,7 +123,7 @@ require("fonctions.php");
                     <div class="code" <?php echo (empty($post["code"])) ? 'style="display:none"' : "" ?>>
                         <div class="header">
                             <p>code</p>
-                            <div>
+                            <div class="copy-code-container">
                             <img src="image/copy-regular-240.png" alt="">
                             <p>Copier le code</p>
                             </div>
@@ -133,7 +133,7 @@ require("fonctions.php");
                         </pre>
                     </div>
                     
-                    <div class="bottom">
+                    <div class="bottom" redirect-big-debug>
                         
                         <div class="count-like" <?php echo(in_array($post["id_post"], $likes_debug_array)) ? 'style="color: rgb(249, 24, 128)"' : "" ?>>
                             <img src="<?php echo(in_array($post["id_post"], $likes_debug_array)) ? "image/heart-solid-240-pink.png" : "image/heart-regular-240-white.png" ?>" alt="like">

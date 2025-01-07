@@ -8,19 +8,16 @@ require("session.php");
 $search = $_GET["query"];
 
 $sql = "SELECT u.id_user, u.profile_pic, u.username, p.id_post, p.code, p.post_date, p.title, p.fav_number, p.like_number, p.status_post, p.link_ressource, p.description, p.link_picture 
-FROM users u 
-JOIN post p 
-ON u.id_user=p.id_user
-WHERE u.id_user!=:id_user AND
-p.status_post!='private' AND
-visibility='visible' 
+FROM users u
+JOIN post p ON u.id_user = p.id_user
+JOIN favoris f ON f.id_post = p.id_post 
+WHERE f.id_user = :id_user
 AND (
 title LIKE :search OR
 description LIKE :search OR
 link_ressource LIKE :search 
 OR code LIKE :search)
-ORDER BY p.post_date DESC
-LIMIT 15 OFFSET 0
+ORDER BY f.fav_date DESC
 ";
 
 $stmt = $conn->prepare($sql);

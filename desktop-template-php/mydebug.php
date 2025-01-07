@@ -31,6 +31,7 @@ require("fonctions.php");
                 WHERE id_user=:id_user
                 AND visibility='visible'
                 ORDER BY post_date DESC
+                LIMIT 15 OFFSET 0
                 "
             );
             $sql->bindValue(':id_user', $_SESSION["id_user"], PDO::PARAM_INT);
@@ -40,9 +41,9 @@ require("fonctions.php");
             foreach ($row as $post) {
 
             ?>
-                <div class="mydebug old-debug" id-post="<?php echo $post["id_post"] ?>">
+                <div class="mydebug old-debug" id-post="<?php echo $post["id_post"] ?>" redirect-big-debug>
 
-                    <div class="top">
+                    <div class="top" redirect-big-debug>
 
                         <div class="pic-name-post-date">
 
@@ -51,8 +52,8 @@ require("fonctions.php");
                             </div>
 
                             <a href=""><?php echo $user["username"] ?></a>
-                            <p>•</p>
-                            <p> <?php echo shortTimePost($post["post_date"]) ?> </p>
+                            <p redirect-big-debug>•</p>
+                            <p redirect-big-debug> <?php echo shortTimePost($post["post_date"]) ?> </p>
 
                         </div>
 
@@ -95,12 +96,12 @@ require("fonctions.php");
 
                     </div>
 
-                    <p class="title" <?php echo (empty($post["description"])) ? 'style="margin: -12px 0 1px 0"' : "" ?>>
+                    <p class="title" <?php echo (empty($post["description"])) ? 'style="margin: -12px 0 1px 0"' : "" ?> redirect-big-debug>
                         <?php echo $post["title"] ?>
                     </p>
 
-                    <div class="description" <?php echo (empty($post["description"])) ? 'style="margin: -10px"' : "" ?>>
-                        <p>
+                    <div class="description" <?php echo (empty($post["description"])) ? 'style="margin: -10px"' : "" ?> redirect-big-debug>
+                        <p redirect-big-debug>
                             <?php echo $post["description"] ?>
                         </p>
                     </div>
@@ -118,7 +119,7 @@ require("fonctions.php");
                     <div class="code" <?php echo (empty($post["code"])) ? 'style="display:none"' : "" ?>>
                         <div class="header">
                             <p>code</p>
-                            <div>
+                            <div class="copy-code-container">
                                 <img src="image/copy-regular-240.png" alt="">
                                 <p>Copier le code</p>
                             </div>
@@ -129,20 +130,20 @@ require("fonctions.php");
                     </div>
 
 
-                    <div class="bottom">
+                    <div class="bottom" redirect-big-debug>
 
-                        <img src="<?php echo ($post["status_post"] == "public") ? "image/public.png" : "image/privé .png" ?>" alt="world" class="state-simple">
+                        <img src="<?php echo ($post["status_post"] == "public") ? "image/public.png" : "image/privé .png" ?>" alt="world" class="state-simple" redirect-big-debug>
 
-                        <div class="count-like-mydebug">
-                            <img src="image/heart-regular-240.png" alt="like">
-                            <p>
+                        <div class="count-like-mydebug" redirect-big-debug>
+                            <img src="image/heart-regular-240.png" alt="like" redirect-big-debug>
+                            <p redirect-big-debug>
                                 <?php echo $post["like_number"] ?>
                             </p>
                         </div>
 
-                        <div class="count-fav-mydebug">
-                            <img src="image/bookmark-regular-240.png" alt="fav">
-                            <p>
+                        <div class="count-fav-mydebug" redirect-big-debug>
+                            <img src="image/bookmark-regular-240.png" alt="fav" redirect-big-debug>
+                            <p redirect-big-debug>
                                 <?php echo $post["fav_number"] ?>
                             </p>
                         </div>

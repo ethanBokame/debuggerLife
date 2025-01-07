@@ -555,6 +555,7 @@ function createDebug(post, query = "", likesArray, favArray, page = fileName) {
     let container = document.createElement("div");
     container.classList.add("new-debug");
     container.setAttribute("id-post", post.id_post);
+    container.setAttribute("redirect-big-debug", "");
     container.style.display = "flex";
 
 
@@ -584,7 +585,7 @@ function createDebug(post, query = "", likesArray, favArray, page = fileName) {
     }
 
     container.innerHTML = `
-        <div class="top">
+        <div class="top" redirect-big-debug>
             <div class="pic-name-post-date">
                 <div class="img-container">
                     <img src="
@@ -602,8 +603,8 @@ function createDebug(post, query = "", likesArray, favArray, page = fileName) {
                     : post.username
                 }
                 </a>
-                <p>•</p>    
-                <p> ${shortTimePost(post.post_date)} </p>
+                <p redirect-big-debug>•</p>    
+                <p redirect-big-debug> ${shortTimePost(post.post_date)} </p>
             </div>
             <div class="option-container">
                 <img src="image/options.png" class="option">
@@ -652,15 +653,15 @@ function createDebug(post, query = "", likesArray, favArray, page = fileName) {
                 </div>
             </div>
         </div>
-        <p class="title" ${
+        <p class="title" redirect-big-debug ${
             !post.description ? 'style="margin: -8px 0 3px 0"' : ""
         }>
             ${highlightedTitle}
         </p>
-        <div class="description" ${
+        <div class="description" redirect-big-debug ${
             !post.description && !post.code ? 'style="margin: -11px"' : ""
         }>
-            <p>${highlightedDescription}</p>
+            <p redirect-big-debug>${highlightedDescription}</p>
         </div>
         ${
             post.link_ressource
@@ -685,7 +686,7 @@ function createDebug(post, query = "", likesArray, favArray, page = fileName) {
             <div class="code">
                 <div class="header">
                     <p>code</p>
-                    <div>
+                    <div class="copy-code-container">
                         <img src="image/copy-regular-240.png" alt="">
                         <p>Copier le code</p>
                     </div>
@@ -694,7 +695,7 @@ function createDebug(post, query = "", likesArray, favArray, page = fileName) {
             </div>`
                 : ""
         }
-        <div class="bottom">
+        <div class="bottom" redirect-big-debug>
             ${
                 page == "explorer" || page == "favoris"
                     ? `            
@@ -734,7 +735,7 @@ function createDebug(post, query = "", likesArray, favArray, page = fileName) {
                     <img src="image/share-white.png" alt="share">
                 </div>`
                     : `
-                <img 
+                <img redirect-big-debug  
                     src="${
                         post.status_post === "public"
                             ? "image/public.png"
@@ -747,14 +748,14 @@ function createDebug(post, query = "", likesArray, favArray, page = fileName) {
                     }" 
                     class="state-simple">
                 
-                <div class="count-like-mydebug">
-                    <img src="image/heart-regular-240.png" alt="like">
-                    <p>${post.like_number}</p>
+                <div class="count-like-mydebug" redirect-big-debug>
+                    <img src="image/heart-regular-240.png" alt="like" redirect-big-debug>
+                    <p redirect-big-debug>${post.like_number}</p>
                 </div>
                 
-                <div class="count-fav-mydebug">
-                    <img src="image/bookmark-regular-240.png" alt="fav">
-                    <p>${post.fav_number}</p>
+                <div class="count-fav-mydebug" redirect-big-debug>
+                    <img src="image/bookmark-regular-240.png" alt="fav" redirect-big-debug>
+                    <p redirect-big-debug>${post.fav_number}</p>
                 </div>
             `
             }
@@ -1040,97 +1041,97 @@ function popup(title = "", text = "", choice = "", state = "") {
 let option = document.querySelectorAll(".option");
 let optionMenu = document.querySelectorAll(".option-menu");
 
-for (let i = 0; i < option.length; i++) {
-    option[i].addEventListener("click", () => {
-        let optionPosition = option[i].getBoundingClientRect().bottom;
+// for (let i = 0; i < option.length; i++) {
+//     option[i].addEventListener("click", () => {
+//         let optionPosition = option[i].getBoundingClientRect().bottom;
 
-        if (
-            optionMenu[i].style.display == "" ||
-            optionMenu[i].style.display == "none"
-        ) {
-            option[i].style.transition = "0.1.75s";
-            option[i].style.backgroundColor = "#9198a16e";
-            // optionMenu[i].style.top = `${optionPosition}px`;
-            // console.log(optionMenu[i].style.top);
-            optionMenu[i].style.transition = "0.1.75s";
-            optionMenu[i].style.display = "block";
-        } else {
-            option[i].style.transition = "0.1.75s";
-            option[i].style.backgroundColor = "";
-            optionMenu[i].style.transition = "0.1.75s";
-            optionMenu[i].style.display = "none";
-        }
+//         if (
+//             optionMenu[i].style.display == "" ||
+//             optionMenu[i].style.display == "none"
+//         ) {
+//             option[i].style.transition = "0.1.75s";
+//             option[i].style.backgroundColor = "#9198a16e";
+//             // optionMenu[i].style.top = `${optionPosition}px`;
+//             // console.log(optionMenu[i].style.top);
+//             optionMenu[i].style.transition = "0.1.75s";
+//             optionMenu[i].style.display = "block";
+//         } else {
+//             option[i].style.transition = "0.1.75s";
+//             option[i].style.backgroundColor = "";
+//             optionMenu[i].style.transition = "0.1.75s";
+//             optionMenu[i].style.display = "none";
+//         }
 
-        window.addEventListener("click", (e) => {
-            if (
-                !optionMenu[i].contains(e.target) &&
-                !option[i].contains(e.target)
-            ) {
-                option[i].style.transition = "0.1.75s";
-                option[i].style.backgroundColor = "";
-                optionMenu[i].style.transition = "0.1.75s";
-                optionMenu[i].style.display = "none";
-            }
-        });
-    });
-}
+//         window.addEventListener("click", (e) => {
+//             if (
+//                 !optionMenu[i].contains(e.target) &&
+//                 !option[i].contains(e.target)
+//             ) {
+//                 option[i].style.transition = "0.1.75s";
+//                 option[i].style.backgroundColor = "";
+//                 optionMenu[i].style.transition = "0.1.75s";
+//                 optionMenu[i].style.display = "none";
+//             }
+//         });
+//     });
+// }
 
 // Menu contextuel des debugs
 
-// Animation du bouton state
-let state = document.querySelectorAll(".state-btn"),
-    stateImg = document.querySelectorAll(".state-btn img"),
-    stateText = document.querySelectorAll(".state-btn p"),
-    stateImgSimple = document.querySelectorAll(".state-simple");
+// // Animation du bouton state
+// let state = document.querySelectorAll(".state-btn"),
+//     stateImg = document.querySelectorAll(".state-btn img"),
+//     stateText = document.querySelectorAll(".state-btn p"),
+//     stateImgSimple = document.querySelectorAll(".state-simple");
 
-for (let i = 0; i < state.length; i++) {
-    state[i].addEventListener("click", () => {
-        currentIndex = i; // Indice actuel
+// for (let i = 0; i < state.length; i++) {
+//     state[i].addEventListener("click", () => {
+//         currentIndex = i; // Indice actuel
 
-        newStateTextPopup = stateText[i].innerText.slice(
-            10,
-            stateText[i].length
-        );
+//         newStateTextPopup = stateText[i].innerText.slice(
+//             10,
+//             stateText[i].length
+//         );
 
-        fixeBody();
+//         fixeBody();
 
-        if (newStateTextPopup == "privé") {
-            popup(
-                "Rendre le debug privé?",
-                "Il ne sera plus visible pour les autres utilisateurs.",
-                "lock",
-                "block"
-            );
-        } else {
-            popup(
-                "Publier votre debug?",
-                "Êtes-vous sûr de vouloir rendre ce debug visible pour tous?",
-                "public",
-                "block"
-            );
-        }
-    });
-}
+//         if (newStateTextPopup == "privé") {
+//             popup(
+//                 "Rendre le debug privé?",
+//                 "Il ne sera plus visible pour les autres utilisateurs.",
+//                 "lock",
+//                 "block"
+//             );
+//         } else {
+//             popup(
+//                 "Publier votre debug?",
+//                 "Êtes-vous sûr de vouloir rendre ce debug visible pour tous?",
+//                 "public",
+//                 "block"
+//             );
+//         }
+//     });
+// }
 
 // Bouton delete
 let delBtn = document.querySelectorAll(".delete-btn"),
     mydebug = document.querySelectorAll(".mydebug"),
     mydebugPage = document.querySelector(".page");
 
-for (let i = 0; i < delBtn.length; i++) {
-    delBtn[i].addEventListener("click", () => {
-        currentIndex = i;
+// for (let i = 0; i < delBtn.length; i++) {
+//     delBtn[i].addEventListener("click", () => {
+//         currentIndex = i;
 
-        fixeBody();
+//         fixeBody();
 
-        popup(
-            "Êtes vous sûr?",
-            "Cette action est irréversible!",
-            "delete",
-            "block"
-        );
-    });
-}
+//         popup(
+//             "Êtes vous sûr?",
+//             "Cette action est irréversible!",
+//             "delete",
+//             "block"
+//         );
+//     });
+// }
 
 // Boutons copier
 
@@ -1169,77 +1170,77 @@ for (let i = 0; i < copyBtn.length; i++) {
     copyBtn[i].addEventListener("click", copyFunctionTab[i]);
 }
 
-// Traitement de la popup en fonction de l'option
-choicePopup.addEventListener("click", () => {
-    popup((state = "none"));
-    noFixeBody();
+// // Traitement de la popup en fonction de l'option
+// choicePopup.addEventListener("click", () => {
+//     popup((state = "none"));
+//     noFixeBody();
 
-    if (choicePopup.innerText == "Supprimer ce debug") {
-        // Suppression du debug
-        debug[currentIndex].style.display = "none";
-        let debugPage = document.querySelectorAll(".page .mydebug");
+//     if (choicePopup.innerText == "Supprimer ce debug") {
+//         // Suppression du debug
+//         debug[currentIndex].style.display = "none";
+//         let debugPage = document.querySelectorAll(".page .mydebug");
 
-        if (debugPage.length == 0) {
-            nopost.style.display = "block";
-        }
+//         if (debugPage.length == 0) {
+//             nopost.style.display = "block";
+//         }
 
-        let id_post = debug[currentIndex].getAttribute("id-post");
-        // Fetching pour la suppression d'un debug
-        fetch(hostname + "desktop-template-php/delete.php?id_post=" + id_post);
+//         let id_post = debug[currentIndex].getAttribute("id-post");
+//         // Fetching pour la suppression d'un debug
+//         fetch(hostname + "desktop-template-php/delete.php?id_post=" + id_post);
 
-        // Notification
-        showNotif("image/fait.png", "Votre debug a été supprimé");
-        setTimeout(() => {
-            hideNotif();
-        }, 2000);
-    } else if (choicePopup.innerText == "Signaler ce debug") {
-        let id_post = debug[currentIndex].getAttribute("id-post");
-        // Fetching pour le signalement d'un debug
-        fetch(hostname + "desktop-template-php/warning.php?id_post=" + id_post);
-    } else {
-        popup((state = "none"));
-        noFixeBody();
+//         // Notification
+//         showNotif("image/fait.png", "Votre debug a été supprimé");
+//         setTimeout(() => {
+//             hideNotif();
+//         }, 2000);
+//     } else if (choicePopup.innerText == "Signaler ce debug") {
+//         let id_post = debug[currentIndex].getAttribute("id-post");
+//         // Fetching pour le signalement d'un debug
+//         fetch(hostname + "desktop-template-php/warning.php?id_post=" + id_post);
+//     } else {
+//         popup((state = "none"));
+//         noFixeBody();
 
-        // Changement de l'état du debug
-        let newStateImg = stateImg[currentIndex].getAttribute("src");
-        let newStateImgSimple =
-            stateImgSimple[currentIndex].getAttribute("src");
+//         // Changement de l'état du debug
+//         let newStateImg = stateImg[currentIndex].getAttribute("src");
+//         let newStateImgSimple =
+//             stateImgSimple[currentIndex].getAttribute("src");
 
-        stateImg[currentIndex].setAttribute("src", newStateImgSimple);
-        stateImgSimple[currentIndex].setAttribute("src", newStateImg);
+//         stateImg[currentIndex].setAttribute("src", newStateImgSimple);
+//         stateImgSimple[currentIndex].setAttribute("src", newStateImg);
 
-        console.log(newStateImg, newStateImgSimple);
+//         console.log(newStateImg, newStateImgSimple);
 
-        newStateTextMenu = newStateImgSimple.slice(6, 12);
-        console.log(newStateTextMenu);
-        stateText[currentIndex].innerText = "Mettre en " + newStateTextMenu;
+//         newStateTextMenu = newStateImgSimple.slice(6, 12);
+//         console.log(newStateTextMenu);
+//         stateText[currentIndex].innerText = "Mettre en " + newStateTextMenu;
 
-        // Fetching pour la mise a jour du status
-        let id_post = debug[currentIndex].getAttribute("id-post"),
-            status = newStateTextPopup == "privé" ? "private" : "public";
+//         // Fetching pour la mise a jour du status
+//         let id_post = debug[currentIndex].getAttribute("id-post"),
+//             status = newStateTextPopup == "privé" ? "private" : "public";
 
-        fetch(
-            hostname +
-                "desktop-template-php/status.php?id_post=" +
-                id_post +
-                "&status=" +
-                status
-        );
+//         fetch(
+//             hostname +
+//                 "desktop-template-php/status.php?id_post=" +
+//                 id_post +
+//                 "&status=" +
+//                 status
+//         );
 
-        showNotif(
-            "image/fait.png",
-            "Votre Debug est maintenant " + newStateTextPopup
-        );
-        setTimeout(() => {
-            hideNotif();
-        }, 2000);
-    }
-});
+//         showNotif(
+//             "image/fait.png",
+//             "Votre Debug est maintenant " + newStateTextPopup
+//         );
+//         setTimeout(() => {
+//             hideNotif();
+//         }, 2000);
+//     }
+// });
 
-cancelPopup.addEventListener("click", () => {
-    popup((state = "none"));
-    noFixeBody();
-});
+// cancelPopup.addEventListener("click", () => {
+//     popup((state = "none"));
+//     noFixeBody();
+// });
 
 // Affichage d'un message un message lorsque certaines pages sont vides
 let nopost = document.querySelector(".nopost"),
@@ -1518,56 +1519,6 @@ logo.addEventListener("click", () => {
     window.location.href = window.location.pathname;
 });
 
-// Copie du lien d'un debug
-let copyLink = document.querySelectorAll(".copy-btn"),
-    linkPost = document.querySelectorAll(".notmydebug .ressource a");
-
-for (let i = 0; i < copyLink.length; i++) {
-    copyLink[i].addEventListener("click", () => {
-        navigator.clipboard.writeText(linkPost[i].href).then(() => {
-            showNotif("image/fait.png", "Lien de la ressource copié");
-            setTimeout(() => {
-                hideNotif();
-            }, 2000);
-        });
-    });
-}
-
-// Copie du lien d'un debug de notmydebug
-let sharePost = document.querySelectorAll(".share-btn"),
-    usernamePost = document.querySelectorAll(
-        ".top .pic-name-post-date a"
-    );
-
-for (let i = 0; i < sharePost.length; i++) {
-    sharePost[i].addEventListener("click", () => {
-        let idPost = debug[i].getAttribute("id-post"),
-            contentToShare =
-                hostname + usernamePost[i].innerText + "/" + idPost;
-
-        navigator.clipboard.writeText(contentToShare).then(() => {
-            showNotif("image/fait.png", "Lien du debug copié");
-            setTimeout(() => {
-                hideNotif();
-            }, 2000);
-        });
-    });
-}
-
-// Copie du lien d'un debug dans mydebug.php
-let copyLinkMydebug = document.querySelectorAll(".ressource-btn"),
-    linkPostMydebug = document.querySelectorAll(".mydebug .ressource a");
-
-for (let i = 0; i < copyLinkMydebug.length; i++) {
-    copyLinkMydebug[i].addEventListener("click", () => {
-        navigator.clipboard.writeText(linkPostMydebug[i].href).then(() => {
-            showNotif("image/fait.png", "Lien de la ressource copié");
-            setTimeout(() => {
-                hideNotif();
-            }, 2000);
-        });
-    });
-}
 
 // Copie du lien d'un debug dans mydebug.php
 let sharePostMydebug = document.querySelectorAll(".option-menu .share-btn"),
@@ -1575,39 +1526,25 @@ let sharePostMydebug = document.querySelectorAll(".option-menu .share-btn"),
         ".mydebug .top .pic-name-post-date a"
     );
 
-// for (let i = 0; i < sharePostMydebug.length; i++) {
-//     sharePostMydebug[i].addEventListener("click", () => {
-//         let idPost = debug[i].getAttribute("id-post"),
-//             contentToShare =
-//                 hostname + usernamePostMydebug[i].innerText + "/" + idPost;
 
-//         navigator.clipboard.writeText(contentToShare).then(() => {
-//             showNotif("image/fait.png", "Lien du debug copié");
-//             setTimeout(() => {
-//                 hideNotif();
-//             }, 2000);
-//         });
+// // Modification d'un de mes debugs
+// let modifBtn = document.querySelectorAll(".option-menu .modif-btn"),
+//     cancelModification = document.querySelector(".choice-group .cancel");
+
+// for (let i = 0; i < modifBtn.length; i++) {
+//     modifBtn[i].addEventListener("click", () => {
+//         let idPost = debug[i].getAttribute("id-post");
+//         console.log(typeof idPost);
+
+//         window.location.href = "update-debug/" + idPost;
 //     });
 // }
 
-// Modification d'un de mes debugs
-let modifBtn = document.querySelectorAll(".option-menu .modif-btn"),
-    cancelModification = document.querySelector(".choice-group .cancel");
-
-for (let i = 0; i < modifBtn.length; i++) {
-    modifBtn[i].addEventListener("click", () => {
-        let idPost = debug[i].getAttribute("id-post");
-        console.log(typeof idPost);
-
-        window.location.href = "update-debug/" + idPost;
-    });
-}
-
-if (cancelModification) {
-    cancelModification.addEventListener("click", () => {
-        history.back();
-    });
-}
+// if (cancelModification) {
+//     cancelModification.addEventListener("click", () => {
+//         history.back();
+//     });
+// }
 
 // Image modale du debug
 let imgDebugModalContainer = document.querySelector(
@@ -1657,28 +1594,28 @@ imgDebugModalContainer.addEventListener("click", (e) => {
     }
 });
 
-// Copie du code posté
-let copyCode = document.querySelectorAll(".code .header div"),
-    copyCodeImg = document.querySelectorAll(".code .header div img"),
-    copyCodeText = document.querySelectorAll(".code .header div p"),
-    codeBloc = document.querySelectorAll(".code pre code");
+// // Copie du code posté
+// let copyCode = document.querySelectorAll(".code .header div"),
+//     copyCodeImg = document.querySelectorAll(".code .header div img"),
+//     copyCodeText = document.querySelectorAll(".code .header div p"),
+//     codeBloc = document.querySelectorAll(".code pre code");
 
-for (let i = 0; i < copyCode.length; i++) {
-    copyCode[i].addEventListener("click", () => {
-        navigator.clipboard.writeText(codeBloc[i].innerText).then(() => {
-            copyCodeText[i].innerText = "Copié";
-            copyCodeImg[i].setAttribute("src", "image/check-regular-240.png");
+// for (let i = 0; i < copyCode.length; i++) {
+//     copyCode[i].addEventListener("click", () => {
+//         navigator.clipboard.writeText(codeBloc[i].innerText).then(() => {
+//             copyCodeText[i].innerText = "Copié";
+//             copyCodeImg[i].setAttribute("src", "image/check-regular-240.png");
 
-            setTimeout(() => {
-                copyCodeImg[i].setAttribute(
-                    "src",
-                    "image/copy-regular-240.png"
-                );
-                copyCodeText[i].innerText = "Copier le code";
-            }, 2000);
-        });
-    });
-}
+//             setTimeout(() => {
+//                 copyCodeImg[i].setAttribute(
+//                     "src",
+//                     "image/copy-regular-240.png"
+//                 );
+//                 copyCodeText[i].innerText = "Copier le code";
+//             }, 2000);
+//         });
+//     });
+// }
 
 // Debug en grand
 let nameContainer = document.querySelectorAll(".pic-name-post-date .img-container"),
@@ -1693,73 +1630,73 @@ let nameContainer = document.querySelectorAll(".pic-name-post-date .img-containe
 // console.log(window.location);
 // mydebug
 
-for (let i = 0; i < debug.length; i++) {
-    debug[i].addEventListener("click", (e) => {
-        // Vérification préalable pour s'assurer que les éléments existent
-        if (
-            nameContainer[i] &&
-            option[i] &&
-            linkDebug[i] &&
-            imgDebugContainer[i] &&
-            usernamePostMydebug[i] &&
-            codeBloc[i] &&
-            !backBigDebug
-        ) {
-            // Vérification que e.target n'est dans aucun des éléments
-            if (
-                !nameContainer[i].contains(e.target) &&
-                !option[i].contains(e.target) &&
-                !linkDebug[i].contains(e.target) &&
-                !imgDebugContainer[i].contains(e.target) &&
-                !codeBlocContainer[i].contains(e.target) &&
-                !optionMenu[i].contains(e.target)
-            ) {
-                let idPost = debug[i].getAttribute("id-post");
+// for (let i = 0; i < debug.length; i++) {
+//     debug[i].addEventListener("click", (e) => {
+//         // Vérification préalable pour s'assurer que les éléments existent
+//         if (
+//             nameContainer[i] &&
+//             option[i] &&
+//             linkDebug[i] &&
+//             imgDebugContainer[i] &&
+//             usernamePostMydebug[i] &&
+//             codeBloc[i] &&
+//             !backBigDebug
+//         ) {
+//             // Vérification que e.target n'est dans aucun des éléments
+//             if (
+//                 !nameContainer[i].contains(e.target) &&
+//                 !option[i].contains(e.target) &&
+//                 !linkDebug[i].contains(e.target) &&
+//                 !imgDebugContainer[i].contains(e.target) &&
+//                 !codeBlocContainer[i].contains(e.target) &&
+//                 !optionMenu[i].contains(e.target)
+//             ) {
+//                 let idPost = debug[i].getAttribute("id-post");
 
-                // Navigation vers la nouvelle URL
-                window.location.href =
-                    usernamePostMydebug[i].innerText + "/" + idPost;
-            }
-        } else {
-            console.warn(
-                `Un ou plusieurs éléments sont indéfinis pour l'index ${i}`
-            );
-        }
-    });
-}
+//                 // Navigation vers la nouvelle URL
+//                 window.location.href =
+//                     usernamePostMydebug[i].innerText + "/" + idPost;
+//             }
+//         } else {
+//             console.warn(
+//                 `Un ou plusieurs éléments sont indéfinis pour l'index ${i}`
+//             );
+//         }
+//     });
+// }
 
 // notmydebug
-for (let i = 0; i < debug.length; i++) {
-    debug[i].addEventListener("click", (e) => {
-        // Ajout du paramètre 'e' ici pour capturer l'événement
-        // Vérification préalable pour s'assurer que tous les éléments sont définis
-        if (
-            nameContainer[i] &&
-            option[i] &&
-            linkDebug[i] &&
-            imgDebugContainer[i] &&
-            bottomDebug[i] &&
-            codeBloc[i] &&
-            !backBigDebug
-        ) {
-            // Vérification que e.target n'est dans aucun de ces éléments
-            if (
-                !nameContainer[i].contains(e.target) &&
-                !option[i].contains(e.target) &&
-                !linkDebug[i].contains(e.target) &&
-                !imgDebugContainer[i].contains(e.target) &&
-                !bottomDebug[i].contains(e.target) &&
-                !codeBlocContainer[i].contains(e.target) &&
-                !optionMenu[i].contains(e.target)
-            ) {
-                let idPost = debug[i].getAttribute("id-post");
+// for (let i = 0; i < debug.length; i++) {
+//     debug[i].addEventListener("click", (e) => {
+//         // Ajout du paramètre 'e' ici pour capturer l'événement
+//         // Vérification préalable pour s'assurer que tous les éléments sont définis
+//         if (
+//             nameContainer[i] &&
+//             option[i] &&
+//             linkDebug[i] &&
+//             imgDebugContainer[i] &&
+//             bottomDebug[i] &&
+//             codeBloc[i] &&
+//             !backBigDebug
+//         ) {
+//             // Vérification que e.target n'est dans aucun de ces éléments
+//             if (
+//                 !nameContainer[i].contains(e.target) &&
+//                 !option[i].contains(e.target) &&
+//                 !linkDebug[i].contains(e.target) &&
+//                 !imgDebugContainer[i].contains(e.target) &&
+//                 !bottomDebug[i].contains(e.target) &&
+//                 !codeBlocContainer[i].contains(e.target) &&
+//                 !optionMenu[i].contains(e.target)
+//             ) {
+//                 let idPost = debug[i].getAttribute("id-post");
 
-                // Navigation vers la nouvelle URL
-                window.location.href = usernamePost[i].innerText + "/" + idPost;
-            }
-        }
-    });
-}
+//                 // Navigation vers la nouvelle URL
+//                 window.location.href = usernamePost[i].innerText + "/" + idPost;
+//             }
+//         }
+//     });
+// }
 
 // retour
 if (backBigDebug) {
@@ -1774,26 +1711,25 @@ if (backBigDebug) {
     });
 }
 
-// Signalement du debug
-let warningBtn = document.querySelectorAll(".warning-op");
-// console.log(warningBtn);
+// // Signalement du debug
+// let warningBtn = document.querySelectorAll(".warning-op");
+// // console.log(warningBtn);
 
-for (let i = 0; i < warningBtn.length; i++) {
-    warningBtn[i].addEventListener("click", () => {
-        // console.log("ee");
+// for (let i = 0; i < warningBtn.length; i++) {
+//     warningBtn[i].addEventListener("click", () => {
 
-        currentIndex = i;
+//         currentIndex = i;
 
-        fixeBody();
+//         fixeBody();
 
-        popup(
-            "Êtes vous sûr?",
-            "Cette action est irréversible et notifiera l'administrateur.",
-            "warning",
-            "block"
-        );
-    });
-}
+//         popup(
+//             "Êtes vous sûr?",
+//             "Cette action est irréversible et notifiera l'administrateur.",
+//             "warning",
+//             "block"
+//         );
+//     });
+// }
 
 // Animation pour l'input du container
 let commentContainerTextarea = document.querySelector(
@@ -1935,12 +1871,6 @@ window.addEventListener("load", () => {
     setTimeout(() => {
         if (spinner) spinner.style.display = "none"; // Masque le spinner s'il existe
 
-        // if (myDebug.length > 0) {
-        //     // Vérifie si myDebug contient des éléments
-        //     myDebug.forEach((element) => {
-        //         element.style.display = "flex";
-        //     });
-        // } else 
         if (debug.length > 0) {
             
             // Fait apparaitre les debugs
@@ -1972,62 +1902,367 @@ function formatDebugImg() {
 // console.log("imgDebugContainer length:", imgDebugContainer.length);
 
 // Scroll infini 15 par 15
-
 // Créer une instance de l'Intersection Observer
-
-let start_point = 15,
-    index_observation = 14;
-
-const observer = new IntersectionObserver((element, observer) => {
-
-    if (element[0].isIntersecting) {
-        console.log(element);
-        console.log("dernier debug vu !");
-
-        let spinnerClone = spinner.cloneNode(true);
-        page.appendChild(spinnerClone);
-        spinnerClone.style.display = "flex"
-        spinnerClone.style.marginBottom = "20px"
-        observer.unobserve(element[0].target);
-
-        fetch(`${hostname}desktop-template-php/infinite-scroll-${fileName}.php?start_point=${start_point}`)
-        
-        .then((response) => response.json())
-
-        .then((data) => {
-            setTimeout(() => {
-                
-                // Création des debugs supplémentaires
-                data.map((post) => {
-                    debugContainer.appendChild(
-                        createDebug(post)
-                    );
-                });
-
-                // Raffraichissement des ecouteurs d'events
-                refreshEventListener()
-                
-                // Suppression du spinner
-                spinnerClone.remove();
-                
-                // Incrémentation des index d'observation et de points de départ
-                index_observation += 15;
-                start_point += 15;
-                
-                // Observer le dernier debug
-                observer.observe(debug[index_observation]);
-                
-                console.log(data);
-                console.log(debug);
-            }, 2000);
-
+if (fileName == "mydebug" || fileName == "explorer" || fileName == "favoris") {
+    let start_point = 15,
+        index_observation = 14;
+    
+    const observer = new IntersectionObserver((element, observer) => {
+        if (element[0].isIntersecting) {
+            console.log(element);
+            console.log("dernier debug vu !");
             
-        });
+            let spinnerClone = spinner.cloneNode(true);
+            page.appendChild(spinnerClone);
+            spinnerClone.style.display = "flex";
+            spinnerClone.style.marginBottom = "20px";
+            observer.unobserve(element[0].target);
+            
+            fetch(
+                `${hostname}desktop-template-php/infinite-scroll-${fileName}.php?start_point=${start_point}`
+            )
+                .then((response) => response.json())
+                
+                .then((data) => {
+                    setTimeout(() => {
+                        // Création des debugs supplémentaires
+                        data.map((post) => {
+                            debugContainer.appendChild(createDebug(post));
+                        });
+                        
+                        // Formattage de l'image du debug
+                        // formatDebugImg()
+                        
+                        // Suppression du spinner
+                        spinnerClone.remove();
+                        
+                        // Incrémentation des index d'observation et de points de départ
+                        index_observation += 15;
+                        start_point += 15;
+                        
+                        // Observer le dernier debug
+                        observer.observe(debug[index_observation]);
+                        
+                        console.log(data);
+                        console.log(debug);
+                    }, 500);
+                });
+        }
+    });
+    
+    // Observer le dernier debug
+    fileName == "mydebug" ? observer.observe(debug[index_observation]) : "";
+}
 
+
+// Ajout des evennements par délégation
+
+debugContainer?.addEventListener("click", (event) => {
+    // console.dir(event.target);
+    
+    // Menu
+    if (event.target.classList.contains("option")) {
         
+        let option = event.target, 
+            optionMenu = option.nextElementSibling;
+        
+        if (optionMenu.style.display == "" || optionMenu.style.display == "none") {
+            
+            option.style.transition = "0.1.75s";
+            option.style.backgroundColor = "#9198a16e";
+            optionMenu.style.transition = "0.1.75s";
+            optionMenu.style.display = "block";
+            
+        } else {
+            
+            option.style.transition = "0.1.75s";
+            option.style.backgroundColor = "";
+            optionMenu.style.transition = "0.1.75s";
+            optionMenu.style.display = "none";
+            
+        }
+        
+        // Click sur une autre zone à part le menu
+        window.addEventListener("click", (e) => {
+            if (
+                !optionMenu.contains(e.target) &&
+                !option.contains(e.target)
+            ) {
+                option.style.transition = "0.1.75s";
+                option.style.backgroundColor = "";
+                optionMenu.style.transition = "0.1.75s";
+                optionMenu.style.display = "none";
+            }
+        });
+        console.log("menu cliqué");
+    }
+    
+    // Bouton partagé
+    if (event.target.classList.contains("share-btn") || event.target.parentNode.classList.contains("share-btn")) {
+        
+        if (fileName == "mydebug") {
+            var usernamePost = event.target.offsetParent.offsetParent.querySelector(".top .pic-name-post-date a").innerText,
+                idPost = event.target.offsetParent.offsetParent.getAttribute("id-post");
+        }
+        else {
+            var usernamePost = event.target.offsetParent.querySelector(".top .pic-name-post-date a").innerText,
+            idPost = event.target.offsetParent.getAttribute("id-post");
+        }
+        
+        let contentToShare = hostname + usernamePost + "/" + idPost;
+        
+        navigator.clipboard.writeText(contentToShare).then(() => {
+            showNotif("image/fait.png", "Lien du debug copié");
+            setTimeout(() => {
+                hideNotif();
+            }, 2000);
+        })
+        
+    }
+    
+    // Bouton copier le lien
+    if (event.target.classList.contains("ressource-btn") || event.target.parentNode.classList.contains("ressource-btn") || event.target.classList.contains("copy-btn") || event.target.parentNode.classList.contains("copy-btn")) {
+        
+        if (fileName == "mydebug") {
+            var debugLink = event.target.offsetParent.offsetParent.querySelector(".ressource a").href;
+        }
+        else {
+            var debugLink = event.target.offsetParent.querySelector(".ressource a").href;
+        }
+        
+        navigator.clipboard.writeText(debugLink).then(() => {
+            showNotif("image/fait.png", "Lien de la ressource copié");
+            setTimeout(() => {
+                hideNotif();
+            }, 2000);
+        })
+    }
+    
+    // Modification d'un debug
+    if (event.target.classList.contains("modif-btn") || event.target.parentNode.classList.contains("modif-btn")) {
+        
+        let idPost = event.target.offsetParent.offsetParent.getAttribute("id-post");
+        window.location.href = "update-debug/" + idPost;
+        
+    }
+
+    // Etat d'un debug
+    if (event.target.classList.contains("state-btn") || event.target.parentNode.classList.contains("state-btn")) {
+        
+        debugPopup = event.target.offsetParent.offsetParent; // Debug concerné
+        
+        stateImg = debugPopup.querySelector(".state-btn img");
+        stateText = debugPopup.querySelector(".state-btn p");
+        stateImgSimple = debugPopup.querySelector(".state-simple");
+        
+        newStateTextPopup = stateText.innerText.slice(10, stateText.length);
+        
+        fixeBody();
+        
+        if (newStateTextPopup == "privé") {
+            popup(
+                "Rendre le debug privé?",
+                "Il ne sera plus visible pour les autres utilisateurs.",
+                "lock",
+                "block"
+            );
+        } else {
+            popup(
+                "Publier votre debug?",
+                "Êtes-vous sûr de vouloir rendre ce debug visible pour tous?",
+                "public",
+                "block"
+            );
+        }
+    }
+    
+    // Suppression d'un debug
+    if (event.target.classList.contains("delete-btn") || event.target.parentNode.classList.contains("delete-btn")) {
+        
+        debugPopup = event.target.offsetParent.offsetParent; // Debug concerné
+        
+        fixeBody();
+        
+        popup(
+            "Êtes vous sûr?",
+            "Cette action est irréversible!",
+            "delete",
+            "block"
+        );
+        
+    }
+
+    // Copie du code posté
+    if (event.target.classList.contains("copy-code-container") || event.target.parentNode.classList.contains("copy-code-container")) {
+        
+        console.log(event.target.offsetParent.offsetParent);
+        
+        let debugClick = event.target.offsetParent.offsetParent,
+            copyCodeImg = debugClick.querySelector(".code .header div img"),
+            copyCodeText = debugClick.querySelector(".code .header div p"),
+            codeBloc = debugClick.querySelector(".code pre code");
+        
+        navigator.clipboard.writeText(codeBloc.innerText).then(() => {
+            
+            copyCodeText.innerText = "Copié";
+            copyCodeImg.setAttribute("src", "image/check-regular-240.png");
+            
+            setTimeout(() => {
+                copyCodeImg.setAttribute(
+                    "src",
+                    "image/copy-regular-240.png"
+                );
+                copyCodeText.innerText = "Copier le code";
+            }, 2000);
+            
+        })
+        
+    }
+    
+    // Signalement d'un debug
+    if (event.target.classList.contains("warning-op") || event.target.parentNode.classList.contains("warning-op")) {
+        
+        debugPopup = event.target.offsetParent.offsetParent; // Debug concerné
+        
+        fixeBody();
+        
+        popup(
+            "Êtes vous sûr?",
+            "Cette action est irréversible et notifiera l'administrateur.",
+            "warning",
+            "block"
+        );
+    }
+
+    // console.dir(event.target);
+    if (event.target.hasAttribute("redirect-big-debug")) {
+
+        // console.dir(event);
+
+        if (event.target.classList.contains("old-debug") || event.target.classList.contains("new-debug")) {
+            var usernamePost = event.target.querySelector(".top .pic-name-post-date a").innerText,
+            idPost = event.target.getAttribute("id-post");
+        } else {
+            var usernamePost = event.target.offsetParent.querySelector(".top .pic-name-post-date a").innerText,
+            idPost = event.target.offsetParent.getAttribute("id-post");
+        }
+        
+        console.log(`usernamePost: ${usernamePost}`);
+        console.log(`idPost: ${idPost}`);
+        
+        // Navigation vers la nouvelle URL
+        window.location.href = usernamePost.innerText + "/" + idPost;
     }
 });
 
-// Observer le dernier debug
-observer.observe(debug[index_observation]);
+// Annulation de la modification d'un debug
+let cancelModification = document.querySelector(".choice-group .cancel");
+
+if (cancelModification) {
+    cancelModification.addEventListener("click", () => {
+        history.back();
+    });
+}
+
+
+// Traitement de la popup en fonction de l'option
+choicePopup.addEventListener("click", () => {
+    popup((state = "none"));
+    noFixeBody();
+
+    if (choicePopup.innerText == "Supprimer ce debug") {
+        // Suppression du debug
+        debugPopup.style.display = "none";
+
+        if (debug.length == 0) {
+            nopost.style.display = "block";
+        }
+
+        let id_post = debugPopup.getAttribute("id-post");
+        // Fetching pour la suppression d'un debug
+        fetch(hostname + "desktop-template-php/delete.php?id_post=" + id_post);
+
+        // Notification
+        showNotif("image/fait.png", "Votre debug a été supprimé");
+        setTimeout(() => {
+            hideNotif();
+        }, 2000);
+    } else if (choicePopup.innerText == "Signaler ce debug") {
+        
+        let id_post = debugPopup.getAttribute("id-post");
+        
+        // Fetching pour le signalement d'un debug
+        fetch(hostname + "desktop-template-php/warning.php?id_post=" + id_post);
+        
+        // Notification
+        showNotif("image/fait.png", "Debug signalé");
+        setTimeout(() => {
+            hideNotif();
+        }, 2000);
+
+    } else {
+        popup((state = "none"));
+        noFixeBody();
+        
+        // Changement de l'état du debug
+        let newStateImg = stateImg.getAttribute("src");
+        let newStateImgSimple = stateImgSimple.getAttribute("src");
+        
+        stateImg.setAttribute("src", newStateImgSimple);
+        stateImgSimple.setAttribute("src", newStateImg);
+        
+        console.log(newStateImg, newStateImgSimple);
+        
+        newStateTextMenu = newStateImgSimple.slice(6, 12);
+        console.log(newStateTextMenu);
+        stateText.innerText = "Mettre en " + newStateTextMenu;
+        
+        // Fetching pour la mise a jour du status
+        let id_post = debugPopup.getAttribute("id-post"),
+            status = newStateTextPopup == "privé" ? "private" : "public";
+        
+        fetch(hostname + "desktop-template-php/status.php?id_post=" + id_post + "&status=" + status);
+        
+        showNotif("image/fait.png", "Votre Debug est maintenant " + newStateTextPopup);
+        
+        setTimeout(() => {
+            hideNotif();
+        }, 2000);
+    }
+});
+
+// Bouton "X" ou annuler sur la popup
+cancelPopup.addEventListener("click", () => {
+    popup((state = "none"));
+    noFixeBody();
+});
+
+// Copie du code posté
+let copyCode = document.querySelectorAll(".code .header div"),
+    copyCodeImg = document.querySelectorAll(".code .header div img"),
+    copyCodeText = document.querySelectorAll(".code .header div p"),
+    codeBloc = document.querySelectorAll(".code pre code");
+
+// Signalement du debug
+// let warningBtn = document.querySelectorAll(".warning-op");
+// // console.log(warningBtn);
+
+// for (let i = 0; i < warningBtn.length; i++) {
+//     warningBtn[i].addEventListener("click", () => {
+
+//         currentIndex = i;
+
+//         fixeBody();
+
+//         popup(
+//             "Êtes vous sûr?",
+//             "Cette action est irréversible et notifiera l'administrateur.",
+//             "warning",
+//             "block"
+//         );
+//     });
+// }
+
+
+
 

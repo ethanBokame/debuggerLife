@@ -15,6 +15,6 @@ $sql->bindValue(':step', $step, PDO::PARAM_INT);
 $sql->execute();
 
 // Ajout ou retrait du debug de la table contenant les debugs mis en favoris de l'user
-$sql = $step == 1 ? "INSERT INTO favoris (id_user, id_post) VALUES ($id_user, $id_post)" : "DELETE FROM favoris WHERE id_post = $id_post";
+$sql = $step == 1 ? "INSERT INTO favoris (id_user, id_post) VALUES ($id_user, $id_post)" : "DELETE FROM favoris WHERE id_post = $id_post AND id_user = $id_user";
 $conn->query($sql);
 ?>

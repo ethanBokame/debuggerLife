@@ -33,6 +33,7 @@ require("fonctions.php");
             ON u.id_user=p.id_user
             WHERE u.id_user!=:id_user AND p.status_post!='private' AND visibility='visible'
             ORDER BY p.post_date DESC
+            LIMIT 15 OFFSET 0
             ");
             $sql->bindValue(':id_user', $_SESSION["id_user"], PDO::PARAM_INT);
             $sql->execute();

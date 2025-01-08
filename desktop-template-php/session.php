@@ -7,7 +7,7 @@
     $sql->bindValue(':id_user', 1, PDO::PARAM_INT);
     $sql->execute();
     $user = $sql->fetch(PDO::FETCH_ASSOC);
-
+    
     $_SESSION["id_user"] = $user["id_user"];
     
 ?>

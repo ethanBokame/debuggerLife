@@ -32,6 +32,7 @@ require("fonctions.php");
             JOIN favoris f ON f.id_post = p.id_post 
             WHERE f.id_user = :id_user
             ORDER BY f.fav_date DESC
+            LIMIT 15 OFFSET 0
             ");
             $sql->bindParam(':id_user', $_SESSION['id_user'], PDO::PARAM_INT);
             $sql->execute();

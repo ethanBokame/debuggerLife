@@ -908,10 +908,20 @@ if (fileName == "mydebug" || fileName == "explorer" || fileName == "favoris") {
                 
                 .then((data) => {
                     setTimeout(() => {
+                        console.log(data);
                         // Création des debugs supplémentaires
-                        data.map((post) => {
-                            debugContainer.appendChild(createDebug(post));
-                        });
+                        if (fileName == "mydebug") {
+                            data.map((post) => {
+                                debugContainer.appendChild(createDebug(post));
+                            });
+                        } else {
+                            data.debugs.map((post) => {
+                                debugContainer.appendChild(
+                                    createDebug(post, "", data.likesArray, data.favArray)
+                                );
+                            });
+                        }
+
                         
                         // Suppression du spinner
                         spinnerClone.remove();
@@ -921,10 +931,9 @@ if (fileName == "mydebug" || fileName == "explorer" || fileName == "favoris") {
                         start_point += 15;
                         
                         // Observer le dernier debug
-                        observer.observe(debug[index_observation]);
+                        index_observation <= debug.length - 1 ? observer.observe(debug[index_observation]) : ""
                         
-                        console.log(data);
-                        console.log(debug);
+                        
                         
                         setTimeout(() => {
                             // Formattage de l'image du debug
@@ -938,7 +947,7 @@ if (fileName == "mydebug" || fileName == "explorer" || fileName == "favoris") {
     });
     
     // Observer le dernier debug
-    fileName == "mydebug" ? observer.observe(debug[index_observation]) : "";
+    index_observation <= debug.length - 1 ? observer.observe(debug[index_observation]) : ""
 }
 
 
@@ -1371,7 +1380,7 @@ if (e.target != imgDebugModal) {
 //     favPostImg = document.querySelectorAll(".notmydebug .count-fav img"),
 //     favPostNumber = document.querySelectorAll(".notmydebug .count-fav p");
 
-// // Fonction pour les boutons like et favoris
+// Fonction pour les boutons like et favoris
 function postBtn( btn, btnImg, btnImgOldColor, btnImgNewColor, color, count, debug, action) {
     btn.style.transition = "0.2s";
     btn.style.transform = "scale(1.2)";

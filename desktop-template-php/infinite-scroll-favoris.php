@@ -5,29 +5,22 @@ header("Access-Control-Allow-Origin: *");
 require("conn.php");
 require("session.php");
 
-$search = $_GET["query"];
+$start_point = $_GET["start_point"];
 
-$sql = "SELECT u.id_user, u.profile_pic, u.username, p.id_post, p.code, p.post_date, p.title, p.fav_number, p.like_number, p.status_post, p.link_ressource, p.description, p.link_picture 
+// debugs
+$sql = $conn->prepare("SELECT u.id_user, u.profile_pic, u.username, p.id_post, p.code, p.post_date, p.title, p.fav_number, p.like_number, p.status_post, p.link_ressource, p.description, p.link_picture 
 FROM users u
 JOIN post p ON u.id_user = p.id_user
 JOIN favoris f ON f.id_post = p.id_post 
 WHERE f.id_user = :id_user
-AND (
-title LIKE :search OR
-description LIKE :search OR
-link_ressource LIKE :search 
-OR code LIKE :search)
 ORDER BY f.fav_date DESC
-LIMIT 15 OFFSET 0
-";
+LIMIT 15 OFFSET :start_point
+");
 
-$stmt = $conn->prepare($sql);
-$stmt->bindValue(':id_user', $_SESSION["id_user"], PDO::PARAM_INT);
-$stmt->bindValue(':search', '%' . $search . '%', PDO::PARAM_STR);
-$stmt->execute();
-
-// Récupérer les résultats
-$debug = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$sql->bindValue(':id_user', $_SESSION["id_user"], PDO::PARAM_INT);
+$sql->bindValue(':start_point', $start_point, PDO::PARAM_INT);
+$sql->execute();
+$debug = $sql->fetchAll(PDO::FETCH_ASSOC);
 
 // Tableau contenant les identifiants des debugs liké par l'utilisateur
 $sql = $conn->prepare("SELECT l.id_post

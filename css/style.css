@@ -425,7 +425,8 @@ nav .nav-menu .profil_pic {
 .first-tab-system-container .page .mydebug .description, .first-tab-system-container .page .notmydebug .description {
   color: white;
   line-height: 25px;
-  margin-bottom: -2px;
+  margin-bottom: -7px;
+  margin-top: -4px;
 }
 .first-tab-system-container .page .mydebug .option-menu, .first-tab-system-container .page .notmydebug .option-menu {
   color: #9198a1;

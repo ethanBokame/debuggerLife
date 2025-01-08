@@ -21,6 +21,7 @@ require("fonctions.php");
         <div class="page" style="display: flex;">
 
             <!--AFFICHAGE DES DEBUGS-->
+
             <?php
 
             // Chargement des debugs
@@ -57,7 +58,7 @@ require("fonctions.php");
             $fav_debug_array = $sql->fetchAll(PDO::FETCH_COLUMN);
             ?>
             <img src="image/arrow-back-regular-240.png" class="back-big-debug" alt="back">
-            <div style="flex-grow:1;">
+            <div  style="flex-grow:1;">
                 <div class="notmydebug big-debug" id-post="<?php echo $post["id_post"] ?>" style="display: flex;">
 
                     <div class="top">

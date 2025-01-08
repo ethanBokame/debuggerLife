@@ -55,8 +55,8 @@ $router->map('GET | POST', '/[*:username]/[i:id_post]', function($username, $id_
 });
 
 // TEST
-$router->map('GET | POST', '/desktop-template-php/infinite-scroll-mydebug.php', function() {
-    require "/desktop-template-php/infinite-scroll-mydebug.php";
+$router->map('GET | POST', 'tests/date.php', function() {
+    require "tests/date.php";
 });
 
 // $router->map('GET', '/contact', 'contact', 'contact');

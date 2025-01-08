@@ -943,7 +943,7 @@ if (fileName == "mydebug" || fileName == "explorer" || fileName == "favoris") {
 
 
 // Ajout des evennements par délégation
-debugContainer?.addEventListener("click", (event) => {
+page?.addEventListener("click", (event) => {
     // console.dir(event.target);
     
     // Menu

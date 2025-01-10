@@ -90,11 +90,18 @@ console.log(debug);
 // Fonction pour la surbrillance de la recherche
 function highlightMatch(text, query) {
     if (!query) return text; // Si aucune requête, retourner le texte d'origine
-
-    // Création d'une expression régulière pour trouver toutes les correspondances
-    const regex = new RegExp(`(${query})`, "gi"); // "g" = global, "i" = insensible à la casse
-    return text.replace(regex, '<span class="highlight">$1</span>'); // Ajouter le surlignage
+    
+    let textHighlight = text; // Initialise le texte à surligner
+    
+    tokenisate(query).forEach(element => {
+        // Création d'une expression régulière pour trouver toutes les correspondances
+        let regex = new RegExp(`(${element})`, "gi"); // "g" = global, "i" = insensible à la casse
+        textHighlight = textHighlight.replace(regex, '<span class="highlight">$1</span>'); // Cumul des surlignages
+    });
+    
+    return textHighlight; // Retourne le texte final avec tous les surlignages
 }
+
 
 // Search box
 let search = document.querySelector("#search"),
@@ -118,14 +125,16 @@ function createDebug(post, query = "", likesArray, favArray, page = fileName) {
         highlightedDescription = highlightMatch(post.description, query),
         highlightedLink = highlightMatch(post.link_ressource, query);
 
+        // tokenisate(query).forEach(element => {
+        //     console.log(typeof(element));
+        //     highlightedTitle = highlightMatch(post.title, element)
+        // });
 
     // Charger le style de Highlight.js
     const highlightJsStyle = document.createElement("link");
     highlightJsStyle.rel = "stylesheet";
     highlightJsStyle.href = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css";
     document.head.appendChild(highlightJsStyle);
-
-
 
     if (page == "explorer" || page == "favoris") {
         
@@ -337,6 +346,9 @@ function createDebug(post, query = "", likesArray, favArray, page = fileName) {
 
 let noResultExplorer = document.querySelector('.noresult-explorer');
 
+// Suppression de la variable qui contient une recherche
+sessionStorage.removeItem("search");
+
 // Fonction qui manipule l'état des debugs
 function debugState(state, selector) {
     let debug = document.querySelectorAll(selector);
@@ -353,11 +365,12 @@ function removeDebugSearch() {
     });
 }
 
-
 search?.addEventListener("input", () => {
-    
     closeBtn.style.visibility = "visible";
 });
+
+let searchLocal = sessionStorage.getItem("search");
+console.log(searchLocal);
 
 search?.addEventListener("keydown", (event) => {
     if (event.key === "Enter") {
@@ -377,8 +390,12 @@ search?.addEventListener("keydown", (event) => {
             // Faire disparaitre les debugs de la recherche
             removeDebugSearch();
 
+            // Vérifie si les infos de la recherche existe, et les supprime
+            let existingTotalDebug = document.querySelector(".total-debug");
+            existingTotalDebug?.remove();
+
             fetch(
-                `${hostname}desktop-template-php/live-search-${fileName}.php?query=${search.value}`
+                `${hostname}desktop-template-php/live-search-${fileName}.php?query=${tokenisate(search.value)}`
             )
                 .then((response) => response.json())
                 .then((data) => {
@@ -399,6 +416,10 @@ search?.addEventListener("keydown", (event) => {
 
                             noResultExplorer.style.display = "none";
 
+                            // Affichage du total des debugs trouvés
+                            displayNbDebug(data.total, search.value)
+
+                            // Création des debugs
                             data.debugs.map((post) => {
                                 debugContainer.appendChild(
                                     createDebug(
@@ -411,26 +432,31 @@ search?.addEventListener("keydown", (event) => {
                                 console.log(debug);
                             });
 
-                            // Attachement des events
-                            // refreshEventListener();
-
                             // Formattage des images
-                            formatDebugImg()
+                            setTimeout(() => {
+                                // Formattage de l'image du debug
+                                imgDebug = document.querySelectorAll(".img-debug img");
+                                formatDebugImg();
+                            }, 100);
                         } else {
                             noResultExplorer.style.display = "none";
-
+                            
+                            // Affichage du total des debugs trouvés
+                            displayNbDebug(data.total, search.value)
+                            
                             data.debugs.map((post) => {
                                 debugContainer.appendChild(
                                     createDebug(post, search.value)
                                 );
                                 console.log(debug);
                             });
-
-                            // Attachement des events
-                            // refreshEventListener();
                             
                             // Formattage des images
-                            formatDebugImg()
+                            setTimeout(() => {
+                                // Formattage de l'image du debug
+                                imgDebug = document.querySelectorAll(".img-debug img");
+                                formatDebugImg();
+                            }, 100);
                         }
                     }, 300);
 
@@ -466,6 +492,13 @@ search?.addEventListener("blur", () => {
     searchBox.style.border = "1px solid #9198a1a6";
     loupe.setAttribute("src", "image/loupe.png");
 });
+
+// Préservation de la recherche en cas de rechargement de la page
+// window.addEventListener("pageshow", function (event) {
+//     console.log("pageshow:");
+//     console.log(event);
+//   });
+  
 
 
 // 'X' de la search box
@@ -1440,4 +1473,40 @@ function postBtn( btn, btnImg, btnImgOldColor, btnImgNewColor, color, count, deb
         btn.style.transition = "0.4s";
         btn.style.transform = "scale(1)";
     }, 400);
+}
+
+// Fonction pour tokeniser les textes
+function tokenisate(text) {
+    let tokens = text.match(/\b\w+\b/g); // Récupère uniquement les mots
+    return tokens;
+}
+
+// fonction pour afficher le resultat des recherches de debugs
+function displayNbDebug(number, search) {
+    let total_debug = document.createElement("p");
+
+    // Création du span pour le nombre total
+    let total_debug_number = document.createElement("span");
+    total_debug_number.classList.add("total-debug-number");
+    total_debug_number.textContent = `${number}`;
+
+    // Création du texte "résultats pour"
+    let total_debug_text = document.createTextNode(` résultats pour `);
+
+    // Création du span pour la recherche
+    let total_debug_query = document.createElement("span");
+    total_debug_query.classList.add("total-debug-query");
+    total_debug_query.textContent = search;
+
+
+    // Assemblage des éléments dans le paragraphe
+    total_debug.appendChild(total_debug_number);
+    total_debug.appendChild(total_debug_text);
+    total_debug.appendChild(total_debug_query);
+
+    // Ajout de la classe principale au paragraphe
+    total_debug.classList.add("total-debug");
+
+    // Ajout au conteneur principal
+    debugContainer.appendChild(total_debug);
 }

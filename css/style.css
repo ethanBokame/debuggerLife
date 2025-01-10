@@ -1062,4 +1062,18 @@ nav .nav-menu .profil_pic {
   height: 100%;
 }
 
+.total-debug {
+  font-size: 17px;
+  padding: 20px 30px;
+  color: white;
+}
+.total-debug .total-debug-number {
+  font-weight: bold;
+}
+.total-debug .total-debug-query {
+  font-style: italic;
+  color: rgb(255, 118, 26);
+  font-weight: 700;
+}
+
 /*# sourceMappingURL=style.css.map */

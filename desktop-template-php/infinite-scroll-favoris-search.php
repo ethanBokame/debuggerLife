@@ -5,6 +5,7 @@ header("Access-Control-Allow-Origin: *");
 require("conn.php");
 require("session.php");
 
+$start_point = $_GET["start_point"];
 $search = explode(',', $_GET["query"]);
 
 // Fonction pour former la requête des mots clés dynamiquement
@@ -21,26 +22,6 @@ function queryWithKeyword($search) {
 }
 $queryKeyword = queryWithKeyword($search);
 
-// Nombres de lignes totales pouvant être retournées
-$sql = "SELECT COUNT(*)
-FROM users u
-JOIN post p ON u.id_user = p.id_user
-JOIN favoris f ON f.id_post = p.id_post 
-WHERE f.id_user = :id_user
-AND ($queryKeyword)
-";
-
-$stmt = $conn->prepare($sql);
-$stmt->bindValue(':id_user', $_SESSION["id_user"], PDO::PARAM_INT);
-
-// bindage de chaque mot clé
-for ($i=0; $i < count($search); $i++) { 
-    $stmt->bindValue(":keyword$i", '%' . $search[$i] . '%', PDO::PARAM_STR);
-}
-
-$stmt->execute();
-$nb_total_debug = $stmt->fetchColumn();
-
 // debug
 $sql = "SELECT u.id_user, u.profile_pic, u.username, p.id_post, p.code, p.post_date, p.title, p.fav_number, p.like_number, p.status_post, p.link_ressource, p.description, p.link_picture
 FROM users u
@@ -49,11 +30,12 @@ JOIN favoris f ON f.id_post = p.id_post
 WHERE f.id_user = :id_user
 AND ($queryKeyword)
 ORDER BY f.fav_date DESC
-LIMIT 15 OFFSET 0
+LIMIT 15 OFFSET :start_point
 ";
 
 $stmt = $conn->prepare($sql);
 $stmt->bindValue(':id_user', $_SESSION["id_user"], PDO::PARAM_INT);
+$stmt->bindValue(':start_point', $start_point, PDO::PARAM_INT);
 
 // bindage de chaque mot clé
 for ($i=0; $i < count($search); $i++) { 
@@ -86,7 +68,6 @@ $sql->execute();
 $fav_debug_array = $sql->fetchAll(PDO::FETCH_COLUMN);
 
 $response = [
-    'total' => $nb_total_debug,
     'debugs' => $debug,
     'likesArray' => $likes_debug_array,
     'favArray' => $fav_debug_array

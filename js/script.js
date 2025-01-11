@@ -399,8 +399,6 @@ search?.addEventListener("keydown", (event) => {
                     let noResultExplorer = document.querySelector(".noresult-explorer");
 
                     setTimeout(() => {
-                        // // Faire disparaitre les debugs de la recherche
-                        // removeDebugSearch();
 
                         // Fin du chargement
                         spinner.style.display = "none";
@@ -435,6 +433,60 @@ search?.addEventListener("keydown", (event) => {
                                 imgDebug = document.querySelectorAll(".img-debug img");
                                 formatDebugImg();
                             }, 100);
+
+                            let start_point = 15,
+                            index_observation = debug.length - 1;
+                            
+                            const observer = new IntersectionObserver((element, observer) => {
+                                if (element[0].isIntersecting) {
+                                    console.log(element);
+                                    console.log("dernier debug vu !");
+                                    
+                                    let spinnerClone = spinner.cloneNode(true);
+                                    page.appendChild(spinnerClone);
+                                    spinnerClone.style.display = "flex";
+                                    spinnerClone.style.marginBottom = "20px";
+                                    observer.unobserve(element[0].target);
+                                    
+                                    fetch(
+                                        `${hostname}desktop-template-php/infinite-scroll-${fileName}-search.php?start_point=${start_point}&query=${tokenisate(search.value)}`
+                                    )
+                                        .then((response) => response.json())
+                                        
+                                        .then((data) => {
+                                            setTimeout(() => {
+                                                console.log(data);
+                                                // Création des debugs supplémentaires
+                                                data.debugs.map((post) => {
+                                                    debugContainer.appendChild(
+                                                        createDebug(post, search.value, data.likesArray, data.favArray)
+                                                    );
+                                                });
+                                                
+                                                // Suppression du spinner
+                                                spinnerClone.remove();
+                                                
+                                                // Incrémentation des index d'observation et de points de départ
+                                                index_observation += 15;
+                                                start_point += 15;
+                                                
+                                                // Observer le dernier debug
+                                                index_observation <= debug.length - 1 ? observer.observe(debug[index_observation]) : ""
+                                                
+                                                
+                                                setTimeout(() => {
+                                                    // Formattage de l'image du debug
+                                                    imgDebug = document.querySelectorAll(".img-debug img");
+                                                    formatDebugImg();
+                                                }, 100);
+                                                
+                                            }, 500);
+                                        });
+                                }
+                            });
+                            
+                            // Observer le dernier debug
+                            index_observation <= debug.length - 1 ? observer.observe(debug[index_observation]) : ""
                         } else {
                             noResultExplorer.style.display = "none";
                             
@@ -455,8 +507,8 @@ search?.addEventListener("keydown", (event) => {
                                 formatDebugImg();
                             }, 100);
 
-                            let start_point = 15,
-                            index_observation = debug.length - 1;
+                        let start_point = 15,
+                        index_observation = debug.length - 1;
                         
                         const observer = new IntersectionObserver((element, observer) => {
                             if (element[0].isIntersecting) {
@@ -478,18 +530,9 @@ search?.addEventListener("keydown", (event) => {
                                         setTimeout(() => {
                                             console.log(data);
                                             // Création des debugs supplémentaires
-                                            if (fileName == "mydebug") {
-                                                data.debugs.map((post) => {
-                                                    debugContainer.appendChild(createDebug(post, search.value));
-                                                });
-                                            } else {
-                                                data.debugs.map((post) => {
-                                                    debugContainer.appendChild(
-                                                        createDebug(post, "", data.likesArray, data.favArray)
-                                                    );
-                                                });
-                                            }
-                                            
+                                            data.debugs.map((post) => {
+                                                debugContainer.appendChild(createDebug(post, search.value));
+                                            });
                                             
                                             // Suppression du spinner
                                             spinnerClone.remove();

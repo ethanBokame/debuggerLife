@@ -369,9 +369,6 @@ search?.addEventListener("input", () => {
     closeBtn.style.visibility = "visible";
 });
 
-let searchLocal = sessionStorage.getItem("search");
-console.log(searchLocal);
-
 search?.addEventListener("keydown", (event) => {
     if (event.key === "Enter") {
         console.log("Touche Entrée pressée !");
@@ -457,6 +454,67 @@ search?.addEventListener("keydown", (event) => {
                                 imgDebug = document.querySelectorAll(".img-debug img");
                                 formatDebugImg();
                             }, 100);
+
+                            let start_point = 15,
+                            index_observation = debug.length - 1;
+                        
+                        const observer = new IntersectionObserver((element, observer) => {
+                            if (element[0].isIntersecting) {
+                                console.log(element);
+                                console.log("dernier debug vu !");
+                                
+                                let spinnerClone = spinner.cloneNode(true);
+                                page.appendChild(spinnerClone);
+                                spinnerClone.style.display = "flex";
+                                spinnerClone.style.marginBottom = "20px";
+                                observer.unobserve(element[0].target);
+                                
+                                fetch(
+                                    `${hostname}desktop-template-php/infinite-scroll-${fileName}-search.php?start_point=${start_point}&query=${tokenisate(search.value)}`
+                                )
+                                    .then((response) => response.json())
+                                    
+                                    .then((data) => {
+                                        setTimeout(() => {
+                                            console.log(data);
+                                            // Création des debugs supplémentaires
+                                            if (fileName == "mydebug") {
+                                                data.debugs.map((post) => {
+                                                    debugContainer.appendChild(createDebug(post, search.value));
+                                                });
+                                            } else {
+                                                data.debugs.map((post) => {
+                                                    debugContainer.appendChild(
+                                                        createDebug(post, "", data.likesArray, data.favArray)
+                                                    );
+                                                });
+                                            }
+                                            
+                                            
+                                            // Suppression du spinner
+                                            spinnerClone.remove();
+                                            
+                                            // Incrémentation des index d'observation et de points de départ
+                                            index_observation += 15;
+                                            start_point += 15;
+                                            
+                                            // Observer le dernier debug
+                                            index_observation <= debug.length - 1 ? observer.observe(debug[index_observation]) : ""
+                                            
+                                            
+                                            setTimeout(() => {
+                                                // Formattage de l'image du debug
+                                                imgDebug = document.querySelectorAll(".img-debug img");
+                                                formatDebugImg();
+                                            }, 100);
+                                            
+                                        }, 500);
+                                    });
+                            }
+                        });
+                        
+                        // Observer le dernier debug
+                        index_observation <= debug.length - 1 ? observer.observe(debug[index_observation]) : ""
                         }
                     }, 300);
 
@@ -954,7 +1012,7 @@ if (fileName == "mydebug" || fileName == "explorer" || fileName == "favoris") {
                                 );
                             });
                         }
-
+                        
                         
                         // Suppression du spinner
                         spinnerClone.remove();
@@ -965,7 +1023,6 @@ if (fileName == "mydebug" || fileName == "explorer" || fileName == "favoris") {
                         
                         // Observer le dernier debug
                         index_observation <= debug.length - 1 ? observer.observe(debug[index_observation]) : ""
-                        
                         
                         
                         setTimeout(() => {
@@ -1508,5 +1565,5 @@ function displayNbDebug(number, search) {
     total_debug.classList.add("total-debug");
 
     // Ajout au conteneur principal
-    debugContainer.appendChild(total_debug);
+    page.insertBefore(total_debug, debugContainer);
 }

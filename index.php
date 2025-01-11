@@ -55,8 +55,8 @@ $router->map('GET | POST', '/[*:username]/[i:id_post]', function($username, $id_
 });
 
 // TEST
-$router->map('GET | POST', 'desktop-template-php/live-search-explorer.php?query=on,bien,verra', function() {
-    require "desktop-template-php/live-search-explorer.php?query=on,bien,verra";
+$router->map('GET | POST', '/desktop-template-php/infinite-scroll-mydebug-search.php?start_point=15&query=t', function() {
+    require "/desktop-template-php/infinite-scroll-mydebug-search.php?start_point=15&query=t";
 });
 
 // $router->map('GET', '/contact', 'contact', 'contact');

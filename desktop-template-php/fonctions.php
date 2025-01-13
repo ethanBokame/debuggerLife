@@ -33,7 +33,7 @@ function number_format_short( $n, $precision = 1 ) {
 function shortTimePost($date) {
     $now = new DateTime(); // Heure de maintenant
     $post_date = DateTime::createFromFormat('Y-m-d H:i:s', $date); // Heure avec laquelle j'aimerais comparer $now
-    $seconds = ($now->format('U') - $post_date->format('U')) - 3600; // Affichage en secondes
+    $seconds = $now->format('U') - $post_date->format('U'); // Affichage en secondes
 
     $origin = new DateTimeImmutable($post_date->format('Y-m-d H:i:s'));
     $target = new DateTimeImmutable($now->format('Y-m-d H:i:s'));

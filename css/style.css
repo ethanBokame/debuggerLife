@@ -1076,4 +1076,107 @@ nav .nav-menu .profil_pic {
   font-weight: 700;
 }
 
+.inscription-container {
+  display: flex;
+}
+.inscription-container .branding {
+  color: white;
+  background-image: url("../image/bg-space.webp");
+  background-size: cover;
+  background-position: center;
+  width: 50%;
+  padding: 0 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding-top: 30px;
+  height: 125vh;
+}
+.inscription-container .branding h1 {
+  font-size: 32px;
+}
+.inscription-container .branding p {
+  font-size: 16px;
+}
+.inscription-container .branding .plume3d {
+  height: 280px;
+  width: 280px;
+  margin-top: -70px;
+  margin-left: 250px;
+}
+.inscription-container .branding .plume3d-2 {
+  height: 280px;
+  width: 280px;
+  margin-top: -210px;
+  transform: rotate(-0.1turn);
+}
+.inscription-container .form-ins-container {
+  background-color: white;
+  width: 50%;
+  padding: 30px 55px;
+}
+.inscription-container .form-ins-container .redirect-conn {
+  display: flex;
+  gap: 10px;
+}
+.inscription-container .form-ins-container .redirect-conn p {
+  margin-left: auto;
+}
+.inscription-container .form-ins-container .redirect-conn a {
+  color: black;
+}
+.inscription-container .form-ins-container form {
+  display: flex;
+  flex-direction: column;
+  padding: 0 40px;
+}
+.inscription-container .form-ins-container form label {
+  margin-bottom: 3px;
+  font-weight: 500;
+}
+.inscription-container .form-ins-container form #email, .inscription-container .form-ins-container form #username {
+  background: none;
+  border: 1.5px solid rgba(145, 152, 161, 0.6509803922);
+  padding: 10px;
+  border-radius: 9px;
+  outline: none;
+  width: 100%;
+  margin-bottom: 25px;
+}
+.inscription-container .form-ins-container form #email:focus, .inscription-container .form-ins-container form #username:focus {
+  border: 1.5px solid #4493f8;
+}
+.inscription-container .form-ins-container form .password-container {
+  border: 1.5px solid rgba(145, 152, 161, 0.6509803922);
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  margin-bottom: 25px;
+}
+.inscription-container .form-ins-container form .password-container img {
+  height: 20px;
+  cursor: pointer;
+  margin: 0 7px;
+}
+.inscription-container .form-ins-container form .password-container #password {
+  padding: 10px;
+  outline: none;
+  flex-grow: 1;
+  border: none;
+}
+.inscription-container .form-ins-container form input[type=submit] {
+  margin-top: 10px;
+  background-color: black;
+  color: white;
+  padding: 10px;
+  border-radius: 9px;
+  font-weight: 500;
+  font-size: 15px;
+  cursor: pointer;
+}
+.inscription-container .form-ins-container form input[type=submit]:hover {
+  background-color: rgb(40, 39, 39);
+}
+
 /*# sourceMappingURL=style.css.map */

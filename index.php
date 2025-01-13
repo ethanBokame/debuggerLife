@@ -54,6 +54,16 @@ $router->map('GET | POST', '/[*:username]/[i:id_post]', function($username, $id_
     require "desktop-template-php/debug.php";
 });
 
+// Inscription
+$router->map('GET | POST', '/inscription', function() {
+    require "desktop-template-php/inscription.php";
+});
+
+// Inscription
+$router->map('GET | POST', '/connexion', function() {
+    require "desktop-template-php/connexion.php";
+});
+
 // TEST
 $router->map('GET | POST', '/desktop-template-php/infinite-scroll-mydebug-search.php?start_point=15&query=t', function() {
     require "/desktop-template-php/infinite-scroll-mydebug-search.php?start_point=15&query=t";

@@ -17,14 +17,24 @@ class User
     }
 
     public function nbLike() {
-        $sql = $this->conn->prepare("SELECT SUM(like_number) FROM post WHERE id_user= :id_user");
+        $sql = $this->conn->prepare(
+            "SELECT COUNT(*) 
+            FROM likes l
+            JOIN post p ON l.id_post = p.id_post
+            WHERE p.id_user = :id_user"
+        );
         $sql->execute(['id_user' => $_SESSION["id_user"]]);
         $nbDebug = $sql->fetchColumn();
         return $nbDebug;
     }
 
     public function nbFav() {
-        $sql = $this->conn->prepare("SELECT SUM(fav_number) FROM post WHERE id_user= :id_user");
+        $sql = $this->conn->prepare(
+            "SELECT COUNT(*) 
+            FROM favoris f
+            JOIN post p ON f.id_post = p.id_post
+            WHERE p.id_user = :id_user"
+        );
         $sql->execute(['id_user' => $_SESSION["id_user"]]);
         $nbDebug = $sql->fetchColumn();
         return $nbDebug;

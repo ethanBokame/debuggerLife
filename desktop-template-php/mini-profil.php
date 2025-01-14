@@ -9,7 +9,7 @@ if (isset($_POST["send"])) {
         ");
     
     $type = $_FILES["banner"]["type"];
-    $banner = "image/banner/" . $_SESSION["id_user"] . "_" . "banner_pic." . substr($type, 6);
+    $banner = $_SESSION["id_user"] . "_" . "banner_pic." . substr($type, 6);
     $id_user = $_SESSION["id_user"];
     
     if (strpos($type, "image/") == 0) {
@@ -32,7 +32,7 @@ if (isset($_POST["send"])) {
 
 <div class="mini-profil">
     
-    <img src="<?php echo $user["banner"]?>" alt="background" class="banniere">
+    <img src="<?php echo "image/banner/" . $user["banner"]?>" alt="background" class="banniere">
     <div class="set-banner-container">
         <img src="image/outil-crayon.png" alt="set_banner" class="set-banner">
     </div>

@@ -1125,6 +1125,14 @@ nav .nav-menu .profil_pic {
 .inscription-container .form-ins-container .redirect-conn a {
   color: black;
 }
+.inscription-container .form-ins-container .error {
+  padding: 16px;
+  border-radius: 6px;
+  border: 1px solid rgba(248, 81, 73, 0.4);
+  background-color: rgba(248, 82, 73, 0.1843137255);
+  display: none;
+  margin-bottom: 20px;
+}
 .inscription-container .form-ins-container form {
   display: flex;
   flex-direction: column;
@@ -1177,6 +1185,95 @@ nav .nav-menu .profil_pic {
 }
 .inscription-container .form-ins-container form input[type=submit]:hover {
   background-color: rgb(40, 39, 39);
+}
+
+.connexion-container {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-top: 30px;
+}
+.connexion-container .logo {
+  height: 50px;
+  width: 50px;
+  margin-bottom: 5px;
+}
+.connexion-container .error {
+  padding: 16px;
+  border-radius: 6px;
+  border: 1px solid rgba(248, 81, 73, 0.4);
+  background-color: rgba(248, 82, 73, 0.1843137255);
+  display: none;
+}
+.connexion-container form {
+  margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+  background-color: #151b23;
+  border: 1px solid rgba(145, 152, 161, 0.6509803922);
+  border-radius: 6px;
+  width: 300px;
+  padding: 17px;
+}
+.connexion-container form #username_email {
+  margin-bottom: 20px;
+  background: none;
+  border: 1px solid rgba(145, 152, 161, 0.6509803922);
+  padding: 6px;
+  border-radius: 6px;
+  outline: none;
+  color: white;
+}
+.connexion-container form #username_email:focus {
+  border: 1px solid #4493f8;
+}
+.connexion-container form label {
+  margin-bottom: 4px;
+}
+.connexion-container form .password-container {
+  border: 1px solid rgba(145, 152, 161, 0.6509803922);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+.connexion-container form .password-container img {
+  height: 20px;
+  cursor: pointer;
+  margin: 0 7px;
+}
+.connexion-container form .password-container #password {
+  color: white;
+  padding: 6px;
+  outline: none;
+  flex-grow: 1;
+  border: none;
+  background: none;
+}
+.connexion-container form input[type=submit] {
+  margin-top: 5px;
+  background-color: #247aea;
+  color: white;
+  padding: 6px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 15px;
+  cursor: pointer;
+}
+.connexion-container form input[type=submit]:hover {
+  background-color: #1a73e8;
+}
+.connexion-container .redirect-ins {
+  display: flex;
+  gap: 10px;
+  margin-top: 5px;
+}
+.connexion-container .redirect-ins a {
+  color: #247aea;
 }
 
 /*# sourceMappingURL=style.css.map */

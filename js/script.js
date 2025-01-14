@@ -1395,7 +1395,7 @@ cancelModification?.addEventListener("click", () => {
 
 
 // Traitement de la popup en fonction de l'option
-choicePopup.addEventListener("click", () => {
+choicePopup?.addEventListener("click", () => {
     popup((state = "none"));
     noFixeBody();
 
@@ -1461,7 +1461,7 @@ choicePopup.addEventListener("click", () => {
 });
 
 // Bouton "X" ou annuler sur la popup
-cancelPopup.addEventListener("click", () => {
+cancelPopup?.addEventListener("click", () => {
     popup((state = "none"));
     noFixeBody();
 });
@@ -1491,13 +1491,13 @@ imgDebugModal = document.querySelector(".img-debug-modal"),
 imgDebugContainer = document.querySelectorAll(".img-debug");
 
 // Click sur la croix pour fermer l'image modale du debug
-imgDebugClose.addEventListener("click", () => {
+imgDebugClose?.addEventListener("click", () => {
 smokePage.style.display = "none";
 imgDebugModalContainer.style.display = "none";
 });
 
 // Click sur la zone neutre pour fermer l'image modale du debug
-imgDebugModalContainer.addEventListener("click", (e) => {
+imgDebugModalContainer?.addEventListener("click", (e) => {
 if (e.target != imgDebugModal) {
     smokePage.style.display = "none";
     imgDebugModalContainer.style.display = "none";

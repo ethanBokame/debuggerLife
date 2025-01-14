@@ -1429,6 +1429,15 @@ nav {
             
         }
 
+        .error {
+            padding: 16px;
+            border-radius: 6px;
+            border: 1px solid #f8514966;
+            background-color: #f852492f;
+            display: none;
+            margin-bottom: 20px;
+        }
+
         form {
             display: flex;
             flex-direction: column;
@@ -1493,6 +1502,111 @@ nav {
     }
 }
 
+.connexion-container {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;  
+    margin-top: 30px;
+
+    .logo {
+        height: 50px;
+        width: 50px;
+        margin-bottom: 5px;
+    }  
+    
+    .error {
+        padding: 16px;
+        border-radius: 6px;
+        border: 1px solid #f8514966;
+        background-color: #f852492f;
+        display: none;
+    }
+
+    form {
+        margin-top: 5px;
+        display: flex;
+        flex-direction: column;
+        background-color: #151b23;
+        border: 1px solid #9198a1a6;
+        border-radius: 6px;
+        width: 300px;
+        padding: 17px;
+
+        #username_email {
+            margin-bottom: 20px;
+            background: none;
+            border: 1px solid #9198a1a6;
+            padding: 6px;
+            border-radius: 6px;
+            outline: none;
+            color: white;
+            
+            &:focus {
+                border: 1px solid #4493f8;
+            }
+            
+        }   
+
+        label {
+            margin-bottom: 4px;
+        }
+
+        .password-container {
+
+            border: 1px solid #9198a1a6;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            margin-bottom: 20px;
+
+            img {
+                height: 20px;
+                cursor: pointer;
+                margin: 0 7px;
+            }
+
+            #password {
+                color: white;
+                padding: 6px;
+                outline: none;
+                flex-grow: 1;
+                border: none;
+                background: none;
+            }
+            
+        }
+
+        input[type="submit"] {
+            margin-top: 5px;
+            background-color: #247aea;
+            color: white;
+            padding: 6px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 15px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: #1a73e8;
+            }
+        }
+    }
+
+    .redirect-ins {
+        display: flex;
+        gap: 10px;
+        margin-top: 5px;
+        
+        a {
+            color: #247aea;
+        }
+    }
+
+}
 
 
 

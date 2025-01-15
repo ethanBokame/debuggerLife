@@ -55,3 +55,40 @@
     <img src="image/x-2.png" class="close-debug-modal">
     <img src="" alt="" class="img-debug-modal">
 </div>
+
+<!-- menu -->
+<div class="menu-container">
+    <div class="header">
+        <div class="pic-name">
+            <img src="<?php echo "image/profil_pic_user/" . $user["profile_pic"] ?>" alt="">
+            <p><?php echo $user["username"] ?></p>
+        </div>
+        <img class="close-menu" src="image/x-2.png" alt="close-menu">
+    </div>
+    <div class="link-container">
+        <div>
+            <img src="image/user.png">
+            <p>Profil</p>
+        </div>
+        <div>
+            <img src="image/moon (1).png">
+            <p>Mode sombre</p>
+        </div>
+        <div>
+            <img src="image/setting.png">
+            <p>Paramètres</p>
+        </div>
+        <div>
+            <img src="image/book.png">
+            <p>Documentation debuggerLife</p>
+        </div>
+        <div>
+            <img src="image/help.png">
+            <p>Assistance debuggerLife</p>
+        </div>
+        <div>
+            <img src="image/logout.png">
+            <p>Deconnexion</p>
+        </div>
+    </div>
+</div>

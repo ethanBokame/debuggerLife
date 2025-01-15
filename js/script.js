@@ -1610,3 +1610,24 @@ function displayNbDebug(number, search) {
     // Ajout au conteneur principal
     page.insertBefore(total_debug, debugContainer);
 }
+
+
+// Menu
+let profilPicNav = document.querySelector(".nav-menu .profil_pic"),
+    closeMenu = document.querySelector(".close-menu"),
+    menu = document.querySelector(".menu-container");
+
+profilPicNav?.addEventListener("click", () => {
+    smokePage.style.display = "flex";
+    menu.style.display = "flex";
+})
+
+closeMenu?.addEventListener("click", () => {
+    smokePage.style.display = "none";
+    menu.style.display = "none";    
+})
+
+smokePage?.addEventListener("click", () => {
+    smokePage.style.display = "none";
+    menu.style.display = "none";    
+})

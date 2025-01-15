@@ -9,21 +9,21 @@ if (isset($_POST["send"])) {
     $password = md5($_POST["password"]);
     $profil_pic = "plume (" . rand(0, 3) . ").png";
     $last_login = date("Y-m-d H:i:s");
-
+    
     // Préparation de la requete pour l'inscription
     $sql_ins = $conn->prepare("INSERT INTO users (username, email, password, profile_pic, last_login) 
     VALUES (:username, :email, :password, :profile_pic, :last_login)");
-
+    
     // Préparation de la requete pour la vérification du nom d'utilisateur 
     $sql = $conn->prepare("SELECT COUNT(*) FROM users WHERE username = :username");
-
+    
     // Exécution de la requête
     $sql->execute([
         'username' => $username
     ]);
-
+    
     $username_in_db = $sql->fetchColumn();
-
+    
     if ($username_in_db < 1) {
         // Exécution de la requête pour l'inscription
         $sql_ins->execute([
@@ -67,9 +67,7 @@ if (isset($_POST["send"])) {
                 <a href="connexion">Connectez-vous →</a>
             </div>
             <p style="font-size: 20px; font-weight:500; padding:25px 40px">S'incrire à debuggerLife</p>
-
-
-
+            
             <form action="" method="post">
             <p class="error" <?php echo (isset($error) && $error) ? "style=display:block" : "" ?>>
                 Ce nom d'utilisateur est déjà pris

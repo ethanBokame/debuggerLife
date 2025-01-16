@@ -64,6 +64,11 @@ $router->map('GET | POST', '/connexion', function() {
     require "desktop-template-php/connexion.php";
 });
 
+// Déconnexion
+$router->map('GET | POST', '/deconnexion', function() {
+    require "desktop-template-php/deconnexion.php";
+});
+
 // TEST
 $router->map('GET | POST', '/desktop-template-php/infinite-scroll-mydebug-search.php?start_point=15&query=t', function() {
     require "/desktop-template-php/infinite-scroll-mydebug-search.php?start_point=15&query=t";

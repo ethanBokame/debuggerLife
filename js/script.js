@@ -8,7 +8,7 @@ let body = document.querySelector("body"),
     spinner = document.querySelector(".loader"),
     filePath = window.location.pathname,
     fileName = filePath.split("/").pop(),
-    currentUsername = debugContainer ? document.querySelector(".top .pic-name-post-date a").innerText : "",
+    currentUsername = debugContainer && document.querySelector(".top .pic-name-post-date a")? document.querySelector(".top .pic-name-post-date a").innerText : "",
     currentProfilPic = debugContainer ? document.querySelector(".mini-profil-pic-container img").getAttribute("src") : "";
 
 //Infobulles

@@ -86,7 +86,7 @@
             <img src="image/help.png">
             <p>Assistance debuggerLife</p>
         </div>
-        <div>
+        <div class="logout" onclick="window.location.href = 'deconnexion'">
             <img src="image/logout.png">
             <p>Deconnexion</p>
         </div>

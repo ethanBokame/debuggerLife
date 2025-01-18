@@ -1,4 +1,5 @@
 <?php
+ob_start();
 require("session.php");
 require("header.php");
 require("conn.php");
@@ -89,7 +90,8 @@ require("conn.php");
             $_SESSION["status_post"] = $status_post;
         }
     }
-
+    
+    ob_end_flush();
     ?>
 
     <!--SYSTEME DE TABULATION ENTRE LES PAGES POUR GRAND ECRAN-->

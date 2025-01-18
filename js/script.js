@@ -857,7 +857,7 @@ bannerFile?.addEventListener("change", () => {
 
 // Rechargement de la page au clic du logo
 let logo = document.querySelector(".logo");
-logo.addEventListener("click", () => {
+logo?.addEventListener("click", () => {
     window.location.href = window.location.pathname;
 });
 

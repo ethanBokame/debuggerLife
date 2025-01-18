@@ -10,7 +10,7 @@ class User
     }
     
     public function nbDebug() {
-        $sql = $this->conn->prepare("SELECT COUNT(*) FROM post WHERE id_user= :id_user");
+        $sql = $this->conn->prepare("SELECT COUNT(*) FROM post WHERE id_user= :id_user AND visibility='visible'");
         $sql->execute(['id_user' => $_SESSION["id_user"]]);
         $nbDebug = $sql->fetchColumn();
         return $nbDebug;

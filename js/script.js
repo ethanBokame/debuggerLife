@@ -8,8 +8,9 @@ let body = document.querySelector("body"),
     spinner = document.querySelector(".loader"),
     filePath = window.location.pathname,
     fileName = filePath.split("/").pop(),
-    currentUsername = debugContainer && document.querySelector(".top .pic-name-post-date a")? document.querySelector(".top .pic-name-post-date a").innerText : "",
-    currentProfilPic = debugContainer ? document.querySelector(".mini-profil-pic-container img").getAttribute("src") : "";
+    currentUsername = debugContainer && document.querySelector(".top .pic-name-post-date a") ? document.querySelector(".top .pic-name-post-date a").innerText : "",
+    currentProfilPic = debugContainer && document.querySelector(".mini-profil-pic-container img") ? document.querySelector(".mini-profil-pic-container img").getAttribute("src") : "",
+    connexionInscription = document.querySelector(".connexion-inscription");
 
 //Infobulles
 let classes_array = [
@@ -723,8 +724,8 @@ let nopost = document.querySelector(".nopost"),
     nodebug = document.querySelector(".nodebug");
 
 window.addEventListener("load", () => {
-    nofav && debug.length == 0 ? (nofav.style.display = "flex") : "";
-    nodebug && debug.length == 0 ? (nodebug.style.display = "flex") : "";
+    nofav && debug.length == 0 &&  connexionInscription.style.display != "block" ? (nofav.style.display = "flex") : "";
+    nodebug && debug.length == 0 &&  connexionInscription.style.display != "block" ? (nodebug.style.display = "flex") : "";
 });
 
 // Formulaire d'ajout des debugs

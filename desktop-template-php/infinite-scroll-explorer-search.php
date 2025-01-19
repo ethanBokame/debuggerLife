@@ -22,52 +22,85 @@ function queryWithKeyword($search) {
 }
 $queryKeyword = queryWithKeyword($search);
 
-// debug
-$sql = "SELECT u.id_user, u.profile_pic, u.username, p.id_post, p.code, p.post_date, p.title, p.fav_number, p.like_number, p.status_post, p.link_ressource, p.description, p.link_picture 
-FROM users u 
-JOIN post p 
-ON u.id_user=p.id_user
-WHERE u.id_user!=:id_user AND
-p.status_post!='private' AND
-visibility='visible' 
-AND ($queryKeyword)
-ORDER BY post_date DESC
-LIMIT 15 OFFSET :start_point
-";
+if (isset($_SESSION["id_user"])) {
+    // debug
+    $sql = "SELECT u.id_user, u.profile_pic, u.username, p.id_post, p.code, p.post_date, p.title, p.fav_number, p.like_number, p.status_post, p.link_ressource, p.description, p.link_picture 
+    FROM users u 
+    JOIN post p 
+    ON u.id_user=p.id_user
+    WHERE u.id_user!=:id_user AND
+    p.status_post!='private' AND
+    visibility='visible' 
+    AND ($queryKeyword)
+    ORDER BY post_date DESC
+    LIMIT 15 OFFSET :start_point
+    ";
 
-$stmt = $conn->prepare($sql);
-$stmt->bindValue(':id_user', $_SESSION["id_user"], PDO::PARAM_INT);
-$stmt->bindValue(':start_point', $start_point, PDO::PARAM_INT);
+    $stmt = $conn->prepare($sql);
+    $stmt->bindValue(':id_user', $_SESSION["id_user"], PDO::PARAM_INT);
+    $stmt->bindValue(':start_point', $start_point, PDO::PARAM_INT);
 
-// bindage de chaque mot clé
-for ($i=0; $i < count($search); $i++) { 
-    $stmt->bindValue(":keyword$i", '%' . $search[$i] . '%', PDO::PARAM_STR);
+    // bindage de chaque mot clé
+    for ($i=0; $i < count($search); $i++) { 
+        $stmt->bindValue(":keyword$i", '%' . $search[$i] . '%', PDO::PARAM_STR);
+    }
+
+    $stmt->execute();
+    $debug = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    // Tableau contenant les identifiants des debugs liké par l'utilisateur
+    $sql = $conn->prepare("SELECT l.id_post
+    FROM users u
+    JOIN post p ON u.id_user = p.id_user
+    JOIN likes l ON l.id_post = p.id_post 
+    WHERE l.id_user = :id_user
+    ");
+    $sql->bindParam(':id_user', $_SESSION['id_user'], PDO::PARAM_INT);
+    $sql->execute();
+    $likes_debug_array = $sql->fetchAll(PDO::FETCH_COLUMN);
+
+    // Tableau contenant les identifiants des debugs mis en favoris par l'utilisateur
+    $sql = $conn->prepare("SELECT f.id_post
+    FROM users u
+    JOIN post p ON u.id_user = p.id_user
+    JOIN favoris f ON f.id_post = p.id_post 
+    WHERE f.id_user = :id_user
+    ");
+    $sql->bindParam(':id_user', $_SESSION['id_user'], PDO::PARAM_INT);
+    $sql->execute();
+    $fav_debug_array = $sql->fetchAll(PDO::FETCH_COLUMN);
+}
+else {
+    // debug
+    $sql = "SELECT u.id_user, u.profile_pic, u.username, p.id_post, p.code, p.post_date, p.title, p.fav_number, p.like_number, p.status_post, p.link_ressource, p.description, p.link_picture 
+    FROM users u 
+    JOIN post p 
+    ON u.id_user=p.id_user
+    WHERE p.status_post!='private' 
+    AND visibility='visible' 
+    AND ($queryKeyword)
+    ORDER BY post_date DESC
+    LIMIT 15 OFFSET :start_point
+    ";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->bindValue(':start_point', $start_point, PDO::PARAM_INT);
+
+    // bindage de chaque mot clé
+    for ($i=0; $i < count($search); $i++) { 
+        $stmt->bindValue(":keyword$i", '%' . $search[$i] . '%', PDO::PARAM_STR);
+    }
+
+    $stmt->execute();
+    $debug = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    // Tableau contenant les identifiants des debugs liké par l'utilisateur
+    $likes_debug_array = [];
+
+    // Tableau contenant les identifiants des debugs mis en favoris par l'utilisateur
+    $fav_debug_array = [];
 }
 
-$stmt->execute();
-$debug = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-// Tableau contenant les identifiants des debugs liké par l'utilisateur
-$sql = $conn->prepare("SELECT l.id_post
-FROM users u
-JOIN post p ON u.id_user = p.id_user
-JOIN likes l ON l.id_post = p.id_post 
-WHERE l.id_user = :id_user
-");
-$sql->bindParam(':id_user', $_SESSION['id_user'], PDO::PARAM_INT);
-$sql->execute();
-$likes_debug_array = $sql->fetchAll(PDO::FETCH_COLUMN);
-
-// Tableau contenant les identifiants des debugs mis en favoris par l'utilisateur
-$sql = $conn->prepare("SELECT f.id_post
-FROM users u
-JOIN post p ON u.id_user = p.id_user
-JOIN favoris f ON f.id_post = p.id_post 
-WHERE f.id_user = :id_user
-");
-$sql->bindParam(':id_user', $_SESSION['id_user'], PDO::PARAM_INT);
-$sql->execute();
-$fav_debug_array = $sql->fetchAll(PDO::FETCH_COLUMN);
 
 $response = [
     'debugs' => $debug,

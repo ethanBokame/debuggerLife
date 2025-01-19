@@ -42,7 +42,7 @@
     <div class="group">
         
         <a class="">
-            <img src="<?php echo "image/profil_pic_user/" . $user["profile_pic"]?>" class="profil_pic">
+            <img src="<?php echo(isset($_SESSION["id_user"]) ? "image/profil_pic_user/" . $user["profile_pic"] : "image/user-3.png")?>" class="profil_pic">
             <p>Compte</p>
         </a>
         

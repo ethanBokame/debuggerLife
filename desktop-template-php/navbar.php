@@ -26,7 +26,7 @@
         </div>
 
 
-        <div class="notification-nav">
+        <div class="notification-nav" <?php echo(!isset($_SESSION["id_user"]) ? "style=display:none" : "")?>>
             <img src="image/packard-bell.png" alt="cloche">
             <div class="count-notif-container">
                 <p>3</p>
@@ -34,7 +34,12 @@
 
         </div>
 
-        <img src="<?php echo "image/profil_pic_user/" . $user["profile_pic"]?>" class="profil_pic">
+        <img src="<?php echo "image/profil_pic_user/" . $user["profile_pic"]?>" <?php echo(!isset($_SESSION["id_user"]) ? "style=display:none" : "")?> class="profil_pic">
+
+        <div class="connexion-inscription" <?php echo(!isset($_SESSION["id_user"]) ? "style=display:block" : "")?>>
+            <a href="connexion">Se connecter</a>
+            <a href="inscription">S'inscrire</a>
+        </div>
 
     </div>
 

@@ -285,6 +285,7 @@ nav {
             justify-content: center;
             cursor: pointer;
             margin: 0 -10px;
+            position: relative;
             
             &:hover {
                 background-color: #9198a133;
@@ -297,8 +298,8 @@ nav {
             .count-notif-container {
                 background-color: #4493f8;
                 position: absolute;
-                right: 65px;
-                top: 15px;
+                right: 5px;
+                top: 5px;
                 border-radius: 50px;
                 height: 17px;
                 width: 17px;
@@ -954,7 +955,7 @@ nav {
             }
 
             .mini-profil-pic-container {
-                background-color:#0d1117; 
+                background-color:#0d1117;
                 height: 95px;
                 width: 95px;
                 border-radius: 50px;
@@ -1678,6 +1679,52 @@ nav {
                 height: 18px;
             }
         }
+    }
+}
+
+.connexion-inscription {
+    display: none;
+
+    > :nth-child(1) {
+        color: #4493f8;
+        text-decoration: none;
+        padding: 5px 9px;
+        padding-bottom: 8px;
+        border: 1px solid #4493f8;
+        border-radius: 6px;
+
+        &:hover {
+            background-color: #4492f838;
+        }
+    }
+
+    > :nth-child(2) {
+        color: white;
+        text-decoration: none;
+        padding: 5px 9px;
+        padding-bottom: 8px;
+        border: 1px solid #1a75ec;
+        border-radius: 6px;
+        background-color: #1a75ec;
+        margin-left: 3px;
+
+        &:hover {
+            background-color: #0d56b7;
+            border: 1px solid #0d56b7;
+        }
+    }
+}
+
+.login-message {
+    color: #9198a1;
+    margin-top: 50px;
+    padding: 0 50px;
+    display: none;
+
+    a {
+        text-decoration: none;
+        font-weight: 500;
+        color: #1a75ec;
     }
 }
 

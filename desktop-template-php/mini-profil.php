@@ -32,7 +32,7 @@ if (isset($_POST["send"])) {
 
 <div class="mini-profil">
     
-    <img src="<?php echo "image/banner/" . $user["banner"]?>" alt="background" class="banniere">
+    <img src="<?php echo(isset($_SESSION["id_user"]) ? "image/banner/" . $user["banner"] : "image/banner/banniere.png")?>" alt="background" class="banniere">
     <div class="set-banner-container">
         <img src="image/outil-crayon.png" alt="set_banner" class="set-banner">
     </div>
@@ -43,14 +43,14 @@ if (isset($_POST["send"])) {
     </form>
     
     <div class="mini-profil-pic-container">
-        <img src="<?php echo "image/profil_pic_user/" . $user["profile_pic"]?>" alt="" class="mini-profil-pic">
+        <img src="<?php echo(isset($_SESSION["id_user"]) ? "image/profil_pic_user/" . $user["profile_pic"] : "image/user-2.png")?>" alt="" class="mini-profil-pic">
     </div>
     
-    <p class="username"> <?php echo $user["username"]?> </p>
+    <p class="username"> <?php echo(isset($_SESSION["id_user"]) ? $user["username"] : "DebugBoy") ?></p>
     
-    <i class="rank"> Rang : <?php echo $userObj->rank() ?> </i>
+    <i class="rank"> Rang : <?php echo(isset($_SESSION["id_user"]) ? $userObj->rank() : "Novice 🌱") ?> </i>
     
-    <i class="progress"> (Prochain rang dans <span> <?php echo $userObj->progressRank() ?> Debugs !</span>) </i>
+    <i class="progress"> (Prochain rang dans <span> <?php echo(isset($_SESSION["id_user"]) ? $userObj->progressRank() : "4") ?> Debugs !</span>) </i>
     
     <div class="stats-container">
         
@@ -59,7 +59,7 @@ if (isset($_POST["send"])) {
             <div class="stat stat-db">
                 <img src="image/feather-pen.png" alt="">
                 <div>
-                    <p> <?php echo number_format_short($userObj->nbDebug()) ?> </p> <p>Debugs</p>
+                    <p> <?php echo(isset($_SESSION["id_user"]) ? number_format_short($userObj->nbDebug()) : "0") ?> </p> <p>Debugs</p>
                 </div>
             </div>
 
@@ -67,7 +67,7 @@ if (isset($_POST["send"])) {
             <div class="stat stat-fav">
                 <img src="image/bookmark-regular-240-white.png" alt="">
                 <div>
-                <p> <?php echo number_format_short($userObj->nbFav()) ?> </p> <p>Favoris</p>
+                <p> <?php echo(isset($_SESSION["id_user"]) ? number_format_short($userObj->nbFav()) : "0") ?> </p> <p>Favoris</p>
                 </div>
             </div>
             
@@ -80,14 +80,14 @@ if (isset($_POST["send"])) {
         <div class="stat stat-like">
                 <img src="image/heart-regular-240-white.png" alt="">
                 <div>
-                <p> <?php echo number_format_short($userObj->nbLike()) ?> </p> <p>J'aime</p>
+                <p> <?php echo(isset($_SESSION["id_user"]) ? number_format_short($userObj->nbLike()) : "0") ?> </p> <p>J'aime</p>
                 </div>
             </div>
             
             <div class="stat stat-age">
                 <img src="image/epee.png" alt="">
                 <div>
-                <p> <?php echo number_format_short($userObj->age()) ?> </p> <p>Debugger age</p>
+                <p> <?php echo(isset($_SESSION["id_user"]) ? number_format_short($userObj->age()) : "0") ?> </p> <p>Debugger age</p>
                 </div>
             </div>
             

@@ -239,6 +239,7 @@ nav .nav-menu .notification-nav {
   justify-content: center;
   cursor: pointer;
   margin: 0 -10px;
+  position: relative;
 }
 nav .nav-menu .notification-nav:hover {
   background-color: rgba(145, 152, 161, 0.2);
@@ -249,8 +250,8 @@ nav .nav-menu .notification-nav img {
 nav .nav-menu .notification-nav .count-notif-container {
   background-color: #4493f8;
   position: absolute;
-  right: 65px;
-  top: 15px;
+  right: 5px;
+  top: 5px;
   border-radius: 50px;
   height: 17px;
   width: 17px;
@@ -1334,6 +1335,47 @@ nav .nav-menu .profil_pic {
 }
 .menu-container .link-container div img {
   height: 18px;
+}
+
+.connexion-inscription {
+  display: none;
+}
+.connexion-inscription > :nth-child(1) {
+  color: #4493f8;
+  text-decoration: none;
+  padding: 5px 9px;
+  padding-bottom: 8px;
+  border: 1px solid #4493f8;
+  border-radius: 6px;
+}
+.connexion-inscription > :nth-child(1):hover {
+  background-color: rgba(68, 146, 248, 0.2196078431);
+}
+.connexion-inscription > :nth-child(2) {
+  color: white;
+  text-decoration: none;
+  padding: 5px 9px;
+  padding-bottom: 8px;
+  border: 1px solid #1a75ec;
+  border-radius: 6px;
+  background-color: #1a75ec;
+  margin-left: 3px;
+}
+.connexion-inscription > :nth-child(2):hover {
+  background-color: #0d56b7;
+  border: 1px solid #0d56b7;
+}
+
+.login-message {
+  color: #9198a1;
+  margin-top: 50px;
+  padding: 0 50px;
+  display: none;
+}
+.login-message a {
+  text-decoration: none;
+  font-weight: 500;
+  color: #1a75ec;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -18,7 +18,7 @@ $router->setBasePath($_SESSION["base"]);
 
 // Définition ds routes
 $router->map('GET | POST', '/', function() {
-    require "desktop-template-php/explorer.php";
+    header("Location: explorer");
 });
 
 // Page explorer
